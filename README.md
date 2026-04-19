@@ -1,293 +1,160 @@
 # 🚀 Irfan Ali — DevOps Portfolio
 
-> Personal portfolio website for a Junior DevOps Engineer — built with vanilla HTML/CSS/JS,
-> containerized with Docker + nginx, and self-hosted on AWS EC2. 
+> Automated GitHub Actions pipeline that builds, tests, and pushes a Dockerized portfolio site to Docker Hub on every push to `main`.
 
-**🌐 Live:** [http://16.171.142.13/](http://13.60.97.70/)
-
----
-
-## Badges
-
-![Status](https://img.shields.io/badge/Status-Live-00ff88?style=flat-square)
-![Host](https://img.shields.io/badge/Host-AWS_EC2-FF9900?style=flat-square&logo=amazonaws&logoColor=white)
-![Docker](https://img.shields.io/badge/Container-nginx:alpine-2496ED?style=flat-square&logo=docker&logoColor=white)
-![HTML](https://img.shields.io/badge/Built_with-HTML%2FCSS%2FJS-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+![Docker](https://img.shields.io/badge/Container-Docker_Hub-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Active-00ff88?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
 
 ---
 
-## Overview
+## 📌 What This Pipeline Does
 
-This is my personal portfolio website showcasing my DevOps projects, skills, and background.
-Built entirely with vanilla HTML, CSS, and JavaScript — no frameworks, no build tools —
-containerized with Docker using an nginx:alpine base image, and deployed on AWS EC2 (Ubuntu 24.04).
+On every `git push` to the `main` branch, the pipeline automatically:
 
-The entire site including the resume PDF lives in a single `index.html` file.
-The PDF is embedded as a base64 data URI so the download button always works — no missing file paths.
-
----
-
-## Live Infrastructure
-
-```
-Browser
-    │  HTTP / HTTPS
-    ▼
-AWS EC2 — t2.micro (Ubuntu 24.04)
-  IP: 16.171.142.13
-    │
-    ▼
-Docker Container: portfolio
-  Image: nginx:alpine
-  Port mapping: 80 → 80
-  Restart policy: unless-stopped
-    │
-    ▼
-nginx serves index.html
-```
+1. **Checks out** the latest source code
+2. **Builds** the Docker image locally to catch build errors early
+3. **Logs in** to Docker Hub using repository secrets
+4. **Tags** the image with both `latest` and the short commit SHA
+5. **Pushes** the versioned image to `irfanjat/myportfolio` on Docker Hub
 
 ---
 
-## Repository Structure
+## 🔁 Pipeline Flow
+
+```
+git push → main
+     │
+     ▼
+GitHub Actions Triggered
+     │
+     ├─── Checkout Code          (actions/checkout@v4)
+     │
+     ├─── Build Docker Image     (local validation)
+     │
+     ├─── Login to Docker Hub    (docker/login-action@v3)
+     │
+     └─── Build & Push Image     (docker/build-push-action@v5)
+               ├── Tag: latest
+               └── Tag: sha-<commit>
+```
+
+---
+
+## ⚙️ Workflow File
+
+> **File:** `.github/workflows/main.yml`
+
+```yaml
+name: CI-CD Pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-push:
+    name: Build, Test & Push Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image (validation)
+        run: docker build -t myportfolio:test .
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            irfanjat/myportfolio:latest
+            irfanjat/myportfolio:sha-${{ github.sha }}
+```
+
+---
+
+## 🔄 What Changed from v1
+
+| | Old Pipeline | Updated Pipeline |
+|---|---|---|
+| **Checkout action** | `actions/checkout@v3` | `actions/checkout@v4` |
+| **Push action** | `mr-smithers-excellent/docker-build-push@v4` | `docker/build-push-action@v5` (official) |
+| **Docker login** | Baked into push action | Separate `docker/login-action@v3` step |
+| **Image tagging** | `latest` only | `latest` + `sha-<commit>` for traceability |
+| **Build validation** | Combined with push | Separate step — catches errors before pushing |
+
+---
+
+## 🔐 Required Secrets
+
+Set these in your GitHub repository under **Settings → Secrets and variables → Actions**:
+
+| Secret | Description |
+|--------|-------------|
+| `DOCKER_USERNAME` | Your Docker Hub username |
+| `DOCKER_PASSWORD` | Your Docker Hub access token (not plain password) |
+
+> **Tip:** Generate a Docker Hub access token at hub.docker.com → Account Settings → Security. Never use your plain password.
+
+---
+
+## 📦 Docker Hub
+
+The built image is published to:
+
+```
+docker pull irfanjat/myportfolio:latest
+docker pull irfanjat/myportfolio:sha-<commit-hash>
+```
+
+Each commit gets its own tagged image, so you can always roll back to any previous version.
+
+---
+
+## 🗂️ Repository Structure
 
 ```
 portfolio/
-├── index.html          ← Entire portfolio (resume PDF embedded inside as base64)
-├── Dockerfile          ← nginx:alpine container, ~23 MB final image
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml       ← Pipeline definition
+├── index.html              ← Portfolio site (resume PDF embedded as base64)
+├── Dockerfile              ← nginx:alpine container, ~23 MB
 ```
 
 ---
 
-## Portfolio Sections
+## 🚀 Related Projects
 
-| # | Section | What It Shows |
-|---|---------|---------------|
-| 01 | **Hero** | Name, animated typing titles, live terminal widget, stats |
-| 02 | **About** | Background, honest bio, how I got into DevOps (Aug 2025) |
-| 03 | **Skills** | 8 categorized grids — AWS, CI/CD, Kubernetes, IaC, observability, Linux, scripting |
-| 04 | **Tools** | Animated dual-row icon marquee of every tool I work with |
-| 05 | **Projects** | 4 main projects with architecture diagrams, highlights, GitHub links + 6 mini-projects |
-| 06 | **Experience** | Self-directed DevOps lab (Aug 2025 – Present) + CS degree |
-| 07 | **Certifications** | AWS CCP · Python IBM · GitHub Actions Duke University |
-| 08 | **Contact** | Work email · Personal email · Phone · LinkedIn · GitHub · Resume download |
+| Project | Description |
+|---------|-------------|
+| [Portfolio Site](https://github.com/irfanjat/portfolio) | The site this pipeline deploys |
+| [GitOps CI/CD Pipeline](https://github.com/irfanjat/gitops-cicd-pipeline) | Full GitOps workflow with ArgoCD + Kubernetes |
+| [Terraform AWS Infra](https://github.com/irfanjat/terraform-aws-infra) | 3-tier AWS infrastructure with Terraform |
+| [K8s Observability Stack](https://github.com/irfanjat/k8s-observability) | Prometheus + Grafana + Loki stack |
 
 ---
 
-## Projects Featured
+## 👤 Author
 
-### 1. End-to-End GitOps CI/CD Pipeline
-**Repo:** [github.com/irfanjat/gitops-cicd-pipeline](https://github.com/irfanjat/gitops-cicd-pipeline)
-
-Production-grade GitOps workflow — a single `git push` triggers automated tests, Docker image build,
-GHCR push, and ArgoCD sync to Kubernetes. Deployment time cut from 15 min to under 2 min.
-Two-repo pattern: app source repo + config repo as single source of truth.
-
-**Stack:** GitHub Actions · ArgoCD · Kubernetes · Docker · GHCR · Flask · pytest · Helm
+**Irfan Ali** — DevOps Engineer  
+📧 irfanaliijat@gmail.com  
+🔗 [linkedin.com/in/irfanjat](https://linkedin.com/in/irfanjat)  
+🐙 [github.com/irfanjat](https://github.com/irfanjat)
 
 ---
 
-### 2. Multi-Tier AWS Infrastructure with Terraform
-**Repo:** [github.com/irfanjat/terraform-aws-infra](https://github.com/irfanjat/terraform-aws-infra)
+## 📄 License
 
-Production-grade 3-tier AWS architecture using 5 reusable Terraform modules — VPC, ALB, EC2 Auto
-Scaling Group, RDS PostgreSQL across 2 AZs. S3 remote state + DynamoDB locking for team safety.
-24 resources deployable from zero in under 10 minutes.
-
-**Stack:** Terraform · AWS VPC · EC2 ASG · RDS PostgreSQL · ALB · S3 · CloudWatch · DynamoDB
-
----
-
-### 3. Kubernetes Observability Stack
-**Repo:** [github.com/irfanjat/k8s-observability](https://github.com/irfanjat/k8s-observability)
-
-Full observability stack deployed via Helm — 14 active Prometheus scrape targets, custom 6-panel
-Grafana dashboard (CPU, memory, restarts, live logs via Loki), and 3 PrometheusRule CRDs covering
-pod crashes, availability drops, and memory threshold breaches.
-
-**Stack:** Prometheus · Grafana · Loki · Alertmanager · Promtail · Helm · Kubernetes
-
----
-
-### 4. Kubernetes Deployment on AWS EKS
-**Repo:** [github.com/irfanjat/aws-eks-kubernetes-project](https://github.com/irfanjat/aws-eks-kubernetes-project)
-
-End-to-end EKS deployment — cluster provisioning with eksctl, IAM OIDC setup, AWS Load Balancer
-Controller via Helm, ALB IP-mode routing directly to pod IPs, zero-downtime rolling updates
-with readiness/liveness probes. Documented 4 real operational issues encountered and fixed.
-
-**Stack:** AWS EKS · ALB Controller · eksctl · Kubernetes · Helm · IAM/OIDC · Docker
-
----
-
-## Tech Stack (Portfolio Site Itself)
-
-| Tool | Role |
-|------|------|
-| HTML5 / CSS3 | Structure and all styling — zero CSS frameworks |
-| Vanilla JavaScript | Typing animation · scroll reveal · active nav highlight · form handler |
-| JetBrains Mono | Terminal-style monospace font (Google Fonts) |
-| Syne | Display/heading font (Google Fonts) |
-| Devicons CDN | Tool icons in the animated showcase section |
-| Docker (nginx:alpine) | Production container — ~23 MB final image |
-| AWS EC2 t2.micro | Self-hosted on Ubuntu 24.04, EU North region |
-
----
-
-## Design Highlights
-
-- **Dark terminal theme** — CSS grid background, `#00ff88` neon green accent, monospace throughout
-- **Hero terminal widget** — animated widget showing real `kubectl` / `terraform` / `argocd` output
-- **Dual-row tool marquee** — rows scroll in opposite directions, pause on hover with glow effect
-- **Scroll reveal** — `IntersectionObserver` drives CSS fade-in animations, no external library
-- **Single file deployment** — the entire portfolio including resume PDF (base64) in one HTML file
-- **No build pipeline** — open the file directly, it works. No npm, no webpack, no dependencies
-
----
-
-## Run Locally
-
-```bash
-# Clone the repo
-git clone https://github.com/irfanjat/portfolio.git
-cd portfolio
-
-# Option 1 — open directly in browser (quickest)
-open index.html
-
-# Option 2 — Python dev server (avoids CORS quirks)
-python3 -m http.server 8080
-# → http://localhost:8080
-
-# Option 3 — Docker (identical to production)
-docker build -t portfolio .
-docker run -p 8080:80 portfolio
-# → http://localhost:8080
-```
-
----
-
-## Docker
-
-### Build the image
-
-```bash
-docker build -t portfolio:latest .
-```
-
-### Run in production
-
-```bash
-docker run -d \
-  --name portfolio \
-  --restart unless-stopped \
-  -p 80:80 \
-  portfolio:latest
-```
-
-### Useful commands
-
-```bash
-# Check container is running
-docker ps
-
-# View nginx logs
-docker logs portfolio
-
-# Stop and remove
-docker stop portfolio && docker rm portfolio
-
-# Update after editing index.html
-docker stop portfolio && docker rm portfolio
-docker build -t portfolio:latest .
-docker run -d --name portfolio --restart unless-stopped -p 80:80 portfolio:latest
-```
-
-### Dockerfile overview
-
-```dockerfile
-FROM nginx:alpine
-RUN rm -rf /usr/share/nginx/html/*
-COPY index.html  /usr/share/nginx/html/index.html
-COPY nginx.conf  /etc/nginx/conf.d/default.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-```
-
----
-
-## EC2 Deployment (Quick Reference)
-
-```bash
-# 1. Upload files from local machine
-scp -i your-key.pem index.html Dockerfile nginx.conf \
-    ubuntu@16.171.142.13:~/portfolio/
-
-# 2. SSH into server
-ssh -i your-key.pem ubuntu@16.171.142.13
-
-# 3. Install Docker (first time only)
-curl -fsSL https://get.docker.com | sudo sh
-sudo usermod -aG docker ubuntu
-newgrp docker
-
-# 4. Build and run
-cd ~/portfolio
-docker build -t portfolio:latest .
-docker run -d --name portfolio --restart unless-stopped -p 80:80 portfolio:latest
-
-# 5. Verify
-curl http://localhost
-```
-
-For the full setup guide including free domain + Cloudflare HTTPS + server hardening → see [`DEPLOY.md`](./DEPLOY.md)
-
----
-
-## Server Security
-
-| Measure | Details |
-|---------|---------|
-| SSH password auth | Disabled — key-pair only |
-| Root login | Disabled |
-| UFW firewall | Only ports 22, 80, 443 open |
-| fail2ban | Blocks SSH brute force attempts |
-| Auto security updates | `unattended-upgrades` enabled |
-| Container restart | `--restart unless-stopped` survives reboots |
-| nginx headers | X-Frame-Options · X-Content-Type-Options · X-XSS-Protection |
-
----
-
-## Certifications
-
-| Certificate | Issuer | Completed |
-|-------------|--------|-----------|
-| AWS Cloud Practitioner Essentials | Amazon Web Services / Coursera | Nov 2025 |
-| Python for Data Science, AI & Dev | IBM / Coursera | Dec 2025 |
-| Introduction to GitHub Actions | Duke University / Coursera | Dec 2025 |
-
----
-
-## Contact
-
-| | |
-|-|-|
-| **Work Email** | irfanaliijat@gmail.com |
-| **Personal Email** | jatirfan110@gmail.com |
-| **Phone / WhatsApp** | +92-315-371-1489 |
-| **LinkedIn** | [linkedin.com/in/irfanjat](https://linkedin.com/in/irfanjat) |
-| **GitHub** | [github.com/irfanjat](https://github.com/irfanjat) |
-| **Portfolio** | [http://16.171.142.13](http://16.171.142.13) |
-| **Location** | Karachi, Pakistan |
-| **Availability** | Remote · Onsite · Hybrid · Contract |
-
----
-
-## License
-
-MIT — free to use as a reference or template.
+MIT — free to use as a reference or template.  
 If this helped you, a ⭐ on the repo is always appreciated.
-
----
-
-*Built and self-hosted by Irfan Ali — CS student building production-grade DevOps infrastructure.*
