@@ -3,7 +3,7 @@
 > Personal portfolio website for a Junior DevOps Engineer — built with vanilla HTML/CSS/JS,
 > containerized with Docker + nginx, and self-hosted on AWS EC2. 
 
-**🌐 Live:** [http://16.171.142.13/](http://16.171.142.13/)
+**🌐 Live:** [http://16.171.142.13/](http://13.60.97.70/)
 
 ---
 
