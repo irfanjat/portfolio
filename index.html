@@ -7,8 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>emailjs.init("mgB2wNiEC54jvlVKn");</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -808,16 +806,31 @@ function handleForm(e){
   e.preventDefault();
   const b=document.getElementById('sBtn');
   b.textContent='Sending...';b.disabled=true;
-  emailjs.sendForm('service_portfolio','template_4kajumd',e.target)
-    .then(()=>{
+  const data={
+    access_key:'8fa94cf0-fae4-45ff-aec8-93b6ddfd109a',
+    name:e.target.querySelector('[name="name"]').value,
+    email:e.target.querySelector('[name="email"]').value,
+    subject:e.target.querySelector('[name="subject"]').value,
+    message:e.target.querySelector('[name="message"]').value,
+  };
+  fetch('https://api.web3forms.com/submit',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(data)
+  })
+  .then(r=>r.json())
+  .then(res=>{
+    if(res.success){
       b.textContent='✓ Sent!';b.style.background='linear-gradient(135deg,#34d399,#22d3ee)';
       setTimeout(()=>{b.textContent='Send Message →';b.style.background='';b.disabled=false;e.target.reset();},3000);
-    })
-    .catch((err)=>{
-      console.error('EmailJS error:',err);
-      b.textContent='✗ Failed. Try again.';b.style.background='linear-gradient(135deg,#f87171,#fb923c)';
-      setTimeout(()=>{b.textContent='Send Message →';b.style.background='';b.disabled=false;},3000);
-    });
+    } else {
+      throw new Error('Failed');
+    }
+  })
+  .catch(()=>{
+    b.textContent='✗ Failed. Try again.';b.style.background='linear-gradient(135deg,#f87171,#fb923c)';
+    setTimeout(()=>{b.textContent='Send Message →';b.style.background='';b.disabled=false;},3000);
+  });
 }
 
 // Active nav highlight
