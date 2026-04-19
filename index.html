@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("mgB2wNiEC54jvlVKn");</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -761,10 +763,10 @@ footer span{color:var(--purple)}
       <div class="cform reveal">
         <div class="cform-title">Send a message</div>
         <form onsubmit="handleForm(event)">
-          <div class="fg"><label>Name</label><input type="text" placeholder="Your name" required></div>
-          <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
-          <div class="fg"><label>Subject</label><input type="text" placeholder="DevOps Engineer opportunity"></div>
-          <div class="fg"><label>Message</label><textarea placeholder="Tell me about the role or project..." required></textarea></div>
+          <div class="fg"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
+          <div class="fg"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
+          <div class="fg"><label>Subject</label><input type="text" name="subject" placeholder="DevOps Engineer opportunity"></div>
+          <div class="fg"><label>Message</label><textarea name="message" placeholder="Tell me about the role or project..." required></textarea></div>
           <button type="submit" class="sub-btn" id="sBtn">Send Message →</button>
         </form>
       </div>
@@ -806,10 +808,16 @@ function handleForm(e){
   e.preventDefault();
   const b=document.getElementById('sBtn');
   b.textContent='Sending...';b.disabled=true;
-  setTimeout(()=>{
-    b.textContent='✓ Sent!';b.style.background='linear-gradient(135deg,#34d399,#22d3ee)';
-    setTimeout(()=>{b.textContent='Send Message →';b.style.background='';b.disabled=false;e.target.reset();},3000);
-  },1200);
+  emailjs.sendForm('service_portfolio','template_4kajumd',e.target)
+    .then(()=>{
+      b.textContent='✓ Sent!';b.style.background='linear-gradient(135deg,#34d399,#22d3ee)';
+      setTimeout(()=>{b.textContent='Send Message →';b.style.background='';b.disabled=false;e.target.reset();},3000);
+    })
+    .catch((err)=>{
+      console.error('EmailJS error:',err);
+      b.textContent='✗ Failed. Try again.';b.style.background='linear-gradient(135deg,#f87171,#fb923c)';
+      setTimeout(()=>{b.textContent='Send Message →';b.style.background='';b.disabled=false;},3000);
+    });
 }
 
 // Active nav highlight
