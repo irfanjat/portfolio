@@ -1,6 +1,6 @@
 # 🚀 Irfan Ali — DevOps Portfolio
 
-> Automated GitHub Actions pipeline that builds, tests, and pushes a Dockerized portfolio site to Docker Hub on every push to `main`.
+> Automated GitHub Actions pipeline that builds, tests, and pushes a Dockerized portfolio site to Docker Hub on every push to `main` .
 
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 ![Docker](https://img.shields.io/badge/Container-Docker_Hub-2496ED?style=flat-square&logo=docker&logoColor=white)
