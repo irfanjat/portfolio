@@ -3,7 +3,7 @@
 **DevOps Engineer | Cloud & Platform Engineer**
 
 Jamshoro, Pakistan (Open to Remote) · +92 315 3711489 · irfanali.cloud@gmail.com  
-[linkedin.com/in/irfanjat](https://linkedin.com/in/irfanjat) · [github.com/irfanjat](https://github.com/irfanjat) · Portfolio: GitHub repositories (20+ DevOps projects)
+[linkedin.com/in/irfanjat](https://linkedin.com/in/irfanjat) · [github.com/irfanjat](https://github.com/irfanjat) · [irfanjat.github.io/portfolio](https://irfanjat.github.io/portfolio/)
 
 ---
 
