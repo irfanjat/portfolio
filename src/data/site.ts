@@ -12,6 +12,14 @@ export const personal = {
   location: 'Pakistan',
 }
 
+/** Contact form ‚Äî get free key at https://web3forms.com (enter your email, copy Access Key) */
+export const contactForm = {
+  web3formsAccessKey:
+    import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'd1a99476-3741-4533-9ca2-f1f11b11bad3',
+  /** Where users return after FormSubmit redirect fallback */
+  successRedirect: 'https://irfanjat.github.io/portfolio/?sent=1#contact',
+}
+
 export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
@@ -67,7 +75,7 @@ export const skillCategories = [
     ],
   },
   {
-    title: 'Cloud ù AWS',
+    title: 'Cloud ÔøΩ AWS',
     color: 'cyan',
     skills: [
       { name: 'VPC', level: 90 },
