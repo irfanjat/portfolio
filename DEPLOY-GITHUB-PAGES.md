@@ -2,9 +2,9 @@
 
 Your site will be live at:
 
-**https://irfanjat.github.io/irfan-devops-portfolio/**
+**https://irfanjat.github.io/portfolio/**
 
-(Replace `irfan-devops-portfolio` if your GitHub repo has a different name.)
+(Your repo is `portfolio` — URL path must match the repo name.)
 
 ---
 
@@ -32,12 +32,16 @@ git push origin main
 
 ---
 
-## Step 2 — Enable GitHub Pages
+## Step 2 — Enable GitHub Pages (fixes 404 deploy error)
 
-1. Open your repo on GitHub  
-2. Go to **Settings** → **Pages**  
-3. Under **Build and deployment** → **Source**, select **GitHub Actions**  
-4. Save (no branch selection needed — the workflow handles it)
+1. Open **https://github.com/irfanjat/portfolio/settings/pages**
+2. Under **Build and deployment** → **Source**, choose **GitHub Actions** (NOT “Deploy from a branch”)
+3. If you only see “Deploy from a branch”, click **GitHub Actions** in the source dropdown first
+4. Repo must be **Public** (free GitHub Pages on private repos requires a paid plan)
+
+If deploy still fails:
+- **Settings** → **Environments** → **github-pages** → remove approval rules (or approve the pending deployment in **Actions**)
+- **Settings** → **Actions** → **General** → Workflow permissions → **Read and write permissions**
 
 ---
 
