@@ -55,7 +55,7 @@ export function ArchitectureDiagram({ type }: ArchitectureDiagramProps) {
             <div className="rounded border border-emerald-500/20 p-2 text-emerald-300">S3 + DynamoDB</div>
           </div>
           <div className="rounded border border-slate-600/40 p-2 text-center text-slate-500">
-            VPC · IAM · CloudWatch · Terraform State
+            VPC ï¿½ IAM ï¿½ CloudWatch ï¿½ Terraform State
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@ export function ArchitectureDiagram({ type }: ArchitectureDiagramProps) {
       <div className="mb-3 text-center font-mono text-xs text-rose-400/80">K8s Observability</div>
       <div className="grid grid-cols-2 gap-2 font-mono text-[10px] sm:text-xs">
         <div className="col-span-2 rounded-lg border border-orange-500/30 bg-orange-500/10 p-2 text-center text-orange-300">
-          Prometheus · 14 targets
+          Prometheus ï¿½ 14 targets
         </div>
         <div className="rounded border border-cyan-500/20 p-3 text-cyan-300">
           <div className="mb-2 h-8 rounded bg-cyan-500/10" />

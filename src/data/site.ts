@@ -10,6 +10,9 @@ export const personal = {
   linkedin: 'https://linkedin.com/in/irfanjat',
   github: 'https://github.com/irfanjat',
   location: 'Pakistan',
+  availability: 'Open to full-time, hybrid, on-site & remote roles',
+  availabilityDetail:
+    'DevOps, Cloud & Platform Engineering — flexible on location and work arrangement.',
 }
 
 /** Contact form — get free key at https://web3forms.com (enter your email, copy Access Key) */
@@ -195,7 +198,7 @@ export const journey = [
   { year: '2025', title: 'CI/CD Pipelines', desc: 'Built GitHub Actions workflows and GitOps with ArgoCD.' },
   { year: '2025', title: 'Terraform & AWS', desc: 'Provisioned multi-tier infrastructure with modular IaC.' },
   { year: '2025', title: 'Observability Stack', desc: 'Deployed Prometheus, Grafana, Loki, and alerting on K8s.' },
-  { year: '2026', title: 'Remote DevOps Roles', desc: 'Preparing portfolio and skills for global platform engineering roles.' },
+  { year: '2026', title: 'DevOps Career Launch', desc: 'Actively pursuing full-time, hybrid, and remote platform engineering opportunities.' },
 ]
 
 export const certifications = [

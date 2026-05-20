@@ -1,4 +1,4 @@
-# Irfan Ali ù DevOps Portfolio
+# Irfan Ali ÔøΩ DevOps Portfolio
 
 Premium, dark-themed DevOps engineer portfolio built with React, Vite, Tailwind CSS v4, and Framer Motion.
 
@@ -6,9 +6,9 @@ Premium, dark-themed DevOps engineer portfolio built with React, Vite, Tailwind 
 
 - **React 19** + **TypeScript**
 - **Vite 6**
-- **Tailwind CSS v3** (PostCSS ù no native binding issues)
-- **Framer Motion** ù animations & counters
-- **Lucide React** ù icons
+- **Tailwind CSS v3** (PostCSS ÔøΩ no native binding issues)
+- **Framer Motion** ÔøΩ animations & counters
+- **Lucide React** ÔøΩ icons
 
 ## Getting Started
 
@@ -47,7 +47,7 @@ docker run -p 8080:80 irfan-devops-portfolio
 - **Resume**: `public/resume.pdf` (Irfan Ali DevOps resume)
 - **Content**: Edit `src/data/site.ts` for personal info, projects, and skills.
 - **More projects**: Edit `src/data/moreProjects.ts` (XYZ format descriptions).
-- **Contact form**: Uses [FormSubmit](https://formsubmit.co) ó confirm your email on first submission.
+- **Contact form**: Uses [FormSubmit](https://formsubmit.co) ÔøΩ confirm your email on first submission.
 - **GitHub links**: Update project repo URLs in `Projects.tsx` and `moreProjects.ts`.
 
 ## Deploy

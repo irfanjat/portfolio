@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Cloud, Code2, GitBranch, Layers, Rocket, Sparkles } from 'lucide-react'
-import { aboutHighlights } from '../../data/site'
+import { aboutHighlights, personal } from '../../data/site'
 import { SectionHeading } from '../ui/SectionHeading'
 
 const icons = [Rocket, Cloud, GitBranch, Layers, Code2, Sparkles]
@@ -33,8 +33,7 @@ export function About() {
           </p>
           <p className="mt-4 text-slate-400 leading-relaxed">
             Holds <span className="text-white">IBM</span> and <span className="text-white">AWS</span>{' '}
-            certifications and is pursuing a BS in Computer Science — driven by a passion for
-            automation, clean engineering discipline, and cloud-native platforms that scale.
+            certifications and is pursuing a BS in Computer Science. {personal.availabilityDetail}
           </p>
         </motion.div>
 
