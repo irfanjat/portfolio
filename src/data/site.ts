@@ -190,19 +190,67 @@ export const projects = [
 ]
 
 export const journey = [
-  { year: '2025', title: 'Started Self-Learning DevOps', desc: 'Began structured learning path in Linux, cloud, and automation.' },
-  { year: '2025', title: 'Linux & Git Foundations', desc: 'Mastered shell workflows, version control, and collaborative development.' },
-  { year: '2025', title: 'Docker Projects', desc: 'Containerized applications and built multi-stage production images.' },
-  { year: '2025', title: 'Kubernetes Deep Dive', desc: 'Deployed workloads, Helm charts, and cluster operations.' },
-  { year: '2025', title: 'CI/CD Pipelines', desc: 'Built GitHub Actions workflows and GitOps with ArgoCD.' },
-  { year: '2025', title: 'Terraform & AWS', desc: 'Provisioned multi-tier infrastructure with modular IaC.' },
-  { year: '2025', title: 'Observability Stack', desc: 'Deployed Prometheus, Grafana, Loki, and alerting on K8s.' },
-  { year: '2026', title: 'DevOps Career Launch', desc: 'Actively pursuing full-time, hybrid, and remote platform engineering opportunities.' },
+{
+    phase: '01',
+    year: '2025',
+    title: 'Linux, Networking & Git Foundations',
+    desc: 'Mastered shell scripting, filesystem, process management, TCP/IP networking, DNS, SSH, version control, and collaborative workflows.',
+    tags: ['Linux', 'Bash', 'Networking', 'TCP/IP', 'DNS', 'SSH', 'Git', 'GitHub'],
+    status: 'done',
+  },
+  {
+    phase: '02',
+    year: '2025',
+    title: 'Containerization',
+    desc: 'Containerized applications, built multi-stage production images, and managed registries.',
+    tags: ['Docker', 'Docker Compose', 'GHCR', 'Multi-stage Builds'],
+    status: 'done',
+  },
+  {
+    phase: '03',
+    year: '2025',
+    title: 'Cloud Infrastructure (AWS)',
+    desc: 'Provisioned modular, multi-AZ AWS stacks with remote state, encryption, and least-privilege IAM.',
+    tags: ['Terraform', 'VPC', 'EC2', 'ALB', 'RDS', 'S3', 'IAM'],
+    status: 'done',
+  },
+  {
+    phase: '04',
+    year: '2025',
+    title: 'CI/CD & GitOps',
+    desc: 'Built end-to-end pipelines with automated builds, SHA-tagged images, and self-healing GitOps deployments.',
+    tags: ['GitHub Actions', 'ArgoCD', 'GitOps', 'Zero-downtime'],
+    status: 'done',
+  },
+  {
+    phase: '05',
+    year: '2025',
+    title: 'Kubernetes & Orchestration',
+    desc: 'Deployed workloads, configured networking, managed storage, and operated clusters at scale.',
+    tags: ['Kubernetes', 'Helm', 'ArgoCD', 'Ingress', 'PVC'],
+    status: 'done',
+  },
+  {
+    phase: '06',
+    year: '2025',
+    title: 'Observability Stack',
+    desc: 'Full-stack monitoring with metrics, log aggregation, dashboards, and real-time alerting on Kubernetes.',
+    tags: ['Prometheus', 'Grafana', 'Loki', 'Alertmanager'],
+    status: 'done',
+  },
+  {
+    phase: '07',
+    year: '2026',
+    title: 'DevOps Career Launch',
+    desc: 'Actively pursuing full-time, hybrid, and remote DevOps & Platform Engineering opportunities.',
+    tags: ['Open to Work', 'Remote', 'Pakistan', 'International'],
+    status: 'active',
+  },
 ]
 
 export const certifications = [
   {
-    title: 'IBM DevOps and Software Engineering Professional Certificate',
+    title: 'IBM Introduction to DevOps Engineering Professional Certificate',
     issuer: 'IBM',
     badge: 'IBM',
     verified: true,
