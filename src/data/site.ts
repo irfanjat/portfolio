@@ -18,7 +18,7 @@ export const personal = {
 /** Contact form — get free key at https://web3forms.com (enter your email, copy Access Key) */
 export const contactForm = {
   web3formsAccessKey:
-    import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'd1a99476-3741-4533-9ca2-f1f11b11bad3',
+    import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '32758995-1284-43dd-85cb-89613e949b7e',
   /** Where users return after FormSubmit redirect fallback */
   successRedirect: 'https://irfanjat.github.io/portfolio/?sent=1#contact',
 }
