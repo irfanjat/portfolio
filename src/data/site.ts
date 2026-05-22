@@ -12,7 +12,7 @@ export const personal = {
   location: 'Pakistan',
   availability: 'Open to full-time, hybrid, on-site & remote roles',
   availabilityDetail:
-    'DevOps, Cloud & Platform Engineering — flexible on location and work arrangement.',
+    'DevOps, Cloud & Platform Engined1a99476-3741-4533-9ca2-f1f11b11bad3ering — flexible on location and work arrangement.',
 }
 
 /** Contact form — get free key at https://web3forms.com (enter your email, copy Access Key) */
