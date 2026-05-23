@@ -14,11 +14,9 @@ export const personal = {
   availabilityDetail: 'DevOps, Cloud & Platform Engineering — flexible on location and work arrangement.',
 }
 
-/** Contact form — get free key at https://web3forms.com (enter your email, copy Access Key) */
 export const contactForm = {
   web3formsAccessKey:
     import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '0aa0ba6b-9d3d-4054-b870-caa6263644fb',
-  /** Where users return after FormSubmit redirect fallback */
   successRedirect: 'https://irfanjat.github.io/portfolio/?sent=1#contact',
 }
 
@@ -77,7 +75,7 @@ export const skillCategories = [
     ],
   },
   {
-    title: 'Cloud � AWS',
+    title: 'Cloud & AWS',
     color: 'cyan',
     skills: [
       { name: 'VPC', level: 90 },
@@ -107,6 +105,32 @@ export const skillCategories = [
     skills: [
       { name: 'Python', level: 85 },
       { name: 'Bash', level: 88 },
+      { name: 'YAML', level: 90 },
+      { name: 'JSON', level: 88 },
+      { name: 'HCL', level: 85 },
+    ],
+  },
+  {
+    title: 'Linux & System Admin',
+    color: 'rose',
+    skills: [
+      { name: 'SSH', level: 90 },
+      { name: 'Firewall (UFW)', level: 85 },
+      { name: 'Cron Jobs', level: 88 },
+      { name: 'Server Hardening', level: 82 },
+      { name: 'Systemd', level: 85 },
+      { name: 'Log Management', level: 80 },
+    ],
+  },
+  {
+    title: 'Web Servers & Databases',
+    color: 'cyan',
+    skills: [
+      { name: 'Nginx', level: 85 },
+      { name: 'Apache', level: 80 },
+      { name: 'MySQL', level: 82 },
+      { name: 'PostgreSQL', level: 78 },
+      { name: 'Redis', level: 75 },
     ],
   },
   {
@@ -116,6 +140,8 @@ export const skillCategories = [
       { name: 'Git', level: 92 },
       { name: 'GitHub', level: 90 },
       { name: 'GHCR', level: 85 },
+      { name: 'GitFlow', level: 82 },
+      { name: 'Conventional Commits', level: 88 },
     ],
   },
 ]
@@ -190,7 +216,7 @@ export const projects = [
 ]
 
 export const journey = [
-{
+  {
     phase: '01',
     year: '2025',
     title: 'Linux, Networking & Git Foundations',
