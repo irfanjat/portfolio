@@ -5,15 +5,15 @@ import { SectionHeading } from '../ui/SectionHeading'
 
 export function Certifications() {
   return (
-    <section id="certifications" className="relative py-24 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <section id="certifications" className="relative py-20 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-5xl">
         <SectionHeading
           label="Certifications"
           title="Verified Credentials"
           subtitle="Industry-recognized certifications in DevOps and cloud fundamentals."
         />
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-3">
           {certifications.map((cert, i) => (
             <motion.div
               key={cert.title}
@@ -26,7 +26,7 @@ export function Certifications() {
             >
               <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-cyan-500/5 blur-2xl transition group-hover:bg-cyan-500/10" />
               <div className="flex items-start justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 font-bold text-cyan-300">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 font-bold text-cyan-300 text-sm">
                   {cert.badge}
                 </div>
                 {cert.verified && (
@@ -36,9 +36,9 @@ export function Certifications() {
                   </span>
                 )}
               </div>
-              <Award className="mt-4 h-5 w-5 text-violet-400/80" />
-              <h3 className="mt-3 font-semibold leading-snug text-white">{cert.title}</h3>
-              <p className="mt-2 text-sm text-slate-500">{cert.issuer}</p>
+              <Award className="mt-4 h-4 w-4 text-violet-400/80" />
+              <h3 className="mt-2 text-sm font-semibold leading-snug text-white">{cert.title}</h3>
+              <p className="mt-1.5 text-xs text-slate-500">{cert.issuer}</p>
             </motion.div>
           ))}
         </div>

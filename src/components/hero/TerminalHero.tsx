@@ -34,17 +34,26 @@ export function TerminalHero() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 2.2, duration: 0.7 }}
-      className="glass-strong glow-cyan w-full max-w-lg overflow-hidden rounded-2xl font-mono text-xs shadow-2xl sm:text-sm"
+      className="glass-strong glow-cyan w-full max-w-xl overflow-hidden rounded-2xl font-mono text-sm shadow-2xl"
     >
-      <div className="flex items-center gap-2 border-b border-slate-700/60 bg-slate-900/80 px-4 py-3">
+      {/* header */}
+      <div className="flex items-center gap-2 border-b border-slate-700/60 bg-slate-900/80 px-5 py-3.5">
         <span className="h-3 w-3 rounded-full bg-rose-500/90" />
         <span className="h-3 w-3 rounded-full bg-amber-400/90" />
         <span className="h-3 w-3 rounded-full bg-emerald-400/90" />
-        <span className="ml-2 text-slate-500">irfan@devops-cluster ~</span>
+        <span className="ml-2 text-xs text-slate-500">irfan@devops-cluster ~</span>
+        <span className="ml-auto text-xs text-slate-600">bash</span>
       </div>
-      <div className="min-h-[140px] p-4 sm:p-5">
+
+      {/* body */}
+      <div className="min-h-[280px] p-5 sm:p-6">
+        {/* previous command hint */}
+        <p className="mb-3 text-xs text-slate-600">
+          # infrastructure automation · live
+        </p>
+
         <p className="text-slate-500">
-          <span className="text-emerald-400">?</span>{' '}
+          <span className="text-emerald-400">❯</span>{' '}
           <span className="text-cyan-300">{typed}</span>
           <motion.span
             animate={{ opacity: [1, 0] }}
@@ -54,19 +63,28 @@ export function TerminalHero() {
             |
           </motion.span>
         </p>
+
         <AnimatePresence mode="wait">
           {phase !== 'typing' && (
-            <motion.pre
+            <motion.div
               key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="mt-3 whitespace-pre-wrap text-slate-400 leading-relaxed"
+              className="mt-4"
             >
-              {current.output}
-            </motion.pre>
+              <pre className="whitespace-pre-wrap text-sm leading-relaxed text-emerald-300/80">
+                {current.output}
+              </pre>
+            </motion.div>
           )}
         </AnimatePresence>
+      </div>
+
+      {/* footer */}
+      <div className="border-t border-slate-700/40 bg-slate-900/40 px-5 py-2 flex items-center gap-2">
+        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+        <span className="text-[10px] text-slate-600">cluster connected · 3 nodes ready</span>
       </div>
     </motion.div>
   )
