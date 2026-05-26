@@ -13,6 +13,7 @@ import { AnimatedBackground } from './components/layout/AnimatedBackground'
 import { Footer } from './components/layout/Footer'
 import { Loader } from './components/layout/Loader'
 import { Navbar } from './components/layout/Navbar'
+import { ScrollToTop } from './components/ui/ScrollToTop'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -35,6 +36,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <ScrollToTop />
     </>
   )
 }

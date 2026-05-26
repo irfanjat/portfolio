@@ -7,7 +7,7 @@ interface GlowButtonProps {
   variant?: 'primary' | 'secondary' | 'ghost'
   children: ReactNode
   className?: string
-  download?: boolean
+  download?: boolean | string
 }
 
 export function GlowButton({

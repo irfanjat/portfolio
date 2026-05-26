@@ -10,7 +10,7 @@ export function Footer() {
         <div className="flex items-center gap-2 font-mono text-sm text-slate-500">
           <Terminal className="h-4 w-4 text-cyan-500/60" />
           <span>
-            {personal.name} � <span className="text-slate-600">{year}</span>
+            {personal.name} &copy; <span className="text-slate-600">{year}</span>
           </span>
         </div>
         <p className="flex items-center gap-1 text-sm text-slate-600">

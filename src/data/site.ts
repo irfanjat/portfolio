@@ -15,8 +15,7 @@ export const personal = {
 }
 
 export const contactForm = {
-  web3formsAccessKey:
-    import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '0aa0ba6b-9d3d-4054-b870-caa6263644fb',
+  web3formsAccessKey: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '',
   successRedirect: 'https://irfanjat.github.io/portfolio/?sent=1#contact',
 }
 

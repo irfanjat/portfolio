@@ -1,8 +1,16 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { ExternalLink, X, Zap } from 'lucide-react'
+import { ArrowRight, ExternalLink, X, Zap } from 'lucide-react'
 import { useState } from 'react'
 import { moreProjects, type MoreProject } from '../../data/moreProjects'
 import { SectionHeading } from '../ui/SectionHeading'
+
+const flowColorMap: Record<string, string> = {
+  cyan: 'border-cyan-500/30 bg-cyan-500/10 text-cyan-300',
+  violet: 'border-violet-500/30 bg-violet-500/10 text-violet-300',
+  emerald: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300',
+  amber: 'border-amber-500/30 bg-amber-500/10 text-amber-300',
+  rose: 'border-rose-500/30 bg-rose-500/10 text-rose-300',
+}
 
 function ProjectModal({ project, onClose }: { project: MoreProject; onClose: () => void }) {
   return (
@@ -61,10 +69,21 @@ function ProjectModal({ project, onClose }: { project: MoreProject; onClose: () 
           </div>
         </div>
 
-        {project.architecture && (
-          <div className="mt-5 rounded-xl border border-slate-700/50 bg-slate-900/60 p-4 font-mono text-xs text-slate-400">
-            <span className="text-slate-500">Flow: </span>
-            {project.architecture}
+        {project.flowSteps && project.flowSteps.length > 0 && (
+          <div className="mt-5">
+            <p className="mb-3 font-mono text-[10px] uppercase tracking-wider text-slate-500">Pipeline Flow</p>
+            <div className="flex flex-wrap items-center gap-1.5">
+              {project.flowSteps.map((step, i) => (
+                <div key={step.label} className="flex items-center gap-1.5">
+                  <span className={`rounded-lg border px-2.5 py-1 text-[10px] font-mono font-medium ${flowColorMap[step.color] ?? flowColorMap.cyan}`}>
+                    {step.label}
+                  </span>
+                  {i < project.flowSteps!.length - 1 && (
+                    <ArrowRight className="h-3 w-3 shrink-0 text-slate-600" />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         )}
 

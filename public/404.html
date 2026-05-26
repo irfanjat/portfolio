@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Irfan Ali | DevOps & Cloud Engineer</title>
+  <style>
+    body { margin: 0; background: #020508; color: #e2e8f0; font-family: system-ui, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .container { text-align: center; padding: 2rem; }
+    h1 { font-size: 4rem; margin: 0; background: linear-gradient(135deg, #00d9ff, #7c3aed, #00ff88); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    p { color: #94a3b8; margin: 1rem 0; }
+    a { color: #00d9ff; text-decoration: none; border: 1px solid rgba(0,217,255,0.3); padding: 0.75rem 1.5rem; border-radius: 12px; display: inline-block; margin-top: 1rem; transition: 0.2s; }
+    a:hover { border-color: #00d9ff; box-shadow: 0 0 20px rgba(0,217,255,0.2); }
+    .mono { font-family: monospace; color: #64748b; font-size: 0.875rem; }
+  </style>
+  <script>
+    sessionStorage.redirect = location.href;
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>404</h1>
+    <p>This page does not exist in this cluster.</p>
+    <p class="mono">kubectl get pages --namespace=portfolio</p>
+    <a href="/portfolio/">Return to Home</a>
+  </div>
+  <script>
+    window.location.replace("/portfolio/");
+  </script>
+</body>
+</html>
