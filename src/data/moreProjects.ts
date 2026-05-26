@@ -10,6 +10,7 @@ export interface MoreProject {
   }
   highlights: string[]
   architecture?: string
+  flowSteps?: { label: string; color: string }[]
 }
 
 export const moreProjects: MoreProject[] = [
@@ -31,6 +32,13 @@ export const moreProjects: MoreProject[] = [
       'Multi-stage workflow with ubuntu-latest runners',
     ],
     architecture: 'Push → GitHub Actions → npm test → docker build → Docker Hub',
+    flowSteps: [
+      { label: 'Git Push', color: 'cyan' },
+      { label: 'GitHub Actions', color: 'violet' },
+      { label: 'npm test', color: 'emerald' },
+      { label: 'docker build', color: 'amber' },
+      { label: 'Docker Hub', color: 'rose' },
+    ],
   },
   {
     id: 'flask-jenkins-aws',
@@ -50,6 +58,13 @@ export const moreProjects: MoreProject[] = [
       'Security groups configured for SSH, HTTP, and Jenkins',
     ],
     architecture: 'Developer → GitHub → Jenkins → Docker Build → EC2 → Browser',
+    flowSteps: [
+      { label: 'Git Push', color: 'cyan' },
+      { label: 'Jenkins', color: 'violet' },
+      { label: 'Docker Build', color: 'amber' },
+      { label: 'EC2 Deploy', color: 'emerald' },
+      { label: 'Browser', color: 'rose' },
+    ],
   },
   {
     id: 'eks-kubernetes',
@@ -69,6 +84,13 @@ export const moreProjects: MoreProject[] = [
       'RollingUpdate strategy with liveness & readiness probes',
     ],
     architecture: 'Internet → ALB → Ingress → Service → Pods → Container',
+    flowSteps: [
+      { label: 'Internet', color: 'cyan' },
+      { label: 'ALB', color: 'violet' },
+      { label: 'Ingress', color: 'emerald' },
+      { label: 'Service', color: 'amber' },
+      { label: 'Pods', color: 'rose' },
+    ],
   },
   {
     id: 's3-terraform-static',
@@ -88,6 +110,13 @@ export const moreProjects: MoreProject[] = [
       'Outputs website URL automatically',
     ],
     architecture: 'Terraform → S3 Bucket → Static Hosting → Policy → Files → Live URL',
+    flowSteps: [
+      { label: 'Terraform', color: 'violet' },
+      { label: 'S3 Bucket', color: 'amber' },
+      { label: 'Static Hosting', color: 'emerald' },
+      { label: 'Policy', color: 'rose' },
+      { label: 'Live URL', color: 'cyan' },
+    ],
   },
   {
     id: 'docker-compose-mongo',
@@ -107,5 +136,12 @@ export const moreProjects: MoreProject[] = [
       'Single YAML file defines the entire stack',
     ],
     architecture: 'docker compose up → Express :3000 ↔ mongo (volume)',
+    flowSteps: [
+      { label: 'docker compose', color: 'cyan' },
+      { label: 'Express', color: 'violet' },
+      { label: 'MongoDB', color: 'emerald' },
+      { label: 'Volume', color: 'amber' },
+      { label: ':3000', color: 'rose' },
+    ],
   },
 ]

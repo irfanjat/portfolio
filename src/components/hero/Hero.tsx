@@ -47,7 +47,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.25 }}
-            className="mt-3 font-mono text-sm text-violet-300/90 sm:text-base"
+            className="mt-3 font-mono text-sm text-gradient-subtle sm:text-base"
           >
             {personal.role}
           </motion.p>
@@ -71,7 +71,7 @@ export function Hero() {
               <FolderKanban className="h-4 w-4" />
               View Projects
             </GlowButton>
-            <GlowButton href={`${import.meta.env.BASE_URL}resume.pdf`} variant="secondary" download>
+            <GlowButton href={`${import.meta.env.BASE_URL}resume.pdf`} variant="secondary" download="IrfanAliResume.pdf">
               <Download className="h-4 w-4" />
               Download Resume
             </GlowButton>

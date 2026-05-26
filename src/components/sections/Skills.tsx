@@ -3,19 +3,19 @@ import { skillCategories } from '../../data/site'
 import { SectionHeading } from '../ui/SectionHeading'
 
 const colorMap: Record<string, string> = {
-  cyan: 'bg-cyan-500/10 text-cyan-400 border-cyan-400/20 hover:border-cyan-400/50',
-  emerald: 'bg-emerald-500/10 text-emerald-400 border-emerald-400/20 hover:border-emerald-400/50',
-  violet: 'bg-violet-500/10 text-violet-400 border-violet-400/20 hover:border-violet-400/50',
-  slate: 'bg-slate-500/10 text-slate-300 border-slate-600/30 hover:border-slate-400/50',
-  rose: 'bg-rose-500/10 text-rose-400 border-rose-400/20 hover:border-rose-400/50',
+  cyan: 'bg-cyan-500/10 text-cyan-400 border-cyan-400/20',
+  emerald: 'bg-emerald-500/10 text-emerald-400 border-emerald-400/20',
+  violet: 'bg-violet-500/10 text-violet-400 border-violet-400/20',
+  slate: 'bg-slate-500/10 text-slate-300 border-slate-600/30',
+  rose: 'bg-rose-500/10 text-rose-400 border-rose-400/20',
 }
 
 const colorBadge: Record<string, string> = {
-  cyan: 'bg-cyan-400/8 text-cyan-300 border border-cyan-400/15 hover:bg-cyan-400/15 hover:border-cyan-400/30',
-  emerald: 'bg-emerald-400/8 text-emerald-300 border border-emerald-400/15 hover:bg-emerald-400/15 hover:border-emerald-400/30',
-  violet: 'bg-violet-400/8 text-violet-300 border border-violet-400/15 hover:bg-violet-400/15 hover:border-violet-400/30',
-  slate: 'bg-slate-400/8 text-slate-300 border border-slate-500/15 hover:bg-slate-400/15 hover:border-slate-400/30',
-  rose: 'bg-rose-400/8 text-rose-300 border border-rose-400/15 hover:bg-rose-400/15 hover:border-rose-400/30',
+  cyan: 'bg-cyan-400/8 text-cyan-300 border border-cyan-400/15',
+  emerald: 'bg-emerald-400/8 text-emerald-300 border border-emerald-400/15',
+  violet: 'bg-violet-400/8 text-violet-300 border border-violet-400/15',
+  slate: 'bg-slate-400/8 text-slate-300 border border-slate-500/15',
+  rose: 'bg-rose-400/8 text-rose-300 border border-rose-400/15',
 }
 
 const dotColor: Record<string, string> = {
@@ -57,7 +57,7 @@ export function Skills() {
                 className={`glass rounded-2xl border p-5 transition-all duration-300 ${colorMap[color] ?? colorMap.slate}`}
               >
                 <div className="mb-4 flex items-center gap-2.5">
-                  <span className={`h-2 w-2 rounded-full ${dotColor[color] ?? dotColor.slate}`} />
+                  <span className={`h-2 w-2 rounded-full ${dotColor[color] ?? dotColor.slate}`} aria-hidden="true" />
                   <h3 className={`text-sm font-semibold tracking-wide ${textColor[color] ?? textColor.slate}`}>
                     {cat.title}
                   </h3>
@@ -74,7 +74,7 @@ export function Skills() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: ci * 0.06 + si * 0.04 }}
-                      className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all duration-200 cursor-default ${colorBadge[color] ?? colorBadge.slate}`}
+                      className={`                      rounded-lg px-3 py-1.5 text-xs font-medium ${colorBadge[color] ?? colorBadge.slate}`}
                     >
                       {skill.name}
                     </motion.span>

@@ -26,6 +26,7 @@ export function SectionHeading({ label, title, subtitle }: SectionHeadingProps) 
           {subtitle}
         </p>
       )}
+      <div className="mx-auto mt-6 h-px w-16 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
     </motion.div>
   )
 }
