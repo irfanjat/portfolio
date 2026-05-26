@@ -90,12 +90,7 @@ export function Contact() {
             method="POST"
             className="glass-strong space-y-4 rounded-2xl p-8"
           >
-            {!contactForm.web3formsAccessKey && (
-              <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-xs text-amber-300">
-                Contact form requires VITE_WEB3FORMS_ACCESS_KEY env var to be set.
-              </div>
-            )}
-            {contactForm.web3formsAccessKey && <input type="hidden" name="access_key" value={contactForm.web3formsAccessKey} />}
+            <input type="hidden" name="access_key" value={contactForm.web3formsAccessKey} />
             <input type="hidden" name="subject" value="New message from Irfan Ali Portfolio" />
             <input type="hidden" name="from_name" value="Portfolio Contact Form" />
             <input type="hidden" name="redirect" value={redirectUrl} />
@@ -150,20 +145,16 @@ export function Contact() {
                 placeholder="Role, project, or opportunity details..."
               />
             </div>
-            {contactForm.web3formsAccessKey && (
-              <>
-                <button
-                  type="submit"
-                  className="relative flex w-full items-center justify-center gap-2 rounded-xl border border-cyan-400/30 bg-gradient-to-r from-cyan-500/20 to-violet-500/20 px-6 py-3 text-sm font-semibold text-cyan-100 transition hover:glow-cyan cursor-pointer"
-                >
-                  <Send className="h-4 w-4" />
-                  Send Message
-                </button>
-                <p className="text-center text-[10px] text-slate-600">
-                  Delivered to {personal.email} · You&apos;ll be redirected back after sending
-                </p>
-              </>
-            )}
+            <button
+              type="submit"
+              className="relative flex w-full items-center justify-center gap-2 rounded-xl border border-cyan-400/30 bg-gradient-to-r from-cyan-500/20 to-violet-500/20 px-6 py-3 text-sm font-semibold text-cyan-100 transition hover:glow-cyan cursor-pointer"
+            >
+              <Send className="h-4 w-4" />
+              Send Message
+            </button>
+            <p className="text-center text-[10px] text-slate-600">
+              Delivered to {personal.email} · You&apos;ll be redirected back after sending
+            </p>
           </motion.form>
         </div>
       </div>
