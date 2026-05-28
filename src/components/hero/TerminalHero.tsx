@@ -33,7 +33,7 @@ export function TerminalHero() {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 2.2, duration: 0.7 }}
+      transition={{ delay: 0.2, duration: 0.7 }}
       className="glass-strong w-full max-w-xl overflow-hidden rounded-2xl font-mono text-sm shadow-2xl shadow-cyan-500/5"
       style={{ borderImage: 'linear-gradient(135deg, rgba(0,217,255,0.2), rgba(124,58,237,0.2), rgba(0,255,136,0.2)) 1', border: '1px solid transparent' }}
     >
