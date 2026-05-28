@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Award, BadgeCheck } from 'lucide-react'
+import { Award, BadgeCheck, ExternalLink } from 'lucide-react'
 import { certifications } from '../../data/site'
 import { SectionHeading } from '../ui/SectionHeading'
 
@@ -39,6 +39,16 @@ export function Certifications() {
               <Award className="mt-4 h-4 w-4 text-violet-400/80" />
               <h3 className="mt-2 text-sm font-semibold leading-snug text-white">{cert.title}</h3>
               <p className="mt-1.5 text-xs text-slate-500">{cert.issuer}</p>
+              {cert.link && (
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-cyan-400/20 bg-cyan-500/10 px-3 py-1.5 text-xs font-medium text-cyan-300 transition hover:bg-cyan-500/20 hover:glow-cyan"
+                >
+                  Verify <ExternalLink className="h-3 w-3" />
+                </a>
+              )}
             </motion.div>
           ))}
         </div>

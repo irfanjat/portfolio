@@ -21,12 +21,10 @@ export const contactForm = {
 }
 
 export const navLinks = [
-  { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'More', href: '#more-projects' },
-  { label: 'Journey', href: '#journey' },
-  { label: 'Certs', href: '#certifications' },
+  { label: 'Certifications', href: '#certifications' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -35,15 +33,6 @@ export const terminalCommands = [
   { cmd: 'terraform apply', output: 'Apply complete! Resources: 24 added, 0 changed, 0 destroyed.' },
   { cmd: 'docker build -t app:v1.2.3 .', output: 'Successfully built & tagged app:v1.2.3' },
   { cmd: 'argocd app sync gitops-pipeline', output: 'Sync status: Synced | Health: Healthy' },
-]
-
-export const aboutHighlights = [
-  { title: 'Self-Taught Journey', desc: 'Built expertise through hands-on labs and production-style portfolio projects.' },
-  { title: 'Real Projects', desc: 'End-to-end GitOps pipelines, AWS Terraform stacks, and K8s observability.' },
-  { title: 'Automation Mindset', desc: 'Infrastructure as code, CI/CD, and repeatable delivery workflows.' },
-  { title: 'Cloud-Native Stack', desc: 'Kubernetes, Helm, ArgoCD, Prometheus, Grafana, and AWS.' },
-  { title: 'Scalable Systems', desc: 'Multi-tier architectures, auto scaling, and zero-downtime deployments.' },
-  { title: 'Certified & Growing', desc: 'IBM & AWS certified; pursuing BS in Computer Science.' },
 ]
 
 export const skillCategories = [
@@ -215,83 +204,27 @@ export const projects = [
   },
 ]
 
-export const journey = [
-  {
-    phase: '01',
-    year: '2025',
-    title: 'Linux, Networking & Git Foundations',
-    desc: 'Mastered shell scripting, filesystem, process management, TCP/IP networking, DNS, SSH, version control, and collaborative workflows.',
-    tags: ['Linux', 'Bash', 'Networking', 'TCP/IP', 'DNS', 'SSH', 'Git', 'GitHub'],
-    status: 'done',
-  },
-  {
-    phase: '02',
-    year: '2025',
-    title: 'Containerization',
-    desc: 'Containerized applications, built multi-stage production images, and managed registries.',
-    tags: ['Docker', 'Docker Compose', 'GHCR', 'Multi-stage Builds'],
-    status: 'done',
-  },
-  {
-    phase: '03',
-    year: '2025',
-    title: 'Cloud Infrastructure (AWS)',
-    desc: 'Provisioned modular, multi-AZ AWS stacks with remote state, encryption, and least-privilege IAM.',
-    tags: ['Terraform', 'VPC', 'EC2', 'ALB', 'RDS', 'S3', 'IAM'],
-    status: 'done',
-  },
-  {
-    phase: '04',
-    year: '2025',
-    title: 'CI/CD & GitOps',
-    desc: 'Built end-to-end pipelines with automated builds, SHA-tagged images, and self-healing GitOps deployments.',
-    tags: ['GitHub Actions', 'ArgoCD', 'GitOps', 'Zero-downtime'],
-    status: 'done',
-  },
-  {
-    phase: '05',
-    year: '2025',
-    title: 'Kubernetes & Orchestration',
-    desc: 'Deployed workloads, configured networking, managed storage, and operated clusters at scale.',
-    tags: ['Kubernetes', 'Helm', 'ArgoCD', 'Ingress', 'PVC'],
-    status: 'done',
-  },
-  {
-    phase: '06',
-    year: '2025',
-    title: 'Observability Stack',
-    desc: 'Full-stack monitoring with metrics, log aggregation, dashboards, and real-time alerting on Kubernetes.',
-    tags: ['Prometheus', 'Grafana', 'Loki', 'Alertmanager'],
-    status: 'done',
-  },
-  {
-    phase: '07',
-    year: '2026',
-    title: 'DevOps Career Launch',
-    desc: 'Actively pursuing full-time, hybrid, and remote DevOps & Platform Engineering opportunities.',
-    tags: ['Open to Work', 'Remote', 'Pakistan', 'International'],
-    status: 'active',
-  },
-]
-
 export const certifications = [
   {
     title: 'IBM Introduction to DevOps Engineering Professional Certificate',
     issuer: 'IBM',
     badge: 'IBM',
     verified: true,
+    link: 'https://coursera.org/verify/PANSLSFPOV59',
   },
   {
     title: 'AWS Cloud Practitioner Essentials',
     issuer: 'Amazon Web Services',
     badge: 'AWS',
     verified: true,
+    link: 'https://coursera.org/verify/VJOL7N4FHGNV',
   },
   {
     title: 'AWS Cloud Technical Essentials',
     issuer: 'Amazon Web Services',
     badge: 'AWS',
     verified: true,
+    link: 'https://coursera.org/verify/JHTNQ3MFH2D2',
   },
 ]
 
@@ -300,10 +233,3 @@ export const education = {
   university: 'University of Sindh (SULC), Jamshoro, Pakistan',
   graduation: 'Expected Graduation: 2027',
 }
-
-export const stats = [
-  { label: 'Months Experience', value: 8, suffix: '+' },
-  { label: 'GitHub Repositories', value: 20, suffix: '+' },
-  { label: 'AWS Resources (IaC)', value: 24, suffix: '' },
-  { label: 'Certifications', value: 3, suffix: '' },
-]

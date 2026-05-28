@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowDown, Download, FolderKanban, Mail } from 'lucide-react'
+import { Download, FolderKanban, Mail } from 'lucide-react'
 import { personal } from '../../data/site'
 import { GlowButton } from '../ui/GlowButton'
 import { TerminalHero } from './TerminalHero'
@@ -23,7 +23,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 2.1, duration: 0.6 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
             className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-500/5 px-4 py-1.5 font-mono text-xs text-cyan-300/90"
           >
             <span className="relative flex h-2 w-2">
@@ -36,7 +36,7 @@ export function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.15, duration: 0.6 }}
+            transition={{ delay: 0.15, duration: 0.6 }}
             className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl"
           >
             {personal.name.split(' ')[0]}{' '}
@@ -46,7 +46,7 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2.25 }}
+            transition={{ delay: 0.25 }}
             className="mt-3 font-mono text-sm text-gradient-subtle sm:text-base"
           >
             {personal.role}
@@ -55,7 +55,7 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2.35 }}
+            transition={{ delay: 0.35 }}
             className="mt-5 max-w-lg text-base text-slate-400 leading-relaxed"
           >
             {personal.tagline}
@@ -64,7 +64,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.5 }}
+            transition={{ delay: 0.5 }}
             className="mt-8 flex flex-wrap gap-3"
           >
             <GlowButton href="#projects" variant="primary">
@@ -81,15 +81,7 @@ export function Hero() {
             </GlowButton>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.7 }}
-            className="mt-10 flex items-center gap-2 text-slate-500"
-          >
-            <ArrowDown className="h-4 w-4 animate-bounce text-cyan-400/60" />
-            <span className="text-xs font-mono">scroll to explore</span>
-          </motion.div>
+
         </div>
 
         {/* right */}
