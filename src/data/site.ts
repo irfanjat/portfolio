@@ -202,6 +202,50 @@ export const projects = [
     diagram: 'k8s-monitor' as const,
     github: 'https://github.com/irfanjat/k8s-observability',
   },
+  {
+    id: 'db-operator',
+    title: 'Kubernetes PostgreSQL Operator — DB Operator',
+    description:
+      'Custom Kubernetes operator built with Go + controller-runtime for automated PostgreSQL cluster management with S3 backups and Prometheus monitoring.',
+    tech: ['Go', 'controller-runtime', 'Kubernetes', 'PostgreSQL', 'StatefulSet', 'S3', 'Prometheus', 'Helm'],
+    metrics: [
+      { label: 'Framework', value: 'Go', sub: 'controller-runtime' },
+      { label: 'Backups', value: 'Auto', sub: 'S3 retention' },
+      { label: 'Deploy', value: 'GitOps', sub: 'Helm + ArgoCD' },
+    ],
+    achievements: [
+      'Built custom K8s operator using Go + controller-runtime framework',
+      'Extended Kubernetes API with custom PostgresCluster CRDs',
+      'Automated PostgreSQL cluster management with StatefulSets and PVCs',
+      'Integrated automated S3 backups with configurable retention policy',
+      'Added Prometheus metrics and alerting for operational visibility',
+      'GitOps-ready with Helm chart and ArgoCD application manifests',
+    ],
+    diagram: 'db-operator' as const,
+    github: 'https://github.com/irfanjat/db-operator',
+  },
+  {
+    id: 'costguard',
+    title: 'CostGuard — AWS Cost Optimization Platform',
+    description:
+      'Serverless AWS cost optimization platform with anomaly detection, orphaned resource scanning, and Slack alerting, all deployed with Terraform.',
+    tech: ['Python', 'AWS Lambda', 'Terraform', 'DynamoDB', 'Cost Explorer', 'EventBridge', 'Slack'],
+    metrics: [
+      { label: 'Detection', value: 'Z-Score', sub: 'anomaly algorithm' },
+      { label: 'Resources', value: 'Orphaned', sub: 'EBS, EIP, snapshots' },
+      { label: 'Deploy', value: 'IaC', sub: 'Terraform' },
+    ],
+    achievements: [
+      'Built serverless cost optimization platform with AWS Lambda',
+      'Implemented z-score anomaly detection for spend pattern analysis',
+      'Scans for orphaned resources — unattached EBS, unused EIPs, stale snapshots',
+      'Sends rich Slack reports with cost summary and remediation buttons',
+      'Stores run history in DynamoDB for trend analysis',
+      'Full infrastructure as code with Terraform (Lambda, IAM, EventBridge)',
+    ],
+    diagram: 'costguard' as const,
+    github: 'https://github.com/irfanjat/costguard',
+  },
 ]
 
 export const certifications = [
