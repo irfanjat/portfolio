@@ -72,15 +72,28 @@ export function Projects() {
                       </div>
                     ))}
                   </div>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-1.5 rounded-lg border border-cyan-400/20 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 transition hover:bg-cyan-500/20 hover:shadow-[0_0_20px_rgba(0,217,255,0.15)]"
-                  >
-                    View on GitHub
-                    <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-cyan-400/20 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 transition hover:bg-cyan-500/20 hover:shadow-[0_0_20px_rgba(0,217,255,0.15)]"
+                    >
+                      View on GitHub
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-600/40 bg-slate-800/60 px-4 py-2 text-sm font-medium text-slate-300 transition hover:border-cyan-400/30 hover:text-cyan-300"
+                      >
+                        Case Study
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                  </div>
                 </div>
                 <div
                   className={

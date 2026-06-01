@@ -11,8 +11,8 @@ import { ScrollToTop } from './components/ui/ScrollToTop'
 function App() {
   return (
     <>
-      <div className="fixed inset-0 z-0 bg-mesh" />
-      <div className="fixed inset-0 z-0 grid-pattern opacity-40" />
+      <div className="fixed inset-0 z-0 bg-mesh pointer-events-none" />
+      <div className="fixed inset-0 z-0 grid-pattern opacity-40 pointer-events-none" />
       <Navbar />
       <main className="relative z-10">
         <Hero />

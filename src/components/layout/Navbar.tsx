@@ -27,8 +27,7 @@ export function Navbar() {
           <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-400/30 bg-cyan-500/10 glow-cyan">
             <Terminal className="h-4 w-4 text-cyan-400" />
           </span>
-          <span className="hidden sm:inline">{personal.name.split(' ')[0]}</span>
-          <span className="text-cyan-400/80">.devops</span>
+          <span className="hidden sm:inline">{personal.name.split(' ')[0]}<span className="text-cyan-400/80">.devops</span></span>
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">

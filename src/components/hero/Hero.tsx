@@ -3,7 +3,6 @@ import { useRef } from 'react'
 import { Cloud, Cpu, Download, FolderKanban, GitBranch, Layers, Mail } from 'lucide-react'
 import { personal } from '../../data/site'
 import { GlowButton } from '../ui/GlowButton'
-import { TerminalHero } from './TerminalHero'
 
 const floatingIcons = [
   { icon: Cpu, label: 'K8s', x: '10%', y: '15%', delay: 0, color: 'text-cyan-400' },
@@ -39,7 +38,7 @@ export function Hero() {
       <div className="mx-auto grid max-w-5xl w-full gap-10 lg:grid-cols-2 lg:gap-12 items-center">
 
         {/* left */}
-        <div>
+        <div className="text-center lg:text-left">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -76,7 +75,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.35 }}
-            className="mt-5 max-w-lg text-base text-slate-400 leading-relaxed"
+            className="mt-5 max-w-lg text-base text-slate-400 leading-relaxed mx-auto lg:mx-0"
           >
             {personal.tagline}
           </motion.p>
@@ -85,7 +84,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start"
           >
             <GlowButton href="#projects" variant="primary">
               <FolderKanban className="h-4 w-4" />
@@ -106,7 +105,26 @@ export function Hero() {
 
         {/* right */}
         <motion.div style={{ y }} className="flex justify-center lg:justify-end">
-          <TerminalHero />
+          <div className="relative">
+            {/* glow rings */}
+            <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-cyan-500/20 via-violet-500/10 to-transparent opacity-70 blur-2xl" />
+            <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-cyan-400/10 to-violet-500/10 opacity-50 blur-xl" />
+
+            {/* gradient border ring */}
+            <div className="relative rounded-full bg-gradient-to-br from-cyan-400 via-violet-500 to-emerald-400 p-1 shadow-[0_0_40px_rgba(0,217,255,0.15)]">
+              <div className="rounded-full bg-slate-900 p-1">
+                <div className="relative h-64 w-64 overflow-hidden rounded-full sm:h-72 sm:w-72">
+                  <img
+                    src={`${import.meta.env.BASE_URL}pic.jpg`}
+                    alt={personal.name}
+                    className="h-full w-full object-cover"
+                  />
+                  {/* subtle glass overlay */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-slate-900/30 via-transparent to-transparent" />
+                </div>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
       </div>
