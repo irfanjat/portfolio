@@ -1,9 +1,16 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { Download, FolderKanban, Mail } from 'lucide-react'
+import { Cloud, Cpu, Download, FolderKanban, GitBranch, Layers, Mail } from 'lucide-react'
 import { personal } from '../../data/site'
 import { GlowButton } from '../ui/GlowButton'
 import { TerminalHero } from './TerminalHero'
+
+const floatingIcons = [
+  { icon: Cpu, label: 'K8s', x: '10%', y: '15%', delay: 0, color: 'text-cyan-400' },
+  { icon: Cloud, label: 'AWS', x: '85%', y: '20%', delay: 0.6, color: 'text-amber-400' },
+  { icon: GitBranch, label: 'GitOps', x: '8%', y: '70%', delay: 1.2, color: 'text-violet-400' },
+  { icon: Layers, label: 'Docker', x: '88%', y: '65%', delay: 1.8, color: 'text-cyan-300' },
+]
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
@@ -14,8 +21,21 @@ export function Hero() {
     <section
       ref={ref}
       id="home"
-      className="relative min-h-screen flex items-center pt-24 pb-16 px-4 sm:px-6 lg:px-8"
+      className="relative min-h-screen flex items-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
+      {floatingIcons.map((item) => (
+        <motion.div
+          key={item.label}
+          className="absolute hidden lg:flex items-center gap-2 rounded-full border border-white/5 bg-slate-900/60 px-3 py-1.5 backdrop-blur-sm"
+          style={{ left: item.x, top: item.y }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1 + item.delay, duration: 0.5 }}
+        >
+          <item.icon className={`h-3.5 w-3.5 ${item.color}`} />
+          <span className="font-mono text-[10px] text-slate-500">{item.label}</span>
+        </motion.div>
+      ))}
       <div className="mx-auto grid max-w-5xl w-full gap-10 lg:grid-cols-2 lg:gap-12 items-center">
 
         {/* left */}

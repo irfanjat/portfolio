@@ -59,8 +59,7 @@ export const skillCategories = [
     color: 'emerald',
     skills: [
       { name: 'Terraform', level: 90 },
-      { name: 'Remote State', level: 88 },
-      { name: 'AWS Provider', level: 87 },
+      { name: 'Ansible', level: 85 },
     ],
   },
   {
@@ -69,6 +68,9 @@ export const skillCategories = [
     skills: [
       { name: 'VPC', level: 90 },
       { name: 'EC2', level: 88 },
+      { name: 'ECS', level: 85 },
+      { name: 'EKS', level: 85 },
+      { name: 'ECR', level: 84 },
       { name: 'ALB', level: 85 },
       { name: 'Auto Scaling', level: 86 },
       { name: 'RDS', level: 84 },
@@ -84,8 +86,6 @@ export const skillCategories = [
     skills: [
       { name: 'Prometheus', level: 88 },
       { name: 'Grafana', level: 90 },
-      { name: 'Loki', level: 85 },
-      { name: 'Alertmanager', level: 82 },
     ],
   },
   {
@@ -106,7 +106,6 @@ export const skillCategories = [
       { name: 'SSH', level: 90 },
       { name: 'Firewall (UFW)', level: 85 },
       { name: 'Cron Jobs', level: 88 },
-      { name: 'Server Hardening', level: 82 },
       { name: 'Systemd', level: 85 },
       { name: 'Log Management', level: 80 },
     ],
@@ -118,8 +117,6 @@ export const skillCategories = [
       { name: 'Nginx', level: 85 },
       { name: 'Apache', level: 80 },
       { name: 'MySQL', level: 82 },
-      { name: 'PostgreSQL', level: 78 },
-      { name: 'Redis', level: 75 },
     ],
   },
   {
@@ -128,9 +125,6 @@ export const skillCategories = [
     skills: [
       { name: 'Git', level: 92 },
       { name: 'GitHub', level: 90 },
-      { name: 'GHCR', level: 85 },
-      { name: 'GitFlow', level: 82 },
-      { name: 'Conventional Commits', level: 88 },
     ],
   },
 ]
@@ -201,50 +195,6 @@ export const projects = [
     ],
     diagram: 'k8s-monitor' as const,
     github: 'https://github.com/irfanjat/k8s-observability',
-  },
-  {
-    id: 'db-operator',
-    title: 'Kubernetes PostgreSQL Operator — DB Operator',
-    description:
-      'Custom Kubernetes operator built with Go + controller-runtime for automated PostgreSQL cluster management with S3 backups and Prometheus monitoring.',
-    tech: ['Go', 'controller-runtime', 'Kubernetes', 'PostgreSQL', 'StatefulSet', 'S3', 'Prometheus', 'Helm'],
-    metrics: [
-      { label: 'Framework', value: 'Go', sub: 'controller-runtime' },
-      { label: 'Backups', value: 'Auto', sub: 'S3 retention' },
-      { label: 'Deploy', value: 'GitOps', sub: 'Helm + ArgoCD' },
-    ],
-    achievements: [
-      'Built custom K8s operator using Go + controller-runtime framework',
-      'Extended Kubernetes API with custom PostgresCluster CRDs',
-      'Automated PostgreSQL cluster management with StatefulSets and PVCs',
-      'Integrated automated S3 backups with configurable retention policy',
-      'Added Prometheus metrics and alerting for operational visibility',
-      'GitOps-ready with Helm chart and ArgoCD application manifests',
-    ],
-    diagram: 'db-operator' as const,
-    github: 'https://github.com/irfanjat/db-operator',
-  },
-  {
-    id: 'costguard',
-    title: 'CostGuard — AWS Cost Optimization Platform',
-    description:
-      'Serverless AWS cost optimization platform with anomaly detection, orphaned resource scanning, and Slack alerting, all deployed with Terraform.',
-    tech: ['Python', 'AWS Lambda', 'Terraform', 'DynamoDB', 'Cost Explorer', 'EventBridge', 'Slack'],
-    metrics: [
-      { label: 'Detection', value: 'Z-Score', sub: 'anomaly algorithm' },
-      { label: 'Resources', value: 'Orphaned', sub: 'EBS, EIP, snapshots' },
-      { label: 'Deploy', value: 'IaC', sub: 'Terraform' },
-    ],
-    achievements: [
-      'Built serverless cost optimization platform with AWS Lambda',
-      'Implemented z-score anomaly detection for spend pattern analysis',
-      'Scans for orphaned resources — unattached EBS, unused EIPs, stale snapshots',
-      'Sends rich Slack reports with cost summary and remediation buttons',
-      'Stores run history in DynamoDB for trend analysis',
-      'Full infrastructure as code with Terraform (Lambda, IAM, EventBridge)',
-    ],
-    diagram: 'costguard' as const,
-    github: 'https://github.com/irfanjat/costguard',
   },
 ]
 
