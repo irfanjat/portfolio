@@ -77,7 +77,10 @@ export function Contact() {
               href={`mailto:${personal.email}?subject=Portfolio%20inquiry`}
               className="glass flex items-center justify-center gap-2 rounded-xl border border-cyan-400/20 p-4 text-sm font-medium text-cyan-300 transition hover:glow-cyan"
             >
-              <Mail className="h-4 w-4" />
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              </span>
               Email me at {personal.email}
             </a>
           </motion.div>

@@ -151,6 +151,7 @@ export const projects = [
     ],
     diagram: 'gitops' as const,
     github: 'https://github.com/irfanjat/gitops-cicd-pipeline',
+    demo: 'https://github.com/irfanjat/gitops-cicd-pipeline',
   },
   {
     id: 'terraform-aws',
@@ -173,6 +174,7 @@ export const projects = [
     ],
     diagram: 'aws' as const,
     github: 'https://github.com/irfanjat/terraform-aws-infra',
+    demo: 'https://github.com/irfanjat/terraform-aws-infra',
   },
   {
     id: 'observability',
@@ -195,6 +197,7 @@ export const projects = [
     ],
     diagram: 'k8s-monitor' as const,
     github: 'https://github.com/irfanjat/k8s-observability',
+    demo: 'https://github.com/irfanjat/k8s-observability',
   },
 ]
 
