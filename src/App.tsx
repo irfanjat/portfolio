@@ -11,12 +11,23 @@ import { ScrollToTop } from './components/ui/ScrollToTop'
 function App() {
   return (
     <>
+      <div className="fixed inset-0 z-0 bg-mesh" />
+      <div className="fixed inset-0 z-0 grid-pattern opacity-40" />
       <Navbar />
-      <main className="relative">
+      <main className="relative z-10">
         <Hero />
-        <Skills />
-        <Projects />
-        <Certifications />
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/[0.02] to-transparent pointer-events-none" />
+          <Skills />
+        </div>
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-500/[0.02] to-transparent pointer-events-none" />
+          <Projects />
+        </div>
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/[0.02] to-transparent pointer-events-none" />
+          <Certifications />
+        </div>
         <Education />
         <Contact />
       </main>

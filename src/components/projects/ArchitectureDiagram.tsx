@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-type DiagramType = 'gitops' | 'aws' | 'k8s-monitor' | 'db-operator' | 'costguard'
+type DiagramType = 'gitops' | 'aws' | 'k8s-monitor'
 
 interface ArchitectureDiagramProps {
   type: DiagramType
@@ -56,68 +56,6 @@ export function ArchitectureDiagram({ type }: ArchitectureDiagramProps) {
           </div>
           <div className="rounded border border-slate-600/40 p-2 text-center text-slate-500">
             VPC � IAM � CloudWatch � Terraform State
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (type === 'db-operator') {
-    return (
-      <div className="rounded-xl border border-slate-700/50 bg-slate-900/60 p-4 font-mono text-[10px] sm:text-xs">
-        <div className="mb-3 text-center text-violet-400/80">PostgreSQL Operator</div>
-        <div className="space-y-2">
-          <div className="rounded-lg border border-violet-500/30 bg-violet-500/10 p-2 text-center text-violet-200">
-            PostgresCluster CR
-          </div>
-          <div className="rounded-lg border border-cyan-500/30 bg-cyan-500/10 p-2 text-center text-cyan-300">
-            DB Operator (Go + controller-runtime)
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="rounded border border-emerald-500/20 p-2 text-emerald-300">
-              StatefulSet + PVC
-            </div>
-            <div className="rounded border border-amber-500/20 p-2 text-amber-300">
-              S3 Backups
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="rounded border border-rose-500/20 p-2 text-rose-300">
-              Prometheus Metrics
-            </div>
-            <div className="rounded border border-slate-500/20 p-2 text-slate-300">
-              Helm / ArgoCD
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (type === 'costguard') {
-    return (
-      <div className="rounded-xl border border-slate-700/50 bg-slate-900/60 p-4 font-mono text-[10px] sm:text-xs">
-        <div className="mb-3 text-center text-emerald-400/80">CostGuard Platform</div>
-        <div className="space-y-2">
-          <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-2 text-center text-emerald-200">
-            EventBridge Schedule
-          </div>
-          <div className="rounded-lg border border-cyan-500/30 bg-cyan-500/10 p-2 text-center text-cyan-300">
-            Lambda (Python)
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            <div className="rounded border border-amber-500/20 p-2 text-amber-300">
-              Cost Explorer
-            </div>
-            <div className="rounded border border-violet-500/20 p-2 text-violet-300">
-              Resource Scanner
-            </div>
-            <div className="rounded border border-rose-500/20 p-2 text-rose-300">
-              DynamoDB
-            </div>
-          </div>
-          <div className="rounded border border-slate-600/40 p-2 text-center text-slate-400">
-            Slack Alert
           </div>
         </div>
       </div>
