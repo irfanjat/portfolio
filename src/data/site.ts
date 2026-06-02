@@ -225,6 +225,22 @@ export const certifications = [
   },
 ]
 
+export const stats = [
+  { label: 'Years Experience', value: 1, suffix: '+' },
+  { label: 'Projects Shipped', value: 12, suffix: '' },
+  { label: 'Tools Mastered', value: 25, suffix: '+' },
+  { label: 'Certifications', value: 3, suffix: '' },
+]
+
+export const pipelineStages = [
+  { id: 'code', label: 'Code Push', icon: 'GitCommit', color: 'cyan', desc: 'Feature branch → PR → main' },
+  { id: 'build', label: 'Build & Test', icon: 'FlaskConical', color: 'violet', desc: 'Unit tests, lint, image build' },
+  { id: 'docker', label: 'Dockerize', icon: 'Box', color: 'cyan', desc: 'SHA-tagged container images' },
+  { id: 'scan', label: 'Security Scan', icon: 'Shield', color: 'emerald', desc: 'Trivy, Snyk, SBOM' },
+  { id: 'deploy', label: 'ArgoCD Deploy', icon: 'Rocket', color: 'violet', desc: 'GitOps sync to K8s cluster' },
+  { id: 'monitor', label: 'Monitor', icon: 'Activity', color: 'rose', desc: 'Prometheus + Grafana alerts' },
+]
+
 export const education = {
   degree: 'Bachelor of Science in Computer Science',
   university: 'University of Sindh (SULC), Jamshoro, Pakistan',
