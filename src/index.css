@@ -21,6 +21,7 @@
 
   html {
     background: var(--color-bg);
+    scroll-snap-type: y proximity;
   }
 
   body {
@@ -37,7 +38,6 @@
     color: #fff;
   }
 
-  /* premium scrollbar */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--color-bg); }
   ::-webkit-scrollbar-thumb {
@@ -46,6 +46,10 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 217, 255, 0.6);
+  }
+
+  main > section {
+    scroll-snap-align: start;
   }
 }
 
@@ -104,14 +108,25 @@
       linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
     background-size: 40px 40px;
   }
+}
 
-  /* premium card hover */
-  .card-hover {
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+@layer utilities {
+  .fluid-hero {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
   }
-  .card-hover:hover {
-    border-color: rgba(0, 217, 255, 0.2);
-    box-shadow: 0 0 30px rgba(0, 217, 255, 0.08);
-    transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-snap-type: none;
   }
 }

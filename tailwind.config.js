@@ -18,6 +18,10 @@ export default {
         'glow-md': '0 0 30px rgba(0, 217, 255, 0.15), 0 0 80px rgba(0, 217, 255, 0.06)',
         'glow-lg': '0 0 60px rgba(0, 217, 255, 0.2), 0 0 120px rgba(0, 217, 255, 0.08)',
       },
+      fontSize: {
+        'fluid-hero': 'clamp(2.5rem, 6vw, 4.5rem)',
+        'fluid-lg': 'clamp(1rem, 2.5vw, 1.25rem)',
+      },
       animation: {
         float: 'float 6s ease-in-out infinite',
         'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
