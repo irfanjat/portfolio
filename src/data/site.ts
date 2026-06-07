@@ -29,10 +29,10 @@ export const navLinks = [
 ]
 
 export const terminalCommands = [
-  { cmd: 'kubectl get pods', output: 'NAME          READY   STATUS    RESTARTS   AGE\napi-deploy    3/3     Running   0          2d\nworker-deploy 2/2     Running   0          2d' },
-  { cmd: 'terraform apply', output: 'Apply complete! Resources: 24 added, 0 changed, 0 destroyed.' },
-  { cmd: 'docker build -t app:v1.2.3 .', output: 'Successfully built & tagged app:v1.2.3' },
-  { cmd: 'argocd app sync gitops-pipeline', output: 'Sync status: Synced | Health: Healthy' },
+  { cmd: 'cat about-irfan.txt', output: 'DevOps Engineer | Cloud & Platform Engineer\nLocation: Pakistan\nOpen to: full-time, hybrid, on-site & remote roles' },
+  { cmd: 'ls skills/', output: 'Kubernetes  Docker  Terraform  AWS  CI/CD  GitOps  Python  Bash\nPrometheus  Grafana  Ansible  Helm  Linux  Git  ArgoCD' },
+  { cmd: 'cat experience.log', output: 'End-to-End GitOps CI/CD Pipeline ...... 80% faster deploys\nTerraform AWS Infrastructure ......... 24 resources, Multi-AZ\nK8s Observability Stack .............. 14 scrape targets, live logs' },
+  { cmd: './contact.sh', output: 'Email: irfanali.cloud@gmail.com\nGitHub: github.com/irfanjat\nLinkedIn: linkedin.com/in/irfanjat\nPhone: 03153711489' },
 ]
 
 export const skillCategories = [
