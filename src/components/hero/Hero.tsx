@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { Cloud, Cpu, Download, FolderKanban, GitBranch, Layers, Mail } from 'lucide-react'
+import { Cloud, Cpu, FolderKanban, GitBranch, Layers, Mail } from 'lucide-react'
 import { personal } from '../../data/site'
 import { GlowButton } from '../ui/GlowButton'
 
@@ -90,10 +90,6 @@ export function Hero() {
               <FolderKanban className="h-4 w-4" />
               View Projects
             </GlowButton>
-            <GlowButton href={`${import.meta.env.BASE_URL}resume.pdf`} variant="secondary" download="IrfanAliResume.pdf">
-              <Download className="h-4 w-4" />
-              Download Resume
-            </GlowButton>
             <GlowButton href="#contact" variant="secondary">
               <Mail className="h-4 w-4" />
               Contact Me
@@ -106,11 +102,8 @@ export function Hero() {
         {/* right */}
         <motion.div style={{ y }} className="flex justify-center lg:justify-end">
           <div className="relative">
-            {/* glow rings */}
             <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-cyan-500/20 via-violet-500/10 to-transparent opacity-70 blur-2xl" />
             <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-cyan-400/10 to-violet-500/10 opacity-50 blur-xl" />
-
-            {/* gradient border ring */}
             <div className="relative rounded-full bg-gradient-to-br from-cyan-400 via-violet-500 to-emerald-400 p-1 shadow-[0_0_40px_rgba(0,217,255,0.15)]">
               <div className="rounded-full bg-slate-900 p-1">
                 <div className="relative h-64 w-64 overflow-hidden rounded-full sm:h-72 sm:w-72">
@@ -119,7 +112,6 @@ export function Hero() {
                     alt={personal.name}
                     className="h-full w-full object-cover"
                   />
-                  {/* subtle glass overlay */}
                   <div className="absolute inset-0 rounded-full bg-gradient-to-t from-slate-900/30 via-transparent to-transparent" />
                 </div>
               </div>
