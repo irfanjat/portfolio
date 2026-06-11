@@ -223,13 +223,20 @@ export const certifications = [
     verified: true,
     link: 'https://coursera.org/verify/JHTNQ3MFH2D2',
   },
+  {
+    title: 'OCI Foundation Associate',
+    issuer: 'Oracle Cloud Infrastructure',
+    badge: 'OCI',
+    verified: true,
+    link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=1BEEF1CBBEAE05D6DD59D53B668355A20ADBC563F691C84B03315E27A745FD49',
+  },
 ]
 
 export const stats = [
   { label: 'Years Experience', value: 1, suffix: '+' },
   { label: 'Projects Shipped', value: 12, suffix: '' },
   { label: 'Tools Mastered', value: 25, suffix: '+' },
-  { label: 'Certifications', value: 3, suffix: '' },
+  { label: 'Certifications', value: 4, suffix: '' },
 ]
 
 export const pipelineStages = [
