@@ -7,7 +7,7 @@ import { SectionHeading } from '../ui/SectionHeading'
 export function Projects() {
   return (
     <section id="projects" className="relative py-20 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <SectionHeading
           label="Projects"
           title="Production-Grade Work"

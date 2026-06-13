@@ -9,7 +9,7 @@ export function ScrollToTop() {
     <motion.button
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/30 bg-slate-900/90 text-cyan-400 backdrop-blur-md transition hover:glow-cyan hover:border-cyan-400/60"
+      className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-surface/80 text-white/40 backdrop-blur-md transition hover:bg-white/10 hover:text-white"
       initial={{ opacity: 0, scale: 0.8 }}
       style={{ opacity: scaleX, scale: scaleX }}
     >

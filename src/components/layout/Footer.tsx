@@ -18,7 +18,6 @@ export function Footer() {
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
 
-          {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <a href="#" className="flex items-center gap-2 font-mono text-sm font-semibold text-white">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-400/30 bg-cyan-500/10">
@@ -48,7 +47,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Quick Links</h3>
             <ul className="space-y-2">
@@ -62,7 +60,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
           <div>
             <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Services</h3>
             <ul className="space-y-2">
@@ -76,7 +73,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Connect */}
           <div>
             <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Connect</h3>
             <ul className="space-y-2.5">
@@ -106,7 +102,6 @@ export function Footer() {
 
         </div>
 
-        {/* Bottom bar */}
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-slate-800/40 pt-6 sm:flex-row">
           <span className="font-mono text-sm text-slate-500">
             {personal.name} &copy; {year}

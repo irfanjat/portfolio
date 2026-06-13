@@ -50,11 +50,9 @@ export function Navbar() {
                 className="relative rounded-lg px-4 py-2 text-sm text-slate-400 transition-colors hover:text-cyan-300"
               >
                 {link.label}
-                <span
-                  className={`absolute bottom-0 left-4 right-4 h-px bg-cyan-400/60 transition-transform duration-300 ${
-                    active === link.href.slice(1) ? 'scale-x-100' : 'scale-x-0'
-                  } group-hover:scale-x-100`}
-                />
+                {active === link.href.slice(1) && (
+                  <span className="absolute bottom-0 left-4 right-4 h-px bg-cyan-400/60" />
+                )}
               </a>
             </li>
           ))}

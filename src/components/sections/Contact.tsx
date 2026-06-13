@@ -48,7 +48,7 @@ export function Contact() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-4"
+            className="space-y-3"
           >
             {links.map((link, i) => (
               <motion.a

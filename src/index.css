@@ -21,7 +21,6 @@
 
   html {
     background: var(--color-bg);
-    scroll-snap-type: y proximity;
   }
 
   body {
@@ -34,7 +33,7 @@
   }
 
   ::selection {
-    background: rgba(0, 217, 255, 0.2);
+    background: rgba(0, 217, 255, 0.25);
     color: #fff;
   }
 
@@ -47,10 +46,6 @@
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 217, 255, 0.6);
   }
-
-  main > section {
-    scroll-snap-align: start;
-  }
 }
 
 @layer components {
@@ -58,14 +53,14 @@
     background: rgba(6, 13, 20, 0.6);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 217, 255, 0.06);
+    border: 1px solid color-mix(in srgb, var(--accent, #00d9ff) 8%, transparent);
   }
 
   .glass-strong {
     background: rgba(6, 13, 20, 0.8);
     backdrop-filter: blur(32px);
     -webkit-backdrop-filter: blur(32px);
-    border: 1px solid rgba(0, 217, 255, 0.1);
+    border: 1px solid color-mix(in srgb, var(--accent, #00d9ff) 12%, transparent);
   }
 
   .glow-cyan {
@@ -86,10 +81,85 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    transition: background 0.7s ease;
   }
 
   .text-gradient-subtle {
     background: linear-gradient(135deg, #e2e8f0 0%, #00d9ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: background 0.7s ease;
+  }
+
+  [data-scroll-theme="1"] .text-gradient {
+    background: linear-gradient(135deg, #7c3aed 0%, #ec4899 50%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [data-scroll-theme="1"] .text-gradient-subtle {
+    background: linear-gradient(135deg, #e2e8f0 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [data-scroll-theme="2"] .text-gradient {
+    background: linear-gradient(135deg, #00ff88 0%, #00d9ff 50%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [data-scroll-theme="2"] .text-gradient-subtle {
+    background: linear-gradient(135deg, #e2e8f0 0%, #00ff88 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [data-scroll-theme="3"] .text-gradient {
+    background: linear-gradient(135deg, #06b6d4 0%, #00ff88 50%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [data-scroll-theme="3"] .text-gradient-subtle {
+    background: linear-gradient(135deg, #e2e8f0 0%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [data-scroll-theme="4"] .text-gradient {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #00d9ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [data-scroll-theme="4"] .text-gradient-subtle {
+    background: linear-gradient(135deg, #e2e8f0 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [data-scroll-theme="5"] .text-gradient {
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #00ff88 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [data-scroll-theme="5"] .text-gradient-subtle {
+    background: linear-gradient(135deg, #e2e8f0 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [data-scroll-theme="6"] .text-gradient {
+    background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #00d9ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [data-scroll-theme="6"] .text-gradient-subtle {
+    background: linear-gradient(135deg, #e2e8f0 0%, #ec4899 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -124,9 +194,5 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-  html {
-    scroll-snap-type: none;
   }
 }

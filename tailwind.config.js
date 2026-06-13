@@ -12,6 +12,7 @@ export default {
         surface: '#060d14',
         primary: '#00d9ff',
         secondary: '#7c3aed',
+        accent: '#00ff88',
       },
       boxShadow: {
         'glow-sm': '0 0 12px rgba(0, 217, 255, 0.2)',

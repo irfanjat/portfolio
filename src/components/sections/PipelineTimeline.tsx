@@ -36,8 +36,8 @@ const lineColors: Record<string, string> = {
 
 export function PipelineTimeline() {
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="mx-auto max-w-5xl">
+    <section id="pipeline" className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="mx-auto max-w-6xl">
         <SectionHeading
           label="Pipeline"
           title="CI/CD Workflow"

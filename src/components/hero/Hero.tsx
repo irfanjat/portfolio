@@ -35,9 +35,8 @@ export function Hero() {
           <span className="font-mono text-[10px] text-slate-500">{item.label}</span>
         </motion.div>
       ))}
-      <div className="mx-auto grid max-w-5xl w-full gap-10 lg:grid-cols-2 lg:gap-12 items-center">
+      <div className="mx-auto grid max-w-6xl w-full gap-10 lg:grid-cols-2 lg:gap-12 items-center">
 
-        {/* left */}
         <div className="text-center lg:text-left">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -95,11 +94,8 @@ export function Hero() {
               Contact Me
             </GlowButton>
           </motion.div>
-
-
         </div>
 
-        {/* right */}
         <motion.div style={{ y }} className="flex justify-center lg:justify-end">
           <div className="relative">
             <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-cyan-500/20 via-violet-500/10 to-transparent opacity-70 blur-2xl" />
