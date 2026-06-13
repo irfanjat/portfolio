@@ -1,4 +1,5 @@
-import { useMemo } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useMemo } from 'react'
 import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
 import { Education } from './components/sections/Education'
@@ -31,32 +32,31 @@ const accentColors = [
 function App() {
   const theme = useActiveSection()
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-scroll-theme', String(theme))
+  }, [theme])
+
   const style = useMemo(() => ({ '--accent': accentColors[theme] } as React.CSSProperties), [theme])
 
   return (
-    <div data-scroll-theme={theme} style={style}>
-      <style>{`
-        :root { --accent-rgb: ${accentColors[theme]} }
-        ::selection { background: ${accentColors[theme]}40; color: #fff; }
-        ::-webkit-scrollbar-thumb { background: ${accentColors[theme]}4d; }
-        ::-webkit-scrollbar-thumb:hover { background: ${accentColors[theme]}99; }
-      `}</style>
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        {themeMeshes.map((colors, i) => (
-          <div
-            key={i}
-            className="absolute inset-0 transition-opacity duration-700 ease-in-out"
-            style={{
-              opacity: i === theme ? 1 : 0,
-              backgroundImage: `
-                radial-gradient(ellipse 70% 50% at 50% -10%, ${colors[0]}, transparent),
-                radial-gradient(ellipse 50% 40% at 95% 50%, ${colors[1]}, transparent),
-                radial-gradient(ellipse 40% 30% at 5% 90%, ${colors[2]}, transparent)
-              `,
-            }}
-          />
-        ))}
-      </div>
+    <div style={style}>
+      <AnimatePresence mode="popLayout">
+        <motion.div
+          key={theme}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.7 }}
+          className="fixed inset-0 z-0 pointer-events-none"
+          style={{
+            backgroundImage: `
+              radial-gradient(ellipse 70% 50% at 50% -10%, ${themeMeshes[theme][0]}, transparent),
+              radial-gradient(ellipse 50% 40% at 95% 50%, ${themeMeshes[theme][1]}, transparent),
+              radial-gradient(ellipse 40% 30% at 5% 90%, ${themeMeshes[theme][2]}, transparent)
+            `,
+          }}
+        />
+      </AnimatePresence>
       <div className="fixed inset-0 z-0 grid-pattern opacity-20 pointer-events-none" />
       <Navbar />
       <main className="relative z-10">

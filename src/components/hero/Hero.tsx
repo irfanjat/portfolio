@@ -5,10 +5,10 @@ import { personal } from '../../data/site'
 import { GlowButton } from '../ui/GlowButton'
 
 const floatingIcons = [
-  { icon: Cpu, label: 'K8s', x: '10%', y: '15%', delay: 0, color: 'text-cyan-400' },
-  { icon: Cloud, label: 'AWS', x: '85%', y: '20%', delay: 0.6, color: 'text-amber-400' },
-  { icon: GitBranch, label: 'GitOps', x: '8%', y: '70%', delay: 1.2, color: 'text-violet-400' },
-  { icon: Layers, label: 'Docker', x: '88%', y: '65%', delay: 1.8, color: 'text-cyan-300' },
+  { icon: Cpu, label: 'K8s', delay: 0, color: 'text-cyan-400', pos: { top: -18, left: -18 } },
+  { icon: Cloud, label: 'AWS', delay: 0.6, color: 'text-amber-400', pos: { top: -18, right: -18 } },
+  { icon: GitBranch, label: 'GitOps', delay: 1.2, color: 'text-violet-400', pos: { bottom: -18, left: -18 } },
+  { icon: Layers, label: 'Docker', delay: 1.8, color: 'text-cyan-300', pos: { bottom: -18, right: -18 } },
 ]
 
 export function Hero() {
@@ -22,19 +22,6 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      {floatingIcons.map((item) => (
-        <motion.div
-          key={item.label}
-          className="absolute hidden lg:flex items-center gap-2 rounded-full border border-white/5 bg-slate-900/60 px-3 py-1.5 backdrop-blur-sm"
-          style={{ left: item.x, top: item.y }}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1 + item.delay, duration: 0.5 }}
-        >
-          <item.icon className={`h-3.5 w-3.5 ${item.color}`} />
-          <span className="font-mono text-[10px] text-slate-500">{item.label}</span>
-        </motion.div>
-      ))}
       <div className="mx-auto grid max-w-6xl w-full gap-10 lg:grid-cols-2 lg:gap-12 items-center">
 
         <div className="text-center lg:text-left">
@@ -97,7 +84,7 @@ export function Hero() {
         </div>
 
         <motion.div style={{ y }} className="flex justify-center lg:justify-end">
-          <div className="relative">
+          <div className="relative inline-block">
             <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-cyan-500/20 via-violet-500/10 to-transparent opacity-70 blur-2xl" />
             <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-cyan-400/10 to-violet-500/10 opacity-50 blur-xl" />
             <div className="relative rounded-full bg-gradient-to-br from-cyan-400 via-violet-500 to-emerald-400 p-1 shadow-[0_0_40px_rgba(0,217,255,0.15)]">
@@ -106,12 +93,40 @@ export function Hero() {
                   <img
                     src={`${import.meta.env.BASE_URL}pic.jpg`}
                     alt={personal.name}
+                    fetchPriority="high"
                     className="h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 rounded-full bg-gradient-to-t from-slate-900/30 via-transparent to-transparent" />
                 </div>
               </div>
             </div>
+
+            {floatingIcons.map((item) => (
+              <motion.div
+                key={item.label}
+                className="absolute hidden lg:flex items-center gap-2 rounded-full border border-white/5 bg-slate-900/80 px-3 py-1.5 backdrop-blur-sm shadow-lg"
+                style={item.pos}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  y: [0, -8, 0],
+                }}
+                transition={{
+                  opacity: { delay: 1 + item.delay, duration: 0.5 },
+                  scale: { delay: 1 + item.delay, duration: 0.5 },
+                  y: {
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: item.delay,
+                  },
+                }}
+              >
+                <item.icon className={`h-3.5 w-3.5 ${item.color}`} />
+                <span className="font-mono text-[10px] text-slate-500">{item.label}</span>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 
