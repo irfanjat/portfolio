@@ -6,7 +6,7 @@ import { SectionHeading } from '../ui/SectionHeading'
 export function Education() {
   return (
     <section id="education" className="relative py-20 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <SectionHeading label="Education" title="Academic Background" />
 
         <motion.div

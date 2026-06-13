@@ -30,7 +30,7 @@ export function GlowButton({
 
   const content = (
     <motion.span
-      whileHover={{ scale: 1.03 }}
+      whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className={`${base} ${variants[variant]} ${className}`}
     >

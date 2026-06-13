@@ -12,21 +12,21 @@ const badgeSvgs: Record<string, string> = {
 export function Certifications() {
   return (
     <section id="certifications" className="relative py-20 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <SectionHeading
           label="Certifications"
           title="Verified Credentials"
           subtitle="Industry-recognized certifications in DevOps and cloud fundamentals."
         />
 
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {certifications.map((cert, i) => (
             <motion.div
               key={cert.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.08 }}
               whileHover={{ y: -6 }}
               className="glass group relative overflow-hidden rounded-2xl p-6 transition hover:border-cyan-400/30 hover:glow-cyan"
             >

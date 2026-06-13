@@ -22,10 +22,10 @@ function Node({ label, color, delay, sub }: { label: string; color: string; dela
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: delay ?? 0, duration: 0.35 }}
-      className={`rounded-lg border px-3 py-2 text-center text-xs font-medium backdrop-blur-sm ${colors[color] ?? colors.slate}`}
+      className={`rounded-lg border px-3 py-2 text-center text-xs font-medium ${colors[color] ?? colors.slate}`}
     >
       {label}
-      {sub && <div className="mt-0.5 text-[9px] font-normal opacity-60">{sub}</div>}
+      {sub && <div className="mt-0.5 text-[9px] font-normal text-white/30">{sub}</div>}
     </motion.div>
   )
 }

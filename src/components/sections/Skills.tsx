@@ -53,14 +53,14 @@ const iconBox: Record<string, string> = {
 export function Skills() {
   return (
     <section id="skills" className="relative py-20 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <SectionHeading
-          label="Skills"
-          title="Cloud-Native Toolkit"
+          label="Toolkit"
+          title="Cloud-Native Stack"
           subtitle="Production tools across CI/CD, orchestration, IaC, AWS, and observability."
         />
 
-        <div className="flex flex-wrap justify-center gap-5">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((cat, ci) => {
             const color = cat.color as string
             const Icon = categoryIcons[cat.title]
@@ -71,15 +71,15 @@ export function Skills() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: ci * 0.06, duration: 0.4 }}
-                className="group relative w-[265px]"
+                className="group relative"
               >
                 <div
                   className={`absolute -inset-px rounded-2xl bg-gradient-to-b opacity-0 blur-sm transition duration-500 group-hover:opacity-100 ${gradientBorders[color] ?? gradientBorders.slate}`}
                 />
-                <div className="relative rounded-2xl border border-slate-700/50 bg-slate-900/80 p-5 backdrop-blur-sm transition duration-500 group-hover:border-slate-600/60">
+                <div className="relative h-full rounded-2xl border border-slate-700/50 bg-slate-900/80 p-5 backdrop-blur-sm transition duration-500 group-hover:border-slate-600/60">
                   <div className="mb-4 flex items-center gap-3">
                     <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-xl shadow-lg ${iconBox[color] ?? iconBox.slate}`}
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-lg ${iconBox[color] ?? iconBox.slate}`}
                     >
                       {Icon && <Icon className="h-5 w-5" />}
                     </div>
@@ -87,17 +87,13 @@ export function Skills() {
                   </div>
 
                   <div className="flex flex-wrap gap-1.5">
-                    {cat.skills.map((skill, si) => (
-                      <motion.span
+                    {cat.skills.map((skill) => (
+                      <span
                         key={skill.name}
-                        initial={{ opacity: 0, x: -8 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: ci * 0.06 + si * 0.04, duration: 0.3 }}
                         className={`rounded-lg border px-2.5 py-1 text-xs font-medium transition-all duration-200 ${chipColors[color] ?? chipColors.slate}`}
                       >
                         {skill.name}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
                 </div>
