@@ -1,12 +1,5 @@
 import { motion } from 'framer-motion'
-import {
-  CheckCircle2,
-  Github,
-  Linkedin,
-  Mail,
-  Phone,
-  Send,
-} from 'lucide-react'
+import { CheckCircle2, Github, Linkedin, Mail, Phone, Send } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { contactForm, personal } from '../../data/site'
 import { SectionHeading } from '../ui/SectionHeading'
@@ -43,12 +36,12 @@ export function Contact() {
           subtitle={personal.availabilityDetail}
         />
 
-        <div className="grid gap-10 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-5">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-3"
+            className="lg:col-span-2 space-y-3"
           >
             {links.map((link, i) => (
               <motion.a
@@ -60,26 +53,26 @@ export function Contact() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                whileHover={{ x: 6 }}
-                className="glass flex items-center gap-4 rounded-xl p-4 transition hover:border-cyan-400/30"
+                whileHover={{ x: 4 }}
+                className="dash-card dash-card-hover flex items-center gap-4 rounded-xl p-4"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
                   <link.icon className="h-5 w-5" />
                 </div>
                 <div>
                   <p className="text-xs text-slate-500">{link.label}</p>
-                  <p className="font-medium text-slate-200">{link.value}</p>
+                  <p className="text-sm font-medium text-slate-200">{link.value}</p>
                 </div>
               </motion.a>
             ))}
 
             <a
               href={`mailto:${personal.email}?subject=Portfolio%20inquiry`}
-              className="glass flex items-center justify-center gap-2 rounded-xl border border-cyan-400/20 p-4 text-sm font-medium text-cyan-300 transition hover:glow-cyan"
+              className="dash-card dash-card-hover flex items-center justify-center gap-2 rounded-xl p-4 text-sm font-medium text-cyan-300"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              <span className="status-dot">
+                <span className="ping bg-emerald-400" />
+                <span className="solid bg-emerald-400" />
               </span>
               Email me at {personal.email}
             </a>
@@ -91,73 +84,70 @@ export function Contact() {
             viewport={{ once: true }}
             action="https://api.web3forms.com/submit"
             method="POST"
-            className="glass-strong space-y-4 rounded-2xl p-8"
+            className="dash-card rounded-xl p-6 sm:p-8 lg:col-span-3"
           >
             <input type="hidden" name="access_key" value={contactForm.web3formsAccessKey} />
             <input type="hidden" name="subject" value="New message from Irfan Ali Portfolio" />
             <input type="hidden" name="from_name" value="Portfolio Contact Form" />
             <input type="hidden" name="redirect" value={redirectUrl} />
-            <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+
+            <div className="mb-4 flex items-center gap-2 pb-4 border-b border-slate-700/30">
+              <span className="flex h-2 w-2 rounded-full bg-rose-500/80" />
+              <span className="flex h-2 w-2 rounded-full bg-amber-400/80" />
+              <span className="flex h-2 w-2 rounded-full bg-emerald-400/80" />
+              <span className="ml-3 font-mono text-[11px] text-slate-500">contact-form.sh</span>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="mb-1.5 block text-xs font-mono text-slate-500">$ --name</label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="Enter your name..."
+                  className="w-full rounded-lg border border-slate-700/40 bg-slate-900/60 px-4 py-2.5 text-sm text-slate-200 placeholder-slate-600 outline-none transition focus:border-cyan-400/40 focus:shadow-[0_0_12px_rgba(0,217,255,0.06)]"
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-xs font-mono text-slate-500">$ --email</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Enter your email..."
+                  className="w-full rounded-lg border border-slate-700/40 bg-slate-900/60 px-4 py-2.5 text-sm text-slate-200 placeholder-slate-600 outline-none transition focus:border-cyan-400/40 focus:shadow-[0_0_12px_rgba(0,217,255,0.06)]"
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-xs font-mono text-slate-500">$ --message</label>
+                <textarea
+                  name="message"
+                  required
+                  rows={4}
+                  placeholder="Type your message..."
+                  className="w-full rounded-lg border border-slate-700/40 bg-slate-900/60 px-4 py-2.5 text-sm text-slate-200 placeholder-slate-600 outline-none transition focus:border-cyan-400/40 focus:shadow-[0_0_12px_rgba(0,217,255,0.06)] resize-none"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full rounded-xl border border-cyan-400/25 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 px-6 py-3 text-sm font-semibold text-cyan-300 transition hover:glow-cyan hover:border-cyan-400/50 flex items-center justify-center gap-2"
+              >
+                <Send className="h-4 w-4" />
+                Send Message
+              </button>
+            </div>
 
             {showSuccess && (
-              <div className="flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
-                <CheckCircle2 className="h-4 w-4 shrink-0" />
-                Message sent successfully! I&apos;ll reply to your email soon.
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-4 flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300"
+              >
+                <CheckCircle2 className="h-4 w-4" />
+                Message sent successfully!
+              </motion.div>
             )}
-
-            <p className="text-xs text-slate-500">
-              {personal.availability} — Pakistan & international teams welcome.
-            </p>
-
-            <div>
-              <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-slate-500">
-                Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                required
-                className="w-full rounded-xl border border-slate-700/60 bg-slate-900/50 px-4 py-3 text-sm text-white outline-none transition focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/30"
-                placeholder="Your name"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="mb-1.5 block text-xs font-medium text-slate-500">
-                Your email (so I can reply)
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                className="w-full rounded-xl border border-slate-700/60 bg-slate-900/50 px-4 py-3 text-sm text-white outline-none transition focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/30"
-                placeholder="you@company.com"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="mb-1.5 block text-xs font-medium text-slate-500">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={4}
-                className="w-full resize-none rounded-xl border border-slate-700/60 bg-slate-900/50 px-4 py-3 text-sm text-white outline-none transition focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/30"
-                placeholder="Role, project, or opportunity details..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="relative flex w-full items-center justify-center gap-2 rounded-xl border border-cyan-400/30 bg-gradient-to-r from-cyan-500/20 to-violet-500/20 px-6 py-3 text-sm font-semibold text-cyan-100 transition hover:glow-cyan cursor-pointer"
-            >
-              <Send className="h-4 w-4" />
-              Send Message
-            </button>
-            <p className="text-center text-[10px] text-slate-600">
-              Delivered to {personal.email} · You&apos;ll be redirected back after sending
-            </p>
           </motion.form>
         </div>
       </div>

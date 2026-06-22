@@ -22,6 +22,7 @@ export const contactForm = {
 
 export const navLinks = [
   { label: 'Skills', href: '#skills' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Certifications', href: '#certifications' },
   { label: 'Education', href: '#education' },
@@ -246,6 +247,29 @@ export const pipelineStages = [
   { id: 'scan', label: 'Security Scan', icon: 'Shield', color: 'emerald', desc: 'Trivy, Snyk, SBOM' },
   { id: 'deploy', label: 'ArgoCD Deploy', icon: 'Rocket', color: 'violet', desc: 'GitOps sync to K8s cluster' },
   { id: 'monitor', label: 'Monitor', icon: 'Activity', color: 'rose', desc: 'Prometheus + Grafana alerts' },
+]
+
+export const experience = [
+  {
+    id: 'flyrank',
+    role: 'Backend AI Engineer - Intern',
+    company: 'FlyRank AI',
+    period: 'Jun 2026 - Present · 1 mo',
+    location: 'Badin, Sindh, Pakistan · Remote',
+    description:
+      'Currently interning at FlyRank AI as an AI intern, focusing on Backend AI Engineering.',
+    logo: '🤖',
+  },
+  {
+    id: 'devalpha',
+    role: 'DevOps Engineer - Intern',
+    company: 'DevAlpha',
+    period: 'Jun 2026 - Present · 1 mo',
+    location: 'Bengaluru, Karnataka, India · Remote',
+    description:
+      'Selected for 1-month virtual internship program at DevAlpha Technologies, Bengaluru. Building practical skills in DevOps workflows, automation, and deployment pipelines. Completing assigned projects and tasks to strengthen technical & professional skills.',
+    logo: '⚙️',
+  },
 ]
 
 export const education = {

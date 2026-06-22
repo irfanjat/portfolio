@@ -20,18 +20,11 @@ const iconMap: Record<string, LucideIcon> = {
   Activity,
 }
 
-const iconColors: Record<string, string> = {
-  cyan: 'bg-cyan-500/15 text-cyan-400 border-cyan-400/30',
-  violet: 'bg-violet-500/15 text-violet-400 border-violet-400/30',
-  emerald: 'bg-emerald-500/15 text-emerald-400 border-emerald-400/30',
-  rose: 'bg-rose-500/15 text-rose-400 border-rose-400/30',
-}
-
-const lineColors: Record<string, string> = {
-  cyan: 'bg-cyan-500/30',
-  violet: 'bg-violet-500/30',
-  emerald: 'bg-emerald-500/30',
-  rose: 'bg-rose-500/30',
+const iconThemes: Record<string, { box: string; line: string }> = {
+  cyan: { box: 'bg-cyan-500/15 text-cyan-400 border-cyan-400/30', line: 'bg-cyan-500/30' },
+  violet: { box: 'bg-violet-500/15 text-violet-400 border-violet-400/30', line: 'bg-violet-500/30' },
+  emerald: { box: 'bg-emerald-500/15 text-emerald-400 border-emerald-400/30', line: 'bg-emerald-500/30' },
+  rose: { box: 'bg-rose-500/15 text-rose-400 border-rose-400/30', line: 'bg-rose-500/30' },
 }
 
 export function PipelineTimeline() {
@@ -44,38 +37,41 @@ export function PipelineTimeline() {
           subtitle="From code push to production — fully automated GitOps pipeline."
         />
 
-        <div className="relative">
-          <div className="absolute top-12 left-8 right-8 h-px bg-gradient-to-r from-transparent via-slate-700/60 to-transparent hidden lg:block" />
+        <div className="dash-card rounded-xl p-6 sm:p-8">
+          <div className="relative">
+            <div className="absolute top-8 left-8 right-8 h-px bg-gradient-to-r from-transparent via-slate-700/60 to-transparent hidden lg:block" />
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
-            {pipelineStages.map((stage, i) => {
-              const Icon = iconMap[stage.icon]
-              const color = stage.color as string
-              return (
-                <motion.div
-                  key={stage.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="relative flex flex-col items-center text-center"
-                >
-                  <div
-                    className={`flex h-12 w-12 items-center justify-center rounded-xl border shadow-lg backdrop-blur-sm ${iconColors[color] ?? iconColors.cyan}`}
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
+              {pipelineStages.map((stage, i) => {
+                const Icon = iconMap[stage.icon]
+                const theme = iconThemes[stage.color as string] ?? iconThemes.cyan
+                return (
+                  <motion.div
+                    key={stage.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="relative flex flex-col items-center text-center group"
                   >
-                    {Icon && <Icon className="h-5 w-5" />}
-                  </div>
-                  <div className={`mt-4 h-1 w-8 rounded-full ${lineColors[color] ?? lineColors.cyan} hidden lg:block`} />
-                  <h3 className="mt-3 text-sm font-semibold text-white">{stage.label}</h3>
-                  <p className="mt-1 text-[11px] text-slate-500 leading-relaxed max-w-[140px]">{stage.desc}</p>
-
-                  <div className="mt-3 flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/60 animate-pulse" />
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-400/60">Active</span>
-                  </div>
-                </motion.div>
-              )
-            })}
+                    <div className="relative">
+                      <div
+                        className={`flex h-12 w-12 items-center justify-center rounded-xl border shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:scale-110 ${theme.box}`}
+                      >
+                        {Icon && <Icon className="h-5 w-5" />}
+                      </div>
+                      <div className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 w-6 rounded-full ${theme.line} hidden lg:block`} />
+                    </div>
+                    <h3 className="mt-4 text-sm font-semibold text-white">{stage.label}</h3>
+                    <p className="mt-1 text-xs text-slate-500 leading-relaxed max-w-[120px]">{stage.desc}</p>
+                    <div className="mt-3 flex items-center gap-1.5">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/60 animate-pulse" />
+                      <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-400/60">Live</span>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { useEffect, useMemo } from 'react'
 import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
 import { Education } from './components/sections/Education'
+import { Experience } from './components/sections/Experience'
 import { Hero } from './components/hero/Hero'
 import { PipelineTimeline } from './components/sections/PipelineTimeline'
 import { Projects } from './components/sections/Projects'
@@ -62,6 +63,9 @@ function App() {
       <main className="relative z-10">
         <Hero />
         <Stats />
+        <div className="relative">
+          <Experience />
+        </div>
         <div className="relative">
           <Skills />
         </div>
