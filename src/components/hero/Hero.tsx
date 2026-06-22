@@ -6,34 +6,36 @@ import { GlowButton } from '../ui/GlowButton'
 
 const floatingIcons = [
   { icon: Cpu, label: 'K8s', delay: 0, color: 'text-cyan-400', pos: { top: -18, left: -18 } },
-  { icon: Cloud, label: 'AWS', delay: 0.6, color: 'text-amber-400', pos: { top: -18, right: -18 } },
-  { icon: GitBranch, label: 'GitOps', delay: 1.2, color: 'text-violet-400', pos: { bottom: -18, left: -18 } },
-  { icon: Layers, label: 'Docker', delay: 1.8, color: 'text-cyan-300', pos: { bottom: -18, right: -18 } },
+  { icon: Cloud, label: 'AWS', delay: 0.8, color: 'text-amber-400', pos: { top: -18, right: -18 } },
+  { icon: GitBranch, label: 'GitOps', delay: 1.6, color: 'text-violet-400', pos: { bottom: -18, left: -18 } },
+  { icon: Layers, label: 'Docker', delay: 2.4, color: 'text-cyan-300', pos: { bottom: -18, right: -18 } },
 ]
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], [0, 80])
+  const y = useTransform(scrollYProgress, [0, 1], [0, 100])
 
   return (
     <section
       ref={ref}
       id="home"
-      className="relative min-h-screen flex items-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-28 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      <div className="mx-auto grid max-w-6xl w-full gap-10 lg:grid-cols-2 lg:gap-12 items-center">
+      <div className="absolute inset-0 dash-grid-bg opacity-30 pointer-events-none" />
+
+      <div className="mx-auto grid max-w-6xl w-full gap-12 lg:grid-cols-2 lg:gap-16 items-center">
 
         <div className="text-center lg:text-left">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-500/5 px-4 py-1.5 font-mono text-xs text-cyan-300/90"
+            className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-emerald-400/20 bg-emerald-500/5 px-4 py-1.5 font-mono text-xs text-emerald-300/90"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+            <span className="status-dot">
+              <span className="ping bg-emerald-400" />
+              <span className="solid bg-emerald-400" />
             </span>
             {personal.availability}
           </motion.div>
@@ -80,6 +82,26 @@ export function Hero() {
               <Mail className="h-4 w-4" />
               Contact Me
             </GlowButton>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="mt-10 flex items-center gap-6 text-xs text-slate-600 font-mono"
+          >
+            <span className="flex items-center gap-1.5">
+              <span className="h-1 w-1 rounded-full bg-emerald-400/60" />
+              Open to work
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-1 w-1 rounded-full bg-cyan-400/60" />
+              Remote / On-site
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-1 w-1 rounded-full bg-violet-400/60" />
+              Immediate join
+            </span>
           </motion.div>
         </div>
 

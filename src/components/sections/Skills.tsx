@@ -26,28 +26,47 @@ const categoryIcons: Record<string, LucideIcon> = {
   'Version Control': GitBranch,
 }
 
-const gradientBorders: Record<string, string> = {
-  cyan: 'from-cyan-500/40 via-transparent to-transparent',
-  emerald: 'from-emerald-500/40 via-transparent to-transparent',
-  violet: 'from-violet-500/40 via-transparent to-transparent',
-  rose: 'from-rose-500/40 via-transparent to-transparent',
-  slate: 'from-slate-500/40 via-transparent to-transparent',
+const barColors: Record<string, string> = {
+  cyan: 'from-cyan-400 to-cyan-600',
+  emerald: 'from-emerald-400 to-emerald-600',
+  violet: 'from-violet-400 to-violet-600',
+  rose: 'from-rose-400 to-rose-600',
 }
 
 const chipColors: Record<string, string> = {
-  cyan: 'bg-cyan-500/10 text-cyan-300 border-cyan-400/20 hover:bg-cyan-500/20 hover:border-cyan-400/40',
-  emerald: 'bg-emerald-500/10 text-emerald-300 border-emerald-400/20 hover:bg-emerald-500/20 hover:border-emerald-400/40',
-  violet: 'bg-violet-500/10 text-violet-300 border-violet-400/20 hover:bg-violet-500/20 hover:border-violet-400/40',
-  rose: 'bg-rose-500/10 text-rose-300 border-rose-400/20 hover:bg-rose-500/20 hover:border-rose-400/40',
-  slate: 'bg-slate-500/10 text-slate-300 border-slate-400/20 hover:bg-slate-500/20 hover:border-slate-400/40',
+  cyan: 'bg-cyan-500/10 text-cyan-300 border-cyan-400/20',
+  emerald: 'bg-emerald-500/10 text-emerald-300 border-emerald-400/20',
+  violet: 'bg-violet-500/10 text-violet-300 border-violet-400/20',
+  rose: 'bg-rose-500/10 text-rose-300 border-rose-400/20',
+  slate: 'bg-slate-500/10 text-slate-300 border-slate-400/20',
 }
 
-const iconBox: Record<string, string> = {
-  cyan: 'bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 text-cyan-400 shadow-cyan-500/10',
-  emerald: 'bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 text-emerald-400 shadow-emerald-500/10',
-  violet: 'bg-gradient-to-br from-violet-500/20 to-violet-500/5 text-violet-400 shadow-violet-500/10',
-  rose: 'bg-gradient-to-br from-rose-500/20 to-rose-500/5 text-rose-400 shadow-rose-500/10',
-  slate: 'bg-gradient-to-br from-slate-500/20 to-slate-500/5 text-slate-400 shadow-slate-500/10',
+const iconBoxes: Record<string, string> = {
+  cyan: 'bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 text-cyan-400',
+  emerald: 'bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 text-emerald-400',
+  violet: 'bg-gradient-to-br from-violet-500/20 to-violet-500/5 text-violet-400',
+  rose: 'bg-gradient-to-br from-rose-500/20 to-rose-500/5 text-rose-400',
+  slate: 'bg-gradient-to-br from-slate-500/20 to-slate-500/5 text-slate-400',
+}
+
+function SkillBar({ name, level, color }: { name: string; level: number; color: string }) {
+  return (
+    <div className="group/skill">
+      <div className="flex items-center justify-between mb-1.5">
+        <span className="text-xs font-medium text-slate-300">{name}</span>
+        <span className="font-mono text-[10px] text-slate-500">{level}%</span>
+      </div>
+      <div className="h-1.5 rounded-full bg-slate-800/80 overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: `${level}%` }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: 'easeOut' }}
+          className={`h-full rounded-full bg-gradient-to-r ${barColors[color] ?? barColors.cyan}`}
+        />
+      </div>
+    </div>
+  )
 }
 
 export function Skills() {
@@ -71,26 +90,29 @@ export function Skills() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: ci * 0.06, duration: 0.4 }}
-                className="group relative"
+                className="dash-card dash-card-hover group relative overflow-hidden rounded-xl p-5"
               >
-                <div
-                  className={`absolute -inset-px rounded-2xl bg-gradient-to-b opacity-0 blur-sm transition duration-500 group-hover:opacity-100 ${gradientBorders[color] ?? gradientBorders.slate}`}
-                />
-                <div className="relative h-full rounded-2xl border border-slate-700/50 bg-slate-900/80 p-5 backdrop-blur-sm transition duration-500 group-hover:border-slate-600/60">
-                  <div className="mb-4 flex items-center gap-3">
-                    <div
-                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-lg ${iconBox[color] ?? iconBox.slate}`}
-                    >
-                      {Icon && <Icon className="h-5 w-5" />}
-                    </div>
-                    <h3 className="text-sm font-semibold text-white">{cat.title}</h3>
+                <div className="mb-4 flex items-center gap-3">
+                  <div
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-lg ${iconBoxes[color] ?? iconBoxes.slate}`}
+                  >
+                    {Icon && <Icon className="h-5 w-5" />}
                   </div>
+                  <h3 className="text-sm font-semibold text-white">{cat.title}</h3>
+                </div>
 
+                <div className="space-y-3">
+                  {cat.skills.map((skill) => (
+                    <SkillBar key={skill.name} name={skill.name} level={skill.level} color={color} />
+                  ))}
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-slate-700/30">
                   <div className="flex flex-wrap gap-1.5">
                     {cat.skills.map((skill) => (
                       <span
                         key={skill.name}
-                        className={`rounded-lg border px-2.5 py-1 text-xs font-medium transition-all duration-200 ${chipColors[color] ?? chipColors.slate}`}
+                        className={`rounded-md border px-2 py-0.5 text-[10px] font-mono transition-all duration-200 ${chipColors[color] ?? chipColors.slate}`}
                       >
                         {skill.name}
                       </span>
