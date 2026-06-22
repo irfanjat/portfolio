@@ -1,10 +1,11 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
 import { Education } from './components/sections/Education'
 import { Experience } from './components/sections/Experience'
 import { Hero } from './components/hero/Hero'
+import { MoreProjectsPage } from './components/sections/MoreProjectsPage'
 import { PipelineTimeline } from './components/sections/PipelineTimeline'
 import { Projects } from './components/sections/Projects'
 import { Skills } from './components/sections/Skills'
@@ -31,7 +32,19 @@ const accentColors = [
   '#f59e0b', '#a855f7', '#ec4899', '#00d9ff', '#7c3aed',
 ]
 
-function App() {
+function useHashRoute() {
+  const [hash, setHash] = useState(() => window.location.hash)
+
+  useEffect(() => {
+    const onHashChange = () => setHash(window.location.hash)
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
+
+  return hash
+}
+
+function MainPortfolio() {
   const theme = useActiveSection()
 
   useEffect(() => {
@@ -86,6 +99,16 @@ function App() {
       <ScrollToTop />
     </div>
   )
+}
+
+function App() {
+  const hash = useHashRoute()
+
+  if (hash === '#more-projects') {
+    return <MoreProjectsPage />
+  }
+
+  return <MainPortfolio />
 }
 
 export default App

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { CheckCircle2, ExternalLink } from 'lucide-react'
 import { projects } from '../../data/site'
+import { moreProjects } from '../../data/moreProjects'
 import { ArchitectureDiagram } from '../projects/ArchitectureDiagram'
 import { SectionHeading } from '../ui/SectionHeading'
 
@@ -110,6 +111,35 @@ export function Projects() {
             </motion.article>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-10 text-center"
+        >
+          <a
+            href="#more-projects"
+            className="group inline-flex items-center gap-3 rounded-xl border border-slate-700/40 dash-card px-6 py-4 transition-all duration-300 hover:border-cyan-400/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.06)]"
+          >
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-400/20 bg-cyan-500/10 text-cyan-400 transition group-hover:bg-cyan-500/20">
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+            </span>
+            <div className="text-left">
+              <div className="text-sm font-semibold text-white group-hover:text-cyan-300 transition-colors">
+                More Projects
+              </div>
+              <div className="text-xs text-slate-500">
+                View all {moreProjects.length} additional DevOps projects
+              </div>
+            </div>
+            <span className="font-mono text-xs text-cyan-400/60 transition group-hover:text-cyan-400 ml-4">
+              View all →
+            </span>
+          </a>
+        </motion.div>
       </div>
     </section>
   )
