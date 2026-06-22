@@ -144,4 +144,108 @@ export const moreProjects: MoreProject[] = [
       { label: ':3000', color: 'rose' },
     ],
   },
+  {
+    id: 'costguard',
+    title: 'CostGuard — AWS Cost Optimization Platform',
+    tech: ['Python', 'AWS Lambda', 'Terraform', 'DynamoDB', 'Slack API', 'GitHub Actions'],
+    github: 'https://github.com/irfanjat/costguard',
+    xyz: {
+      accomplished: 'Built a serverless AWS cost monitoring platform that detects anomalies and wasted resources',
+      byDoing:
+        'Implemented Lambda functions with Cost Explorer API integration, statistical anomaly detection, orphaned resource scanning, and Slack notifications — all deployed via Terraform with CI/CD',
+      resultedIn:
+        'Automated daily cost reports with anomaly alerts, waste detection, and actionable Slack notifications — zero manual monitoring required',
+    },
+    highlights: [
+      'Statistical anomaly detection using z-score analysis on daily spend',
+      'Scans EC2, EBS, EIPs for orphaned resources',
+      'Full IaC deployment with Terraform and GitHub Actions CI/CD',
+    ],
+    architecture: 'EventBridge → Lambda → Cost Explorer + DynamoDB + Resource Scanner → Slack',
+    flowSteps: [
+      { label: 'Schedule', color: 'cyan' },
+      { label: 'Lambda', color: 'violet' },
+      { label: 'Cost API', color: 'amber' },
+      { label: 'DynamoDB', color: 'emerald' },
+      { label: 'Slack', color: 'rose' },
+    ],
+  },
+  {
+    id: 'devsecops',
+    title: 'DevSecOps CI/CD Pipeline with Security Gates',
+    tech: ['GitHub Actions', 'Docker', 'Trivy', 'Bandit', 'OPA/Conftest', 'ArgoCD', 'Kubernetes'],
+    github: 'https://github.com/irfanjat/devsecops-app',
+    xyz: {
+      accomplished: 'Built an end-to-end DevSecOps pipeline with security scanning at every CI/CD stage',
+      byDoing:
+        'Integrated hadolint, yamllint, pytest, Bandit SAST, Trivy container scanning, OPA/Conftest K8s policy checks, and ArgoCD GitOps deployment into a single GitHub Actions workflow',
+      resultedIn:
+        'Zero CVEs reach production — vulnerable builds blocked at build time, K8s manifests validated before deployment, and full audit trail via SARIF reports',
+    },
+    highlights: [
+      'Trivy blocks vulnerable images (Critical/HIGH CVEs) at build time',
+      'OPA/Conftest enforces 6 K8s security policies before deploy',
+      'ArgoCD GitOps with SHA-tagged immutable deployments',
+    ],
+    architecture: 'Lint → Test → Bandit SAST → Trivy Scan → Conftest Policy → ArgoCD Deploy',
+    flowSteps: [
+      { label: 'Lint', color: 'cyan' },
+      { label: 'Test', color: 'violet' },
+      { label: 'Bandit', color: 'amber' },
+      { label: 'Trivy', color: 'emerald' },
+      { label: 'Policy', color: 'rose' },
+      { label: 'Deploy', color: 'cyan' },
+    ],
+  },
+  {
+    id: 'guardrails',
+    title: 'Policy Guardrails Engine — IaC Security',
+    tech: ['OPA/Rego', 'Kyverno', 'Conftest', 'Terraform', 'Kubernetes', 'GitHub Actions'],
+    github: 'https://github.com/irfanjat/Guardrails',
+    xyz: {
+      accomplished: 'Created a policy-as-code guardrail engine that enforces security on Terraform and K8s manifests in CI',
+      byDoing:
+        'Authored 8 Rego policies for Conftest and 3 Kyverno ClusterPolicies blocking public S3, open security groups, missing encryption, hardcoded secrets, privileged containers, and missing resource limits — with automated PR comment integration',
+      resultedIn:
+        'Every PR automatically validated against security policies with violations posted as PR comments — blocking deployment of non-compliant infrastructure',
+    },
+    highlights: [
+      '8 Rego policies covering S3, security groups, encryption, secrets, and tagging',
+      'Kyverno policies for K8s pod security (no root, no privileged, resource limits)',
+      'Automated PR comments with violation details and fix guidance',
+    ],
+    architecture: 'PR → Conftest (Terraform) + Kyverno CLI (K8s) → Pass/Block → PR Comment',
+    flowSteps: [
+      { label: 'PR Open', color: 'cyan' },
+      { label: 'Conftest', color: 'violet' },
+      { label: 'Kyverno', color: 'emerald' },
+      { label: 'Policy Check', color: 'amber' },
+      { label: 'PR Comment', color: 'rose' },
+    ],
+  },
+  {
+    id: 'static-web-app',
+    title: 'Static Web App with Docker & CI/CD',
+    tech: ['HTML', 'CSS', 'JavaScript', 'Docker', 'GitHub Actions'],
+    github: 'https://github.com/irfanjat/Static-web-app',
+    xyz: {
+      accomplished: 'Containerized a static web application with full CI/CD automation',
+      byDoing:
+        'Built a responsive static site with HTML, CSS, and JS, containerized it with Docker (Nginx), and configured GitHub Actions for automated build and deployment',
+      resultedIn:
+        'One-command deployment via Docker with automated CI/CD — push to main triggers build and deploy',
+    },
+    highlights: [
+      'Dockerized with Nginx for production serving',
+      'CI/CD pipeline with automated builds',
+      'Clean, responsive design with interactive JS',
+    ],
+    architecture: 'Code Push → GitHub Actions → Docker Build → Deploy',
+    flowSteps: [
+      { label: 'Code Push', color: 'cyan' },
+      { label: 'CI/CD', color: 'violet' },
+      { label: 'Docker', color: 'emerald' },
+      { label: 'Deploy', color: 'amber' },
+    ],
+  },
 ]
