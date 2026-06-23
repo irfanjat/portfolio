@@ -28,28 +28,28 @@ export function Certifications() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
               whileHover={{ y: -4 }}
-              className="dash-card dash-card-hover group relative overflow-hidden rounded-xl p-5"
+              className="card card-hover group relative overflow-hidden rounded-xl p-5"
             >
               <div className="flex items-start justify-between">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/80 border border-slate-700/30">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800 border border-slate-700">
                   <img src={badgeSvgs[cert.badge] ?? ''} alt={cert.badge} className="h-5 w-5" />
                 </div>
                 {cert.verified && (
-                  <span className="flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[9px] font-medium uppercase tracking-wider text-emerald-400">
+                  <span className="flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[9px] font-medium uppercase tracking-wider text-emerald-300">
                     <BadgeCheck className="h-2.5 w-2.5" />
                     Verified
                   </span>
                 )}
               </div>
-              <Award className="mt-3 h-4 w-4 text-violet-400/80" />
-              <h3 className="mt-1.5 text-sm font-semibold leading-snug text-white">{cert.title}</h3>
-              <p className="mt-1 text-xs text-slate-500">{cert.issuer}</p>
+              <Award className="mt-3 h-4 w-4 text-indigo-400" />
+              <h3 className="mt-1.5 text-sm font-semibold leading-snug text-slate-100">{cert.title}</h3>
+              <p className="mt-1 text-xs text-slate-400">{cert.issuer}</p>
               {cert.link && (
                 <a
                   href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1 rounded-lg border border-cyan-400/20 bg-cyan-500/10 px-3 py-1.5 text-[11px] font-medium text-cyan-300 transition hover:bg-cyan-500/20"
+                  className="mt-3 inline-flex items-center gap-1 rounded-lg border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5 text-[11px] font-medium text-cyan-300 transition hover:bg-cyan-500/20"
                 >
                   Verify <ExternalLink className="h-3 w-3" />
                 </a>

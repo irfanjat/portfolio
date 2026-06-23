@@ -22,57 +22,41 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5 }}
-              className="dash-card dash-card-hover overflow-hidden rounded-xl"
+              className="card card-hover overflow-hidden rounded-xl"
             >
               <div className="grid lg:grid-cols-5">
                 <div className={`lg:col-span-3 p-6 sm:p-8 ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-cyan-400/20 bg-cyan-500/10 font-mono text-[10px] text-cyan-400">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-cyan-500/20 bg-cyan-500/10 font-mono text-[10px] text-cyan-400">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-cyan-400/60">
-                      Project
-                    </span>
-                    <span className="ml-auto flex items-center gap-1 text-[10px] text-emerald-400/60 font-mono">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/60" />
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-cyan-400">Project</span>
+                    <span className="ml-auto flex items-center gap-1 text-[10px] text-emerald-400 font-mono">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                       Deployed
                     </span>
                   </div>
-                  <h3 className="mt-3 text-lg font-bold text-white">
-                    {project.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-                    {project.description}
-                  </p>
+                  <h3 className="mt-3 text-lg font-bold text-slate-100">{project.title}</h3>
+                  <p className="mt-2 text-sm text-slate-400 leading-relaxed">{project.description}</p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-md border border-slate-600/40 bg-slate-800/60 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:border-cyan-400/30 hover:text-cyan-300"
-                      >
+                      <span key={t} className="rounded-md border border-slate-700 bg-slate-800 px-2.5 py-1 text-xs font-medium text-slate-400">
                         {t}
                       </span>
                     ))}
                   </div>
                   <div className="mt-5 grid grid-cols-3 gap-3">
                     {project.metrics.map((m) => (
-                      <div
-                        key={m.label}
-                        className="rounded-xl border border-cyan-500/10 bg-cyan-500/5 p-3 text-center transition hover:border-cyan-400/20 hover:bg-cyan-500/10"
-                      >
-                        <div className="font-mono text-sm font-bold text-cyan-300">
-                          {m.value}
-                        </div>
-                        <div className="mt-0.5 text-[9px] uppercase tracking-wider text-slate-500">
-                          {m.label}
-                        </div>
+                      <div key={m.label} className="rounded-xl border border-cyan-500/10 bg-cyan-500/5 p-3 text-center">
+                        <div className="font-mono text-sm font-bold text-cyan-300">{m.value}</div>
+                        <div className="mt-0.5 text-[9px] uppercase tracking-wider text-slate-500">{m.label}</div>
                       </div>
                     ))}
                   </div>
                   <div className="mt-4 space-y-1">
                     {project.achievements.slice(0, 3).map((a) => (
                       <div key={a} className="flex items-start gap-2 text-xs text-slate-400">
-                        <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-400/70" />
+                        <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-500" />
                         <span>{a}</span>
                       </div>
                     ))}
@@ -82,7 +66,7 @@ export function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-cyan-400/20 bg-cyan-500/10 px-3.5 py-2 text-xs font-medium text-cyan-300 transition hover:bg-cyan-500/20 hover:shadow-[0_0_20px_rgba(0,217,255,0.15)]"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-cyan-500/20 bg-cyan-500/10 px-3.5 py-2 text-xs font-medium text-cyan-300 transition hover:bg-cyan-500/20"
                     >
                       View on GitHub
                       <ExternalLink className="h-3 w-3" />
@@ -92,7 +76,7 @@ export function Projects() {
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-600/40 bg-slate-800/60 px-3.5 py-2 text-xs font-medium text-slate-300 transition hover:border-cyan-400/30 hover:text-cyan-300"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-surface px-3.5 py-2 text-xs font-medium text-slate-400 transition hover:border-slate-600 hover:bg-slate-800"
                       >
                         Case Study
                         <ExternalLink className="h-3 w-3" />
@@ -101,7 +85,7 @@ export function Projects() {
                   </div>
                 </div>
                 <div
-                  className={`lg:col-span-2 flex items-center justify-center border-t border-slate-700/30 bg-slate-900/20 p-6 lg:border-t-0 lg:border-l ${i % 2 === 1 ? 'lg:order-1 lg:border-l-0 lg:border-r' : ''}`}
+                  className={`lg:col-span-2 flex items-center justify-center border-t border-slate-800 bg-slate-800/30 p-6 lg:border-t-0 lg:border-l ${i % 2 === 1 ? 'lg:order-1 lg:border-l-0 lg:border-r' : ''}`}
                 >
                   <div className="w-full max-w-sm">
                     <ArchitectureDiagram type={project.diagram} />
@@ -120,24 +104,18 @@ export function Projects() {
         >
           <a
             href="#more-projects"
-            className="group inline-flex items-center gap-3 rounded-xl border border-slate-700/40 dash-card px-6 py-4 transition-all duration-300 hover:border-cyan-400/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.06)]"
+            className="group inline-flex items-center gap-3 rounded-xl border border-slate-700 card px-6 py-4 transition-all duration-300 hover:border-slate-600"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-400/20 bg-cyan-500/10 text-cyan-400 transition group-hover:bg-cyan-500/20">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-500/20 bg-cyan-500/10 text-cyan-400">
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
               </svg>
             </span>
             <div className="text-left">
-              <div className="text-sm font-semibold text-white group-hover:text-cyan-300 transition-colors">
-                More Projects
-              </div>
-              <div className="text-xs text-slate-500">
-                View all {moreProjects.length} additional DevOps projects
-              </div>
+              <div className="text-sm font-semibold text-slate-100 group-hover:text-cyan-300 transition-colors">More Projects</div>
+              <div className="text-xs text-slate-400">View all {moreProjects.length} additional DevOps projects</div>
             </div>
-            <span className="font-mono text-xs text-cyan-400/60 transition group-hover:text-cyan-400 ml-4">
-              View all →
-            </span>
+            <span className="font-mono text-xs text-cyan-400 group-hover:text-cyan-300 ml-4">View all →</span>
           </a>
         </motion.div>
       </div>

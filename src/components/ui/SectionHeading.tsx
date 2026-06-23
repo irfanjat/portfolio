@@ -13,13 +13,10 @@ export function SectionHeading({ label, title, subtitle }: SectionHeadingProps) 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5 }}
-      className="mb-10 text-center"
+      className="mb-12 text-center"
     >
-      <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/15 bg-cyan-500/5 px-3.5 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-cyan-400/80">
-        <span className="h-1.5 w-1.5 rounded-full bg-cyan-400/60" />
-        {label}
-      </div>
-      <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+      <span className="label-dot">{label}</span>
+      <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">
         {title}
       </h2>
       {subtitle && (
