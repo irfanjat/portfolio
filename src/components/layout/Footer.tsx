@@ -14,16 +14,15 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-slate-800/60 px-4 pt-14 pb-8">
+    <footer className="border-t border-slate-800 bg-surface px-4 pt-14 pb-8">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-
           <div className="sm:col-span-2 lg:col-span-1">
-            <a href="#" className="flex items-center gap-2 font-mono text-sm font-semibold text-white">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-400/30 bg-cyan-500/10">
+            <a href="#" className="flex items-center gap-2 font-mono text-sm font-semibold text-slate-200">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-700 bg-surface">
                 <Terminal className="h-3.5 w-3.5 text-cyan-400" />
               </span>
-              <span>{personal.name.split(' ')[0]}<span className="text-cyan-400/80">.devops</span></span>
+              <span>{personal.name.split(' ')[0]}<span className="text-cyan-400">.devops</span></span>
             </a>
             <p className="mt-3 text-sm text-slate-400 leading-relaxed">
               Building scalable cloud infrastructure and automated delivery systems with modern DevOps practices.
@@ -34,21 +33,21 @@ export function Footer() {
                 target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2 text-xs text-slate-500 transition-colors hover:text-cyan-400"
               >
-                <MapPin className="h-3.5 w-3.5 text-cyan-400/60" />
+                <MapPin className="h-3.5 w-3.5 text-slate-500" />
                 {personal.location}
               </a>
               <a
                 href={`mailto:${personal.email}`}
                 className="flex items-center gap-2 text-xs text-slate-500 transition-colors hover:text-cyan-400"
               >
-                <Mail className="h-3.5 w-3.5 text-cyan-400/60" />
+                <Mail className="h-3.5 w-3.5 text-slate-500" />
                 {personal.email}
               </a>
             </div>
           </div>
 
           <div>
-            <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Quick Links</h3>
+            <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Quick Links</h3>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -61,7 +60,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Services</h3>
+            <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Services</h3>
             <ul className="space-y-2">
               {services.map((s) => (
                 <li key={s.label}>
@@ -74,7 +73,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Connect</h3>
+            <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Connect</h3>
             <ul className="space-y-2.5">
               <li>
                 <a href={personal.github} target="_blank" rel="noopener noreferrer"
@@ -99,13 +98,10 @@ export function Footer() {
               </li>
             </ul>
           </div>
-
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-slate-800/40 pt-6 sm:flex-row">
-          <span className="font-mono text-sm text-slate-500">
-            {personal.name} &copy; {year}
-          </span>
+        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-slate-800 pt-6 sm:flex-row">
+          <span className="font-mono text-sm text-slate-500">{personal.name} &copy; {year}</span>
           <span className="font-mono text-xs text-slate-600">kubectl apply -f portfolio.yaml</span>
         </div>
       </div>

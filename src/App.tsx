@@ -1,5 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useMemo, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
 import { Education } from './components/sections/Education'
@@ -13,85 +12,29 @@ import { Stats } from './components/sections/Stats'
 import { Footer } from './components/layout/Footer'
 import { Navbar } from './components/layout/Navbar'
 import { ScrollToTop } from './components/ui/ScrollToTop'
-import { useActiveSection } from './hooks/useActiveSection'
-
-const themeMeshes = [
-  ['rgba(0,217,255,0.12)', 'rgba(124,58,237,0.1)', 'rgba(0,255,136,0.06)'],
-  ['rgba(124,58,237,0.13)', 'rgba(236,72,153,0.08)', 'rgba(6,182,212,0.06)'],
-  ['rgba(0,255,136,0.13)', 'rgba(0,217,255,0.08)', 'rgba(245,158,11,0.05)'],
-  ['rgba(6,182,212,0.13)', 'rgba(0,255,136,0.08)', 'rgba(124,58,237,0.05)'],
-  ['rgba(245,158,11,0.12)', 'rgba(239,68,68,0.08)', 'rgba(0,217,255,0.06)'],
-  ['rgba(168,85,247,0.12)', 'rgba(236,72,153,0.08)', 'rgba(0,255,136,0.06)'],
-  ['rgba(236,72,153,0.12)', 'rgba(168,85,247,0.08)', 'rgba(0,217,255,0.06)'],
-  ['rgba(0,217,255,0.12)', 'rgba(124,58,237,0.1)', 'rgba(0,255,136,0.06)'],
-  ['rgba(124,58,237,0.12)', 'rgba(6,182,212,0.08)', 'rgba(0,255,136,0.05)'],
-]
-
-const accentColors = [
-  '#00d9ff', '#7c3aed', '#00ff88', '#06b6d4',
-  '#f59e0b', '#a855f7', '#ec4899', '#00d9ff', '#7c3aed',
-]
 
 function useHashRoute() {
   const [hash, setHash] = useState(() => window.location.hash)
-
   useEffect(() => {
     const onHashChange = () => setHash(window.location.hash)
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
-
   return hash
 }
 
 function MainPortfolio() {
-  const theme = useActiveSection()
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-scroll-theme', String(theme))
-  }, [theme])
-
-  const style = useMemo(() => ({ '--accent': accentColors[theme] } as React.CSSProperties), [theme])
-
   return (
-    <div style={style}>
-      <AnimatePresence mode="popLayout">
-        <motion.div
-          key={theme}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.7 }}
-          className="fixed inset-0 z-0 pointer-events-none"
-          style={{
-            backgroundImage: `
-              radial-gradient(ellipse 70% 50% at 50% -10%, ${themeMeshes[theme][0]}, transparent),
-              radial-gradient(ellipse 50% 40% at 95% 50%, ${themeMeshes[theme][1]}, transparent),
-              radial-gradient(ellipse 40% 30% at 5% 90%, ${themeMeshes[theme][2]}, transparent)
-            `,
-          }}
-        />
-      </AnimatePresence>
-      <div className="fixed inset-0 z-0 grid-pattern opacity-20 pointer-events-none" />
+    <div>
       <Navbar />
-      <main className="relative z-10">
+      <main>
         <Hero />
         <Stats />
-        <div className="relative">
-          <Experience />
-        </div>
-        <div className="relative">
-          <Skills />
-        </div>
-        <div className="relative">
-          <PipelineTimeline />
-        </div>
-        <div className="relative">
-          <Projects />
-        </div>
-        <div className="relative">
-          <Certifications />
-        </div>
+        <Experience />
+        <Skills />
+        <PipelineTimeline />
+        <Projects />
+        <Certifications />
         <Education />
         <Contact />
       </main>
@@ -103,11 +46,7 @@ function MainPortfolio() {
 
 function App() {
   const hash = useHashRoute()
-
-  if (hash === '#more-projects') {
-    return <MoreProjectsPage />
-  }
-
+  if (hash === '#more-projects') return <MoreProjectsPage />
   return <MainPortfolio />
 }
 

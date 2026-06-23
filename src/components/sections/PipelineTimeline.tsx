@@ -1,30 +1,20 @@
 import { motion } from 'framer-motion'
 import {
-  Activity,
-  Box,
-  FlaskConical,
-  GitCommit,
-  Rocket,
-  Shield,
+  Activity, Box, FlaskConical, GitCommit, Rocket, Shield,
   type LucideIcon,
 } from 'lucide-react'
 import { pipelineStages } from '../../data/site'
 import { SectionHeading } from '../ui/SectionHeading'
 
 const iconMap: Record<string, LucideIcon> = {
-  GitCommit,
-  FlaskConical,
-  Box,
-  Shield,
-  Rocket,
-  Activity,
+  GitCommit, FlaskConical, Box, Shield, Rocket, Activity,
 }
 
 const iconThemes: Record<string, { box: string; line: string }> = {
-  cyan: { box: 'bg-cyan-500/15 text-cyan-400 border-cyan-400/30', line: 'bg-cyan-500/30' },
-  violet: { box: 'bg-violet-500/15 text-violet-400 border-violet-400/30', line: 'bg-violet-500/30' },
-  emerald: { box: 'bg-emerald-500/15 text-emerald-400 border-emerald-400/30', line: 'bg-emerald-500/30' },
-  rose: { box: 'bg-rose-500/15 text-rose-400 border-rose-400/30', line: 'bg-rose-500/30' },
+  cyan: { box: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20', line: 'bg-cyan-500' },
+  violet: { box: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20', line: 'bg-indigo-500' },
+  emerald: { box: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', line: 'bg-emerald-500' },
+  rose: { box: 'bg-rose-500/10 text-rose-400 border-rose-500/20', line: 'bg-rose-500' },
 }
 
 export function PipelineTimeline() {
@@ -37,9 +27,9 @@ export function PipelineTimeline() {
           subtitle="From code push to production — fully automated GitOps pipeline."
         />
 
-        <div className="dash-card rounded-xl p-6 sm:p-8">
+        <div className="card rounded-xl p-6 sm:p-8">
           <div className="relative">
-            <div className="absolute top-8 left-8 right-8 h-px bg-gradient-to-r from-transparent via-slate-700/60 to-transparent hidden lg:block" />
+            <div className="absolute top-8 left-8 right-8 h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent hidden lg:block" />
 
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
               {pipelineStages.map((stage, i) => {
@@ -56,17 +46,17 @@ export function PipelineTimeline() {
                   >
                     <div className="relative">
                       <div
-                        className={`flex h-12 w-12 items-center justify-center rounded-xl border shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:scale-110 ${theme.box}`}
+                        className={`flex h-12 w-12 items-center justify-center rounded-xl border transition-all duration-300 group-hover:scale-110 ${theme.box}`}
                       >
                         {Icon && <Icon className="h-5 w-5" />}
                       </div>
                       <div className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 w-6 rounded-full ${theme.line} hidden lg:block`} />
                     </div>
-                    <h3 className="mt-4 text-sm font-semibold text-white">{stage.label}</h3>
-                    <p className="mt-1 text-xs text-slate-500 leading-relaxed max-w-[120px]">{stage.desc}</p>
+                    <h3 className="mt-4 text-sm font-semibold text-slate-100">{stage.label}</h3>
+                    <p className="mt-1 text-xs text-slate-400 leading-relaxed max-w-[120px]">{stage.desc}</p>
                     <div className="mt-3 flex items-center gap-1.5">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/60 animate-pulse" />
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-400/60">Live</span>
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-400">Live</span>
                     </div>
                   </motion.div>
                 )

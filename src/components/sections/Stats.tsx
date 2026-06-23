@@ -18,7 +18,7 @@ function AnimatedCounter({ value, suffix = '' }: { value: number; suffix?: strin
   }, [inView, spring, value])
 
   return (
-    <span ref={ref} className="font-mono text-3xl font-bold text-white sm:text-4xl">
+    <span ref={ref} className="font-mono text-3xl font-bold text-slate-100 sm:text-4xl">
       {display}{suffix}
     </span>
   )
@@ -38,20 +38,17 @@ export function Stats() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="dash-card dash-card-hover relative overflow-hidden rounded-xl p-6 text-center group"
+                className="card card-hover rounded-xl p-6 text-center"
               >
-                <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-gradient-to-br from-cyan-500/5 to-violet-500/5 blur-xl" />
-                <div className="relative">
-                  {Icon && (
-                    <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500/10 to-violet-500/10 text-cyan-400/80">
-                      <Icon className="h-4 w-4" />
-                    </div>
-                  )}
-                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                  <span className="mt-1.5 block text-xs font-mono uppercase tracking-wider text-slate-500">
-                    {stat.label}
-                  </span>
-                </div>
+                {Icon && (
+                  <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
+                    <Icon className="h-4 w-4" />
+                  </div>
+                )}
+                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                <span className="mt-1.5 block text-xs font-mono uppercase tracking-wider text-slate-400">
+                  {stat.label}
+                </span>
               </motion.div>
             )
           })}

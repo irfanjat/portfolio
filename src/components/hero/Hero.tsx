@@ -16,8 +16,6 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center pt-28 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      <div className="absolute inset-0 dash-grid-bg opacity-30 pointer-events-none" />
-
       <div className="mx-auto grid max-w-6xl w-full gap-12 lg:grid-cols-2 lg:gap-16 items-center">
 
         <div className="text-center lg:text-left">
@@ -25,12 +23,8 @@ export function Hero() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-emerald-400/20 bg-emerald-500/5 px-4 py-1.5 font-mono text-xs text-emerald-300/90"
+            className="label-dot mb-6"
           >
-            <span className="status-dot">
-              <span className="ping bg-emerald-400" />
-              <span className="solid bg-emerald-400" />
-            </span>
             {personal.availability}
           </motion.div>
 
@@ -38,17 +32,17 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.6 }}
-            className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl"
+            className="text-5xl font-extrabold tracking-tight text-slate-100 sm:text-6xl lg:text-7xl"
           >
             {personal.name.split(' ')[0]}{' '}
-            <span className="text-gradient">{personal.name.split(' ')[1]}</span>
+            <span className="text-cyan-400">{personal.name.split(' ')[1]}</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.25 }}
-            className="mt-3 font-mono text-sm text-gradient-subtle sm:text-base"
+            className="mt-3 font-mono text-sm text-slate-400 sm:text-base"
           >
             {personal.role}
           </motion.p>
@@ -82,18 +76,18 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="mt-10 flex items-center gap-6 text-xs text-slate-600 font-mono"
+            className="mt-10 flex items-center gap-6 text-xs text-slate-500 font-mono"
           >
             <span className="flex items-center gap-1.5">
-              <span className="h-1 w-1 rounded-full bg-emerald-400/60" />
+              <span className="h-1 w-1 rounded-full bg-emerald-500" />
               Open to work
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="h-1 w-1 rounded-full bg-cyan-400/60" />
+              <span className="h-1 w-1 rounded-full bg-cyan-500" />
               Remote / On-site
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="h-1 w-1 rounded-full bg-violet-400/60" />
+              <span className="h-1 w-1 rounded-full bg-indigo-500" />
               Immediate join
             </span>
           </motion.div>

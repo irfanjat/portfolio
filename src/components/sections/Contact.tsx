@@ -54,7 +54,7 @@ export function Contact() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 whileHover={{ x: 4 }}
-                className="dash-card dash-card-hover flex items-center gap-4 rounded-xl p-4"
+                className="card card-hover flex items-center gap-4 rounded-xl p-4"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
                   <link.icon className="h-5 w-5" />
@@ -68,12 +68,9 @@ export function Contact() {
 
             <a
               href={`mailto:${personal.email}?subject=Portfolio%20inquiry`}
-              className="dash-card dash-card-hover flex items-center justify-center gap-2 rounded-xl p-4 text-sm font-medium text-cyan-300"
+              className="card card-hover flex items-center justify-center gap-2 rounded-xl p-4 text-sm font-medium text-cyan-300"
             >
-              <span className="status-dot">
-                <span className="ping bg-emerald-400" />
-                <span className="solid bg-emerald-400" />
-              </span>
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
               Email me at {personal.email}
             </a>
           </motion.div>
@@ -84,17 +81,17 @@ export function Contact() {
             viewport={{ once: true }}
             action="https://api.web3forms.com/submit"
             method="POST"
-            className="dash-card rounded-xl p-6 sm:p-8 lg:col-span-3"
+            className="card rounded-xl p-6 sm:p-8 lg:col-span-3"
           >
             <input type="hidden" name="access_key" value={contactForm.web3formsAccessKey} />
             <input type="hidden" name="subject" value="New message from Irfan Ali Portfolio" />
             <input type="hidden" name="from_name" value="Portfolio Contact Form" />
             <input type="hidden" name="redirect" value={redirectUrl} />
 
-            <div className="mb-4 flex items-center gap-2 pb-4 border-b border-slate-700/30">
-              <span className="flex h-2 w-2 rounded-full bg-rose-500/80" />
-              <span className="flex h-2 w-2 rounded-full bg-amber-400/80" />
-              <span className="flex h-2 w-2 rounded-full bg-emerald-400/80" />
+            <div className="mb-4 flex items-center gap-2 pb-4 border-b border-slate-800">
+              <span className="flex h-2 w-2 rounded-full bg-rose-400" />
+              <span className="flex h-2 w-2 rounded-full bg-amber-400" />
+              <span className="flex h-2 w-2 rounded-full bg-emerald-400" />
               <span className="ml-3 font-mono text-[11px] text-slate-500">contact-form.sh</span>
             </div>
 
@@ -106,7 +103,7 @@ export function Contact() {
                   name="name"
                   required
                   placeholder="Enter your name..."
-                  className="w-full rounded-lg border border-slate-700/40 bg-slate-900/60 px-4 py-2.5 text-sm text-slate-200 placeholder-slate-600 outline-none transition focus:border-cyan-400/40 focus:shadow-[0_0_12px_rgba(0,217,255,0.06)]"
+                  className="w-full rounded-lg border border-slate-700 bg-slate-800/50 px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 outline-none transition focus:border-cyan-400"
                 />
               </div>
               <div>
@@ -116,7 +113,7 @@ export function Contact() {
                   name="email"
                   required
                   placeholder="Enter your email..."
-                  className="w-full rounded-lg border border-slate-700/40 bg-slate-900/60 px-4 py-2.5 text-sm text-slate-200 placeholder-slate-600 outline-none transition focus:border-cyan-400/40 focus:shadow-[0_0_12px_rgba(0,217,255,0.06)]"
+                  className="w-full rounded-lg border border-slate-700 bg-slate-800/50 px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 outline-none transition focus:border-cyan-400"
                 />
               </div>
               <div>
@@ -126,12 +123,12 @@ export function Contact() {
                   required
                   rows={4}
                   placeholder="Type your message..."
-                  className="w-full rounded-lg border border-slate-700/40 bg-slate-900/60 px-4 py-2.5 text-sm text-slate-200 placeholder-slate-600 outline-none transition focus:border-cyan-400/40 focus:shadow-[0_0_12px_rgba(0,217,255,0.06)] resize-none"
+                  className="w-full rounded-lg border border-slate-700 bg-slate-800/50 px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 outline-none transition focus:border-cyan-400 resize-none"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full rounded-xl border border-cyan-400/25 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 px-6 py-3 text-sm font-semibold text-cyan-300 transition hover:glow-cyan hover:border-cyan-400/50 flex items-center justify-center gap-2"
+                className="w-full rounded-lg bg-cyan-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-cyan-700 flex items-center justify-center gap-2"
               >
                 <Send className="h-4 w-4" />
                 Send Message
@@ -142,7 +139,7 @@ export function Contact() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-4 flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300"
+                className="mt-4 flex items-center gap-2 rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300"
               >
                 <CheckCircle2 className="h-4 w-4" />
                 Message sent successfully!

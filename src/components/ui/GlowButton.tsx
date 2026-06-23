@@ -19,13 +19,13 @@ export function GlowButton({
   download,
 }: GlowButtonProps) {
   const base =
-    'relative inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-300'
+    'relative inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition-all duration-200'
   const variants = {
     primary:
-      'bg-gradient-to-r from-cyan-500/20 to-violet-500/20 text-cyan-100 border border-cyan-400/30 hover:border-cyan-400/60 hover:shadow-[0_0_30px_rgba(34,211,238,0.25)]',
+      'bg-cyan-600 text-white border border-cyan-600 hover:bg-cyan-700',
     secondary:
-      'glass text-slate-200 border-slate-500/30 hover:border-violet-400/40 hover:text-white',
-    ghost: 'text-slate-400 hover:text-cyan-300 border border-transparent hover:border-slate-600/50',
+      'bg-surface text-slate-300 border border-slate-700 hover:border-slate-600 hover:bg-slate-800',
+    ghost: 'text-slate-500 hover:text-slate-300 border border-transparent hover:border-slate-700',
   }
 
   const content = (

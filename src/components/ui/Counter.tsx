@@ -21,7 +21,7 @@ export function Counter({ value, suffix = '', label }: CounterProps) {
 
   return (
     <div ref={ref} className="text-center">
-      <span className="block font-mono text-3xl font-bold text-gradient sm:text-4xl">
+      <span className="block font-mono text-3xl font-bold text-slate-100 sm:text-4xl">
         {display}
         {suffix}
       </span>
