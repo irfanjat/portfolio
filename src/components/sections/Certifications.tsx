@@ -31,7 +31,7 @@ export function Certifications() {
               className="card card-hover group relative overflow-hidden rounded-xl p-5"
             >
               <div className="flex items-start justify-between">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800 border border-slate-700">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/[0.04] backdrop-blur-lg border border-white/10">
                   <img src={badgeSvgs[cert.badge] ?? ''} alt={cert.badge} className="h-5 w-5" />
                 </div>
                 {cert.verified && (

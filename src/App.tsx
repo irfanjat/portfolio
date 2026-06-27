@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
 import { Education } from './components/sections/Education'
-import { Experience } from './components/sections/Experience'
+
 import { Hero } from './components/hero/Hero'
 import { MoreProjectsPage } from './components/sections/MoreProjectsPage'
 import { PipelineTimeline } from './components/sections/PipelineTimeline'
@@ -30,7 +30,6 @@ function MainPortfolio() {
       <main>
         <Hero />
         <Stats />
-        <Experience />
         <Skills />
         <PipelineTimeline />
         <Projects />

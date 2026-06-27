@@ -14,12 +14,12 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-slate-800 bg-surface px-4 pt-14 pb-8">
+    <footer className="border-t border-white/5 bg-[rgba(8,11,23,0.6)] backdrop-blur-xl px-4 pt-14 pb-8">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
             <a href="#" className="flex items-center gap-2 font-mono text-sm font-semibold text-slate-200">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-700 bg-surface">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] backdrop-blur-lg">
                 <Terminal className="h-3.5 w-3.5 text-cyan-400" />
               </span>
               <span>{personal.name.split(' ')[0]}<span className="text-cyan-400">.devops</span></span>

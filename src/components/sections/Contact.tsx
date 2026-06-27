@@ -103,7 +103,7 @@ export function Contact() {
                   name="name"
                   required
                   placeholder="Enter your name..."
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800/50 px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 outline-none transition focus:border-cyan-400"
+                  className="glass-input w-full rounded-lg px-4 py-2.5 text-sm resize-none"
                 />
               </div>
               <div>
@@ -113,7 +113,7 @@ export function Contact() {
                   name="email"
                   required
                   placeholder="Enter your email..."
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800/50 px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 outline-none transition focus:border-cyan-400"
+                  className="glass-input w-full rounded-lg px-4 py-2.5 text-sm"
                 />
               </div>
               <div>
@@ -123,7 +123,7 @@ export function Contact() {
                   required
                   rows={4}
                   placeholder="Type your message..."
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800/50 px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 outline-none transition focus:border-cyan-400 resize-none"
+                  className="glass-input w-full rounded-lg px-4 py-2.5 text-sm resize-none"
                 />
               </div>
               <button

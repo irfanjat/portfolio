@@ -31,12 +31,12 @@ export function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.1, duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-surface/90 backdrop-blur-md border-b border-slate-800 py-2.5 shadow-sm shadow-black/20' : 'bg-transparent py-4'
+          scrolled ? 'bg-[rgba(8,11,23,0.7)] backdrop-blur-xl border-b border-white/5 py-2.5 shadow-xl shadow-black/20' : 'bg-transparent py-4'
         }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a href="#" className="flex items-center gap-3 font-mono text-sm font-semibold text-slate-200 group">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 bg-surface">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] backdrop-blur-lg">
             <Terminal className="h-4 w-4 text-cyan-400" />
           </span>
           <span className="hidden sm:inline">{personal.name.split(' ')[0]}<span className="text-cyan-400">.devops</span></span>
@@ -87,7 +87,7 @@ export function Navbar() {
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
-          className="bg-surface border-t border-slate-800 md:hidden"
+          className="bg-[rgba(8,11,23,0.95)] backdrop-blur-xl border-t border-white/5 md:hidden"
         >
           <ul className="flex flex-col gap-1 px-4 py-4">
             {navLinks.map((link) => (

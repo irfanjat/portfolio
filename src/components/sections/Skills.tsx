@@ -57,7 +57,7 @@ export function Skills() {
               >
                 <div className="mb-4 flex items-center gap-3">
                   <div
-                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${iconBoxes[color] ?? 'bg-slate-800 text-slate-400'}`}
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${iconBoxes[color] ?? 'bg-white/[0.04] backdrop-blur-lg text-slate-400'}`}
                   >
                     {Icon && <Icon className="h-5 w-5" />}
                   </div>
@@ -73,7 +73,7 @@ export function Skills() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: ci * 0.06 + si * 0.03 }}
-                      className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium ${chipThemes[color] ?? 'border-slate-700 bg-slate-800 text-slate-400'}`}
+                      className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium ${chipThemes[color] ?? 'border-white/10 bg-white/[0.04] backdrop-blur-lg text-slate-400'}`}
                     >
                       {skill.name}
                     </motion.span>
