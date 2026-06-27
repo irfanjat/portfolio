@@ -25,7 +25,7 @@ export function MoreProjectsPage() {
         >
           <button
             onClick={handleBack}
-            className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-surface px-4 py-2 text-sm text-slate-400 transition hover:text-cyan-400 hover:border-cyan-500/20 mb-8"
+            className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] backdrop-blur-lg px-4 py-2 text-sm text-slate-400 transition hover:text-cyan-400 hover:border-cyan-500/20 mb-8"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Portfolio
@@ -65,7 +65,7 @@ export function MoreProjectsPage() {
                       {project.tech.map((t) => (
                         <span
                           key={t}
-                          className="rounded-md border border-slate-700 bg-slate-800 px-2.5 py-1 text-xs font-medium text-slate-400"
+                          className="rounded-md border border-white/10 bg-white/[0.04] backdrop-blur-lg px-2.5 py-1 text-xs font-medium text-slate-400"
                         >
                           {t}
                         </span>
@@ -73,15 +73,15 @@ export function MoreProjectsPage() {
                     </div>
 
                     <div className="grid gap-4 sm:grid-cols-3 mb-4">
-                      <div className="rounded-lg border border-slate-800 bg-slate-800/30 p-3">
+                      <div className="rounded-lg border border-white/5 bg-white/[0.015] backdrop-blur-lg p-3">
                         <div className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 mb-1">Accomplished</div>
                         <p className="text-xs text-slate-400 leading-relaxed">{project.xyz.accomplished}</p>
                       </div>
-                      <div className="rounded-lg border border-slate-800 bg-slate-800/30 p-3">
+                      <div className="rounded-lg border border-white/5 bg-white/[0.015] backdrop-blur-lg p-3">
                         <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 mb-1">How</div>
                         <p className="text-xs text-slate-400 leading-relaxed">{project.xyz.byDoing}</p>
                       </div>
-                      <div className="rounded-lg border border-slate-800 bg-slate-800/30 p-3">
+                      <div className="rounded-lg border border-white/5 bg-white/[0.015] backdrop-blur-lg p-3">
                         <div className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 mb-1">Result</div>
                         <p className="text-xs text-slate-400 leading-relaxed">{project.xyz.resultedIn}</p>
                       </div>
@@ -99,7 +99,7 @@ export function MoreProjectsPage() {
                     {project.architecture && (
                       <div className="mb-4">
                         <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-2">Architecture</div>
-                        <div className="inline-flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5">
+                        <div className="inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/[0.03] backdrop-blur-lg px-3 py-1.5">
                           <span className="text-xs text-slate-400 font-mono">{project.architecture}</span>
                         </div>
                       </div>
@@ -145,7 +145,7 @@ export function MoreProjectsPage() {
         >
           <button
             onClick={handleBack}
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-surface px-6 py-3 text-sm font-medium text-slate-400 transition hover:border-slate-600 hover:text-slate-200"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-lg px-6 py-3 text-sm font-medium text-slate-400 transition hover:border-white/20 hover:text-slate-200"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Portfolio

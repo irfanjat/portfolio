@@ -20,10 +20,10 @@ export function TerminalHero() {
         initial={{ opacity: 0, y: 36, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ delay: 0.25, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="relative w-full overflow-hidden rounded-xl border border-slate-700 bg-surface font-mono text-sm shadow-sm"
+        className="relative w-full overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-xl font-mono text-sm shadow-xl shadow-black/30"
       >
         {/* title bar */}
-        <div className="flex items-center gap-2 border-b border-slate-800 bg-slate-800/60 px-4 py-2.5">
+        <div className="flex items-center gap-2 border-b border-white/5 bg-white/[0.02] px-4 py-2.5">
           <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
           <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
           <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
@@ -51,7 +51,7 @@ export function TerminalHero() {
         </div>
 
         {/* footer */}
-        <div className="flex items-center gap-2.5 border-t border-slate-800 bg-slate-800/30 px-4 py-2">
+        <div className="flex items-center gap-2.5 border-t border-white/5 bg-white/[0.015] px-4 py-2">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />

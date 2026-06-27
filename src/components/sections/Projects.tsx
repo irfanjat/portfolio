@@ -40,7 +40,7 @@ export function Projects() {
                   <p className="mt-2 text-sm text-slate-400 leading-relaxed">{project.description}</p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {project.tech.map((t) => (
-                      <span key={t} className="rounded-md border border-slate-700 bg-slate-800 px-2.5 py-1 text-xs font-medium text-slate-400">
+                      <span key={t} className="rounded-md border border-white/10 bg-white/[0.04] backdrop-blur-lg px-2.5 py-1 text-xs font-medium text-slate-400">
                         {t}
                       </span>
                     ))}
@@ -76,7 +76,7 @@ export function Projects() {
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-surface px-3.5 py-2 text-xs font-medium text-slate-400 transition hover:border-slate-600 hover:bg-slate-800"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.03] backdrop-blur-lg px-3.5 py-2 text-xs font-medium text-slate-400 transition hover:border-white/20 hover:bg-white/[0.06]"
                       >
                         Case Study
                         <ExternalLink className="h-3 w-3" />
@@ -85,7 +85,7 @@ export function Projects() {
                   </div>
                 </div>
                 <div
-                  className={`lg:col-span-2 flex items-center justify-center border-t border-slate-800 bg-slate-800/30 p-6 lg:border-t-0 lg:border-l ${i % 2 === 1 ? 'lg:order-1 lg:border-l-0 lg:border-r' : ''}`}
+                  className={`lg:col-span-2 flex items-center justify-center border-t border-white/5 bg-white/[0.015] p-6 lg:border-t-0 lg:border-l ${i % 2 === 1 ? 'lg:order-1 lg:border-l-0 lg:border-r' : ''}`}
                 >
                   <div className="w-full max-w-sm">
                     <ArchitectureDiagram type={project.diagram} />

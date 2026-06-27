@@ -24,7 +24,7 @@ export function GlowButton({
     primary:
       'bg-cyan-600 text-white border border-cyan-600 hover:bg-cyan-700',
     secondary:
-      'bg-surface text-slate-300 border border-slate-700 hover:border-slate-600 hover:bg-slate-800',
+      'bg-white/[0.04] backdrop-blur-lg text-slate-300 border border-white/10 hover:border-white/20 hover:bg-white/[0.08]',
     ghost: 'text-slate-500 hover:text-slate-300 border border-transparent hover:border-slate-700',
   }
 
