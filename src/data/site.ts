@@ -22,7 +22,6 @@ export const contactForm = {
 
 export const navLinks = [
   { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Certifications', href: '#certifications' },
   { label: 'Education', href: '#education' },

@@ -8,7 +8,7 @@ import { MoreProjectsPage } from './components/sections/MoreProjectsPage'
 import { PipelineTimeline } from './components/sections/PipelineTimeline'
 import { Projects } from './components/sections/Projects'
 import { Skills } from './components/sections/Skills'
-import { Stats } from './components/sections/Stats'
+
 import { Footer } from './components/layout/Footer'
 import { Navbar } from './components/layout/Navbar'
 import { ScrollToTop } from './components/ui/ScrollToTop'
@@ -29,7 +29,6 @@ function MainPortfolio() {
       <Navbar />
       <main>
         <Hero />
-        <Stats />
         <Skills />
         <PipelineTimeline />
         <Projects />
