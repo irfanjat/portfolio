@@ -83,6 +83,7 @@ export const skillCategories = [
         skills: [
           { name: 'VPC', level: 90, usecase: 'Isolated cloud network' },
           { name: 'ALB', level: 85, usecase: 'Application load balancing' },
+          { name: 'Route53', level: 83, usecase: 'DNS & domain management' },
         ],
       },
       {
