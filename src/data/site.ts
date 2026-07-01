@@ -67,19 +67,40 @@ export const skillCategories = [
   {
     title: 'Cloud & AWS',
     color: 'cyan',
-    skills: [
-      { name: 'VPC', level: 90 },
-      { name: 'EC2', level: 88 },
-      { name: 'ECS', level: 85 },
-      { name: 'EKS', level: 85 },
-      { name: 'ECR', level: 84 },
-      { name: 'ALB', level: 85 },
-      { name: 'Auto Scaling', level: 86 },
-      { name: 'RDS', level: 84 },
-      { name: 'S3', level: 90 },
-      { name: 'IAM', level: 88 },
-      { name: 'DynamoDB', level: 80 },
-      { name: 'CloudWatch', level: 85 },
+    groups: [
+      {
+        label: 'Compute',
+        skills: [
+          { name: 'EC2', level: 88, usecase: 'Virtual servers for applications' },
+          { name: 'ECS', level: 85, usecase: 'Container orchestration service' },
+          { name: 'EKS', level: 85, usecase: 'Managed Kubernetes clusters' },
+          { name: 'Auto Scaling', level: 86, usecase: 'Dynamic capacity management' },
+          { name: 'Lambda', level: 82, usecase: 'Serverless compute functions' },
+        ],
+      },
+      {
+        label: 'Networking & Delivery',
+        skills: [
+          { name: 'VPC', level: 90, usecase: 'Isolated cloud network' },
+          { name: 'ALB', level: 85, usecase: 'Application load balancing' },
+        ],
+      },
+      {
+        label: 'Storage & Database',
+        skills: [
+          { name: 'S3', level: 90, usecase: 'Object storage & backups' },
+          { name: 'RDS', level: 84, usecase: 'Managed relational databases' },
+          { name: 'DynamoDB', level: 80, usecase: 'NoSQL key-value store' },
+          { name: 'ECR', level: 84, usecase: 'Container image registry' },
+        ],
+      },
+      {
+        label: 'Security & Monitoring',
+        skills: [
+          { name: 'IAM', level: 88, usecase: 'Access & identity management' },
+          { name: 'CloudWatch', level: 85, usecase: 'Monitoring & observability' },
+        ],
+      },
     ],
   },
   {
