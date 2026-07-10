@@ -41,7 +41,7 @@ function Arrow() {
 
 function GitOpsDiagram() {
   return (
-    <div className="rounded-xl border border-slate-700/50 bg-slate-900/60 p-4 font-mono text-[10px]">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 font-mono text-[10px]">
       <div className="mb-4 text-center text-[11px] font-semibold text-cyan-400/80">GitOps Pipeline</div>
       <div className="flex flex-wrap items-center justify-center gap-1.5">
         <Node label="GitHub" color="slate" delay={0} />
@@ -60,14 +60,13 @@ function GitOpsDiagram() {
         <Arrow />
         <Node label="K8s Cluster" color="emerald" delay={0.5} sub="Self-healing" />
       </div>
-      <p className="mt-3 text-center text-[9px] text-slate-600">SHA tags → zero-downtime deploy</p>
     </div>
   )
 }
 
 function AWSDiagram() {
   return (
-    <div className="rounded-xl border border-slate-700/50 bg-slate-900/60 p-4 font-mono text-[10px]">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 font-mono text-[10px]">
       <div className="mb-4 text-center text-[11px] font-semibold text-amber-400/80">AWS Multi-Tier</div>
       <div className="space-y-2">
         <Node label="Route 53 / ALB" color="amber" delay={0} />
@@ -87,7 +86,7 @@ function AWSDiagram() {
 
 function ObservabilityDiagram() {
   return (
-    <div className="rounded-xl border border-slate-700/50 bg-slate-900/60 p-4 font-mono text-[10px]">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 font-mono text-[10px]">
       <div className="mb-4 text-center text-[11px] font-semibold text-rose-400/80">K8s Observability</div>
       <div className="grid grid-cols-2 gap-2">
         <div className="col-span-2">

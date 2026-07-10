@@ -1,118 +1,110 @@
-import { motion } from 'framer-motion'
-import { Menu, Terminal, X } from 'lucide-react'
-import { useEffect, useState } from 'react'
-import { navLinks, personal } from '../../data/site'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
+import { Menu, X } from 'lucide-react'
+import { useState } from 'react'
+import { navLinks } from '../../data/portfolio'
+import { useActiveSection } from '../../hooks/useActiveSection'
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [active, setActive] = useState('')
-
-  useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 40)
-      const sections = navLinks.map((l) => l.href.slice(1))
-      for (const id of sections.reverse()) {
-        const el = document.getElementById(id)
-        if (el && el.getBoundingClientRect().top <= 120) {
-          setActive(id)
-          return
-        }
-      }
-      setActive('')
-    }
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  const active = useActiveSection()
+  const { scrollY } = useScroll()
+  const navBg = useTransform(scrollY, [0, 80], ['rgba(3,3,8,0)', 'rgba(3,3,8,0.85)'])
+  const navBlur = useTransform(scrollY, [0, 80], ['blur(0px)', 'blur(20px)'])
+  const navPadding = useTransform(scrollY, [0, 80], ['1.25rem', '0.75rem'])
 
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 0.1, duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-[rgba(8,11,23,0.7)] backdrop-blur-xl border-b border-white/5 py-2.5 shadow-xl shadow-black/20' : 'bg-transparent py-4'
-        }`}
-    >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#" className="flex items-center gap-3 font-mono text-sm font-semibold text-slate-200 group">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] backdrop-blur-lg">
-            <Terminal className="h-4 w-4 text-cyan-400" />
-          </span>
-          <span className="hidden sm:inline">{personal.name.split(' ')[0]}<span className="text-cyan-400">.devops</span></span>
-          <span className="hidden sm:inline-flex items-center gap-1.5 ml-2 text-xs text-emerald-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-            Active
-          </span>
-        </a>
+    <>
+      <motion.header
+        style={{ backgroundColor: navBg, backdropFilter: navBlur, paddingTop: navPadding, paddingBottom: navPadding }}
+        className="fixed top-0 left-0 right-0 z-50 border-b border-white/0 transition-[border-color] duration-300"
+      >
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <a href="#home" className="group flex items-center gap-2.5">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 border border-white/10 font-mono text-sm font-bold text-cyan-400 transition group-hover:border-cyan-500/30">
+              IA
+            </div>
+            <span className="hidden font-semibold text-slate-200 sm:block">Irfan Ali</span>
+          </a>
 
-        <ul className="hidden items-center gap-0.5 md:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className={`relative rounded-lg px-3.5 py-2 text-sm transition-colors ${
-                    active === link.href.slice(1)
-                      ? 'text-cyan-300 bg-cyan-500/10'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+          <div className="hidden items-center gap-1 md:flex">
+            {navLinks.map((link) => {
+              const id = link.href.replace('#', '')
+              const isActive = active === id
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`relative rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
+                    isActive ? 'text-cyan-400' : 'text-slate-400 hover:text-slate-200'
                   }`}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+                >
+                  {link.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-indicator"
+                      className="absolute inset-0 -z-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </a>
+              )
+            })}
+          </div>
 
-        <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-2 rounded-lg border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 transition hover:bg-cyan-500/20 hover:border-cyan-500/30"
+            className="hidden rounded-xl bg-gradient-to-r from-cyan-500/90 to-cyan-600/90 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:shadow-cyan-500/30 md:block"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
             Hire Me
           </a>
 
           <button
-            type="button"
-            className="rounded-lg p-2 text-slate-500 hover:text-slate-300 hover:bg-slate-800 md:hidden"
             onClick={() => setOpen(!open)}
+            className="flex h-10 w-10 items-center justify-center rounded-xl glass text-slate-300 md:hidden"
             aria-label="Toggle menu"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
-        </div>
-      </nav>
+        </nav>
+      </motion.header>
 
-      {open && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          className="bg-[rgba(8,11,23,0.95)] backdrop-blur-xl border-t border-white/5 md:hidden"
-        >
-          <ul className="flex flex-col gap-1 px-4 py-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="fixed inset-0 z-40 flex flex-col bg-[#030308]/95 backdrop-blur-xl pt-24 px-6 md:hidden"
+          >
+            <div className="flex flex-col gap-2">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.href}
                   href={link.href}
-                  className="block rounded-lg px-4 py-3 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-slate-200"
                   onClick={() => setOpen(false)}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="rounded-xl glass px-5 py-4 text-lg font-medium text-slate-200"
                 >
                   {link.label}
-                </a>
-              </li>
-            ))}
-            <li>
-              <a
+                </motion.a>
+              ))}
+              <motion.a
                 href="#contact"
-                className="mt-2 block rounded-lg bg-cyan-500/10 px-4 py-3 text-center text-sm text-cyan-300 transition hover:bg-cyan-500/20"
                 onClick={() => setOpen(false)}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.05 }}
+                className="mt-4 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-600 px-5 py-4 text-center text-lg font-semibold text-white"
               >
                 Hire Me
-              </a>
-            </li>
-          </ul>
-        </motion.div>
-      )}
-    </motion.header>
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }

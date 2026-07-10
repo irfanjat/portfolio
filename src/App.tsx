@@ -1,16 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { MeshBackground } from './components/effects/MeshBackground'
+import { SmoothScrollProvider } from './components/effects/SmoothScrollProvider'
+import { Footer } from './components/layout/Footer'
+import { Navbar } from './components/layout/Navbar'
 import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
 import { Education } from './components/sections/Education'
-
-import { Hero } from './components/hero/Hero'
-import { MoreProjectsPage } from './components/sections/MoreProjectsPage'
-import { PipelineTimeline } from './components/sections/PipelineTimeline'
+import { Hero } from './components/sections/Hero'
+import { MoreProjects } from './components/sections/MoreProjects'
+import { Pipeline } from './components/sections/Pipeline'
 import { Projects } from './components/sections/Projects'
 import { Skills } from './components/sections/Skills'
 import { Stats } from './components/sections/Stats'
-import { Footer } from './components/layout/Footer'
-import { Navbar } from './components/layout/Navbar'
 import { ScrollToTop } from './components/ui/ScrollToTop'
 
 function useHashRoute() {
@@ -25,13 +26,13 @@ function useHashRoute() {
 
 function MainPortfolio() {
   return (
-    <div>
+    <>
       <Navbar />
       <main>
         <Hero />
         <Stats />
         <Skills />
-        <PipelineTimeline />
+        <Pipeline />
         <Projects />
         <Certifications />
         <Education />
@@ -39,14 +40,28 @@ function MainPortfolio() {
       </main>
       <Footer />
       <ScrollToTop />
-    </div>
+    </>
   )
 }
 
 function App() {
   const hash = useHashRoute()
-  if (hash === '#more-projects') return <MoreProjectsPage />
-  return <MainPortfolio />
+
+  return (
+    <SmoothScrollProvider>
+      <MeshBackground />
+      {hash === '#more-projects' ? (
+        <>
+          <Navbar />
+          <MoreProjects />
+          <Footer />
+          <ScrollToTop />
+        </>
+      ) : (
+        <MainPortfolio />
+      )}
+    </SmoothScrollProvider>
+  )
 }
 
 export default App

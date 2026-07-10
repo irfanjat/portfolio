@@ -1,40 +1,37 @@
 import { motion } from 'framer-motion'
-import { BookOpen, GraduationCap, MapPin } from 'lucide-react'
-import { education } from '../../data/site'
-import { SectionHeading } from '../ui/SectionHeading'
+import { GraduationCap } from 'lucide-react'
+import { education } from '../../data/portfolio'
+import { GlassCard } from '../ui/GlassCard'
+import { SectionHeader } from '../ui/SectionHeader'
 
 export function Education() {
   return (
-    <section id="education" className="relative py-20 px-4 sm:px-6 lg:px-8">
+    <section id="education" className="section-padding">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading label="Education" title="Academic Background" />
+        <SectionHeader
+          label="Education"
+          title="Academic Background"
+          subtitle="Building a strong foundation in computer science."
+        />
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="card card-hover group relative overflow-hidden rounded-xl"
+          transition={{ duration: 0.5 }}
         >
-          <div className="relative flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:p-8">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400">
-              <GraduationCap className="h-7 w-7" />
-            </div>
-            <div className="flex-1">
-              <div className="flex items-center gap-2 text-xs font-mono text-indigo-400 uppercase tracking-wider">
-                <BookOpen className="h-3 w-3" />
-                Bachelor&apos;s Program
+          <GlassCard className="p-8 sm:p-10">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500/20 to-cyan-500/20 border border-white/10">
+                <GraduationCap className="h-8 w-8 text-violet-400" />
               </div>
-              <h3 className="mt-1.5 text-lg font-bold text-slate-100">{education.degree}</h3>
-              <p className="mt-1 text-sm text-slate-400">{education.university}</p>
-              <div className="mt-3 flex flex-wrap items-center gap-4">
-                <span className="inline-flex items-center gap-1.5 text-xs text-slate-500">
-                  <MapPin className="h-3 w-3" />
-                  Sindh, Pakistan
-                </span>
-                <span className="font-mono text-sm text-cyan-300">{education.graduation}</span>
+              <div>
+                <h3 className="text-xl font-bold text-slate-100">{education.degree}</h3>
+                <p className="mt-2 text-slate-400">{education.university}</p>
+                <p className="mt-1 font-mono text-sm text-cyan-400/80">{education.graduation}</p>
               </div>
             </div>
-          </div>
+          </GlassCard>
         </motion.div>
       </div>
     </section>
