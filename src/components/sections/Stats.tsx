@@ -1,57 +1,55 @@
-import { motion, useMotionValueEvent, useSpring, useInView } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
-import { Activity, Box, GitBranch, Shield } from 'lucide-react'
-import { stats } from '../../data/site'
+import { motion } from 'framer-motion'
+import { stats } from '../../data/portfolio'
+import { Counter } from '../ui/Counter'
+import { GlassCard } from '../ui/GlassCard'
 
-const statIcons = [Activity, Box, GitBranch, Shield]
+const accents = [
+  'accent-cyan',
+  'accent-violet',
+  'accent-emerald',
+  'accent-rose',
+]
 
-function AnimatedCounter({ value, suffix = '' }: { value: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-40px' })
-  const spring = useSpring(0, { stiffness: 50, damping: 20 })
-  const [display, setDisplay] = useState(0)
-
-  useMotionValueEvent(spring, 'change', (v) => setDisplay(Math.round(v)))
-
-  useEffect(() => {
-    if (inView) spring.set(value)
-  }, [inView, spring, value])
-
-  return (
-    <span ref={ref} className="font-mono text-3xl font-bold text-slate-100 sm:text-4xl">
-      {display}{suffix}
-    </span>
-  )
-}
+const gridClasses = [
+  'col-span-2 row-span-1 sm:col-span-1 sm:row-span-2',
+  'col-span-1',
+  'col-span-1',
+  'col-span-2 sm:col-span-1',
+]
 
 export function Stats() {
   return (
-    <section id="stats" className="relative py-16 px-4 sm:px-6 lg:px-8">
+    <section id="stats" className="section-padding">
       <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {stats.map((stat, i) => {
-            const Icon = statIcons[i]
-            return (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="card card-hover rounded-xl p-6 text-center"
-              >
-                {Icon && (
-                  <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
-                    <Icon className="h-4 w-4" />
-                  </div>
-                )}
-                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                <span className="mt-1.5 block text-xs font-mono uppercase tracking-wider text-slate-400">
-                  {stat.label}
-                </span>
-              </motion.div>
-            )
-          })}
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className={gridClasses[i]}
+            >
+              <GlassCard className={`h-full p-6 sm:p-8 ${accents[i]}`}>
+                <div
+                  className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl"
+                  style={{ background: 'var(--accent-bg)', border: '1px solid var(--accent-border)' }}
+                >
+                  <span className="font-mono text-xs font-bold" style={{ color: 'var(--accent)' }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <div
+                  className="text-4xl font-bold tracking-tight sm:text-5xl"
+                  style={{ color: 'var(--accent)' }}
+                >
+                  <Counter value={stat.value} suffix={stat.suffix} />
+                </div>
+                <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
+              </GlassCard>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

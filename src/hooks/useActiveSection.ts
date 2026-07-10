@@ -1,31 +1,41 @@
 import { useEffect, useState } from 'react'
 
-const sectionIds = ['home', 'stats', 'experience', 'skills', 'pipeline', 'projects', 'certifications', 'education', 'contact']
+const sectionIds = [
+  'home',
+  'stats',
+  'skills',
+  'pipeline',
+  'projects',
+  'certifications',
+  'education',
+  'contact',
+]
 
-export function useActiveSection(): number {
-  const [active, setActive] = useState(0)
+export function useActiveSection(): string {
+  const [active, setActive] = useState('home')
 
   useEffect(() => {
     const observers: IntersectionObserver[] = []
-    const entries = new Map<string, number>()
+    const ratios = new Map<string, number>()
 
     for (const id of sectionIds) {
       const el = document.getElementById(id)
       if (!el) continue
+
       const observer = new IntersectionObserver(
         ([entry]) => {
-          entries.set(id, entry.intersectionRatio)
-          let best = ''
+          ratios.set(id, entry.intersectionRatio)
+          let best = 'home'
           let bestRatio = 0
-          for (const [k, v] of entries) {
+          for (const [k, v] of ratios) {
             if (v > bestRatio) {
               bestRatio = v
               best = k
             }
           }
-          if (best) setActive(sectionIds.indexOf(best))
+          setActive(best)
         },
-        { threshold: [0, 0.25, 0.5, 0.75] },
+        { threshold: [0, 0.15, 0.3, 0.5, 0.75] },
       )
       observer.observe(el)
       observers.push(observer)
@@ -36,3 +46,5 @@ export function useActiveSection(): number {
 
   return active
 }
+
+export { sectionIds }

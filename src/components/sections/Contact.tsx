@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import { CheckCircle2, Github, Linkedin, Mail, Phone, Send } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { contactForm, personal } from '../../data/site'
-import { SectionHeading } from '../ui/SectionHeading'
+import { contactForm, personal } from '../../data/portfolio'
+import { GlassCard } from '../ui/GlassCard'
+import { SectionHeader } from '../ui/SectionHeader'
 
 const links = [
   { icon: Mail, label: 'Email', href: `mailto:${personal.email}`, value: personal.email },
@@ -28,9 +29,9 @@ export function Contact() {
       : contactForm.successRedirect
 
   return (
-    <section id="contact" className="relative py-24 px-4 sm:px-6 lg:px-8 pb-32">
+    <section id="contact" className="section-padding pb-32">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading
+        <SectionHeader
           label="Contact"
           title="Let's Build Something"
           subtitle={personal.availabilityDetail}
@@ -41,7 +42,7 @@ export function Contact() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 space-y-3"
+            className="space-y-3 lg:col-span-2"
           >
             {links.map((link, i) => (
               <motion.a
@@ -54,25 +55,18 @@ export function Contact() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 whileHover={{ x: 4 }}
-                className="card card-hover flex items-center gap-4 rounded-xl p-4"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
-                  <link.icon className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500">{link.label}</p>
-                  <p className="text-sm font-medium text-slate-200">{link.value}</p>
-                </div>
+                <GlassCard className="flex items-center gap-4 p-4">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400">
+                    <link.icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-500">{link.label}</p>
+                    <p className="text-sm font-medium text-slate-200">{link.value}</p>
+                  </div>
+                </GlassCard>
               </motion.a>
             ))}
-
-            <a
-              href={`mailto:${personal.email}?subject=Portfolio%20inquiry`}
-              className="card card-hover flex items-center justify-center gap-2 rounded-xl p-4 text-sm font-medium text-cyan-300"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              Email me at {personal.email}
-            </a>
           </motion.div>
 
           <motion.form
@@ -81,70 +75,67 @@ export function Contact() {
             viewport={{ once: true }}
             action="https://api.web3forms.com/submit"
             method="POST"
-            className="card rounded-xl p-6 sm:p-8 lg:col-span-3"
+            className="lg:col-span-3"
           >
-            <input type="hidden" name="access_key" value={contactForm.web3formsAccessKey} />
-            <input type="hidden" name="subject" value="New message from Irfan Ali Portfolio" />
-            <input type="hidden" name="from_name" value="Portfolio Contact Form" />
-            <input type="hidden" name="redirect" value={redirectUrl} />
+            <GlassCard hover={false} className="p-6 sm:p-8">
+              <input type="hidden" name="access_key" value={contactForm.web3formsAccessKey} />
+              <input type="hidden" name="subject" value="New message from Irfan Ali Portfolio" />
+              <input type="hidden" name="from_name" value="Portfolio Contact Form" />
+              <input type="hidden" name="redirect" value={redirectUrl} />
 
-            <div className="mb-4 flex items-center gap-2 pb-4 border-b border-slate-800">
-              <span className="flex h-2 w-2 rounded-full bg-rose-400" />
-              <span className="flex h-2 w-2 rounded-full bg-amber-400" />
-              <span className="flex h-2 w-2 rounded-full bg-emerald-400" />
-              <span className="ml-3 font-mono text-[11px] text-slate-500">contact-form.sh</span>
-            </div>
+              <div className="space-y-4">
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-slate-400">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="Your name"
+                    className="glass-input w-full rounded-xl px-4 py-3 text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-slate-400">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="your@email.com"
+                    className="glass-input w-full rounded-xl px-4 py-3 text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-slate-400">Message</label>
+                  <textarea
+                    name="message"
+                    required
+                    rows={4}
+                    placeholder="Tell me about your project or opportunity..."
+                    className="glass-input w-full resize-none rounded-xl px-4 py-3 text-sm"
+                  />
+                </div>
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/20"
+                >
+                  <Send className="h-4 w-4" />
+                  Send Message
+                </motion.button>
+              </div>
 
-            <div className="space-y-4">
-              <div>
-                <label className="mb-1.5 block text-xs font-mono text-slate-500">$ --name</label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Enter your name..."
-                  className="glass-input w-full rounded-lg px-4 py-2.5 text-sm resize-none"
-                />
-              </div>
-              <div>
-                <label className="mb-1.5 block text-xs font-mono text-slate-500">$ --email</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="Enter your email..."
-                  className="glass-input w-full rounded-lg px-4 py-2.5 text-sm"
-                />
-              </div>
-              <div>
-                <label className="mb-1.5 block text-xs font-mono text-slate-500">$ --message</label>
-                <textarea
-                  name="message"
-                  required
-                  rows={4}
-                  placeholder="Type your message..."
-                  className="glass-input w-full rounded-lg px-4 py-2.5 text-sm resize-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full rounded-lg bg-cyan-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-cyan-700 flex items-center justify-center gap-2"
-              >
-                <Send className="h-4 w-4" />
-                Send Message
-              </button>
-            </div>
-
-            {showSuccess && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-4 flex items-center gap-2 rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300"
-              >
-                <CheckCircle2 className="h-4 w-4" />
-                Message sent successfully!
-              </motion.div>
-            )}
+              {showSuccess && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 flex items-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300"
+                >
+                  <CheckCircle2 className="h-4 w-4" />
+                  Message sent successfully!
+                </motion.div>
+              )}
+            </GlassCard>
           </motion.form>
         </div>
       </div>
