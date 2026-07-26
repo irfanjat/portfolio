@@ -22,17 +22,17 @@ export const contactForm = {
 }
 
 export const navLinks = [
+  { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Certifications', href: '#certifications' },
-  { label: 'Education', href: '#education' },
+  { label: 'Credentials', href: '#credentials' },
   { label: 'Contact', href: '#contact' },
 ]
 
 export const skillCategories = [
   {
     title: 'CI/CD & GitOps',
-    color: 'cyan',
+    color: 'blue',
     skills: [
       { name: 'GitHub Actions', level: 90 },
       { name: 'ArgoCD', level: 88 },
@@ -41,7 +41,7 @@ export const skillCategories = [
   },
   {
     title: 'Containers & Orchestration',
-    color: 'violet',
+    color: 'orange',
     skills: [
       { name: 'Docker', level: 92 },
       { name: 'Kubernetes', level: 88 },
@@ -50,7 +50,7 @@ export const skillCategories = [
   },
   {
     title: 'Infrastructure as Code',
-    color: 'emerald',
+    color: 'green',
     skills: [
       { name: 'Terraform', level: 90 },
       { name: 'Ansible', level: 85 },
@@ -58,72 +58,91 @@ export const skillCategories = [
   },
   {
     title: 'Cloud & AWS',
-    color: 'cyan',
+    color: 'blue',
     skills: [
       { name: 'VPC', level: 90 },
       { name: 'EC2', level: 88 },
-      { name: 'ECS', level: 85 },
       { name: 'EKS', level: 85 },
-      { name: 'ECR', level: 84 },
-      { name: 'ALB', level: 85 },
-      { name: 'Auto Scaling', level: 86 },
-      { name: 'RDS', level: 84 },
       { name: 'S3', level: 90 },
       { name: 'IAM', level: 88 },
-      { name: 'DynamoDB', level: 80 },
+      { name: 'RDS', level: 84 },
+    ],
+    extra: [
+      { name: 'Lambda', level: 82 },
+      { name: 'ALB', level: 85 },
+      { name: 'ECS', level: 85 },
+      { name: 'ECR', level: 84 },
+      { name: 'Auto Scaling', level: 86 },
       { name: 'CloudWatch', level: 85 },
+      { name: 'DynamoDB', level: 80 },
+      { name: 'CloudFormation', level: 78 },
+      { name: 'CodeBuild', level: 76 },
+      { name: 'CodeCommit', level: 74 },
+      { name: 'CodeDeploy', level: 75 },
+      { name: 'SNS', level: 78 },
+      { name: 'SQS', level: 80 },
+      { name: 'Secrets Manager', level: 82 },
+      { name: 'EventBridge', level: 78 },
+      { name: 'AWS Config', level: 76 },
+      { name: 'NAT Gateway', level: 82 },
+      { name: 'Internet Gateway', level: 85 },
     ],
   },
   {
-    title: 'Monitoring & Observability',
-    color: 'rose',
+    title: 'Monitoring & Scripting',
+    color: 'red',
     skills: [
       { name: 'Prometheus', level: 88 },
       { name: 'Grafana', level: 90 },
-    ],
-  },
-  {
-    title: 'Languages & Scripting',
-    color: 'violet',
-    skills: [
       { name: 'Python', level: 85 },
       { name: 'Bash', level: 88 },
-      { name: 'YAML', level: 90 },
-      { name: 'JSON', level: 88 },
-      { name: 'HCL', level: 85 },
-    ],
-  },
-  {
-    title: 'Linux & System Admin',
-    color: 'rose',
-    skills: [
-      { name: 'SSH', level: 90 },
-      { name: 'Firewall (UFW)', level: 85 },
-      { name: 'Cron Jobs', level: 88 },
-      { name: 'Systemd', level: 85 },
-      { name: 'Log Management', level: 80 },
-    ],
-  },
-  {
-    title: 'Web Servers & Databases',
-    color: 'cyan',
-    skills: [
-      { name: 'Nginx', level: 85 },
-      { name: 'Apache', level: 80 },
-      { name: 'MySQL', level: 82 },
-    ],
-  },
-  {
-    title: 'Version Control',
-    color: 'emerald',
-    skills: [
-      { name: 'Git', level: 92 },
-      { name: 'GitHub', level: 90 },
     ],
   },
 ]
 
 export const projects = [
+  {
+    id: 'devsecops',
+    title: 'DevSecOps CI/CD Pipeline with Security Gates',
+    description:
+      'End-to-end DevSecOps pipeline with SAST, container scanning, policy-as-code, and GitOps deployment — zero CVEs reach production.',
+    tech: ['GitHub Actions', 'Docker', 'Trivy', 'Bandit', 'OPA/Conftest', 'ArgoCD', 'Kubernetes'],
+    metrics: [
+      { label: 'CVEs Blocked', value: '100%', sub: 'at build time' },
+      { label: 'Security Gates', value: '6', sub: 'K8s policies' },
+      { label: 'Audit Trail', value: 'SARIF', sub: 'full reports' },
+    ],
+    achievements: [
+      'Trivy blocks vulnerable images (Critical/HIGH CVEs) at build time',
+      'OPA/Conftest enforces 6 K8s security policies before deploy',
+      'Bandit SAST scans Python code for security vulnerabilities',
+      'ArgoCD GitOps with SHA-tagged immutable deployments',
+    ],
+    diagram: 'gitops' as const,
+    github: 'https://github.com/irfanjat/devsecops-app',
+    demo: 'https://github.com/irfanjat/devsecops-app',
+  },
+  {
+    id: 'costguard',
+    title: 'CostGuard — AWS Cost Optimization Platform',
+    description:
+      'Serverless AWS cost monitoring platform with anomaly detection, orphaned resource scanning, and Slack notifications — fully deployed via Terraform.',
+    tech: ['Python', 'AWS Lambda', 'Terraform', 'DynamoDB', 'Slack API', 'GitHub Actions'],
+    metrics: [
+      { label: 'Detection', value: 'Z-Score', sub: 'anomaly analysis' },
+      { label: 'Resources', value: 'Scanned', sub: 'EC2, EBS, EIPs' },
+      { label: 'Deploy', value: 'IaC', sub: 'Terraform + CI/CD' },
+    ],
+    achievements: [
+      'Statistical anomaly detection using z-score analysis on daily spend',
+      'Scans EC2, EBS, EIPs for orphaned resources',
+      'Slack notifications with actionable cost reports',
+      'Full IaC deployment with Terraform and GitHub Actions CI/CD',
+    ],
+    diagram: 'aws' as const,
+    github: 'https://github.com/irfanjat/costguard',
+    demo: 'https://github.com/irfanjat/costguard',
+  },
   {
     id: 'gitops',
     title: 'End-to-End GitOps CI/CD Pipeline',
@@ -137,15 +156,33 @@ export const projects = [
     ],
     achievements: [
       'Reduced deployment time by 80%',
-      'Automated CI/CD pipeline',
-      'GitOps architecture with ArgoCD',
-      'Zero-downtime deployments',
-      'Docker image SHA tagging',
-      'ArgoCD self-healing enabled',
+      'Automated CI/CD pipeline with SHA-tagged images',
+      'GitOps architecture with ArgoCD self-healing',
+      'Zero-downtime rolling deployments',
     ],
     diagram: 'gitops' as const,
     github: 'https://github.com/irfanjat/gitops-cicd-pipeline',
     demo: 'https://github.com/irfanjat/gitops-cicd-pipeline',
+  },
+  {
+    id: 'guardrails',
+    title: 'Policy Guardrails Engine — IaC Security',
+    description:
+      'Policy-as-code guardrail engine enforcing security on Terraform and Kubernetes manifests in CI with automated PR comments.',
+    tech: ['OPA/Rego', 'Kyverno', 'Conftest', 'Terraform', 'Kubernetes', 'GitHub Actions'],
+    metrics: [
+      { label: 'Rego Policies', value: '8', sub: 'Terraform rules' },
+      { label: 'Kyverno', value: '3', sub: 'K8s policies' },
+      { label: 'PR Comments', value: 'Auto', sub: 'violation details' },
+    ],
+    achievements: [
+      '8 Rego policies covering S3, security groups, encryption, secrets',
+      'Kyverno policies for K8s pod security (no root, no privileged)',
+      'Automated PR comments with violation details and fix guidance',
+    ],
+    diagram: 'aws' as const,
+    github: 'https://github.com/irfanjat/Guardrails',
+    demo: 'https://github.com/irfanjat/Guardrails',
   },
   {
     id: 'terraform-aws',
@@ -159,39 +196,14 @@ export const projects = [
       { label: 'Security', value: 'Encrypted', sub: 'least privilege' },
     ],
     achievements: [
-      'Provisioned 24 AWS resources',
-      'Multi-AZ architecture',
-      'Terraform modular architecture',
-      'Remote state locking',
-      'Encrypted infrastructure',
-      'Least-privilege security',
+      'Provisioned 24 AWS resources with modular Terraform',
+      'Multi-AZ architecture for high availability',
+      'Remote state locking with encryption at rest',
+      'Least-privilege IAM policies throughout',
     ],
     diagram: 'aws' as const,
     github: 'https://github.com/irfanjat/terraform-aws-infra',
     demo: 'https://github.com/irfanjat/terraform-aws-infra',
-  },
-  {
-    id: 'observability',
-    title: 'Kubernetes Observability Stack',
-    description:
-      'Full-stack monitoring with Prometheus metrics, Grafana dashboards, Loki log aggregation, and Alertmanager routing.',
-    tech: ['Prometheus', 'Grafana', 'Loki', 'Alertmanager', 'Helm', 'Kubernetes'],
-    metrics: [
-      { label: 'Scrape Targets', value: '14', sub: 'Prometheus' },
-      { label: 'Logs', value: 'Live', sub: 'Loki streaming' },
-      { label: 'Alerts', value: 'Real-time', sub: 'Alertmanager' },
-    ],
-    achievements: [
-      'Full-stack observability',
-      '14 Prometheus scrape targets',
-      'Live Loki log streaming',
-      'Real-time Grafana dashboards',
-      'Alerting system configured',
-      'Kubernetes-native monitoring',
-    ],
-    diagram: 'k8s-monitor' as const,
-    github: 'https://github.com/irfanjat/k8s-observability',
-    demo: 'https://github.com/irfanjat/k8s-observability',
   },
 ]
 
@@ -234,18 +246,27 @@ export const stats = [
 ]
 
 export const pipelineStages = [
-  { id: 'code', label: 'Code Push', icon: 'GitCommit', color: 'cyan', desc: 'Feature branch → PR → main' },
-  { id: 'build', label: 'Build & Test', icon: 'FlaskConical', color: 'violet', desc: 'Unit tests, lint, image build' },
-  { id: 'docker', label: 'Dockerize', icon: 'Box', color: 'cyan', desc: 'SHA-tagged container images' },
-  { id: 'scan', label: 'Security Scan', icon: 'Shield', color: 'emerald', desc: 'Trivy, Snyk, SBOM' },
-  { id: 'deploy', label: 'ArgoCD Deploy', icon: 'Rocket', color: 'violet', desc: 'GitOps sync to K8s cluster' },
-  { id: 'monitor', label: 'Monitor', icon: 'Activity', color: 'rose', desc: 'Prometheus + Grafana alerts' },
+  { id: 'code', label: 'Code Push', icon: 'GitCommit', color: 'blue', desc: 'Feature branch → PR → main' },
+  { id: 'build', label: 'Build & Test', icon: 'FlaskConical', color: 'orange', desc: 'Unit tests, lint, image build' },
+  { id: 'docker', label: 'Dockerize', icon: 'Box', color: 'blue', desc: 'SHA-tagged container images' },
+  { id: 'scan', label: 'Security Scan', icon: 'Shield', color: 'green', desc: 'Trivy, Snyk, SBOM' },
+  { id: 'deploy', label: 'ArgoCD Deploy', icon: 'Rocket', color: 'orange', desc: 'GitOps sync to K8s cluster' },
+  { id: 'monitor', label: 'Monitor', icon: 'Activity', color: 'red', desc: 'Prometheus + Grafana alerts' },
 ]
 
 export const education = {
   degree: 'Bachelor of Science in Computer Science',
   university: 'University of Sindh (SULC), Jamshoro, Pakistan',
   graduation: 'Expected Graduation: 2027',
+}
+
+export const resume = {
+  title: 'Irfan Ali — DevOps Engineer',
+  description:
+    'A summary of my experience, skills, certifications, and project highlights in DevOps, cloud infrastructure, and platform engineering.',
+  fileName: 'IrfanAliResume.pdf',
+  downloadName: 'IrfanAli-Resume.pdf',
+  updated: 'July 2026',
 }
 
 export interface MoreProject {
@@ -265,6 +286,59 @@ export interface MoreProject {
 
 export const moreProjects: MoreProject[] = [
   {
+    id: 'observability',
+    title: 'Kubernetes Observability Stack',
+    tech: ['Prometheus', 'Grafana', 'Loki', 'Alertmanager', 'Helm', 'Kubernetes'],
+    github: 'https://github.com/irfanjat/k8s-observability',
+    xyz: {
+      accomplished: 'Built a full-stack Kubernetes monitoring and alerting platform',
+      byDoing:
+        'Deployed Prometheus with 14 scrape targets, Grafana dashboards, Loki for log aggregation, and Alertmanager for alert routing — all via Helm charts',
+      resultedIn:
+        'Complete visibility into cluster health with live dashboards, log streaming, and real-time alerting',
+    },
+    highlights: [
+      '14 Prometheus scrape targets with ServiceMonitors',
+      'Live Grafana dashboards with custom panels',
+      'Loki log streaming with label-based queries',
+      'Alertmanager routes to Slack and Email',
+    ],
+    architecture: 'Prometheus → Grafana + Loki → Alertmanager → Slack/Email',
+    flowSteps: [
+      { label: 'Prometheus', color: 'blue' },
+      { label: 'Grafana', color: 'orange' },
+      { label: 'Loki', color: 'green' },
+      { label: 'Alertmanager', color: 'red' },
+      { label: 'Slack', color: 'yellow' },
+    ],
+  },
+  {
+    id: 'eks-kubernetes',
+    title: 'Kubernetes End-to-End Deployment on AWS EKS',
+    tech: ['Amazon EKS', 'ALB Ingress', 'kubectl', 'eksctl', 'Helm', 'Docker'],
+    github: 'https://github.com/irfanjat/aws-eks-kubernetes-project',
+    xyz: {
+      accomplished: 'Ran a complete Kubernetes deployment lifecycle on AWS EKS with external traffic routing',
+      byDoing:
+        'Provisioned EKS with eksctl, installed AWS Load Balancer Controller via Helm, and deployed Deployment, ClusterIP Service, and ALB Ingress with health probes',
+      resultedIn:
+        'Containerized app exposed via internet-facing ALB with rolling updates, namespace isolation, and pod-level health checks',
+    },
+    highlights: [
+      '2x t3.medium managed node group in us-east-1',
+      'ALB controller with OIDC IAM service account',
+      'RollingUpdate strategy with liveness & readiness probes',
+    ],
+    architecture: 'Internet → ALB → Ingress → Service → Pods → Container',
+    flowSteps: [
+      { label: 'Internet', color: 'blue' },
+      { label: 'ALB', color: 'orange' },
+      { label: 'Ingress', color: 'green' },
+      { label: 'Service', color: 'yellow' },
+      { label: 'Pods', color: 'red' },
+    ],
+  },
+  {
     id: 'github-actions-docker',
     title: 'CI/CD Pipeline with GitHub Actions & Docker',
     tech: ['GitHub Actions', 'Docker', 'Node.js', 'Docker Hub'],
@@ -283,11 +357,11 @@ export const moreProjects: MoreProject[] = [
     ],
     architecture: 'Push → GitHub Actions → npm test → docker build → Docker Hub',
     flowSteps: [
-      { label: 'Git Push', color: 'cyan' },
-      { label: 'GitHub Actions', color: 'violet' },
-      { label: 'npm test', color: 'emerald' },
-      { label: 'docker build', color: 'amber' },
-      { label: 'Docker Hub', color: 'rose' },
+      { label: 'Git Push', color: 'blue' },
+      { label: 'GitHub Actions', color: 'orange' },
+      { label: 'npm test', color: 'green' },
+      { label: 'docker build', color: 'yellow' },
+      { label: 'Docker Hub', color: 'red' },
     ],
   },
   {
@@ -309,37 +383,11 @@ export const moreProjects: MoreProject[] = [
     ],
     architecture: 'Developer → GitHub → Jenkins → Docker Build → EC2 → Browser',
     flowSteps: [
-      { label: 'Git Push', color: 'cyan' },
-      { label: 'Jenkins', color: 'violet' },
-      { label: 'Docker Build', color: 'amber' },
-      { label: 'EC2 Deploy', color: 'emerald' },
-      { label: 'Browser', color: 'rose' },
-    ],
-  },
-  {
-    id: 'eks-kubernetes',
-    title: 'Kubernetes End-to-End Deployment on AWS EKS',
-    tech: ['Amazon EKS', 'ALB Ingress', 'kubectl', 'eksctl', 'Helm', 'Docker'],
-    github: 'https://github.com/irfanjat/aws-eks-kubernetes-project',
-    xyz: {
-      accomplished: 'Ran a complete Kubernetes deployment lifecycle on AWS EKS with external traffic routing',
-      byDoing:
-        'Provisioned EKS with eksctl, installed AWS Load Balancer Controller via Helm, and deployed Deployment, ClusterIP Service, and ALB Ingress with health probes',
-      resultedIn:
-        'Containerized app exposed via internet-facing ALB with rolling updates, namespace isolation, and pod-level health checks',
-    },
-    highlights: [
-      '2× t3.medium managed node group in us-east-1',
-      'ALB controller with OIDC IAM service account',
-      'RollingUpdate strategy with liveness & readiness probes',
-    ],
-    architecture: 'Internet → ALB → Ingress → Service → Pods → Container',
-    flowSteps: [
-      { label: 'Internet', color: 'cyan' },
-      { label: 'ALB', color: 'violet' },
-      { label: 'Ingress', color: 'emerald' },
-      { label: 'Service', color: 'amber' },
-      { label: 'Pods', color: 'rose' },
+      { label: 'Git Push', color: 'blue' },
+      { label: 'Jenkins', color: 'orange' },
+      { label: 'Docker Build', color: 'yellow' },
+      { label: 'EC2 Deploy', color: 'green' },
+      { label: 'Browser', color: 'red' },
     ],
   },
   {
@@ -361,11 +409,11 @@ export const moreProjects: MoreProject[] = [
     ],
     architecture: 'Terraform → S3 Bucket → Static Hosting → Policy → Files → Live URL',
     flowSteps: [
-      { label: 'Terraform', color: 'violet' },
-      { label: 'S3 Bucket', color: 'amber' },
-      { label: 'Static Hosting', color: 'emerald' },
-      { label: 'Policy', color: 'rose' },
-      { label: 'Live URL', color: 'cyan' },
+      { label: 'Terraform', color: 'orange' },
+      { label: 'S3 Bucket', color: 'yellow' },
+      { label: 'Static Hosting', color: 'green' },
+      { label: 'Policy', color: 'red' },
+      { label: 'Live URL', color: 'blue' },
     ],
   },
   {
@@ -387,90 +435,11 @@ export const moreProjects: MoreProject[] = [
     ],
     architecture: 'docker compose up → Express :3000 ↔ mongo (volume)',
     flowSteps: [
-      { label: 'docker compose', color: 'cyan' },
-      { label: 'Express', color: 'violet' },
-      { label: 'MongoDB', color: 'emerald' },
-      { label: 'Volume', color: 'amber' },
-      { label: ':3000', color: 'rose' },
-    ],
-  },
-  {
-    id: 'costguard',
-    title: 'CostGuard — AWS Cost Optimization Platform',
-    tech: ['Python', 'AWS Lambda', 'Terraform', 'DynamoDB', 'Slack API', 'GitHub Actions'],
-    github: 'https://github.com/irfanjat/costguard',
-    xyz: {
-      accomplished: 'Built a serverless AWS cost monitoring platform that detects anomalies and wasted resources',
-      byDoing:
-        'Implemented Lambda functions with Cost Explorer API integration, statistical anomaly detection, orphaned resource scanning, and Slack notifications — all deployed via Terraform with CI/CD',
-      resultedIn:
-        'Automated daily cost reports with anomaly alerts, waste detection, and actionable Slack notifications — zero manual monitoring required',
-    },
-    highlights: [
-      'Statistical anomaly detection using z-score analysis on daily spend',
-      'Scans EC2, EBS, EIPs for orphaned resources',
-      'Full IaC deployment with Terraform and GitHub Actions CI/CD',
-    ],
-    architecture: 'EventBridge → Lambda → Cost Explorer + DynamoDB + Resource Scanner → Slack',
-    flowSteps: [
-      { label: 'Schedule', color: 'cyan' },
-      { label: 'Lambda', color: 'violet' },
-      { label: 'Cost API', color: 'amber' },
-      { label: 'DynamoDB', color: 'emerald' },
-      { label: 'Slack', color: 'rose' },
-    ],
-  },
-  {
-    id: 'devsecops',
-    title: 'DevSecOps CI/CD Pipeline with Security Gates',
-    tech: ['GitHub Actions', 'Docker', 'Trivy', 'Bandit', 'OPA/Conftest', 'ArgoCD', 'Kubernetes'],
-    github: 'https://github.com/irfanjat/devsecops-app',
-    xyz: {
-      accomplished: 'Built an end-to-end DevSecOps pipeline with security scanning at every CI/CD stage',
-      byDoing:
-        'Integrated hadolint, yamllint, pytest, Bandit SAST, Trivy container scanning, OPA/Conftest K8s policy checks, and ArgoCD GitOps deployment into a single GitHub Actions workflow',
-      resultedIn:
-        'Zero CVEs reach production — vulnerable builds blocked at build time, K8s manifests validated before deployment, and full audit trail via SARIF reports',
-    },
-    highlights: [
-      'Trivy blocks vulnerable images (Critical/HIGH CVEs) at build time',
-      'OPA/Conftest enforces 6 K8s security policies before deploy',
-      'ArgoCD GitOps with SHA-tagged immutable deployments',
-    ],
-    architecture: 'Lint → Test → Bandit SAST → Trivy Scan → Conftest Policy → ArgoCD Deploy',
-    flowSteps: [
-      { label: 'Lint', color: 'cyan' },
-      { label: 'Test', color: 'violet' },
-      { label: 'Bandit', color: 'amber' },
-      { label: 'Trivy', color: 'emerald' },
-      { label: 'Policy', color: 'rose' },
-      { label: 'Deploy', color: 'cyan' },
-    ],
-  },
-  {
-    id: 'guardrails',
-    title: 'Policy Guardrails Engine — IaC Security',
-    tech: ['OPA/Rego', 'Kyverno', 'Conftest', 'Terraform', 'Kubernetes', 'GitHub Actions'],
-    github: 'https://github.com/irfanjat/Guardrails',
-    xyz: {
-      accomplished: 'Created a policy-as-code guardrail engine that enforces security on Terraform and K8s manifests in CI',
-      byDoing:
-        'Authored 8 Rego policies for Conftest and 3 Kyverno ClusterPolicies blocking public S3, open security groups, missing encryption, hardcoded secrets, privileged containers, and missing resource limits — with automated PR comment integration',
-      resultedIn:
-        'Every PR automatically validated against security policies with violations posted as PR comments — blocking deployment of non-compliant infrastructure',
-    },
-    highlights: [
-      '8 Rego policies covering S3, security groups, encryption, secrets, and tagging',
-      'Kyverno policies for K8s pod security (no root, no privileged, resource limits)',
-      'Automated PR comments with violation details and fix guidance',
-    ],
-    architecture: 'PR → Conftest (Terraform) + Kyverno CLI (K8s) → Pass/Block → PR Comment',
-    flowSteps: [
-      { label: 'PR Open', color: 'cyan' },
-      { label: 'Conftest', color: 'violet' },
-      { label: 'Kyverno', color: 'emerald' },
-      { label: 'Policy Check', color: 'amber' },
-      { label: 'PR Comment', color: 'rose' },
+      { label: 'docker compose', color: 'blue' },
+      { label: 'Express', color: 'orange' },
+      { label: 'MongoDB', color: 'green' },
+      { label: 'Volume', color: 'yellow' },
+      { label: ':3000', color: 'red' },
     ],
   },
   {
@@ -492,10 +461,10 @@ export const moreProjects: MoreProject[] = [
     ],
     architecture: 'Code Push → GitHub Actions → Docker Build → Deploy',
     flowSteps: [
-      { label: 'Code Push', color: 'cyan' },
-      { label: 'CI/CD', color: 'violet' },
-      { label: 'Docker', color: 'emerald' },
-      { label: 'Deploy', color: 'amber' },
+      { label: 'Code Push', color: 'blue' },
+      { label: 'CI/CD', color: 'orange' },
+      { label: 'Docker', color: 'green' },
+      { label: 'Deploy', color: 'yellow' },
     ],
   },
 ]

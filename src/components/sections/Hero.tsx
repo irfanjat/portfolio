@@ -5,103 +5,57 @@ import { personal } from '../../data/portfolio'
 import { GlowButton } from '../ui/GlowButton'
 import { GradientText } from '../ui/GradientText'
 
-function InfraVisualization() {
-  const nodes = [
-    { id: 'git', label: 'Git', x: 50, y: 15, color: '#22d3ee' },
-    { id: 'ci', label: 'CI/CD', x: 20, y: 45, color: '#a78bfa' },
-    { id: 'k8s', label: 'K8s', x: 80, y: 45, color: '#34d399' },
-    { id: 'aws', label: 'AWS', x: 35, y: 75, color: '#fbbf24' },
-    { id: 'monitor', label: 'Monitor', x: 65, y: 75, color: '#fb7185' },
-  ]
-
-  const edges = [
-    ['git', 'ci'],
-    ['git', 'k8s'],
-    ['ci', 'k8s'],
-    ['ci', 'aws'],
-    ['k8s', 'monitor'],
-    ['aws', 'monitor'],
-  ]
-
-  const getNode = (id: string) => nodes.find((n) => n.id === id)!
-
+function ProfileVisual() {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-md">
-      <div className="absolute inset-0 rounded-3xl glass gradient-border" />
-      <svg viewBox="0 0 100 100" className="relative h-full w-full p-8">
-        {edges.map(([from, to], i) => {
-          const a = getNode(from)
-          const b = getNode(to)
-          return (
-            <motion.line
-              key={`${from}-${to}`}
-              x1={a.x}
-              y1={a.y}
-              x2={b.x}
-              y2={b.y}
-              stroke="rgba(255,255,255,0.1)"
-              strokeWidth="0.3"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ delay: 0.5 + i * 0.1, duration: 0.8 }}
-            />
-          )
-        })}
-        {edges.map(([from, to], i) => {
-          const a = getNode(from)
-          const b = getNode(to)
-          return (
-            <motion.circle
-              key={`pulse-${from}-${to}`}
-              r="0.8"
-              fill="#22d3ee"
-              initial={{ opacity: 0 }}
-              animate={{
-                cx: [a.x, b.x],
-                cy: [a.y, b.y],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: i * 0.4,
-                ease: 'linear',
-              }}
-            />
-          )
-        })}
-        {nodes.map((node, i) => (
-          <g key={node.id}>
-            <motion.circle
-              cx={node.x}
-              cy={node.y}
-              r="6"
-              fill={`${node.color}20`}
-              stroke={node.color}
-              strokeWidth="0.4"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2 + i * 0.1, type: 'spring', stiffness: 200 }}
-            />
-            <motion.text
-              x={node.x}
-              y={node.y + 10}
-              textAnchor="middle"
-              fill="rgba(255,255,255,0.6)"
-              fontSize="3.5"
-              fontFamily="monospace"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 + i * 0.1 }}
-            >
-              {node.label}
-            </motion.text>
-          </g>
-        ))}
-      </svg>
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1">
-        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-        <span className="font-mono text-[10px] text-emerald-400">all systems operational</span>
+    <div className="relative mx-auto w-full max-w-sm">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.4, duration: 0.8, type: 'spring' }}
+        className="relative"
+      >
+        <div className="relative mx-auto h-72 w-72 overflow-hidden rounded-3xl border border-white/10 sm:h-80 sm:w-80">
+          <img
+            src="/pic.jpg"
+            alt="Irfan Ali"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117]/60 via-transparent to-transparent" />
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+          className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full border border-green-500/20 bg-[#0d1117]/90 px-4 py-2 backdrop-blur-sm"
+        >
+          <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
+          <span className="font-mono text-[11px] text-green-400">available for hire</span>
+        </motion.div>
+      </motion.div>
+
+      <div className="absolute -top-6 -right-6 rounded-2xl border border-white/10 bg-[#161b22]/90 px-4 py-3 backdrop-blur-sm">
+        <div className="flex items-center gap-2">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400">
+            <span className="font-mono text-xs font-bold">4</span>
+          </div>
+          <div>
+            <p className="text-[10px] text-slate-500">Certifications</p>
+            <p className="text-xs font-semibold text-slate-200">AWS + IBM + OCI</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute -top-4 -left-6 rounded-2xl border border-white/10 bg-[#161b22]/90 px-4 py-3 backdrop-blur-sm">
+        <div className="flex items-center gap-2">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-500/10 text-orange-400">
+            <span className="font-mono text-xs font-bold">12+</span>
+          </div>
+          <div>
+            <p className="text-[10px] text-slate-500">Projects</p>
+            <p className="text-xs font-semibold text-slate-200">Shipped</p>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -180,7 +134,7 @@ export function Hero() {
               href={personal.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-500 transition hover:text-cyan-400"
+              className="text-slate-500 transition hover:text-blue-400"
               aria-label="GitHub"
             >
               <FaGithub className="h-5 w-5" />
@@ -189,7 +143,7 @@ export function Hero() {
               href={personal.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-500 transition hover:text-cyan-400"
+              className="text-slate-500 transition hover:text-blue-400"
               aria-label="LinkedIn"
             >
               <FaLinkedin className="h-5 w-5" />
@@ -204,16 +158,16 @@ export function Hero() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="hidden lg:block"
         >
-          <InfraVisualization />
+          <ProfileVisual />
         </motion.div>
       </div>
 
       <motion.a
-        href="#stats"
+        href="#about"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-600 transition hover:text-cyan-400"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-600 transition hover:text-blue-400"
         aria-label="Scroll down"
       >
         <span className="font-mono text-[10px] uppercase tracking-widest">scroll</span>

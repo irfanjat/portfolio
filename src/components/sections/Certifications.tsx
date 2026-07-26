@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { BadgeCheck, ExternalLink } from 'lucide-react'
-import { certifications } from '../../data/portfolio'
+import { BadgeCheck, ExternalLink, GraduationCap } from 'lucide-react'
+import { certifications, education } from '../../data/portfolio'
 import { GlassCard } from '../ui/GlassCard'
 import { SectionHeader } from '../ui/SectionHeader'
 
@@ -12,13 +12,34 @@ const badgeColors: Record<string, string> = {
 
 export function Certifications() {
   return (
-    <section id="certifications" className="section-padding">
+    <section id="credentials" className="section-padding">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
-          label="Certifications"
-          title="Verified Credentials"
-          subtitle="Industry-recognized certifications in DevOps, AWS, and cloud fundamentals."
+          label="Credentials"
+          title="Education & Certifications"
+          subtitle="Building a strong foundation in computer science with industry-recognized certifications."
         />
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.5 }}
+          className="mb-5"
+        >
+          <GlassCard className="p-6 sm:p-8">
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-blue-500/20 border border-white/10">
+                <GraduationCap className="h-6 w-6 text-orange-400" />
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-100">{education.degree}</h3>
+                <p className="mt-1 text-xs text-slate-500">{education.university}</p>
+                <p className="mt-1 font-mono text-[11px] text-blue-400/80">{education.graduation}</p>
+              </div>
+            </div>
+          </GlassCard>
+        </motion.div>
 
         <div className="grid gap-5 sm:grid-cols-2">
           {certifications.map((cert, i) => (
@@ -42,12 +63,12 @@ export function Certifications() {
                       <p className="mt-1 text-xs text-slate-500">{cert.issuer}</p>
                       <div className="mt-3 flex items-center gap-3">
                         {cert.verified && (
-                          <span className="flex items-center gap-1 text-[10px] text-emerald-400">
+                          <span className="flex items-center gap-1 text-[10px] text-green-400">
                             <BadgeCheck className="h-3.5 w-3.5" />
                             Verified
                           </span>
                         )}
-                        <span className="flex items-center gap-1 text-[10px] text-cyan-400/80">
+                        <span className="flex items-center gap-1 text-[10px] text-blue-400/80">
                           View credential
                           <ExternalLink className="h-3 w-3" />
                         </span>

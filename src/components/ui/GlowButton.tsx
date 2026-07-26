@@ -19,7 +19,7 @@ export function GlowButton({ href, children, variant = 'primary' }: GlowButtonPr
         inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-300
         ${
           isPrimary
-            ? 'bg-gradient-to-r from-cyan-500 to-cyan-600 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40'
+            ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40'
             : 'glass text-slate-200 hover:text-white'
         }
       `}
