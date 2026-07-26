@@ -8,11 +8,11 @@ export default {
         mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       colors: {
-        base: '#030308',
+        base: '#0d1117',
         surface: 'rgba(255,255,255,0.04)',
-        primary: '#22d3ee',
-        secondary: '#a78bfa',
-        accent: '#34d399',
+        primary: '#58a6ff',
+        secondary: '#f0883e',
+        accent: '#3fb950',
       },
       fontSize: {
         'fluid-hero': 'clamp(2.75rem, 7vw, 5rem)',

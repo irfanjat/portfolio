@@ -20,7 +20,7 @@ export function Navbar() {
       >
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <a href="#home" className="group flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 border border-white/10 font-mono text-sm font-bold text-cyan-400 transition group-hover:border-cyan-500/30">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/20 to-orange-500/20 border border-white/10 font-mono text-sm font-bold text-blue-400 transition group-hover:border-blue-500/30">
               IA
             </div>
             <span className="hidden font-semibold text-slate-200 sm:block">Irfan Ali</span>
@@ -35,14 +35,14 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={`relative rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
-                    isActive ? 'text-cyan-400' : 'text-slate-400 hover:text-slate-200'
+                    isActive ? 'text-blue-400' : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
                   {link.label}
                   {isActive && (
                     <motion.span
                       layoutId="nav-indicator"
-                      className="absolute inset-0 -z-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20"
+                      className="absolute inset-0 -z-10 rounded-lg bg-blue-500/10 border border-blue-500/20"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -53,7 +53,7 @@ export function Navbar() {
 
           <a
             href="#contact"
-            className="hidden rounded-xl bg-gradient-to-r from-cyan-500/90 to-cyan-600/90 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:shadow-cyan-500/30 md:block"
+            className="hidden rounded-xl bg-gradient-to-r from-blue-500/90 to-blue-600/90 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:shadow-blue-500/30 md:block"
           >
             Hire Me
           </a>
@@ -75,7 +75,7 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed inset-0 z-40 flex flex-col bg-[#030308]/95 backdrop-blur-xl pt-24 px-6 md:hidden"
+            className="fixed inset-0 z-40 flex flex-col bg-[#0d1117]/95 backdrop-blur-xl pt-24 px-6 md:hidden"
           >
             <div className="flex flex-col gap-2">
               {navLinks.map((link, i) => (
@@ -97,7 +97,7 @@ export function Navbar() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.05 }}
-                className="mt-4 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-600 px-5 py-4 text-center text-lg font-semibold text-white"
+                className="mt-4 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 px-5 py-4 text-center text-lg font-semibold text-white"
               >
                 Hire Me
               </motion.a>

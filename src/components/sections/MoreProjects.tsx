@@ -5,11 +5,11 @@ import { moreProjects } from '../../data/portfolio'
 import { GlassCard } from '../ui/GlassCard'
 
 const flowColorMap: Record<string, string> = {
-  cyan: 'border-cyan-500/30 bg-cyan-500/10 text-cyan-300',
-  violet: 'border-violet-500/30 bg-violet-500/10 text-violet-300',
-  emerald: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300',
-  amber: 'border-amber-500/30 bg-amber-500/10 text-amber-300',
-  rose: 'border-rose-500/30 bg-rose-500/10 text-rose-300',
+  blue: 'border-blue-500/30 bg-blue-500/10 text-blue-300',
+  orange: 'border-orange-500/30 bg-orange-500/10 text-orange-300',
+  green: 'border-green-500/30 bg-green-500/10 text-green-300',
+  yellow: 'border-yellow-500/30 bg-yellow-500/10 text-yellow-300',
+  red: 'border-red-500/30 bg-red-500/10 text-red-300',
 }
 
 function ProjectCard({ project, index }: { project: (typeof moreProjects)[0]; index: number }) {
@@ -28,7 +28,7 @@ function ProjectCard({ project, index }: { project: (typeof moreProjects)[0]; in
         >
           <div className="flex items-start justify-between gap-4">
             <div>
-              <span className="font-mono text-[10px] uppercase tracking-wider text-cyan-400/70">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-blue-400/70">
                 Project {String(index + 1).padStart(2, '0')}
               </span>
               <h3 className="mt-2 text-lg font-bold text-slate-100">{project.title}</h3>
@@ -64,7 +64,7 @@ function ProjectCard({ project, index }: { project: (typeof moreProjects)[0]; in
                     {project.flowSteps.map((step, i) => (
                       <span key={step.label} className="flex items-center gap-1.5">
                         <span
-                          className={`rounded-md border px-2 py-0.5 font-mono text-[10px] ${flowColorMap[step.color] ?? flowColorMap.cyan}`}
+                          className={`rounded-md border px-2 py-0.5 font-mono text-[10px] ${flowColorMap[step.color] ?? flowColorMap.blue}`}
                         >
                           {step.label}
                         </span>
@@ -78,15 +78,15 @@ function ProjectCard({ project, index }: { project: (typeof moreProjects)[0]; in
 
                 <div className="space-y-4">
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-wider text-emerald-400">Accomplished</p>
+                    <p className="font-mono text-[10px] uppercase tracking-wider text-green-400">Accomplished</p>
                     <p className="mt-1 text-sm text-slate-400">{project.xyz.accomplished}</p>
                   </div>
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-wider text-violet-400">By doing</p>
+                    <p className="font-mono text-[10px] uppercase tracking-wider text-orange-400">By doing</p>
                     <p className="mt-1 text-sm text-slate-400">{project.xyz.byDoing}</p>
                   </div>
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-wider text-cyan-400">Resulted in</p>
+                    <p className="font-mono text-[10px] uppercase tracking-wider text-blue-400">Resulted in</p>
                     <p className="mt-1 text-sm text-slate-400">{project.xyz.resultedIn}</p>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ function ProjectCard({ project, index }: { project: (typeof moreProjects)[0]; in
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300"
                   onClick={(e) => e.stopPropagation()}
                 >
                   View on GitHub
@@ -141,14 +141,14 @@ export function MoreProjects() {
         <div className="mx-auto max-w-4xl">
           <a
             href="#projects"
-            className="mb-8 inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-cyan-400"
+            className="mb-8 inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-blue-400"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to featured projects
           </a>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400/80">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-blue-400/80">
               All Projects
             </span>
             <h1 className="mt-3 text-3xl font-bold text-slate-100 sm:text-4xl">

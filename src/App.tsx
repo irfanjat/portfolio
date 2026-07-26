@@ -3,15 +3,13 @@ import { MeshBackground } from './components/effects/MeshBackground'
 import { SmoothScrollProvider } from './components/effects/SmoothScrollProvider'
 import { Footer } from './components/layout/Footer'
 import { Navbar } from './components/layout/Navbar'
+import { About } from './components/sections/About'
 import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
-import { Education } from './components/sections/Education'
 import { Hero } from './components/sections/Hero'
 import { MoreProjects } from './components/sections/MoreProjects'
-import { Pipeline } from './components/sections/Pipeline'
 import { Projects } from './components/sections/Projects'
 import { Skills } from './components/sections/Skills'
-import { Stats } from './components/sections/Stats'
 import { ScrollToTop } from './components/ui/ScrollToTop'
 
 function useHashRoute() {
@@ -30,12 +28,10 @@ function MainPortfolio() {
       <Navbar />
       <main>
         <Hero />
-        <Stats />
+        <About />
         <Skills />
-        <Pipeline />
         <Projects />
         <Certifications />
-        <Education />
         <Contact />
       </main>
       <Footer />

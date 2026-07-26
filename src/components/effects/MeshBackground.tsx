@@ -3,23 +3,23 @@ import { motion } from 'framer-motion'
 export function MeshBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden>
-      <div className="absolute inset-0 bg-[#030308]" />
+      <div className="absolute inset-0 bg-[#0d1117]" />
 
       <motion.div
         className="absolute -top-[40%] -left-[20%] h-[80%] w-[70%] rounded-full opacity-30 blur-[120px]"
-        style={{ background: 'radial-gradient(circle, #22d3ee 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #58a6ff 0%, transparent 70%)' }}
         animate={{ x: [0, 40, 0], y: [0, 30, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
         className="absolute -top-[20%] -right-[10%] h-[60%] w-[50%] rounded-full opacity-25 blur-[100px]"
-        style={{ background: 'radial-gradient(circle, #a78bfa 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #f0883e 0%, transparent 70%)' }}
         animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
       />
       <motion.div
         className="absolute -bottom-[30%] left-[20%] h-[50%] w-[60%] rounded-full opacity-20 blur-[100px]"
-        style={{ background: 'radial-gradient(circle, #34d399 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #3fb950 0%, transparent 70%)' }}
         animate={{ x: [0, 50, 0], y: [0, -20, 0] }}
         transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
       />
@@ -33,7 +33,7 @@ export function MeshBackground() {
         }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#030308]/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d1117]/80" />
     </div>
   )
 }

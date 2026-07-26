@@ -21,10 +21,10 @@ const iconMap: Record<string, LucideIcon> = {
 }
 
 const colorMap: Record<string, string> = {
-  cyan: 'border-cyan-500/30 bg-cyan-500/10 text-cyan-400',
-  violet: 'border-violet-500/30 bg-violet-500/10 text-violet-400',
-  emerald: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
-  rose: 'border-rose-500/30 bg-rose-500/10 text-rose-400',
+  blue: 'border-blue-500/30 bg-blue-500/10 text-blue-400',
+  orange: 'border-orange-500/30 bg-orange-500/10 text-orange-400',
+  green: 'border-green-500/30 bg-green-500/10 text-green-400',
+  red: 'border-red-500/30 bg-red-500/10 text-red-400',
 }
 
 export function Pipeline() {
@@ -44,7 +44,7 @@ export function Pipeline() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
             {pipelineStages.map((stage, i) => {
               const Icon = iconMap[stage.icon] ?? GitCommit
-              const colors = colorMap[stage.color] ?? colorMap.cyan
+              const colors = colorMap[stage.color] ?? colorMap.blue
 
               return (
                 <motion.div
@@ -58,7 +58,7 @@ export function Pipeline() {
                   <div className="glass glass-hover rounded-2xl p-5 text-center">
                     <motion.div
                       className={`mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl border ${colors}`}
-                      animate={{ boxShadow: ['0 0 0 0 rgba(34,211,238,0)', '0 0 0 8px rgba(34,211,238,0)', '0 0 0 0 rgba(34,211,238,0)'] }}
+                      animate={{ boxShadow: ['0 0 0 0 rgba(88,166,255,0)', '0 0 0 8px rgba(88,166,255,0)', '0 0 0 0 rgba(88,166,255,0)'] }}
                       transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
                     >
                       <Icon className="h-5 w-5" />
