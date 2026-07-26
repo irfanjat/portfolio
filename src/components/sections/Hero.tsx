@@ -16,7 +16,7 @@ function ProfileVisual() {
       >
         <div className="relative mx-auto h-72 w-72 overflow-hidden rounded-3xl border border-white/10 sm:h-80 sm:w-80">
           <img
-            src="/pic.jpg"
+            src={`${import.meta.env.BASE_URL}pic.jpg`}
             alt="Irfan Ali"
             className="h-full w-full object-cover"
           />
