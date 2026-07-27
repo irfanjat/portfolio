@@ -102,27 +102,6 @@ export const skillCategories = [
 
 export const projects = [
   {
-    id: 'devsecops',
-    title: 'DevSecOps CI/CD Pipeline with Security Gates',
-    description:
-      'End-to-end DevSecOps pipeline with SAST, container scanning, policy-as-code, and GitOps deployment — zero CVEs reach production.',
-    tech: ['GitHub Actions', 'Docker', 'Trivy', 'Bandit', 'OPA/Conftest', 'ArgoCD', 'Kubernetes'],
-    metrics: [
-      { label: 'CVEs Blocked', value: '100%', sub: 'at build time' },
-      { label: 'Security Gates', value: '6', sub: 'K8s policies' },
-      { label: 'Audit Trail', value: 'SARIF', sub: 'full reports' },
-    ],
-    achievements: [
-      'Trivy blocks vulnerable images (Critical/HIGH CVEs) at build time',
-      'OPA/Conftest enforces 6 K8s security policies before deploy',
-      'Bandit SAST scans Python code for security vulnerabilities',
-      'ArgoCD GitOps with SHA-tagged immutable deployments',
-    ],
-    diagram: 'gitops' as const,
-    github: 'https://github.com/irfanjat/devsecops-app',
-    demo: 'https://github.com/irfanjat/devsecops-app',
-  },
-  {
     id: 'costguard',
     title: 'CostGuard — AWS Cost Optimization Platform',
     description:
@@ -285,6 +264,33 @@ export interface MoreProject {
 }
 
 export const moreProjects: MoreProject[] = [
+  {
+    id: 'devsecops',
+    title: 'DevSecOps CI/CD Pipeline with Security Gates',
+    tech: ['GitHub Actions', 'Docker', 'Trivy', 'Bandit', 'OPA/Conftest', 'ArgoCD', 'Kubernetes'],
+    github: 'https://github.com/irfanjat/devsecops-app',
+    xyz: {
+      accomplished: 'Built an end-to-end DevSecOps pipeline with security scanning at every CI/CD stage',
+      byDoing:
+        'Integrated hadolint, yamllint, pytest, Bandit SAST, Trivy container scanning, OPA/Conftest K8s policy checks, and ArgoCD GitOps deployment into a single GitHub Actions workflow',
+      resultedIn:
+        'Zero CVEs reach production — vulnerable builds blocked at build time, K8s manifests validated before deployment, and full audit trail via SARIF reports',
+    },
+    highlights: [
+      'Trivy blocks vulnerable images (Critical/HIGH CVEs) at build time',
+      'OPA/Conftest enforces 6 K8s security policies before deploy',
+      'ArgoCD GitOps with SHA-tagged immutable deployments',
+    ],
+    architecture: 'Lint → Test → Bandit SAST → Trivy Scan → Conftest Policy → ArgoCD Deploy',
+    flowSteps: [
+      { label: 'Lint', color: 'blue' },
+      { label: 'Test', color: 'orange' },
+      { label: 'Bandit', color: 'yellow' },
+      { label: 'Trivy', color: 'green' },
+      { label: 'Policy', color: 'red' },
+      { label: 'Deploy', color: 'blue' },
+    ],
+  },
   {
     id: 'observability',
     title: 'Kubernetes Observability Stack',
