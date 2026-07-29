@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import { ChevronDown } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
 import { personal } from '../../data/portfolio'
 import { GlowButton } from '../ui/GlowButton'
@@ -35,9 +35,8 @@ function TerminalVisual() {
   }, [])
 
   return (
-      <div className="relative mx-auto w-full max-w-[400px]">
+    <div className="relative mx-auto w-full max-w-[400px]">
       <div className="overflow-hidden rounded-xl border border-white/[0.06] bg-[#0d1117] shadow-2xl">
-        {/* Title bar */}
         <div className="flex items-center gap-2.5 border-b border-white/[0.06] bg-[#1a1a2e]/80 px-4 py-2">
           <div className="flex gap-1.5">
             <div className="h-2.5 w-2.5 rounded-full bg-[#f85149]" />
@@ -49,9 +48,7 @@ function TerminalVisual() {
           </span>
         </div>
 
-        {/* Terminal body */}
         <div className="px-5 py-4 font-mono text-[12.5px] leading-relaxed">
-          {/* cat profile.json command */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: visibleLines >= 1 ? 1 : 0 }}
@@ -63,7 +60,6 @@ function TerminalVisual() {
             <span className="ml-2 text-slate-200">cat profile.json</span>
           </motion.div>
 
-          {/* JSON output */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: visibleLines >= 2 ? 1 : 0 }}
@@ -86,7 +82,6 @@ function TerminalVisual() {
             <span className="text-yellow-400">{'}'}</span>
           </motion.div>
 
-          {/* Final prompt with cursor */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: visibleLines >= jsonLines.length + 3 ? 1 : 0 }}
@@ -98,7 +93,6 @@ function TerminalVisual() {
           </motion.div>
         </div>
       </div>
-
     </div>
   )
 }
@@ -113,14 +107,14 @@ export function Hero() {
     >
       <div className="mx-auto grid w-full max-w-6xl items-center gap-16 lg:grid-cols-2">
         <div className="text-center lg:text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="label-dot mb-8"
+            className="font-mono text-sm text-blue-400/80"
           >
-            {personal.availability}
-          </motion.div>
+            irfan@portfolio:~$
+          </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
@@ -156,12 +150,8 @@ export function Hero() {
             transition={{ delay: 0.55 }}
             className="mt-10 flex flex-wrap justify-center gap-4 lg:justify-start"
           >
-            <GlowButton href="#projects">
-              View Projects
-            </GlowButton>
-            <GlowButton href="#contact" variant="secondary">
-              Contact Me
-            </GlowButton>
+            <GlowButton href="#contact">Get in Touch</GlowButton>
+            <GlowButton href="#projects" variant="secondary">View Projects</GlowButton>
           </motion.div>
 
           <motion.div
@@ -170,22 +160,10 @@ export function Hero() {
             transition={{ delay: 0.7 }}
             className="mt-10 flex items-center justify-center gap-5 lg:justify-start"
           >
-            <a
-              href={personal.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-500 transition hover:text-blue-400"
-              aria-label="GitHub"
-            >
+            <a href={personal.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 transition hover:text-blue-400" aria-label="GitHub">
               <FaGithub className="h-5 w-5" />
             </a>
-            <a
-              href={personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-500 transition hover:text-blue-400"
-              aria-label="LinkedIn"
-            >
+            <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 transition hover:text-blue-400" aria-label="LinkedIn">
               <FaLinkedin className="h-5 w-5" />
             </a>
             <span className="font-mono text-xs text-slate-600">{personal.location}</span>

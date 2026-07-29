@@ -1,83 +1,64 @@
 import { motion } from 'framer-motion'
-import { BadgeCheck, ExternalLink, GraduationCap } from 'lucide-react'
 import { certifications, education } from '../../data/portfolio'
-import { GlassCard } from '../ui/GlassCard'
-import { SectionHeader } from '../ui/SectionHeader'
-
-const badgeColors: Record<string, string> = {
-  IBM: 'from-blue-500/20 to-blue-600/10 text-blue-300 border-blue-500/20',
-  AWS: 'from-amber-500/20 to-amber-600/10 text-amber-300 border-amber-500/20',
-  OCI: 'from-red-500/20 to-red-600/10 text-red-300 border-red-500/20',
-}
 
 export function Certifications() {
   return (
-    <section id="credentials" className="section-padding">
+    <section id="certifications" className="section-padding">
       <div className="mx-auto max-w-6xl">
-        <SectionHeader
-          label="Credentials"
-          title="Education & Certifications"
-          subtitle="Building a strong foundation in computer science with industry-recognized certifications."
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          className="mb-14"
+        >
+          <span className="mb-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-blue-400/80">
+            // 04. certifications
+          </span>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">Credentials</h2>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.5 }}
-          className="mb-5"
+          className="mb-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6"
         >
-          <GlassCard className="p-6 sm:p-8">
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-blue-500/20 border border-white/10">
-                <GraduationCap className="h-6 w-6 text-orange-400" />
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold text-slate-100">{education.degree}</h3>
-                <p className="mt-1 text-xs text-slate-500">{education.university}</p>
-                <p className="mt-1 font-mono text-[11px] text-blue-400/80">{education.graduation}</p>
-              </div>
+          <div className="flex items-center gap-4">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-blue-500/20 border border-white/10 text-xl">
+              🎓
             </div>
-          </GlassCard>
+            <div>
+              <h3 className="text-sm font-semibold text-slate-100">{education.degree}</h3>
+              <p className="mt-1 text-xs text-slate-500">{education.university}</p>
+              <p className="mt-1 font-mono text-[11px] text-blue-400/80">{education.graduation}</p>
+            </div>
+          </div>
         </motion.div>
 
-        <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2">
           {certifications.map((cert, i) => (
-            <motion.div
+            <motion.a
               key={cert.title}
+              href={cert.link}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              transition={{ delay: i * 0.08 }}
+              className="flex items-start gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 transition hover:border-blue-500/20 hover:bg-blue-500/5"
             >
-              <a href={cert.link} target="_blank" rel="noopener noreferrer" className="block h-full">
-                <GlassCard className="h-full p-6">
-                  <div className="flex items-start gap-4">
-                    <div
-                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border bg-gradient-to-br font-mono text-xs font-bold ${badgeColors[cert.badge] ?? badgeColors.AWS}`}
-                    >
-                      {cert.badge}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <h3 className="text-sm font-semibold leading-snug text-slate-100">{cert.title}</h3>
-                      <p className="mt-1 text-xs text-slate-500">{cert.issuer}</p>
-                      <div className="mt-3 flex items-center gap-3">
-                        {cert.verified && (
-                          <span className="flex items-center gap-1 text-[10px] text-green-400">
-                            <BadgeCheck className="h-3.5 w-3.5" />
-                            Verified
-                          </span>
-                        )}
-                        <span className="flex items-center gap-1 text-[10px] text-blue-400/80">
-                          View credential
-                          <ExternalLink className="h-3 w-3" />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </GlassCard>
-              </a>
-            </motion.div>
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 text-base">
+                ☁️
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-sm font-medium text-slate-100">{cert.title}</h3>
+                <p className="mt-0.5 text-xs text-slate-500">{cert.issuer}</p>
+                <span className="mt-2 inline-flex items-center gap-1 text-xs text-blue-400/80">
+                  View Certificate ↗
+                </span>
+              </div>
+            </motion.a>
           ))}
         </div>
       </div>
