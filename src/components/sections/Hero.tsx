@@ -1,62 +1,104 @@
 import { motion } from 'framer-motion'
-import { ChevronDown, FolderKanban, Mail } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { ChevronDown } from 'lucide-react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
 import { personal } from '../../data/portfolio'
 import { GlowButton } from '../ui/GlowButton'
 import { GradientText } from '../ui/GradientText'
 
-function ProfileVisual() {
+const jsonLines = [
+  '  "role": "DevOps Engineer",',
+  '  "cloud": "AWS",',
+  '  "iac": "Terraform | Ansible",',
+  '  "containers": "Docker | K8s",',
+  '  "status": "Open — remote | hybrid | onsite"',
+]
+
+function TerminalVisual() {
+  const [visibleLines, setVisibleLines] = useState(0)
+  const [cursorOn, setCursorOn] = useState(true)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisibleLines(v => {
+        if (v < jsonLines.length + 3) return v + 1
+        clearInterval(interval)
+        return v
+      })
+    }, 180)
+    return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    const blink = setInterval(() => setCursorOn(v => !v), 530)
+    return () => clearInterval(blink)
+  }, [])
+
   return (
-    <div className="relative mx-auto w-full max-w-sm">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.4, duration: 0.8, type: 'spring' }}
-        className="relative"
-      >
-        <div className="relative mx-auto h-72 w-72 overflow-hidden rounded-3xl border border-white/10 sm:h-80 sm:w-80">
-          <img
-            src={`${import.meta.env.BASE_URL}pic.jpg`}
-            alt="Irfan Ali"
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117]/60 via-transparent to-transparent" />
+      <div className="relative mx-auto w-full max-w-[400px]">
+      <div className="overflow-hidden rounded-xl border border-white/[0.06] bg-[#0d1117] shadow-2xl">
+        {/* Title bar */}
+        <div className="flex items-center gap-2.5 border-b border-white/[0.06] bg-[#1a1a2e]/80 px-4 py-2">
+          <div className="flex gap-1.5">
+            <div className="h-2.5 w-2.5 rounded-full bg-[#f85149]" />
+            <div className="h-2.5 w-2.5 rounded-full bg-[#e3b341]" />
+            <div className="h-2.5 w-2.5 rounded-full bg-[#3fb950]" />
+          </div>
+          <span className="font-mono text-[11px] font-medium text-slate-300">
+            irfan <span className="text-slate-600">~</span> bash
+          </span>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full border border-green-500/20 bg-[#0d1117]/90 px-4 py-2 backdrop-blur-sm"
-        >
-          <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="font-mono text-[11px] text-green-400">available for hire</span>
-        </motion.div>
-      </motion.div>
+        {/* Terminal body */}
+        <div className="px-5 py-4 font-mono text-[12.5px] leading-relaxed">
+          {/* cat profile.json command */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: visibleLines >= 1 ? 1 : 0 }}
+            transition={{ duration: 0.15 }}
+            className="mb-2"
+          >
+            <span className="text-blue-400">irfan@aws</span>
+            <span className="text-slate-600">:~$</span>
+            <span className="ml-2 text-slate-200">cat profile.json</span>
+          </motion.div>
 
-      <div className="absolute -top-6 -right-6 rounded-2xl border border-white/10 bg-[#161b22]/90 px-4 py-3 backdrop-blur-sm">
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400">
-            <span className="font-mono text-xs font-bold">4</span>
-          </div>
-          <div>
-            <p className="text-[10px] text-slate-500">Certifications</p>
-            <p className="text-xs font-semibold text-slate-200">AWS + IBM + OCI</p>
-          </div>
+          {/* JSON output */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: visibleLines >= 2 ? 1 : 0 }}
+            transition={{ duration: 0.2 }}
+            className="mb-3"
+          >
+            <span className="text-yellow-400">{'{'}</span>
+            {jsonLines.map((line, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: visibleLines >= i + 3 ? 1 : 0 }}
+                transition={{ duration: 0.12 }}
+                className="pl-4"
+              >
+                <span className="text-cyan-300">{line.split(':')[0]}:</span>
+                <span className="text-slate-400">{line.split(':')[1]}</span>
+              </motion.div>
+            ))}
+            <span className="text-yellow-400">{'}'}</span>
+          </motion.div>
+
+          {/* Final prompt with cursor */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: visibleLines >= jsonLines.length + 3 ? 1 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <span className="text-blue-400">irfan@aws</span>
+            <span className="text-slate-600">:~$</span>
+            <span className={`ml-0.5 inline-block h-[18px] w-[8px] bg-green-400 align-text-bottom transition-opacity duration-75 ${cursorOn ? 'opacity-100' : 'opacity-0'}`} />
+          </motion.div>
         </div>
       </div>
 
-      <div className="absolute -top-4 -left-6 rounded-2xl border border-white/10 bg-[#161b22]/90 px-4 py-3 backdrop-blur-sm">
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-500/10 text-orange-400">
-            <span className="font-mono text-xs font-bold">12+</span>
-          </div>
-          <div>
-            <p className="text-[10px] text-slate-500">Projects</p>
-            <p className="text-xs font-semibold text-slate-200">Shipped</p>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
@@ -115,11 +157,9 @@ export function Hero() {
             className="mt-10 flex flex-wrap justify-center gap-4 lg:justify-start"
           >
             <GlowButton href="#projects">
-              <FolderKanban className="h-4 w-4" />
               View Projects
             </GlowButton>
             <GlowButton href="#contact" variant="secondary">
-              <Mail className="h-4 w-4" />
               Contact Me
             </GlowButton>
           </motion.div>
@@ -158,7 +198,7 @@ export function Hero() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="hidden lg:block"
         >
-          <ProfileVisual />
+          <TerminalVisual />
         </motion.div>
       </div>
 

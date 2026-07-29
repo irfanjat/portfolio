@@ -191,3 +191,12 @@
     --accent-border: rgba(248, 81, 73, 0.25);
   }
 }
+
+.cursor-blink {
+  animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
