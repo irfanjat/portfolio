@@ -92,10 +92,23 @@ export const skillCategories = [
     title: 'Monitoring & Scripting',
     color: 'red',
     skills: [
-      { name: 'Prometheus', level: 88 },
-      { name: 'Grafana', level: 90 },
+      { name: 'Prometheus', level: 90 },
+      { name: 'Grafana', level: 92 },
       { name: 'Python', level: 85 },
       { name: 'Bash', level: 88 },
+    ],
+  },
+  {
+    title: 'System Design',
+    color: 'blue',
+    skills: [
+      { name: 'Microservices', level: 82 },
+      { name: 'REST & gRPC', level: 80 },
+      { name: 'Caching', level: 78 },
+      { name: 'CDNs', level: 75 },
+      { name: 'Load Balancers', level: 83 },
+      { name: 'Databases', level: 78 },
+      { name: 'Servers', level: 80 },
     ],
   },
 ]
