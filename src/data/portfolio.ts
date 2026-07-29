@@ -38,7 +38,7 @@ export const skillCategories = [
   },
   {
     title: 'Infrastructure as Code',
-    skills: ['Terraform', 'Ansible', 'CloudFormation', 'Vagrant'],
+    skills: ['Terraform', 'Ansible', 'CloudFormation'],
   },
   {
     title: 'Cloud Platforms',
