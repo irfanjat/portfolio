@@ -29,7 +29,7 @@ export function Contact() {
           className="mb-14"
         >
           <span className="mb-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-blue-400/80">
-            // 05. contact
+            // 06. contact
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">Get In Touch</h2>
           <p className="mt-3 max-w-xl text-base text-slate-400">
