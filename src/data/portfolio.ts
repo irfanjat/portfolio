@@ -51,7 +51,7 @@ export const skillCategories = [
   },
   {
     title: 'Systems & Networking',
-    skills: ['Linux', 'DNS', 'HTTPS/TLS', 'SSH', 'Bash', 'Python'],
+    skills: ['Linux', 'DNS', 'HTTPS/TLS', 'SSH', 'Bash', 'Python', 'Nginx', 'Apache'],
   },
   {
     title: 'System Design',
