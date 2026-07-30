@@ -57,6 +57,10 @@ export const skillCategories = [
     title: 'System Design',
     skills: ['Microservices', 'REST & gRPC', 'Caching', 'CDNs', 'Load Balancers', 'Databases', 'Servers'],
   },
+  {
+    title: 'Linux SysAdmin',
+    skills: ['Firewalls', 'Cron Jobs', 'SSH', 'LVM', 'Systemd', 'UFW/iptables', 'rsync', 'Process Management'],
+  },
 ]
 
 export const certifications = [
