@@ -88,7 +88,7 @@ export const certifications = [
 
 export const stats = [
   { label: 'Years Experience', value: 1, suffix: '+' },
-  { label: 'Projects Shipped', value: 12, suffix: '' },
+  { label: 'Projects Shipped', value: 12, suffix: '+' },
   { label: 'Cloud Platforms', value: 1, suffix: '' },
   { label: 'Certifications', value: 4, suffix: '' },
 ]
