@@ -1,6 +1,6 @@
 # Irfan Ali � DevOps Portfolio
 
-Premium, dark-themed DevOps engineer portfolio built with React, Vite, Tailwind CSS v4, and Framer Motion.
+Premium,dark-themed DevOps engineer portfolio built with React, Vite, Tailwind CSS v4, and Framer Motion.
 
 ## Stack
 
