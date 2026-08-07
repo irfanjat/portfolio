@@ -2,7 +2,7 @@
 
 Premium,dark-themed DevOps engineer portfolio built with React, Vite, Tailwind CSS v4, and Framer Motion.
 
-## Stack
+## Stack.
 
 - **React 19** + **TypeScript**
 - **Vite 6**
