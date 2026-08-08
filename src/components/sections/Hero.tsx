@@ -1,10 +1,12 @@
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
-import { useEffect, useState } from 'react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
 import { personal } from '../../data/portfolio'
 import { GlowButton } from '../ui/GlowButton'
 import { GradientText } from '../ui/GradientText'
+
+const HeroScene = lazy(() => import('../hero/HeroScene').then((m) => ({ default: m.HeroScene })))
 
 const jsonLines = [
   '  "role": "DevOps Engineer",',
@@ -13,6 +15,20 @@ const jsonLines = [
   '  "containers": "Docker | K8s",',
   '  "status": "Open — remote | hybrid | onsite"',
 ]
+
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const query = window.matchMedia('(min-width: 1024px)')
+    setIsDesktop(query.matches)
+    const onChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+    query.addEventListener('change', onChange)
+    return () => query.removeEventListener('change', onChange)
+  }, [])
+
+  return isDesktop
+}
 
 function TerminalVisual() {
   const [visibleLines, setVisibleLines] = useState(0)
@@ -99,6 +115,7 @@ function TerminalVisual() {
 
 export function Hero() {
   const [first, last] = personal.name.split(' ')
+  const isDesktop = useIsDesktop()
 
   return (
     <section
@@ -145,6 +162,18 @@ export function Hero() {
           </motion.p>
 
           <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mt-6 flex justify-center lg:justify-start"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1.5 text-xs font-medium text-green-300">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400" />
+              Open to DevOps, Cloud & Platform Engineering roles
+            </span>
+          </motion.div>
+
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.55 }}
@@ -174,9 +203,15 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="hidden lg:block"
+          className="mt-16 lg:mt-0"
         >
-          <TerminalVisual />
+          {isDesktop ? (
+            <Suspense fallback={<TerminalVisual />}>
+              <HeroScene />
+            </Suspense>
+          ) : (
+            <TerminalVisual />
+          )}
         </motion.div>
       </div>
 

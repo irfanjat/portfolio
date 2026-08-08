@@ -22,7 +22,7 @@ export function Footer() {
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/20 to-orange-500/20 border border-white/10 font-mono text-xs font-bold text-blue-400">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-rich border border-white/15 font-mono text-xs font-bold text-white">
                 IA
               </div>
               <span className="font-semibold text-slate-200">{personal.name}</span>

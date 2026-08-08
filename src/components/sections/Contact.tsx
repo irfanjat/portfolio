@@ -1,7 +1,15 @@
 import { motion } from 'framer-motion'
-import { CheckCircle2, Send } from 'lucide-react'
+import { CheckCircle2, Github, Linkedin, Mail, Send } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { contactForm, personal } from '../../data/portfolio'
+import { GradientText } from '../ui/GradientText'
+import { TiltCard } from '../ui/TiltCard'
+
+const contactColors = [
+  { icon: 'text-blue-400', border: 'border-blue-500/25', glow: 'rgba(59,130,246,0.12)' },
+  { icon: 'text-violet-400', border: 'border-violet-500/25', glow: 'rgba(139,92,246,0.12)' },
+  { icon: 'text-teal-400', border: 'border-teal-500/25', glow: 'rgba(20,184,166,0.12)' },
+]
 
 export function Contact() {
   const [showSuccess, setShowSuccess] = useState(false)
@@ -31,7 +39,9 @@ export function Contact() {
           <span className="mb-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-blue-400/80">
             // 06. contact
           </span>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">Get In Touch</h2>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <GradientText shimmer>Get In Touch</GradientText>
+          </h2>
           <p className="mt-3 max-w-xl text-base text-slate-400">
             Whether you have a role to discuss, a project idea, or just want to say hello — my inbox is always open.
           </p>
@@ -45,30 +55,41 @@ export function Contact() {
             className="space-y-3 lg:col-span-2"
           >
             {[
-              { label: 'Email', value: personal.email, href: `mailto:${personal.email}` },
-              { label: 'LinkedIn', value: 'irfanjat', href: personal.linkedin },
-              { label: 'GitHub', value: 'irfanjat', href: personal.github },
-            ].map((link, i) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="flex items-center gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 transition hover:border-blue-500/20 hover:bg-blue-500/5"
-              >
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 text-base">
-                  {link.label === 'Email' ? '✉️' : link.label === 'LinkedIn' ? '💼' : '🐙'}
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500">{link.label}</p>
-                  <p className="text-sm font-medium text-slate-200">{link.value}</p>
-                </div>
-              </motion.a>
-            ))}
+              { label: 'Email', value: personal.email, href: `mailto:${personal.email}`, icon: Mail },
+              { label: 'LinkedIn', value: 'irfanjat', href: personal.linkedin, icon: Linkedin },
+              { label: 'GitHub', value: 'irfanjat', href: personal.github, icon: Github },
+            ].map((link, i) => {
+              const c = contactColors[i % contactColors.length]
+              return (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="block"
+                >
+                  <TiltCard
+                    intensity={8}
+                    glareColor={c.glow}
+                    className={`rounded-2xl border bg-white/[0.03] p-4 transition ${c.border}`}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className={`flex h-11 w-11 items-center justify-center rounded-xl border ${c.border} ${c.icon}`}>
+                        <link.icon className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-slate-500">{link.label}</p>
+                        <p className="text-sm font-medium text-slate-200">{link.value}</p>
+                      </div>
+                    </div>
+                  </TiltCard>
+                </motion.a>
+              )
+            })}
           </motion.div>
 
           <motion.form
@@ -79,7 +100,7 @@ export function Contact() {
             method="POST"
             className="lg:col-span-3"
           >
-            <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 sm:p-8">
+            <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] bg-gradient-rich-soft p-6 sm:p-8">
               <input type="hidden" name="access_key" value={contactForm.web3formsAccessKey} />
               <input type="hidden" name="subject" value="New message from Irfan Ali Portfolio" />
               <input type="hidden" name="from_name" value="Portfolio Contact Form" />
@@ -87,8 +108,9 @@ export function Contact() {
 
               <div className="space-y-4">
                 <div>
-                  <label className="mb-1.5 block text-xs font-medium text-slate-400">Name</label>
+                  <label htmlFor="contact-name" className="mb-1.5 block text-xs font-medium text-slate-400">Name</label>
                   <input
+                    id="contact-name"
                     type="text"
                     name="name"
                     required
@@ -97,8 +119,9 @@ export function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-xs font-medium text-slate-400">Email</label>
+                  <label htmlFor="contact-email" className="mb-1.5 block text-xs font-medium text-slate-400">Email</label>
                   <input
+                    id="contact-email"
                     type="email"
                     name="email"
                     required
@@ -107,8 +130,9 @@ export function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-xs font-medium text-slate-400">Message</label>
+                  <label htmlFor="contact-message" className="mb-1.5 block text-xs font-medium text-slate-400">Message</label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     required
                     rows={4}
@@ -118,7 +142,7 @@ export function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:shadow-blue-500/30"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-rich px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-950/40 transition hover:shadow-blue-900/50"
                 >
                   <Send className="h-4 w-4" />
                   Send Message

@@ -1,15 +1,17 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { ArrowRight, CloudCog, ExternalLink, GitBranch, ServerCog, ShieldCheck } from 'lucide-react'
 import { projects } from '../../data/portfolio'
+import { GradientText } from '../ui/GradientText'
+import { TiltCard } from '../ui/TiltCard'
 
 const colorScheme = [
-  { from: 'from-orange-500/20', to: 'to-orange-600/10', text: 'text-orange-300', border: 'border-orange-500/20', bg: 'bg-orange-500/10' },
-  { from: 'from-green-500/20', to: 'to-green-600/10', text: 'text-green-300', border: 'border-green-500/20', bg: 'bg-green-500/10' },
-  { from: 'from-purple-500/20', to: 'to-purple-600/10', text: 'text-purple-300', border: 'border-purple-500/20', bg: 'bg-purple-500/10' },
-  { from: 'from-cyan-500/20', to: 'to-cyan-600/10', text: 'text-cyan-300', border: 'border-cyan-500/20', bg: 'bg-cyan-500/10' },
+  { from: 'from-blue-500/25', to: 'to-blue-600/10', text: 'text-blue-300', border: 'border-blue-500/25', bg: 'bg-blue-500/10', glow: 'rgba(59,130,246,0.12)' },
+  { from: 'from-violet-500/25', to: 'to-violet-600/10', text: 'text-violet-300', border: 'border-violet-500/25', bg: 'bg-violet-500/10', glow: 'rgba(139,92,246,0.12)' },
+  { from: 'from-teal-500/25', to: 'to-teal-600/10', text: 'text-teal-300', border: 'border-teal-500/25', bg: 'bg-teal-500/10', glow: 'rgba(20,184,166,0.12)' },
+  { from: 'from-amber-500/25', to: 'to-amber-600/10', text: 'text-amber-300', border: 'border-amber-500/25', bg: 'bg-amber-500/10', glow: 'rgba(245,158,11,0.12)' },
 ]
 
-const projectIcons = ['🏗️', '🚀', '⚙️', '📈']
+const projectIcons = [CloudCog, GitBranch, ShieldCheck, ServerCog]
 
 export function Projects() {
   return (
@@ -24,7 +26,9 @@ export function Projects() {
           <span className="mb-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-blue-400/80">
             // 03. projects
           </span>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">Notable Projects</h2>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <GradientText shimmer>Notable Projects</GradientText>
+          </h2>
         </motion.div>
 
         <div className="space-y-6">
@@ -35,32 +39,40 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ delay: i * 0.1 }}
-              className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 transition hover:border-white/[0.12]"
             >
-              <div className="flex items-start gap-4">
-                <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br border ${colorScheme[i % colorScheme.length].border} ${colorScheme[i % colorScheme.length].from} ${colorScheme[i % colorScheme.length].to} text-base`}>
-                  {projectIcons[i]}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-lg font-semibold text-slate-100">{project.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-400">{project.description}</p>
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {project.tech.map(t => (
-                      <span key={t} className={`rounded-lg border px-2.5 py-0.5 text-[11px] font-medium ${colorScheme[i % colorScheme.length].bg} ${colorScheme[i % colorScheme.length].text} ${colorScheme[i % colorScheme.length].border}`}>
-                        {t}
-                      </span>
-                    ))}
+              <TiltCard
+                intensity={6}
+                glareColor={colorScheme[i % colorScheme.length].glow}
+                className={`rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition hover:border-white/[0.16] ${colorScheme[i % colorScheme.length].border}`}
+              >
+                <div className="flex items-start gap-4">
+                  <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br border ${colorScheme[i % colorScheme.length].border} ${colorScheme[i % colorScheme.length].from} ${colorScheme[i % colorScheme.length].to} ${colorScheme[i % colorScheme.length].text} shadow-lg`}>
+                    {(() => {
+                      const Icon = projectIcons[i % projectIcons.length]
+                      return <Icon className="h-5 w-5" />
+                    })()}
                   </div>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-blue-400/80 transition hover:text-blue-300"
-                  >
-                    View on GitHub <ExternalLink className="h-3 w-3" />
-                  </a>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-lg font-semibold text-slate-100">{project.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-400">{project.description}</p>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {project.tech.map(t => (
+                        <span key={t} className={`rounded-lg border px-2.5 py-0.5 text-[11px] font-medium ${colorScheme[i % colorScheme.length].bg} ${colorScheme[i % colorScheme.length].text} ${colorScheme[i % colorScheme.length].border}`}>
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`mt-4 inline-flex items-center gap-1.5 text-xs font-medium transition ${colorScheme[i % colorScheme.length].text} hover:brightness-125`}
+                    >
+                      View on GitHub <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
@@ -75,7 +87,7 @@ export function Projects() {
             href="https://github.com/irfanjat"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-slate-200 transition hover:border-blue-500/30 hover:bg-blue-500/5"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-rich px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-950/40 transition hover:shadow-blue-900/50"
           >
             View All on GitHub <ArrowRight className="h-4 w-4" />
           </a>
