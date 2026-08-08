@@ -20,22 +20,22 @@ import * as THREE from 'three'
 
 const NODE_COUNT = 72
 const RADIUS = 2.1
-const NODE_COLORS = ['#87adc9', '#6b93b3', '#4a7094', '#a9c6dd', '#9a8fd4', '#7fb0a3', '#cf9a66']
+const NODE_COLORS = ['#60a5fa', '#a78bfa', '#f472b6', '#fb923c', '#34d399', '#22d3ee', '#facc15', '#f87171']
 
 const TOOLS = [
-  { icon: SiDocker, name: 'Docker', color: '#5f9bc4' },
-  { icon: SiKubernetes, name: 'Kubernetes', color: '#6f9ecb' },
-  { icon: SiTerraform, name: 'Terraform', color: '#9a8fd4' },
-  { icon: FaAws, name: 'AWS', color: '#cf9a66' },
-  { icon: SiJenkins, name: 'Jenkins', color: '#c2776f' },
-  { icon: SiAnsible, name: 'Ansible', color: '#c28a86' },
-  { icon: SiHelm, name: 'Helm', color: '#6f9ecb' },
-  { icon: SiGithubactions, name: 'GitHub Actions', color: '#aab3bd' },
-  { icon: SiArgo, name: 'ArgoCD', color: '#7f9fd1' },
-  { icon: SiPrometheus, name: 'Prometheus', color: '#cf8a5f' },
-  { icon: SiGrafana, name: 'Grafana', color: '#c89a55' },
-  { icon: SiLinux, name: 'Linux', color: '#c8ae6e' },
-  { icon: SiNginx, name: 'Nginx', color: '#86aa7c' },
+  { icon: SiDocker, name: 'Docker', color: '#2496ed' },
+  { icon: SiKubernetes, name: 'Kubernetes', color: '#326ce5' },
+  { icon: SiTerraform, name: 'Terraform', color: '#844FBA' },
+  { icon: FaAws, name: 'AWS', color: '#FF9900' },
+  { icon: SiJenkins, name: 'Jenkins', color: '#D33833' },
+  { icon: SiAnsible, name: 'Ansible', color: '#D94F4F' },
+  { icon: SiHelm, name: 'Helm', color: '#4a63c9' },
+  { icon: SiGithubactions, name: 'GitHub Actions', color: '#2088FF' },
+  { icon: SiArgo, name: 'ArgoCD', color: '#F47A3A' },
+  { icon: SiPrometheus, name: 'Prometheus', color: '#E6522C' },
+  { icon: SiGrafana, name: 'Grafana', color: '#F46800' },
+  { icon: SiLinux, name: 'Linux', color: '#FCC624' },
+  { icon: SiNginx, name: 'Nginx', color: '#009639' },
 ]
 
 function fibonacciSphere(count: number, radius: number): THREE.Vector3[] {
@@ -61,14 +61,16 @@ function ToolNodes() {
           <group key={tool.name} position={positions[i]}>
             <mesh>
               <sphereGeometry args={[0.08, 12, 12]} />
-              <meshBasicMaterial color="#a9c6dd" />
+              <meshBasicMaterial color={tool.color} />
             </mesh>
             <Html
               center
               zIndexRange={[40, 10]}
               style={{ pointerEvents: 'none' }}
             >
-              <div className="pointer-events-none flex items-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-[#0d1117]/85 px-2.5 py-1 text-[10px] font-medium text-slate-200 shadow-lg shadow-black/40 backdrop-blur-sm">
+              <div className="pointer-events-none flex items-center gap-1.5 whitespace-nowrap rounded-full border bg-[#0d1117]/90 px-2.5 py-1 text-[10px] font-medium text-slate-100 shadow-lg shadow-black/40 backdrop-blur-sm"
+                style={{ borderColor: `${tool.color}66` }}
+              >
                 <Icon className="h-3 w-3" style={{ color: tool.color }} />
                 {tool.name}
               </div>
@@ -83,7 +85,7 @@ function ToolNodes() {
 function NetworkShell() {
   const groupRef = useRef<THREE.Group>(null)
 
-  const { positions, colors, edgePositions } = useMemo(() => {
+  const { positions, colors, edgePositions, edgeColors } = useMemo(() => {
     const nodes = fibonacciSphere(NODE_COUNT, RADIUS)
     const positions = new Float32Array(NODE_COUNT * 3)
     const colors = new Float32Array(NODE_COUNT * 3)
@@ -101,8 +103,8 @@ function NetworkShell() {
     for (let i = 0; i < NODE_COUNT; i++) {
       for (let j = i + 1; j < NODE_COUNT; j++) {
         if (nodes[i].distanceTo(nodes[j]) < threshold) {
+          const c = new THREE.Color().setHSL(((edges.length / 2) * 47) % 360 / 360, 0.75, 0.62)
           edges.push(nodes[i], nodes[j])
-          const c = new THREE.Color('#87adc9')
           edgeColors.push(c.r, c.g, c.b, c.r, c.g, c.b)
         }
       }
@@ -111,7 +113,7 @@ function NetworkShell() {
     const edgePositions = new Float32Array(edges.length * 3)
     edges.forEach((v, i) => edgePositions.set([v.x, v.y, v.z], i * 3))
 
-    return { positions, colors, edgePositions }
+    return { positions, colors, edgePositions, edgeColors: new Float32Array(edgeColors) }
   }, [])
 
   useFrame((state) => {
@@ -141,8 +143,9 @@ function NetworkShell() {
   const edgeGeometry = useMemo(() => {
     const geo = new THREE.BufferGeometry()
     geo.setAttribute('position', new THREE.BufferAttribute(edgePositions, 3))
+    geo.setAttribute('color', new THREE.BufferAttribute(edgeColors, 3))
     return geo
-  }, [edgePositions])
+  }, [edgePositions, edgeColors])
 
   const nodeGeometry = useMemo(() => {
     const geo = new THREE.BufferGeometry()
@@ -157,9 +160,9 @@ function NetworkShell() {
     <group ref={groupRef} rotation={[0.4, 0, 0]}>
       <lineSegments geometry={edgeGeometry}>
         <lineBasicMaterial
-          color="#87adc9"
+          vertexColors
           transparent
-          opacity={0.18}
+          opacity={0.45}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
         />
@@ -221,29 +224,33 @@ function WireframeCore() {
     <group>
       <mesh ref={shellRef}>
         <icosahedronGeometry args={[2.5, 1]} />
-        <meshBasicMaterial color="#87adc9" wireframe transparent opacity={0.1} />
+        <meshBasicMaterial color="#a78bfa" wireframe transparent opacity={0.18} />
       </mesh>
 
       <mesh ref={ringRef} rotation={[Math.PI / 2.4, 0, 0]}>
         <torusGeometry args={[3.4, 0.015, 8, 100]} />
-        <meshBasicMaterial color="#6b93b3" transparent opacity={0.4} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color="#60a5fa" transparent opacity={0.55} blending={THREE.AdditiveBlending} />
       </mesh>
       <mesh rotation={[Math.PI / 1.7, Math.PI / 3, 0]}>
         <torusGeometry args={[3.8, 0.012, 8, 100]} />
-        <meshBasicMaterial color="#9a8fd4" transparent opacity={0.3} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color="#f472b6" transparent opacity={0.45} blending={THREE.AdditiveBlending} />
       </mesh>
       <mesh rotation={[Math.PI / 1.3, Math.PI / 4, 0]}>
         <torusGeometry args={[4.15, 0.01, 8, 100]} />
-        <meshBasicMaterial color="#7fb0a3" transparent opacity={0.25} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color="#34d399" transparent opacity={0.4} blending={THREE.AdditiveBlending} />
       </mesh>
 
       <mesh ref={coreRef}>
         <sphereGeometry args={[0.55, 32, 32]} />
-        <meshBasicMaterial color="#a9c6dd" />
+        <meshBasicMaterial color="#f8fafc" />
       </mesh>
       <mesh>
         <sphereGeometry args={[0.9, 32, 32]} />
-        <meshBasicMaterial color="#6b93b3" transparent opacity={0.1} blending={THREE.AdditiveBlending} depthWrite={false} />
+        <meshBasicMaterial color="#a78bfa" transparent opacity={0.22} blending={THREE.AdditiveBlending} depthWrite={false} />
+      </mesh>
+      <mesh>
+        <sphereGeometry args={[1.2, 32, 32]} />
+        <meshBasicMaterial color="#f472b6" transparent opacity={0.1} blending={THREE.AdditiveBlending} depthWrite={false} />
       </mesh>
     </group>
   )
@@ -253,10 +260,10 @@ export function HeroScene() {
   return (
     <div className="relative h-[420px] w-full sm:h-[480px] lg:h-[560px]">
       <div
-        className="pointer-events-none absolute -inset-16 rounded-full opacity-25 blur-[90px]"
+        className="pointer-events-none absolute -inset-16 rounded-full opacity-30 blur-[90px]"
         style={{
           background:
-            'radial-gradient(circle at 30% 30%, #41658a 0%, transparent 55%), radial-gradient(circle at 70% 40%, #5b4f8a 0%, transparent 55%), radial-gradient(circle at 50% 80%, #3f6a6a 0%, transparent 55%)',
+            'radial-gradient(circle at 25% 30%, #3b82f6 0%, transparent 55%), radial-gradient(circle at 75% 35%, #a855f7 0%, transparent 55%), radial-gradient(circle at 50% 80%, #ec4899 0%, transparent 55%), radial-gradient(circle at 60% 15%, #f59e0b 0%, transparent 50%)',
         }}
       />
       <Canvas
@@ -270,7 +277,10 @@ export function HeroScene() {
           <NetworkShell />
           <WireframeCore />
         </Float>
-        <Sparkles count={70} scale={7} size={2.4} speed={0.35} color="#a9c6dd" opacity={0.5} />
+        <Sparkles count={35} scale={7} size={2.6} speed={0.4} color="#f472b6" opacity={0.75} />
+        <Sparkles count={35} scale={7} size={2.6} speed={0.4} color="#22d3ee" opacity={0.75} />
+        <Sparkles count={30} scale={7} size={2.6} speed={0.4} color="#facc15" opacity={0.65} />
+        <Sparkles count={25} scale={7} size={2.6} speed={0.4} color="#34d399" opacity={0.65} />
         <OrbitControls
           makeDefault
           enableZoom={false}
