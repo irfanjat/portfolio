@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 
 const sectionIds = [
   'home',
-  'stats',
+  'about',
   'skills',
-  'pipeline',
   'projects',
   'certifications',
   'education',

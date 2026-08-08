@@ -1,14 +1,16 @@
-# Irfan Ali � DevOps Portfolio
+# Irfan Ali — DevOps Portfolio
 
-Premium,dark-themed DevOps engineer portfolio built with React, Vite, Tailwind CSS v4, and Framer Motion.
+Premium dark-themed DevOps engineer portfolio built with **React 19**, **TypeScript**, **Vite**, **Tailwind CSS**, and **Framer Motion** — featuring an interactive **3D infrastructure constellation** built with **React Three Fiber**.
 
-## Stack.
+## Stack
 
-- **React 19** + **TypeScript**
+- **React 19** + **TypeScript** (strict mode)
 - **Vite 6**
-- **Tailwind CSS v3** (PostCSS � no native binding issues)
-- **Framer Motion** � animations & counters
-- **Lucide React** � icons
+- **Tailwind CSS v3** (PostCSS — no native binding issues)
+- **Framer Motion** — animations & scroll effects
+- **React Three Fiber** + **drei** — 3D hero scene & starfield background
+- **Lucide React** — icons
+- **Lenis** — smooth scrolling
 
 ## Getting Started
 
@@ -44,11 +46,10 @@ docker run -p 8080:80 irfan-devops-portfolio
 
 ## Customize
 
-- **Resume**: `public/resume.pdf` (Irfan Ali DevOps resume)
-- **Content**: Edit `src/data/site.ts` for personal info, projects, and skills.
-- **More projects**: Edit `src/data/moreProjects.ts` (XYZ format descriptions).
-- **Contact form**: Uses [FormSubmit](https://formsubmit.co) � confirm your email on first submission.
-- **GitHub links**: Update project repo URLs in `Projects.tsx` and `moreProjects.ts`.
+- **Resume**: `public/IrfanAliResume.pdf`
+- **Content**: Edit `src/data/portfolio.ts` for personal info, skills, certifications, stats, and projects.
+- **Contact form**: Uses [Web3Forms](https://web3forms.com). Set your access key via `VITE_WEB3FORMS_ACCESS_KEY` (see `.env.example`). **Never commit your real key** — it is read only from the environment.
+- **3D scene**: `src/components/hero/HeroScene.tsx` (constellation network) and `src/components/effects/Background3D.tsx` (starfield).
 
 ## Deploy
 
@@ -60,7 +61,7 @@ npm run build
 
 ## Sections
 
-- Hero with animated terminal
-- About, Skills, Projects (with architecture diagrams)
-- Journey timeline, Certifications, Education
-- Contact form (mailto) + floating social icons
+- Hero — interactive 3D infrastructure network + terminal visual (fallback on mobile)
+- About, Skills, Projects
+- Certifications, Education
+- Contact form (Web3Forms) + social links

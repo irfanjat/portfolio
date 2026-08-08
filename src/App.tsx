@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { MeshBackground } from './components/effects/MeshBackground'
 import { SmoothScrollProvider } from './components/effects/SmoothScrollProvider'
 import { Footer } from './components/layout/Footer'
@@ -11,12 +12,19 @@ import { Projects } from './components/sections/Projects'
 import { Skills } from './components/sections/Skills'
 import { ScrollToTop } from './components/ui/ScrollToTop'
 
+const Background3D = lazy(() =>
+  import('./components/effects/Background3D').then((m) => ({ default: m.Background3D })),
+)
+
 function App() {
   return (
     <SmoothScrollProvider>
       <MeshBackground />
+      <Suspense fallback={null}>
+        <Background3D />
+      </Suspense>
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <About />
         <Skills />
