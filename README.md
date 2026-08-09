@@ -1,6 +1,6 @@
 # Irfan Ali — DevOps Portfolio
 
-Premium dark-themed DevOps engineer portfolio built with **React 19**, **TypeScript**, **Vite**, **Tailwind CSS**, and **Framer Motion** — featuring an interactive **3D infrastructure constellation** built with **React Three Fiber**.
+Premium dark-themed DevOps engineer portfolio. built with **React 19**, **TypeScript**, **Vite**, **Tailwind CSS**, and **Framer Motion** — featuring an interactive **3D infrastructure constellation** built with **React Three Fiber**.
 
 ## Stack
 
