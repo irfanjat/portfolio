@@ -1,12 +1,10 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
 import { personal } from '../../data/portfolio'
 import { GlowButton } from '../ui/GlowButton'
 import { GradientText } from '../ui/GradientText'
-
-const HeroScene = lazy(() => import('../hero/HeroScene').then((m) => ({ default: m.HeroScene })))
 
 const jsonLines = [
   '  "role": "DevOps Engineer",',
@@ -15,20 +13,6 @@ const jsonLines = [
   '  "containers": "Docker | K8s",',
   '  "status": "Open — remote | hybrid | onsite"',
 ]
-
-function useIsDesktop() {
-  const [isDesktop, setIsDesktop] = useState(false)
-
-  useEffect(() => {
-    const query = window.matchMedia('(min-width: 1024px)')
-    setIsDesktop(query.matches)
-    const onChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
-    query.addEventListener('change', onChange)
-    return () => query.removeEventListener('change', onChange)
-  }, [])
-
-  return isDesktop
-}
 
 function TerminalVisual() {
   const [visibleLines, setVisibleLines] = useState(0)
@@ -51,16 +35,16 @@ function TerminalVisual() {
   }, [])
 
   return (
-    <div className="relative mx-auto w-full max-w-[400px]">
-      <div className="overflow-hidden rounded-xl border border-white/[0.06] bg-[#0d1117] shadow-2xl">
-        <div className="flex items-center gap-2.5 border-b border-white/[0.06] bg-[#1a1a2e]/80 px-4 py-2">
+    <div className="relative mx-auto w-full max-w-[400px] lg:mt-6">
+      <div className="overflow-hidden rounded-xl border-2 border-slate-600/80 bg-[#0d1117] shadow-2xl shadow-blue-950/40">
+        <div className="flex items-center gap-2.5 border-b border-slate-700 bg-[#1a1a2e]/90 px-4 py-2">
           <div className="flex gap-1.5">
             <div className="h-2.5 w-2.5 rounded-full bg-[#f85149]" />
             <div className="h-2.5 w-2.5 rounded-full bg-[#e3b341]" />
             <div className="h-2.5 w-2.5 rounded-full bg-[#3fb950]" />
           </div>
-          <span className="font-mono text-[11px] font-medium text-slate-300">
-            irfan <span className="text-slate-600">~</span> bash
+          <span className="font-mono text-[11px] font-semibold text-white">
+            irfan <span className="text-slate-400">~</span> bash
           </span>
         </div>
 
@@ -71,9 +55,9 @@ function TerminalVisual() {
             transition={{ duration: 0.15 }}
             className="mb-2"
           >
-            <span className="text-blue-400">irfan@aws</span>
-            <span className="text-slate-600">:~$</span>
-            <span className="ml-2 text-slate-200">cat profile.json</span>
+            <span className="text-blue-300">irfan@aws</span>
+            <span className="text-slate-500">:~$</span>
+            <span className="ml-2 text-slate-100">cat profile.json</span>
           </motion.div>
 
           <motion.div
@@ -82,7 +66,7 @@ function TerminalVisual() {
             transition={{ duration: 0.2 }}
             className="mb-3"
           >
-            <span className="text-yellow-400">{'{'}</span>
+            <span className="text-yellow-300">{'{'}</span>
             {jsonLines.map((line, i) => (
               <motion.div
                 key={i}
@@ -91,11 +75,11 @@ function TerminalVisual() {
                 transition={{ duration: 0.12 }}
                 className="pl-4"
               >
-                <span className="text-cyan-300">{line.split(':')[0]}:</span>
-                <span className="text-slate-400">{line.split(':')[1]}</span>
+                <span className="text-cyan-200">{line.split(':')[0]}:</span>
+                <span className="text-slate-300">{line.split(':')[1]}</span>
               </motion.div>
             ))}
-            <span className="text-yellow-400">{'}'}</span>
+            <span className="text-yellow-300">{'}'}</span>
           </motion.div>
 
           <motion.div
@@ -103,8 +87,8 @@ function TerminalVisual() {
             animate={{ opacity: visibleLines >= jsonLines.length + 3 ? 1 : 0 }}
             transition={{ duration: 0.2 }}
           >
-            <span className="text-blue-400">irfan@aws</span>
-            <span className="text-slate-600">:~$</span>
+            <span className="text-blue-300">irfan@aws</span>
+            <span className="text-slate-500">:~$</span>
             <span className={`ml-0.5 inline-block h-[18px] w-[8px] bg-green-400 align-text-bottom transition-opacity duration-75 ${cursorOn ? 'opacity-100' : 'opacity-0'}`} />
           </motion.div>
         </div>
@@ -115,14 +99,13 @@ function TerminalVisual() {
 
 export function Hero() {
   const [first, last] = personal.name.split(' ')
-  const isDesktop = useIsDesktop()
 
   return (
     <section
       id="home"
       className="relative flex min-h-screen items-center section-padding pt-32 pb-20"
     >
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-16 lg:grid-cols-2">
+      <div className="mx-auto grid w-full max-w-6xl items-start gap-16 lg:grid-cols-2">
         <div className="text-center lg:text-left">
           <motion.p
             initial={{ opacity: 0 }}
@@ -205,13 +188,7 @@ export function Hero() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="mt-16 lg:mt-0"
         >
-          {isDesktop ? (
-            <Suspense fallback={<TerminalVisual />}>
-              <HeroScene />
-            </Suspense>
-          ) : (
-            <TerminalVisual />
-          )}
+          <TerminalVisual />
         </motion.div>
       </div>
 
