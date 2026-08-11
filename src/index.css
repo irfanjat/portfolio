@@ -120,45 +120,6 @@
     pointer-events: none;
   }
 
-  .text-gradient {
-    background: linear-gradient(135deg, #a9c6dd 0%, #87adc9 30%, #9a8fd4 55%, #7fb0a3 80%, #c8ae6e 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .text-gradient-shimmer {
-    background: linear-gradient(
-      90deg,
-      #a9c6dd 0%,
-      #87adc9 18%,
-      #9a8fd4 36%,
-      #7fb0a3 54%,
-      #c8ae6e 72%,
-      #cf9a66 86%,
-      #a9c6dd 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 5s linear infinite;
-  }
-
-  .bg-gradient-rich {
-    background: linear-gradient(135deg, #16283a, #274a63 30%, #4a456e 60%, #3f6a6a 100%);
-  }
-
-  .bg-gradient-rich-soft {
-    background: linear-gradient(
-      135deg,
-      rgba(38, 74, 99, 0.18),
-      rgba(65, 101, 138, 0.14) 35%,
-      rgba(91, 79, 138, 0.12) 65%,
-      rgba(63, 106, 106, 0.1)
-    );
-  }
-
   .section-padding {
     @apply py-24 px-4 sm:px-6 lg:px-8;
   }

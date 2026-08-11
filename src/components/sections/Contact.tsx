@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { CheckCircle2, Github, Linkedin, Mail, Send } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { contactForm, personal } from '../../data/portfolio'
-import { GradientText } from '../ui/GradientText'
 import { TiltCard } from '../ui/TiltCard'
 
 const contactColors = [
@@ -39,8 +38,8 @@ export function Contact() {
           <span className="mb-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-blue-400/80">
             // 06. contact
           </span>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            <GradientText shimmer>Get In Touch</GradientText>
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Get In Touch
           </h2>
           <p className="mt-3 max-w-xl text-base text-slate-400">
             Whether you have a role to discuss, a project idea, or just want to say hello — my inbox is always open.
@@ -100,7 +99,7 @@ export function Contact() {
             method="POST"
             className="lg:col-span-3"
           >
-            <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] bg-gradient-rich-soft p-6 sm:p-8">
+            <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-8">
               <input type="hidden" name="access_key" value={contactForm.web3formsAccessKey} />
               <input type="hidden" name="subject" value="New message from Irfan Ali Portfolio" />
               <input type="hidden" name="from_name" value="Portfolio Contact Form" />
@@ -142,7 +141,7 @@ export function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-rich px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-950/40 transition hover:shadow-blue-900/50"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cyan-950/50 transition hover:bg-cyan-500 hover:shadow-cyan-900/50"
                 >
                   <Send className="h-4 w-4" />
                   Send Message

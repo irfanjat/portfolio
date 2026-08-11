@@ -19,7 +19,7 @@ export function Navbar() {
       >
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
           <a href="#home" className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-rich border border-white/15 font-mono text-sm font-bold text-white shadow-lg shadow-purple-500/25">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-600 border border-cyan-400/50 font-mono text-sm font-bold text-white shadow-lg shadow-cyan-950/50">
               IA
             </div>
             <span className="hidden font-semibold text-slate-200 sm:block">Irfan Ali</span>
@@ -52,7 +52,7 @@ export function Navbar() {
 
           <a
             href="#contact"
-            className="hidden rounded-xl bg-gradient-rich px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 transition hover:shadow-purple-500/40 hover:brightness-110 md:block"
+            className="hidden rounded-xl bg-cyan-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-cyan-950/50 transition hover:bg-cyan-500 hover:shadow-cyan-900/50 md:block"
           >
             Hire Me
           </a>
@@ -96,7 +96,7 @@ export function Navbar() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.05 }}
-                className="mt-4 rounded-xl bg-gradient-rich px-5 py-4 text-center text-lg font-semibold text-white"
+                className="mt-4 rounded-xl bg-cyan-600 px-5 py-4 text-center text-lg font-semibold text-white"
               >
                 Hire Me
               </motion.a>

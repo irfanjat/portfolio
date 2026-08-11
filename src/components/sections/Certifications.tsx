@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { Award } from 'lucide-react'
 import { certifications } from '../../data/portfolio'
-import { GradientText } from '../ui/GradientText'
 import { TiltCard } from '../ui/TiltCard'
 
 const colors = [
@@ -24,8 +23,8 @@ export function Certifications() {
           <span className="mb-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-blue-400/80">
             // 04. certifications
           </span>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            <GradientText shimmer>Credentials</GradientText>
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Credentials
           </h2>
         </motion.div>
 
@@ -54,7 +53,7 @@ export function Certifications() {
                       <Award className="h-4 w-4" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h3 className="text-sm font-medium text-slate-100">{cert.title}</h3>
+                      <h3 className="text-sm font-medium text-white">{cert.title}</h3>
                       <p className="mt-0.5 text-xs text-slate-500">{cert.issuer}</p>
                       <span className={`mt-2 inline-flex items-center gap-1 text-xs ${c.text}`}>
                         View Certificate ↗

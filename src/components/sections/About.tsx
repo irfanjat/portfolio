@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { stats } from '../../data/portfolio'
-import { GradientText } from '../ui/GradientText'
 import { TiltCard } from '../ui/TiltCard'
 
 const statColors = [
@@ -23,8 +22,8 @@ export function About() {
             <span className="mb-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-blue-400/80">
               // 01. about
             </span>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              <GradientText shimmer>Who I Am</GradientText>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Who I Am
             </h2>
             <p className="mt-6 text-base leading-relaxed text-slate-400">
               I'm <strong className="text-slate-200">Irfan Ali</strong> — a DevOps Engineer and lifelong learner
