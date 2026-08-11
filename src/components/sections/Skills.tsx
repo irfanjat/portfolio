@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { skillCategories } from '../../data/portfolio'
-import { GradientText } from '../ui/GradientText'
 import { TiltCard } from '../ui/TiltCard'
 
 const colorScheme = [
@@ -27,8 +26,8 @@ export function Skills() {
           <span className="mb-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-blue-400/80">
             // 02. skills
           </span>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            <GradientText shimmer>Tech Stack</GradientText>
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Tech Stack
           </h2>
         </motion.div>
 

@@ -4,7 +4,6 @@ import { ChevronDown } from 'lucide-react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
 import { personal } from '../../data/portfolio'
 import { GlowButton } from '../ui/GlowButton'
-import { GradientText } from '../ui/GradientText'
 
 const jsonLines = [
   '  "role": "DevOps Engineer",',
@@ -120,10 +119,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="text-fluid-hero font-bold tracking-tight text-slate-100"
+            className="text-fluid-hero font-bold tracking-tight text-white"
           >
             {first}{' '}
-            <GradientText shimmer>{last}</GradientText>
+            {last}
           </motion.h1>
 
           <motion.p
