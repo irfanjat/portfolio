@@ -40,7 +40,7 @@ const styles = [
 
 export function Projects() {
   return (
-    <section id="projects" className="section-padding relative">
+    <section id="projects" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           index="03"

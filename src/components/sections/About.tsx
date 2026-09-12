@@ -4,7 +4,7 @@ import { SectionHeading } from '../ui/SectionHeading'
 
 export function About() {
   return (
-    <section id="about" className="section-padding relative">
+    <section id="about" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           index="01"

@@ -58,6 +58,8 @@ export function CursorGlow() {
   const bgY = useTransform(y, (v) => v - 320)
 
   useEffect(() => {
+    const coarse = window.matchMedia('(pointer: coarse)')
+    if (coarse.matches) return
     const onMove = (e: MouseEvent) => {
       mx.set(e.clientX)
       my.set(e.clientY)

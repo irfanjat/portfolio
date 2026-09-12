@@ -27,7 +27,7 @@ export function Contact() {
       : contactForm.successRedirect
 
   return (
-    <section id="contact" className="section-padding relative pb-36">
+    <section id="contact" className="section-padding relative pb-36 content-visibility-auto">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           index="06"

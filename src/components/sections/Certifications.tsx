@@ -12,7 +12,7 @@ const colors = [
 
 export function Certifications() {
   return (
-    <section id="certifications" className="section-padding relative">
+    <section id="certifications" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           index="04"

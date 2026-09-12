@@ -15,7 +15,7 @@ const accents: Record<string, { text: string; border: string; bg: string; glow: 
 
 export function Skills() {
   return (
-    <section id="skills" className="section-padding relative">
+    <section id="skills" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           index="02"
