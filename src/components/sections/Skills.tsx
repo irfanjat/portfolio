@@ -1,66 +1,58 @@
 import { motion } from 'framer-motion'
 import { skillCategories } from '../../data/portfolio'
-import { TiltCard } from '../ui/TiltCard'
+import { SectionHeading } from '../ui/SectionHeading'
 
-const colorScheme = [
-  { card: 'border-blue-500/20 bg-blue-500/[0.05]', text: 'text-blue-300', tag: 'bg-blue-500/10 border-blue-500/25', glow: 'rgba(59,130,246,0.12)' },
-  { card: 'border-sky-500/20 bg-sky-500/[0.05]', text: 'text-sky-300', tag: 'bg-sky-500/10 border-sky-500/25', glow: 'rgba(14,165,233,0.12)' },
-  { card: 'border-violet-500/20 bg-violet-500/[0.05]', text: 'text-violet-300', tag: 'bg-violet-500/10 border-violet-500/25', glow: 'rgba(139,92,246,0.12)' },
-  { card: 'border-slate-500/20 bg-slate-500/[0.05]', text: 'text-slate-300', tag: 'bg-slate-500/10 border-slate-500/25', glow: 'rgba(100,116,139,0.12)' },
-  { card: 'border-teal-500/20 bg-teal-500/[0.05]', text: 'text-teal-300', tag: 'bg-teal-500/10 border-teal-500/25', glow: 'rgba(20,184,166,0.12)' },
-  { card: 'border-amber-500/20 bg-amber-500/[0.05]', text: 'text-amber-300', tag: 'bg-amber-500/10 border-amber-500/25', glow: 'rgba(245,158,11,0.12)' },
-  { card: 'border-indigo-500/20 bg-indigo-500/[0.05]', text: 'text-indigo-300', tag: 'bg-indigo-500/10 border-indigo-500/25', glow: 'rgba(99,102,241,0.12)' },
-  { card: 'border-cyan-500/20 bg-cyan-500/[0.05]', text: 'text-cyan-300', tag: 'bg-cyan-500/10 border-cyan-500/25', glow: 'rgba(6,182,212,0.12)' },
-]
+const accents: Record<string, { text: string; border: string; bg: string; glow: string }> = {
+  violet: { text: 'text-violet-200', border: 'border-violet-400/25', bg: 'bg-violet-500/10', glow: 'rgba(139,92,246,0.3)' },
+  cyan: { text: 'text-cyan-200', border: 'border-cyan-400/25', bg: 'bg-cyan-500/10', glow: 'rgba(34,211,238,0.3)' },
+  fuchsia: { text: 'text-fuchsia-200', border: 'border-fuchsia-400/25', bg: 'bg-fuchsia-500/10', glow: 'rgba(232,121,249,0.3)' },
+  amber: { text: 'text-amber-200', border: 'border-amber-400/25', bg: 'bg-amber-500/10', glow: 'rgba(251,191,36,0.3)' },
+  emerald: { text: 'text-emerald-200', border: 'border-emerald-400/25', bg: 'bg-emerald-500/10', glow: 'rgba(52,211,153,0.3)' },
+  indigo: { text: 'text-indigo-200', border: 'border-indigo-400/25', bg: 'bg-indigo-500/10', glow: 'rgba(99,102,241,0.3)' },
+  sky: { text: 'text-sky-200', border: 'border-sky-400/25', bg: 'bg-sky-500/10', glow: 'rgba(14,165,233,0.3)' },
+  rose: { text: 'text-rose-200', border: 'border-rose-400/25', bg: 'bg-rose-500/10', glow: 'rgba(244,63,94,0.3)' },
+}
 
 export function Skills() {
   return (
-    <section id="skills" className="section-padding">
+    <section id="skills" className="section-padding relative">
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          className="mb-14"
-        >
-          <span className="mb-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-blue-400/80">
-            // 02. skills
-          </span>
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Tech Stack
-          </h2>
-        </motion.div>
+        <SectionHeading
+          index="02"
+          label="skills"
+          title={<>The <span className="gradient-text">toolbox</span> I ship with</>}
+          description="The platforms, tools, and practices I reach for across the delivery lifecycle."
+        />
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {skillCategories.map((cat, i) => {
-            const c = colorScheme[i % colorScheme.length]
+            const a = accents[cat.accent] ?? accents.violet
             return (
               <motion.div
                 key={cat.title}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ delay: (i % 3) * 0.08, duration: 0.5 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ delay: (i % 4) * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="group glass glass-hover relative flex flex-col gap-4 overflow-hidden rounded-3xl p-5"
               >
-                <TiltCard
-                  intensity={8}
-                  glareColor={c.glow}
-                  className={`rounded-2xl border p-5 sm:p-6 ${c.card}`}
-                >
-                  <div className={`-mx-1 mb-4 rounded-lg border px-3 py-1.5 text-xs font-medium ${c.tag} ${c.text} inline-block`}>
-                    {cat.title}
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {cat.skills.map(skill => (
-                      <span
-                        key={skill}
-                        className={`rounded-lg border px-3 py-1.5 text-xs font-medium ${c.tag} ${c.text}`}
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </TiltCard>
+                <div
+                  className="pointer-events-none absolute -top-16 -right-16 h-40 w-40 rounded-full blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+                  style={{ background: a.glow, opacity: 0.4 }}
+                />
+                <div className={`relative inline-flex w-fit items-center gap-2 rounded-xl border ${a.border} ${a.bg} ${a.text} px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-wider`}>
+                  {cat.title}
+                </div>
+                <div className="relative flex flex-wrap gap-1.5">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-slate-300 transition-colors group-hover:border-white/20"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
             )
           })}

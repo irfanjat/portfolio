@@ -1,15 +1,15 @@
 # Irfan Ali — DevOps Portfolio
 
-Premium dark-themed DevOps engineer portfolio. built with **React 19**, **TypeScript**, **Vite**, **Tailwind CSS**, and **Framer Motion** — featuring an interactive **3D infrastructure constellation** built with **React Three Fiber**.
+Modern **glassmorphism** DevOps engineer portfolio. Built with **React 19**, **TypeScript**, **Vite**, **Tailwind CSS v4**, and **Framer Motion** — featuring an animated **CI/CD pipeline monitor** hero visual, aurora gradient background, magnetic buttons, and frosted-glass surfaces throughout.
 
 ## Stack
 
 - **React 19** + **TypeScript** (strict mode)
-- **Vite 6**
-- **Tailwind CSS v3** (PostCSS — no native binding issues)
-- **Framer Motion** — animations & scroll effects
-- **React Three Fiber** + **drei** — 3D hero scene & starfield background
+- **Vite 7**
+- **Tailwind CSS v4** (CSS-first config via `@theme` + `@tailwindcss/postcss`)
+- **Framer Motion** — animations, scroll effects, spring cursor glow
 - **Lucide React** — icons
+- **React Icons (Simple Icons / Font Awesome)** — brand & tool icons
 - **Lenis** — smooth scrolling
 
 ## Getting Started
@@ -47,9 +47,9 @@ docker run -p 8080:80 irfan-devops-portfolio
 ## Customize
 
 - **Resume**: `public/IrfanAliResume.pdf`
-- **Content**: Edit `src/data/portfolio.ts` for personal info, skills, certifications, stats, and projects.
+- **Content**: Edit `src/data/portfolio.ts` for personal info, skills, certifications, stats, projects, and the pipeline visual data.
 - **Contact form**: Uses [Web3Forms](https://web3forms.com). Set your access key via `VITE_WEB3FORMS_ACCESS_KEY` (see `.env.example`). **Never commit your real key** — it is read only from the environment.
-- **3D scene**: `src/components/hero/HeroScene.tsx` (constellation network) and `src/components/effects/Background3D.tsx` (starfield).
+- **Design system**: `src/index.css` holds the glass utilities, gradient text, aurora keyframes, and theme tokens.
 
 ## Deploy
 
@@ -59,9 +59,17 @@ Deploy the `dist` folder to Vercel, Netlify, GitHub Pages, or any static host.
 npm run build
 ```
 
+For GitHub Pages under `/portfolio/`:
+
+```bash
+npm run build:gh-pages
+```
+
 ## Sections
 
-- Hero — interactive 3D infrastructure network + terminal visual (fallback on mobile)
-- About, Skills, Projects
+- Hero — animated CI/CD pipeline monitor + rotating role titles + floating tool chips
+- About — glass bio + animated stat cards
+- Skills — glass tool category cards
+- Projects — glass project cards with gradient edges
 - Certifications, Education
 - Contact form (Web3Forms) + social links

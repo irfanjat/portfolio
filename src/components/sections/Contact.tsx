@@ -2,12 +2,12 @@ import { motion } from 'framer-motion'
 import { CheckCircle2, Github, Linkedin, Mail, Send } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { contactForm, personal } from '../../data/portfolio'
-import { TiltCard } from '../ui/TiltCard'
+import { SectionHeading } from '../ui/SectionHeading'
 
-const contactColors = [
-  { icon: 'text-blue-400', border: 'border-blue-500/25', glow: 'rgba(59,130,246,0.12)' },
-  { icon: 'text-violet-400', border: 'border-violet-500/25', glow: 'rgba(139,92,246,0.12)' },
-  { icon: 'text-teal-400', border: 'border-teal-500/25', glow: 'rgba(20,184,166,0.12)' },
+const links = [
+  { label: 'Email', value: personal.email, href: `mailto:${personal.email}`, icon: Mail },
+  { label: 'LinkedIn', value: 'linkedin.com/in/irfanjat', href: personal.linkedin, icon: Linkedin },
+  { label: 'GitHub', value: 'github.com/irfanjat', href: personal.github, icon: Github },
 ]
 
 export function Contact() {
@@ -27,106 +27,84 @@ export function Contact() {
       : contactForm.successRedirect
 
   return (
-    <section id="contact" className="section-padding pb-32">
+    <section id="contact" className="section-padding relative pb-36">
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          className="mb-14"
-        >
-          <span className="mb-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-blue-400/80">
-            // 06. contact
-          </span>
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Get In Touch
-          </h2>
-          <p className="mt-3 max-w-xl text-base text-slate-400">
-            Whether you have a role to discuss, a project idea, or just want to say hello — my inbox is always open.
-          </p>
-        </motion.div>
+        <SectionHeading
+          index="06"
+          label="contact"
+          title={<>Let's build something <span className="gradient-text">reliable</span></>}
+          description="Whether you have a role to discuss, a project idea, or just want to talk shop — the inbox is open."
+        />
 
-        <div className="grid gap-8 lg:grid-cols-5">
+        <div className="grid gap-6 lg:grid-cols-5">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-3 lg:col-span-2"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-4 lg:col-span-2"
           >
-            {[
-              { label: 'Email', value: personal.email, href: `mailto:${personal.email}`, icon: Mail },
-              { label: 'LinkedIn', value: 'irfanjat', href: personal.linkedin, icon: Linkedin },
-              { label: 'GitHub', value: 'irfanjat', href: personal.github, icon: Github },
-            ].map((link, i) => {
-              const c = contactColors[i % contactColors.length]
-              return (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, x: -16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className="block"
-                >
-                  <TiltCard
-                    intensity={8}
-                    glareColor={c.glow}
-                    className={`rounded-2xl border bg-white/[0.03] p-4 transition ${c.border}`}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className={`flex h-11 w-11 items-center justify-center rounded-xl border ${c.border} ${c.icon}`}>
-                        <link.icon className="h-4 w-4" />
-                      </div>
-                      <div>
-                        <p className="text-xs text-slate-500">{link.label}</p>
-                        <p className="text-sm font-medium text-slate-200">{link.value}</p>
-                      </div>
-                    </div>
-                  </TiltCard>
-                </motion.a>
-              )
-            })}
+            {links.map((link, i) => (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 + i * 0.08, duration: 0.5 }}
+                className="group glass glass-hover flex items-center gap-4 rounded-2xl p-4"
+              >
+                <span className="glass-soft flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-violet-300 transition group-hover:text-white">
+                  <link.icon className="h-4 w-4" />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-xs text-slate-500">{link.label}</p>
+                  <p className="truncate text-sm font-medium text-slate-200">{link.value}</p>
+                </div>
+              </motion.a>
+            ))}
+
+            <div className="glass relative overflow-hidden rounded-2xl p-5">
+              <div className="pointer-events-none absolute -top-12 -right-10 h-36 w-36 rounded-full bg-emerald-500/20 blur-3xl" />
+              <div className="relative">
+                <p className="text-xs text-slate-500">Availability</p>
+                <p className="mt-1.5 text-sm font-medium text-emerald-300">
+                  <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 align-middle" />
+                  {personal.availability}
+                </p>
+                <p className="mt-1 text-xs text-slate-500">{personal.availabilityDetail}</p>
+              </div>
+            </div>
           </motion.div>
 
           <motion.form
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             action="https://api.web3forms.com/submit"
             method="POST"
             className="lg:col-span-3"
           >
-            <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-8">
+            <div className="glass relative overflow-hidden rounded-3xl p-6 sm:p-8">
+              <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-violet-600/20 blur-3xl" />
               <input type="hidden" name="access_key" value={contactForm.web3formsAccessKey} />
               <input type="hidden" name="subject" value="New message from Irfan Ali Portfolio" />
               <input type="hidden" name="from_name" value="Portfolio Contact Form" />
               <input type="hidden" name="redirect" value={redirectUrl} />
 
-              <div className="space-y-4">
-                <div>
-                  <label htmlFor="contact-name" className="mb-1.5 block text-xs font-medium text-slate-400">Name</label>
-                  <input
-                    id="contact-name"
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="Your name"
-                    className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-slate-200 placeholder:text-slate-600 focus:border-blue-500/40 focus:outline-none focus:ring-1 focus:ring-blue-500/20"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="contact-email" className="mb-1.5 block text-xs font-medium text-slate-400">Email</label>
-                  <input
-                    id="contact-email"
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="your@email.com"
-                    className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-slate-200 placeholder:text-slate-600 focus:border-blue-500/40 focus:outline-none focus:ring-1 focus:ring-blue-500/20"
-                  />
+              <div className="relative space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="contact-name" className="mb-1.5 block text-xs font-medium text-slate-400">Name</label>
+                    <input id="contact-name" type="text" name="name" required placeholder="Your name" className="glass-input" />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-email" className="mb-1.5 block text-xs font-medium text-slate-400">Email</label>
+                    <input id="contact-email" type="email" name="email" required placeholder="your@email.com" className="glass-input" />
+                  </div>
                 </div>
                 <div>
                   <label htmlFor="contact-message" className="mb-1.5 block text-xs font-medium text-slate-400">Message</label>
@@ -134,14 +112,14 @@ export function Contact() {
                     id="contact-message"
                     name="message"
                     required
-                    rows={4}
+                    rows={5}
                     placeholder="Tell me about your project or opportunity..."
-                    className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-slate-200 placeholder:text-slate-600 focus:border-blue-500/40 focus:outline-none focus:ring-1 focus:ring-blue-500/20"
+                    className="glass-input resize-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cyan-950/50 transition hover:bg-cyan-500 hover:shadow-cyan-900/50"
+                  className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 bg-[length:160%_auto] px-6 py-4 text-sm font-semibold text-white shadow-[0_8px_40px_-10px_rgba(139,92,246,0.7)] transition hover:bg-right"
                 >
                   <Send className="h-4 w-4" />
                   Send Message
@@ -152,10 +130,10 @@ export function Contact() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 flex items-center gap-2 rounded-xl border border-green-500/20 bg-green-500/10 px-4 py-3 text-sm text-green-300"
+                  className="relative mt-4 flex items-center gap-2 rounded-2xl border border-emerald-400/25 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-300"
                 >
                   <CheckCircle2 className="h-4 w-4" />
-                  Message sent successfully!
+                  Message sent successfully — I'll get back to you soon!
                 </motion.div>
               )}
             </div>

@@ -1,16 +1,20 @@
 export const personal = {
   name: 'Irfan Ali',
-  role: 'DevOps Engineer | Cloud & Platform Engineer',
+  firstName: 'Irfan',
+  lastName: 'Ali',
+  initials: 'IA',
+  role: 'DevOps & Cloud Engineer',
+  roles: ['DevOps Engineer', 'Cloud Engineer', 'Platform Engineer', 'SRE-Minded'],
   tagline:
-    'Building scalable cloud infrastructure and automated delivery systems.',
+    'I design cloud-native infrastructure, automate delivery pipelines, and keep production platforms reliable, observable, and secure.',
   phone: '03153711489',
   email: 'irfanali.cloud@gmail.com',
   linkedin: 'https://linkedin.com/in/irfanjat',
   github: 'https://github.com/irfanjat',
   location: 'Pakistan',
-  availability: 'Open to full-time, hybrid, on-site & remote roles',
+  availability: 'Open to DevOps, Cloud & Platform Engineering roles',
   availabilityDetail:
-    'DevOps, Cloud & Platform Engineering — flexible on location and work arrangement.',
+    'Full-time, hybrid, on-site & remote — flexible on location and work arrangement.',
 }
 
 export const contactForm = {
@@ -28,37 +32,74 @@ export const navLinks = [
   { label: 'Contact', href: '#contact' },
 ]
 
+export const terminalLines = [
+  { cmd: 'cat profile.json', out: null },
+  { cmd: null, out: '{ "name": "Irfan Ali"' },
+  { cmd: null, out: '  "role": "DevOps & Cloud Engineer"' },
+  { cmd: null, out: '  "cloud": "AWS · Kubernetes"' },
+  { cmd: null, out: '  "iac": "Terraform · Ansible"' },
+  { cmd: null, out: '  "status": "● open to opportunities" }' },
+]
+
+export const pipelineStages = [
+  { id: 'commit', label: 'Push', icon: 'git', status: 'done' },
+  { id: 'build', label: 'Build', icon: 'build', status: 'done' },
+  { id: 'test', label: 'Test', icon: 'test', status: 'done' },
+  { id: 'image', label: 'Image', icon: 'image', status: 'active' },
+  { id: 'deploy', label: 'Deploy', icon: 'deploy', status: 'idle' },
+  { id: 'monitor', label: 'Monitor', icon: 'monitor', status: 'idle' },
+]
+
+export const toolChips = [
+  { label: 'Docker', icon: 'docker' },
+  { label: 'Kubernetes', icon: 'k8s' },
+  { label: 'Terraform', icon: 'terraform' },
+  { label: 'AWS', icon: 'aws' },
+  { label: 'ArgoCD', icon: 'argocd' },
+  { label: 'GitHub Actions', icon: 'actions' },
+  { label: 'Prometheus', icon: 'prometheus' },
+  { label: 'Grafana', icon: 'grafana' },
+]
+
 export const skillCategories = [
   {
     title: 'CI/CD & GitOps',
+    accent: 'violet',
     skills: ['Jenkins', 'GitHub Actions', 'ArgoCD', 'GitLab CI'],
   },
   {
     title: 'Containers & Orchestration',
+    accent: 'cyan',
     skills: ['Docker', 'Kubernetes', 'Helm', 'Docker Compose'],
   },
   {
     title: 'Infrastructure as Code',
+    accent: 'fuchsia',
     skills: ['Terraform', 'Ansible', 'CloudFormation'],
   },
   {
     title: 'Cloud Platforms',
-    skills: ['AWS EC2', 'AWS VPC', 'AWS ELB', 'Auto Scaling', 'S3', 'RDS', 'CloudWatch', 'Route 53', 'EKS', 'Lambda'],
+    accent: 'amber',
+    skills: ['EC2', 'VPC', 'ELB', 'Auto Scaling', 'S3', 'RDS', 'CloudWatch', 'Route 53', 'EKS', 'Lambda'],
   },
   {
     title: 'Monitoring & Observability',
+    accent: 'emerald',
     skills: ['Prometheus', 'Grafana', 'Loki', 'Alertmanager'],
   },
   {
     title: 'Systems & Networking',
+    accent: 'indigo',
     skills: ['Linux', 'DNS', 'HTTPS/TLS', 'SSH', 'Bash', 'Python', 'Nginx', 'Apache'],
   },
   {
     title: 'System Design',
+    accent: 'sky',
     skills: ['Microservices', 'REST & gRPC', 'Caching', 'CDNs', 'Load Balancers', 'Databases', 'Servers'],
   },
   {
     title: 'Linux SysAdmin',
+    accent: 'rose',
     skills: ['Firewalls', 'Cron Jobs', 'SSH', 'LVM', 'Systemd', 'UFW/iptables', 'rsync', 'Process Management'],
   },
 ]
@@ -87,16 +128,18 @@ export const certifications = [
 ]
 
 export const stats = [
-  { label: 'Years Experience', value: 1, suffix: '+' },
-  { label: 'Projects Shipped', value: 12, suffix: '+' },
-  { label: 'Cloud Platforms', value: 1, suffix: '' },
-  { label: 'Certifications', value: 4, suffix: '' },
+  { label: 'Years Experience', value: 1, suffix: '+', glow: 'rgba(139,92,246,0.35)' },
+  { label: 'Projects Shipped', value: 12, suffix: '+', glow: 'rgba(34,211,238,0.35)' },
+  { label: 'Cloud Platforms', value: 1, suffix: '', glow: 'rgba(232,121,249,0.35)' },
+  { label: 'Certifications', value: 4, suffix: '', glow: 'rgba(251,191,36,0.35)' },
 ]
 
 export const projects = [
   {
     id: 'costguard',
-    title: 'CostGuard — AWS Cost Optimization Platform',
+    tag: 'Cost Optimization',
+    title: 'CostGuard',
+    subtitle: 'AWS Cost Optimization Platform',
     description:
       'Serverless AWS cost monitoring platform with anomaly detection, orphaned resource scanning, and Slack notifications — fully deployed via Terraform.',
     tech: ['Python', 'AWS Lambda', 'Terraform', 'DynamoDB', 'Slack API', 'GitHub Actions'],
@@ -104,7 +147,9 @@ export const projects = [
   },
   {
     id: 'gitops',
-    title: 'End-to-End GitOps CI/CD Pipeline',
+    tag: 'GitOps · CI/CD',
+    title: 'GitOps Pipeline',
+    subtitle: 'End-to-End GitOps CI/CD',
     description:
       'Production-style GitOps pipeline with automated builds, SHA-tagged images, Helm deployments, and ArgoCD self-healing on Kubernetes.',
     tech: ['GitHub Actions', 'ArgoCD', 'Kubernetes', 'Docker', 'Helm', 'Python'],
@@ -112,7 +157,9 @@ export const projects = [
   },
   {
     id: 'guardrails',
-    title: 'Policy Guardrails Engine — IaC Security',
+    tag: 'Security · Policy-as-Code',
+    title: 'Policy Guardrails',
+    subtitle: 'IaC Security Guardrails Engine',
     description:
       'Policy-as-code guardrail engine enforcing security on Terraform and Kubernetes manifests in CI with automated PR comments.',
     tech: ['OPA/Rego', 'Kyverno', 'Conftest', 'Terraform', 'Kubernetes', 'GitHub Actions'],
@@ -120,7 +167,9 @@ export const projects = [
   },
   {
     id: 'terraform-aws',
-    title: 'Production Multi-Tier AWS Infrastructure',
+    tag: 'Infrastructure as Code',
+    title: 'AWS Multi-Tier Infra',
+    subtitle: 'Production Multi-Tier AWS Infrastructure',
     description:
       'Modular Terraform IaC provisioning a secure, multi-AZ AWS stack with remote state, encryption, and least-privilege IAM.',
     tech: ['Terraform', 'VPC', 'EC2', 'ALB', 'Auto Scaling', 'RDS', 'S3', 'DynamoDB'],
