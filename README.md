@@ -72,18 +72,15 @@ Optional: add a custom domain in Cloudflare Pages → the project → Custom dom
 A `wrangler.toml` is included (`pages_build_output_dir = "dist"`).
 
 Cloudflare Pages automatically serves hash-named assets with
-`Cache-Control: max-age=31536000, immutable` and brotli compression.
+`Cache-Control: max-age=31536000, immutable` (via `public/_headers`) and brotli compression.
 
-### GitHub Pages
+### Other static hosts
 
-The `.github/workflows/deploy-github-pages.yml` workflow still deploys to
-`https://irfanjat.github.io/portfolio/` while you migrate. To stop it, delete that file.
+Deploy the `dist` folder to Vercel, Netlify, S3+CloudFront, or any static host.
 
 ```bash
-npm run build:gh-pages
+npm run build
 ```
-
-Static hosts: deploy the `dist` folder to Vercel, Netlify, S3+CloudFront, or any static host.
 
 ## Sections
 
