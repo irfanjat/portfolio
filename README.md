@@ -53,17 +53,37 @@ docker run -p 8080:80 irfan-devops-portfolio
 
 ## Deploy
 
-Deploy the `dist` folder to Vercel, Netlify, GitHub Pages, or any static host.
+### Cloudflare Pages (recommended)
 
-```bash
-npm run build
-```
+Auto-deploys on every push to `main` via `.github/workflows/deploy-cloudflare-pages.yml`.
 
-For GitHub Pages under `/portfolio/`:
+One-time setup:
+
+1. Create a Cloudflare API token → **My Profile → API Tokens → Create Token**, template
+   "**Edit Cloudflare Workers**" (this covers Pages) or custom with
+   `Cloudflare Pages: Edit` permission.
+2. On GitHub → repo → **Settings → Secrets and variables → Actions**:
+   - `CLOUDFLARE_API_TOKEN` — the token from step 1
+   - `CLOUDFLARE_ACCOUNT_ID` — find it in Cloudflare dashboard URL / Your profile
+3. Push to `main`. The workflow builds and deploys to
+   `https://irfan-portfolio.pages.dev`.
+
+Optional: add a custom domain in Cloudflare Pages → the project → Custom domains.
+A `wrangler.toml` is included (`pages_build_output_dir = "dist"`).
+
+Cloudflare Pages automatically serves hash-named assets with
+`Cache-Control: max-age=31536000, immutable` and brotli compression.
+
+### GitHub Pages
+
+The `.github/workflows/deploy-github-pages.yml` workflow still deploys to
+`https://irfanjat.github.io/portfolio/` while you migrate. To stop it, delete that file.
 
 ```bash
 npm run build:gh-pages
 ```
+
+Static hosts: deploy the `dist` folder to Vercel, Netlify, S3+CloudFront, or any static host.
 
 ## Sections
 
