@@ -31,27 +31,17 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Debug token presence
-        run: |
-          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "TOKEN=EMPTY"; else echo "TOKEN=present len=${#CLOUDFLARE_API_TOKEN}"; fi
-          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then echo "ACCOUNT=EMPTY"; else echo "ACCOUNT=present len=${#CLOUDFLARE_ACCOUNT_ID}"; fi
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-
       - name: Ensure Cloudflare Pages project exists
         continue-on-error: true
         uses: cloudflare/wrangler-action@v3
         with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages project create irfan-portfolio --production-branch=main
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=irfan-portfolio --branch=main
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
