@@ -32,8 +32,7 @@ export function Contact() {
         <SectionHeading
           index="06"
           label="contact"
-          title={<>Let's build something <span className="gradient-text">reliable</span></>}
-          description="Whether you have a role to discuss, a project idea, or just want to talk shop — the inbox is open."
+          title="Contact"
         />
 
         <div className="grid gap-6 lg:grid-cols-5">

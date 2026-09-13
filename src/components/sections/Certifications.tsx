@@ -14,12 +14,7 @@ export function Certifications() {
   return (
     <section id="certifications" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          index="04"
-          label="certifications"
-          title={<>Credentials that <span className="gradient-text">back the build</span></>}
-          description="Verified certifications in cloud and DevOps fundamentals."
-        />
+        <SectionHeading index="04" label="certifications" title="Credentials" />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {certifications.map((cert, i) => {

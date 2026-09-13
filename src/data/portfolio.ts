@@ -11,6 +11,7 @@ export const personal = {
   email: 'irfanali.cloud@gmail.com',
   linkedin: 'https://linkedin.com/in/irfanjat',
   github: 'https://github.com/irfanjat',
+  whatsapp: 'https://wa.me/923153711489',
   location: 'Pakistan',
   availability: 'Open to DevOps, Cloud & Platform Engineering roles',
   availabilityDetail:
@@ -30,24 +31,6 @@ export const navLinks = [
   { label: 'Certs', href: '#certifications' },
   { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
-]
-
-export const terminalLines = [
-  { cmd: 'cat profile.json', out: null },
-  { cmd: null, out: '{ "name": "Irfan Ali"' },
-  { cmd: null, out: '  "role": "DevOps & Cloud Engineer"' },
-  { cmd: null, out: '  "cloud": "AWS · Kubernetes"' },
-  { cmd: null, out: '  "iac": "Terraform · Ansible"' },
-  { cmd: null, out: '  "status": "● open to opportunities" }' },
-]
-
-export const pipelineStages = [
-  { id: 'commit', label: 'Push', icon: 'git', status: 'done' },
-  { id: 'build', label: 'Build', icon: 'build', status: 'done' },
-  { id: 'test', label: 'Test', icon: 'test', status: 'done' },
-  { id: 'image', label: 'Image', icon: 'image', status: 'active' },
-  { id: 'deploy', label: 'Deploy', icon: 'deploy', status: 'idle' },
-  { id: 'monitor', label: 'Monitor', icon: 'monitor', status: 'idle' },
 ]
 
 export const toolChips = [

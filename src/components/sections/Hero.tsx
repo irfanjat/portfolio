@@ -1,30 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import {
-  CloudUpload,
-  Cog,
-  Container,
-  HeartPulse,
-  Rocket,
-  TestTube2,
-  Check,
-  Github,
-  Linkedin,
-  MapPin,
-} from 'lucide-react'
-import { FaAws } from 'react-icons/fa6'
-import { useEffect, useState } from 'react'
+import { Github, Linkedin, MapPin, CheckCircle2 } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { SiArgo, SiDocker, SiGithubactions, SiGrafana, SiKubernetes, SiPrometheus, SiTerraform } from 'react-icons/si'
-import { personal, pipelineStages, toolChips } from '../../data/portfolio'
+import { FaAws } from 'react-icons/fa6'
+import { personal, toolChips } from '../../data/portfolio'
 import { MagneticButton } from '../ui/MagneticButton'
-
-const stageIcons: Record<string, typeof Cog> = {
-  git: CloudUpload,
-  build: Cog,
-  test: TestTube2,
-  image: Container,
-  deploy: Rocket,
-  monitor: HeartPulse,
-}
 
 const toolIconMap: Record<string, typeof SiDocker> = {
   docker: SiDocker,
@@ -37,84 +17,149 @@ const toolIconMap: Record<string, typeof SiDocker> = {
   grafana: SiGrafana,
 }
 
-function PipelineCard() {
+const metrics = [
+  { label: 'Deployments', value: 12, suffix: '', decimals: 0 },
+  { label: 'Running Pods', value: 36, suffix: '', decimals: 0 },
+  { label: 'Nodes', value: 3, suffix: '', decimals: 0 },
+  { label: 'Uptime', value: 99.9, suffix: '%', decimals: 1 },
+]
+
+function Counter({ to, suffix = '', decimals = 0 }: { to: number; suffix?: string; decimals?: number }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const [val, setVal] = useState(0)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        const start = performance.now()
+        const dur = 1400
+        const tick = (now: number) => {
+          const t = Math.min(1, (now - start) / dur)
+          const eased = 1 - Math.pow(1 - t, 3)
+          setVal(to * eased)
+          if (t < 1) requestAnimationFrame(tick)
+        }
+        requestAnimationFrame(tick)
+        observer.disconnect()
+      },
+      { threshold: 0.4 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [to])
+
+  return (
+    <span ref={ref}>
+      {val.toFixed(decimals)}
+      {suffix}
+    </span>
+  )
+}
+
+function DashboardCard() {
+  const chartPath =
+    'M0 62 C 30 58, 50 66, 75 56 S 125 40, 150 46 S 200 30, 225 34 S 275 18, 300 24'
+
   return (
     <div className="glass relative overflow-hidden rounded-3xl p-6 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)]">
       <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-violet-600/30 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-cyan-500/20 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-cyan-500/20 blur-3xl" />
 
       <div className="relative">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400">
-              <span className="absolute h-2.5 w-2.5 animate-ping rounded-full bg-emerald-400/60" />
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+              <span className="relative h-2.5 w-2.5 rounded-full bg-emerald-400" />
             </span>
-            <span className="font-mono text-[11px] font-semibold text-slate-300">deploy-pipeline</span>
+            <span className="font-mono text-[11px] font-semibold text-slate-300">infra-overview</span>
           </div>
           <span className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[10px] text-slate-400">
-            main · sha-7f3a2c
+            us-east-1
           </span>
         </div>
 
-        <div className="relative mt-6">
-          <svg
-            className="pipeline-dash absolute left-[5%] right-[5%] top-5 w-auto"
-            height="2"
-            viewBox="0 0 100 2"
-            preserveAspectRatio="none"
-            aria-hidden
-          >
+        <div className="mt-6 grid grid-cols-4 gap-2.5">
+          {metrics.map((m) => (
+            <div
+              key={m.label}
+              className="glass-soft rounded-2xl px-2 py-3 text-center"
+            >
+              <div className="font-display text-lg font-bold text-white sm:text-xl">
+                <Counter to={m.value} suffix={m.suffix} decimals={m.decimals} />
+              </div>
+              <div className="mt-0.5 font-mono text-[9px] uppercase tracking-wide text-slate-400">
+                {m.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="relative mt-5 rounded-2xl border border-white/10 bg-black/25 p-3">
+          <svg viewBox="0 0 300 80" className="h-24 w-full" preserveAspectRatio="none" aria-hidden>
             <defs>
-              <linearGradient id="pipeline-track" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#34d399" stopOpacity="0.7" />
-                <stop offset="55%" stopColor="#34d399" stopOpacity="0.7" />
-                <stop offset="55%" stopColor="#ffffff" stopOpacity="0.12" />
-                <stop offset="100%" stopColor="#ffffff" stopOpacity="0.12" />
+              <linearGradient id="chartStroke" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#8b5cf6" />
+                <stop offset="60%" stopColor="#22d3ee" />
+                <stop offset="100%" stopColor="#e879f9" />
+              </linearGradient>
+              <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0" />
               </linearGradient>
             </defs>
-            <line x1="0" y1="1" x2="100" y2="1" stroke="url(#pipeline-track)" strokeWidth="2" />
+            <path d={`${chartPath} L300 80 L0 80 Z`} fill="url(#chartFill)" />
+            <motion.path
+              d={chartPath}
+              fill="none"
+              stroke="url(#chartStroke)"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 2, ease: 'easeInOut' }}
+            />
+            <circle cx="300" cy="24" r="4" fill="#22d3ee">
+              <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite" />
+            </circle>
           </svg>
-          <div className="relative flex items-center justify-between">
-            {pipelineStages.map((stage) => {
-              const Icon = stageIcons[stage.icon] ?? Cog
-              const statusColor =
-                stage.status === 'done'
-                  ? 'border-emerald-400/40 text-emerald-400 bg-emerald-400/10'
-                  : stage.status === 'active'
-                    ? 'border-cyan-400/50 text-cyan-300 bg-cyan-400/10 shadow-[0_0_24px_-4px_rgba(34,211,238,0.6)]'
-                    : 'border-white/10 text-slate-500 bg-white/[0.03]'
-              return (
-                <div key={stage.id} className="flex flex-col items-center gap-2">
-                  <span
-                    className={`glass-soft flex h-10 w-10 items-center justify-center rounded-xl border transition-all ${statusColor}`}
-                  >
-                    {stage.status === 'done' ? <Check className="h-4 w-4" /> : <Icon className="h-4 w-4" />}
-                  </span>
-                  <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400">
-                    {stage.label}
-                  </span>
-                </div>
-              )
-            })}
+          <div className="mt-2 flex items-center justify-between font-mono text-[9px] text-slate-500">
+            <span>3h</span>
+            <span>pod count · rolling 24h</span>
+            <span>now</span>
           </div>
         </div>
 
-        <div className="mt-7 rounded-2xl border border-white/10 bg-black/30 p-4 font-mono text-[11px] leading-relaxed backdrop-blur-sm">
-          <p className="text-slate-500"><span className="text-violet-300">→</span> image built and pushed</p>
-          <p className="mt-1 text-slate-300"><span className="text-cyan-300">$</span> helm upgrade --install app --namespace prod</p>
-          <p className="mt-1 text-emerald-400">✓ rollout complete · 3/3 replicas healthy</p>
-          <p className="mt-1 text-slate-500"><span className="text-slate-300">⟳</span> syncing ArgoCD application…</p>
+        <div className="mt-4 space-y-2">
+          {[
+            { name: 'api-gateway', status: 'operational', dot: 'bg-emerald-400' },
+            { name: 'k8s-workers (3/3)', status: 'healthy', dot: 'bg-emerald-400' },
+            { name: 'db - postgres', status: 'read-replica synced', dot: 'bg-cyan-300' },
+          ].map((row) => (
+            <div
+              key={row.name}
+              className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2"
+            >
+              <span className="font-mono text-[11px] text-slate-200">{row.name}</span>
+              <span className="inline-flex items-center gap-1.5 font-mono text-[10px] text-slate-400">
+                <span className={`h-1.5 w-1.5 rounded-full ${row.dot}`} />
+                {row.status}
+              </span>
+            </div>
+          ))}
         </div>
 
-        <div className="mt-4 flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5">
-          <div className="flex items-center gap-2 text-[11px] text-slate-400">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute h-full w-full rounded-full bg-emerald-400" />
-            </span>
-            Services operational
+        <div className="mt-4 flex items-center justify-between rounded-xl border border-emerald-400/20 bg-emerald-400/[0.06] px-3 py-2.5">
+          <div className="flex items-center gap-2 text-[11px] text-emerald-300">
+            <CheckCircle2 className="h-3.5 w-3.5" />
+            All systems operational
           </div>
           <div className="font-mono text-[11px] text-slate-400">
-            uptime <span className="text-emerald-400">99.9%</span>
+            latency <span className="text-emerald-300">42ms</span>
           </div>
         </div>
       </div>
@@ -251,7 +296,7 @@ export function Hero() {
           transition={{ delay: 0.35, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative lg:mt-8"
         >
-          <PipelineCard />
+          <DashboardCard />
           <div className="mt-5 grid grid-cols-4 gap-2.5">
             {toolChips.slice(0, 4).map((chip, i) => {
               const Icon = toolIconMap[chip.icon] ?? SiDocker

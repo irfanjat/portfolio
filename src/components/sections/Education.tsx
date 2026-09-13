@@ -7,11 +7,7 @@ export function Education() {
   return (
     <section id="education" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          index="05"
-          label="education"
-          title={<>The <span className="gradient-text">foundation</span> it's all built on</>}
-        />
+        <SectionHeading index="05" label="education" title="Education" />
 
         <motion.div
           initial={{ opacity: 0, y: 26 }}

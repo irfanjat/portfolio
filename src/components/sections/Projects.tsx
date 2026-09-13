@@ -42,12 +42,7 @@ export function Projects() {
   return (
     <section id="projects" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          index="03"
-          label="projects"
-          title={<>Systems I've <span className="gradient-text">designed & shipped</span></>}
-          description="Production-minded builds spanning cost optimization, GitOps, policy-as-code, and AWS infrastructure."
-        />
+        <SectionHeading index="03" label="projects" title="Projects" />
 
         <div className="grid gap-5 lg:grid-cols-2">
           {projects.map((project, i) => {

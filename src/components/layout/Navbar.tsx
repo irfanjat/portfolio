@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa6'
 import { useState } from 'react'
 import { navLinks, personal } from '../../data/portfolio'
 import { useActiveSection } from '../../hooks/useActiveSection'
@@ -54,6 +55,15 @@ export function Navbar() {
 
           <div className="flex items-center gap-2">
             <a
+              href={personal.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="glass-soft flex h-9 w-9 items-center justify-center rounded-xl text-emerald-300 transition hover:border-emerald-400/40 hover:text-emerald-200"
+            >
+              <FaWhatsapp className="h-4 w-4" />
+            </a>
+            <a
               href="#contact"
               className="hidden rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 px-4 py-2 text-xs font-semibold text-white shadow-[0_4px_24px_-6px_rgba(139,92,246,0.7)] transition hover:brightness-110 md:block"
             >
@@ -93,13 +103,25 @@ export function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="mt-1 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 px-4 py-3 text-center text-sm font-semibold text-white"
-              >
-                Hire Me
-              </a>
+              <div className="mt-1 grid grid-cols-2 gap-2">
+                <a
+                  href={personal.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-center gap-2 rounded-xl border border-emerald-400/30 bg-emerald-500/10 px-4 py-3 text-center text-sm font-semibold text-emerald-300"
+                >
+                  <FaWhatsapp className="h-4 w-4" />
+                  WhatsApp
+                </a>
+                <a
+                  href="#contact"
+                  onClick={() => setOpen(false)}
+                  className="rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 px-4 py-3 text-center text-sm font-semibold text-white"
+                >
+                  Hire Me
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
