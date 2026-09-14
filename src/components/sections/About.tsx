@@ -6,7 +6,7 @@ export function About() {
   return (
     <section id="about" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading index="01" label="about" title="About" />
+        <SectionHeading index="01" label="about" title="About" subtitle="Who I Am" />
 
         <div className="grid items-start gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           <motion.div

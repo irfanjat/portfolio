@@ -17,7 +17,7 @@ export function Skills() {
   return (
     <section id="skills" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading index="02" label="skills" title="Skills" />
+        <SectionHeading index="02" label="skills" title="Skills" subtitle="Tech Stack" />
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {skillCategories.map((cat, i) => {
