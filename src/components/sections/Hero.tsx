@@ -3,6 +3,9 @@ import { Github, Linkedin, MapPin } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { SiArgo, SiDocker, SiGithubactions, SiGrafana, SiKubernetes, SiPrometheus, SiTerraform } from 'react-icons/si'
 import { FaAws } from 'react-icons/fa6'
+import dockerBrand from '../../assets/brands/docker-original.svg'
+import kubernetesBrand from '../../assets/brands/kubernetes-original.svg'
+import terraformBrand from '../../assets/brands/terraform-original.svg'
 import { personal, toolChips } from '../../data/portfolio'
 import { MagneticButton } from '../ui/MagneticButton'
 
@@ -15,6 +18,12 @@ const toolIconMap: Record<string, typeof SiDocker> = {
   actions: SiGithubactions,
   prometheus: SiPrometheus,
   grafana: SiGrafana,
+}
+
+const brandLogos: Record<string, string> = {
+  docker: dockerBrand,
+  k8s: kubernetesBrand,
+  terraform: terraformBrand,
 }
 
 const identityLines = [
@@ -276,6 +285,7 @@ export function Hero() {
           <TerminalCard />
           <div className="mt-5 grid grid-cols-4 gap-2.5">
             {toolChips.slice(0, 4).map((chip, i) => {
+              const brand = brandLogos[chip.icon]
               const Icon = toolIconMap[chip.icon] ?? SiDocker
               return (
                 <motion.div
@@ -285,7 +295,9 @@ export function Hero() {
                   transition={{ delay: 0.7 + i * 0.08 }}
                   className={`glass-soft flex flex-col items-center gap-1.5 rounded-md py-3 transition-colors ${chip.icon === 'aws' ? 'animate-float' : chip.icon === 'k8s' ? 'animate-float-delay' : ''} hover:border-[#39d353]/50`}
                 >
-                  <Icon className="h-5 w-5 text-slate-300" />
+                  {brand
+                    ? <img src={brand} alt={chip.label} className="h-5 w-5" />
+                    : <Icon className="h-5 w-5 text-slate-300" />}
                   <span className="font-mono text-[9px] text-slate-400">{chip.label}</span>
                 </motion.div>
               )
