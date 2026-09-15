@@ -62,9 +62,6 @@ export function Footer() {
           <p className="text-xs text-[var(--color-muted)]">
             © {year} {personal.name}. All rights reserved.
           </p>
-          <p className="font-mono text-xs text-[var(--color-muted)]">
-            React · Vite · Tailwind v4 · Framer Motion
-          </p>
         </div>
       </div>
     </footer>
