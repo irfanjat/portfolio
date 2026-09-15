@@ -65,17 +65,17 @@ function TerminalCard() {
   return (
     <div
       ref={ref}
-      className="glass relative overflow-hidden rounded-3xl shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)]"
+      className="glass relative overflow-hidden rounded-lg shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)]"
     >
-      <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-violet-600/25 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-cyan-500/20 blur-3xl" />
+      <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#39d353]/5 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-[#58a6ff]/5 blur-3xl" />
 
-      <div className="relative flex items-center gap-2 border-b border-white/10 px-5 py-3.5">
+      <div className="relative flex items-center gap-2 border-b border-[#30363d] px-5 py-3.5">
         <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
         <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
         <span className="h-3 w-3 rounded-full bg-[#28c840]" />
         <span className="ml-3 font-mono text-[11px] text-slate-400">irfan@aws — ~</span>
-        <span className="ml-auto rounded-md border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[10px] text-slate-500">
+        <span className="ml-auto rounded-md border border-[#30363d] bg-[#21262d] px-2 py-0.5 font-mono text-[10px] text-slate-500">
           zsh
         </span>
       </div>
@@ -99,7 +99,7 @@ function TerminalCard() {
               <Prompt />
               <span className="text-slate-100">cat about.txt</span>
             </p>
-            <div className="mt-2 space-y-1.5 rounded-xl border border-white/10 bg-black/25 p-4">
+            <div className="mt-2 space-y-1.5 rounded-md border border-[#30363d] bg-[#21262d] p-4">
               {identityLines.map((line, i) => (
                 <motion.div
                   key={line.label}
@@ -173,7 +173,7 @@ function RoleRotator() {
 export function Hero() {
   return (
     <section id="home" className="relative flex min-h-screen items-center pt-28 pb-24 section-padding">
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="mx-auto grid w-full max-w-5xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="relative">
           <motion.div
             initial={{ opacity: 0, y: -8 }}
@@ -209,11 +209,11 @@ export function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="mt-6 inline-flex items-center gap-2.5 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-4 py-2 text-xs font-medium text-emerald-300"
+            className="mt-6 inline-flex items-center gap-2.5 rounded-md border border-[#3fb950]/40 bg-[#3fb950]/10 px-4 py-2 font-mono text-xs font-medium text-[#7ee787]"
           >
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#39d353] opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#39d353]" />
             </span>
             Open to DevOps, Cloud & Platform roles
           </motion.div>
@@ -248,7 +248,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="glass-soft flex h-10 w-10 items-center justify-center rounded-xl text-slate-300 transition hover:text-white hover:border-violet-400/40"
+              className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-slate-300 transition hover:text-white hover:border-[#39d353]/50"
             >
               <Github className="h-4 w-4" />
             </a>
@@ -257,12 +257,12 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="glass-soft flex h-10 w-10 items-center justify-center rounded-xl text-slate-300 transition hover:text-white hover:border-cyan-400/40"
+              className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-slate-300 transition hover:text-white hover:border-[#58a6ff]/50"
             >
               <Linkedin className="h-4 w-4" />
             </a>
-            <span className="ml-1 inline-flex items-center gap-1.5 font-mono text-xs text-slate-600">
-              <MapPin className="h-3.5 w-3.5" /> {personal.location}
+            <span className="ml-1 inline-flex items-center gap-1.5 font-mono text-xs text-slate-500">
+              <MapPin className="h-3.5 w-3.5 text-[#58a6ff]" /> {personal.location}
             </span>
           </motion.div>
         </div>
@@ -283,7 +283,7 @@ export function Hero() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 + i * 0.08 }}
-                  className={`glass-soft flex flex-col items-center gap-1.5 rounded-2xl py-3 ${chip.icon === 'aws' ? 'animate-float' : chip.icon === 'k8s' ? 'animate-float-delay' : ''}`}
+                  className={`glass-soft flex flex-col items-center gap-1.5 rounded-md py-3 transition-colors ${chip.icon === 'aws' ? 'animate-float' : chip.icon === 'k8s' ? 'animate-float-delay' : ''} hover:border-[#39d353]/50`}
                 >
                   <Icon className="h-5 w-5 text-slate-300" />
                   <span className="font-mono text-[9px] text-slate-400">{chip.label}</span>

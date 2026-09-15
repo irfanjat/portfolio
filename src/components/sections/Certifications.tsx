@@ -13,7 +13,7 @@ const colors = [
 export function Certifications() {
   return (
     <section id="certifications" className="section-padding relative content-visibility-auto">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-5xl">
         <SectionHeading index="04" label="certifications" title="Credentials" />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -29,23 +29,19 @@ export function Certifications() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ delay: i * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="group glass glass-hover relative flex flex-col overflow-hidden rounded-3xl p-5"
+                className="group rounded-lg border border-[#30363d] bg-[#161b22] p-5 transition-colors hover:border-[#e3b341]/50"
               >
-                <div
-                  className="pointer-events-none absolute -top-14 -right-14 h-32 w-32 rounded-full blur-3xl opacity-50 group-hover:opacity-100"
-                  style={{ background: c.glow }}
-                />
-                <div className="relative flex items-start justify-between">
-                  <span className={`flex h-11 w-11 items-center justify-center rounded-2xl border ${c.border} ${c.bg} ${c.text} transition-transform group-hover:scale-110`}>
+                <div className="flex items-start justify-between">
+                  <span className={`flex h-11 w-11 items-center justify-center rounded-md border ${c.border} ${c.bg} ${c.text} transition-transform group-hover:scale-110`}>
                     <Award className="h-5 w-5" />
                   </span>
-                  <ArrowUpRight className={`h-4 w-4 text-slate-600 transition group-hover:text-white ${c.text}`} />
+                  <ArrowUpRight className={`h-4 w-4 text-[var(--color-muted)] transition group-hover:text-[var(--color-ink)] ${c.text}`} />
                 </div>
-                <h3 className="relative mt-4 text-sm font-semibold leading-snug text-white">
+                <h3 className="mt-4 text-sm font-semibold leading-snug text-[var(--color-ink)]">
                   {cert.title}
                 </h3>
-                <p className="relative mt-1.5 text-xs text-slate-500">{cert.issuer}</p>
-                <span className={`relative mt-4 inline-flex items-center gap-1 font-mono text-[11px] ${c.text}`}>
+                <p className="mt-1.5 text-xs text-[var(--color-muted)]">{cert.issuer}</p>
+                <span className={`mt-4 inline-flex items-center gap-1 font-mono text-[11px] ${c.text}`}>
                   Verify credential
                 </span>
               </motion.a>

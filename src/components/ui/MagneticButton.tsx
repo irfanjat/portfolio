@@ -28,11 +28,11 @@ export function MagneticButton({ href, children, variant = 'primary', className 
   }
 
   const base =
-    'inline-flex items-center justify-center gap-2 rounded-2xl px-7 py-3.5 text-sm font-semibold transition-colors duration-300'
+    'inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-semibold transition-all duration-300'
   const styles =
     variant === 'primary'
-      ? 'text-white shadow-[0_8px_40px_-10px_rgba(139,92,246,0.7)] bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 bg-[length:160%_auto] hover:bg-right'
-      : 'glass-soft text-slate-200 hover:text-white hover:border-white/25'
+      ? 'bg-[#39d353] text-[#0d1117] hover:bg-[#46ef63] hover:-translate-y-0.5 shadow-[0_8px_24px_-8px_rgba(57,211,83,0.45)]'
+      : 'glass-soft text-[var(--color-ink)] hover:text-[var(--color-green)] hover:border-[var(--color-green)] hover:-translate-y-0.5'
 
   return (
     <motion.a

@@ -16,24 +16,23 @@ export function SectionHeading({ index, label, title, subtitle, description }: S
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="mb-14"
+      className="mb-10"
     >
-      <span className="section-badge">
-        <span className="text-slate-400">{index}</span> {label}
+      <span className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-green)]">
+        // {index}. {label}
       </span>
-      <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-white sm:text-[2.6rem] sm:leading-[1.1]">
+      <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-[var(--color-ink)] sm:text-4xl">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-3 font-display text-lg font-semibold text-transparent sm:text-xl">
-          <span className="gradient-text">{subtitle}</span>
-        </p>
+        <p className="mt-2 font-mono text-sm text-[var(--color-green)]">{subtitle}</p>
       )}
       {description && (
-        <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-slate-400">
+        <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[var(--color-muted)]">
           {description}
         </p>
       )}
+      <div className="mt-5 h-[3px] w-12 rounded-sm bg-gradient-to-r from-[#39d353] to-[#58a6ff]" />
     </motion.div>
   )
 }

@@ -10,7 +10,6 @@ const styles = [
     border: 'border-violet-400/30',
     bg: 'bg-violet-500/10',
     glow: 'rgba(139,92,246,0.35)',
-    edge: 'from-violet-500/60',
   },
   {
     icon: GitBranch,
@@ -18,7 +17,6 @@ const styles = [
     border: 'border-cyan-400/30',
     bg: 'bg-cyan-500/10',
     glow: 'rgba(34,211,238,0.35)',
-    edge: 'from-cyan-500/60',
   },
   {
     icon: ShieldCheck,
@@ -26,7 +24,6 @@ const styles = [
     border: 'border-fuchsia-400/30',
     bg: 'bg-fuchsia-500/10',
     glow: 'rgba(232,121,249,0.35)',
-    edge: 'from-fuchsia-500/60',
   },
   {
     icon: ServerCog,
@@ -34,14 +31,13 @@ const styles = [
     border: 'border-amber-400/30',
     bg: 'bg-amber-500/10',
     glow: 'rgba(251,191,36,0.35)',
-    edge: 'from-amber-500/60',
   },
 ]
 
 export function Projects() {
   return (
     <section id="projects" className="section-padding relative content-visibility-auto">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-5xl">
         <SectionHeading index="03" label="projects" title="Projects" />
 
         <div className="grid gap-5 lg:grid-cols-2">
@@ -58,44 +54,38 @@ export function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ delay: (i % 2) * 0.1, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                className="group glass glass-hover relative flex flex-col overflow-hidden rounded-3xl p-6 sm:p-7"
+                className="group rounded-lg border border-[#30363d] bg-[#161b22] p-6 transition-colors hover:border-[var(--color-purple)]/50 sm:p-7"
               >
-                <div className={`pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r ${s.edge} via-white/40 to-transparent`} />
-                <div
-                  className="pointer-events-none absolute -top-20 -right-16 h-44 w-44 rounded-full blur-3xl opacity-40 transition-opacity duration-500 group-hover:opacity-90"
-                  style={{ background: s.glow }}
-                />
-
-                <div className="relative flex items-center justify-between">
-                  <span className={`inline-flex items-center gap-1.5 rounded-full border ${s.border} ${s.bg} ${s.text} px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-wider`}>
+                <div className="flex items-center justify-between">
+                  <span className={`inline-flex items-center gap-1.5 rounded-md border ${s.border} ${s.bg} ${s.text} px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-wider`}>
                     {project.tag}
                   </span>
-                  <span className={`flex h-11 w-11 items-center justify-center rounded-2xl border ${s.border} ${s.bg} ${s.text} transition-transform duration-300 group-hover:scale-110`}>
+                  <span className={`flex h-11 w-11 items-center justify-center rounded-md border ${s.border} ${s.bg} ${s.text} transition-transform duration-300 group-hover:scale-110`}>
                     <Icon className="h-5 w-5" />
                   </span>
                 </div>
 
-                <div className="relative mt-5">
-                  <h3 className="font-display text-xl font-bold text-white">{project.title}</h3>
-                  <p className="mt-0.5 font-mono text-xs text-slate-500">{project.subtitle}</p>
+                <div className="mt-5">
+                  <h3 className="font-display text-xl font-bold text-[var(--color-ink)]">{project.title}</h3>
+                  <p className="mt-0.5 font-mono text-xs text-[var(--color-muted)]">{project.subtitle}</p>
                 </div>
 
-                <p className="relative mt-4 flex-1 text-sm leading-relaxed text-slate-400">
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-[var(--color-muted)]">
                   {project.description}
                 </p>
 
-                <div className="relative mt-5 flex flex-wrap gap-1.5">
+                <div className="mt-5 flex flex-wrap gap-1.5">
                   {project.tech.map((t) => (
                     <span
                       key={t}
-                      className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-slate-300"
+                      className="rounded border border-[#30363d] bg-[#21262d] px-2.5 py-1 font-mono text-[11px] font-medium text-[var(--color-purple)]"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
 
-                <div className={`relative mt-6 inline-flex items-center gap-1.5 text-xs font-medium ${s.text}`}>
+                <div className={`mt-6 inline-flex items-center gap-1.5 text-xs font-medium ${s.text}`}>
                   View on GitHub
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
@@ -115,7 +105,7 @@ export function Projects() {
             href="https://github.com/irfanjat"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-slate-200 backdrop-blur-xl transition hover:border-violet-400/40 hover:text-white"
+            className="inline-flex items-center gap-2 rounded-md border border-[#30363d] bg-[#21262d] px-6 py-3.5 text-sm font-semibold text-[var(--color-ink)] transition hover:border-[#39d353]/50 hover:text-[#3fb950]"
           >
             Explore more on GitHub <ArrowUpRight className="h-4 w-4" />
           </a>

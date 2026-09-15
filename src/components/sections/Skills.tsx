@@ -16,7 +16,7 @@ const accents: Record<string, { text: string; border: string; bg: string; glow: 
 export function Skills() {
   return (
     <section id="skills" className="section-padding relative content-visibility-auto">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-5xl">
         <SectionHeading index="02" label="skills" title="Skills" subtitle="Tech Stack" />
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -29,20 +29,16 @@ export function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ delay: (i % 4) * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="group glass glass-hover relative flex flex-col gap-4 overflow-hidden rounded-3xl p-5"
+                className="group rounded-lg border border-[#30363d] bg-[#161b22] p-5 transition-colors hover:border-[#58a6ff]/50"
               >
-                <div
-                  className="pointer-events-none absolute -top-16 -right-16 h-40 w-40 rounded-full blur-3xl transition-opacity duration-500 group-hover:opacity-100"
-                  style={{ background: a.glow, opacity: 0.4 }}
-                />
-                <div className={`relative inline-flex w-fit items-center gap-2 rounded-xl border ${a.border} ${a.bg} ${a.text} px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-wider`}>
-                  {cat.title}
+                <div className={`inline-flex w-fit items-center gap-2 rounded-md border ${a.border} ${a.bg} ${a.text} px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-wider`}>
+                  # {cat.title}
                 </div>
-                <div className="relative flex flex-wrap gap-1.5">
+                <div className="mt-3 flex flex-wrap gap-1.5">
                   {cat.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-slate-300 transition-colors group-hover:border-white/20"
+                      className="rounded border border-[#30363d] bg-[#21262d] px-2.5 py-1 font-mono text-[11px] font-medium text-[#c9d1d9] transition-colors hover:border-[#3fb950]/50"
                     >
                       {skill}
                     </span>

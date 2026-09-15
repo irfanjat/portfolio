@@ -17,27 +17,26 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative border-t border-white/[0.06]">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" />
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <footer className="relative border-t border-[#30363d]">
+      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 via-fuchsia-600 to-cyan-600 font-mono text-xs font-bold text-white">
+              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#39d353] font-mono text-xs font-bold text-[#0d1117]">
                 {personal.initials}
               </div>
-              <span className="font-display text-sm font-semibold text-white">{personal.name}</span>
+              <span className="font-display text-sm font-semibold text-[var(--color-ink)]">{personal.name}</span>
             </div>
-            <p className="mt-2 text-sm text-slate-500">{personal.role}</p>
+            <p className="mt-2 font-mono text-sm text-[var(--color-muted)]">{personal.role}</p>
           </div>
 
           <div className="flex gap-6">
             {quickLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-slate-400 transition hover:text-white"
-              >
+<a
+              key={link.href}
+              href={link.href}
+              className="text-sm text-[var(--color-muted)] transition hover:text-[#39d353]"
+            >
                 {link.label}
               </a>
             ))}
@@ -51,7 +50,7 @@ export function Footer() {
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="glass-soft flex h-10 w-10 items-center justify-center rounded-xl text-slate-400 transition hover:text-white hover:border-violet-400/40"
+                className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-[var(--color-muted)] transition hover:text-[#39d353] hover:border-[#39d353]/50"
               >
                 <Icon className="h-4 w-4" />
               </a>
@@ -59,11 +58,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-white/[0.06] pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-slate-600">
+        <div className="mt-10 flex flex-col gap-2 border-t border-[#30363d] pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-[var(--color-muted)]">
             © {year} {personal.name}. All rights reserved.
           </p>
-          <p className="font-mono text-xs text-slate-600">
+          <p className="font-mono text-xs text-[var(--color-muted)]">
             React · Vite · Tailwind v4 · Framer Motion
           </p>
         </div>
