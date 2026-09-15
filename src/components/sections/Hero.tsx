@@ -6,6 +6,7 @@ import { FaAws } from 'react-icons/fa6'
 import dockerBrand from '../../assets/brands/docker-original.svg'
 import kubernetesBrand from '../../assets/brands/kubernetes-original.svg'
 import terraformBrand from '../../assets/brands/terraform-original.svg'
+import awsBrand from '../../assets/brands/amazonwebservices-original.svg'
 import { personal, toolChips } from '../../data/portfolio'
 import { MagneticButton } from '../ui/MagneticButton'
 
@@ -24,6 +25,7 @@ const brandLogos: Record<string, string> = {
   docker: dockerBrand,
   k8s: kubernetesBrand,
   terraform: terraformBrand,
+  aws: awsBrand,
 }
 
 const identityLines = [
