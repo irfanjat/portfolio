@@ -20,6 +20,7 @@ export function Navbar() {
         <nav className="mx-auto flex h-[60px] w-full max-w-5xl items-center justify-between px-4 lg:px-8">
           <a href="#home" className="font-mono text-sm font-bold tracking-[0.05em] text-[#39d353]">
             ⚡ ~/{personal.firstName.toLowerCase()}
+            <span className="font-medium text-[#6e7681]"> DevOps Cloud</span>
           </a>
 
           <div className="hidden items-center gap-7 md:flex">
