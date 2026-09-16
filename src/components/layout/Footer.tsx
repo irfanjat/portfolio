@@ -1,6 +1,4 @@
-import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail } from 'lucide-react'
-import { relativeTime, useGitHubDeployStatus } from '../../hooks/useGitHubDeployStatus'
 import { personal } from '../../data/portfolio'
 
 const social = [
@@ -17,49 +15,9 @@ const quickLinks = [
 
 export function Footer() {
   const year = new Date().getFullYear()
-  const { status, online } = useGitHubDeployStatus()
-
-  const when =
-    (status.ok && relativeTime(status.updatedAt)) || (status.ok ? 'just now' : 'n/a')
-
-  const tickerBits = [
-    { text: 'deploy', cls: 'text-[#39d353]' },
-    { text: status.conclusion === 'success' ? 'passing' : status.conclusion || 'unknown', cls: 'text-[#39d353]' },
-    { text: 'cdot', cls: 'text-[#6e7681]' },
-    { text: `last build ${when} ago`, cls: 'text-[#8b949e]' },
-    { text: 'cdot', cls: 'text-[#6e7681]' },
-    { text: 'env', cls: 'text-[#8b949e]' },
-    { text: online ? 'live' : 'offline cached', cls: online ? 'text-[#39d353]' : 'text-[#f85149]' },
-    { text: 'cdot', cls: 'text-[#6e7681]' },
-  ]
 
   return (
     <footer className="relative border-t border-[#30363d]">
-      <div className="border-b border-[#30363d] bg-[#161b22]/60">
-        <div className="mx-auto flex max-w-5xl items-center gap-6 overflow-hidden whitespace-nowrap px-4 py-2.5 sm:px-6 lg:px-8">
-          {[0, 1].map((n) => (
-            <motion.span
-              key={n}
-              animate={{ x: ['0%', '-50%'] }}
-              transition={{ repeat: Infinity, ease: 'linear', duration: 26, delay: n * 26 }}
-              aria-hidden={n === 1}
-              className="flex items-center gap-6 font-mono text-[11px]"
-            >
-              {Array.from({ length: 6 }).map((_, i) => (
-                <span key={i} className="flex items-center gap-6">
-                  {tickerBits.map((bit, j) => (
-                    <span
-                      key={j}
-                      className={bit.cls}
-                      children={bit.text === 'cdot' ? '·' : bit.text === 'env' ? 'production' : bit.text}
-                    />
-                  ))}
-                </span>
-              ))}
-            </motion.span>
-          ))}
-        </div>
-      </div>
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -74,11 +32,11 @@ export function Footer() {
 
           <div className="flex gap-6">
             {quickLinks.map((link) => (
-<a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-[var(--color-muted)] transition hover:text-[#39d353]"
-            >
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm text-[var(--color-muted)] transition hover:text-[#39d353]"
+              >
                 {link.label}
               </a>
             ))}
