@@ -52,8 +52,16 @@ export function Navbar() {
               <FaWhatsapp className="h-4 w-4" />
             </a>
             <a
+              href={personal.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden rounded-md border border-[#30363d] px-4 py-2 font-mono text-[12.5px] font-medium text-[#8b949e] transition hover:border-[#58a6ff]/50 hover:text-[#c9d1d9] md:block"
+            >
+              Resume
+            </a>
+            <a
               href="#contact"
-              className="hidden rounded-md bg-[#39d353] px-4 py-2 text-[13px] font-semibold text-[#0d1117] transition hover:bg-[#46ef63] md:block"
+              className="hidden rounded-md bg-[#39d353] px-4 py-2 font-mono text-[12.5px] font-semibold text-[#0d1117] transition hover:bg-[#46ef63] md:block"
             >
               Hire Me
             </a>

@@ -12,6 +12,7 @@ export const personal = {
   linkedin: 'https://linkedin.com/in/irfanjat',
   github: 'https://github.com/irfanjat',
   whatsapp: 'https://wa.me/923153711489',
+  resume: '/IrfanAliResume.pdf',
   location: 'Pakistan',
   availability: 'Open to DevOps, Cloud & Platform Engineering roles',
   availabilityDetail:

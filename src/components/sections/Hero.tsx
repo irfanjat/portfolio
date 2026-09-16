@@ -8,6 +8,7 @@ import kubernetesBrand from '../../assets/brands/kubernetes-original.svg'
 import terraformBrand from '../../assets/brands/terraform-original.svg'
 import awsBrand from '../../assets/brands/amazonwebservices-original.svg'
 import { personal, toolChips } from '../../data/portfolio'
+import { LiveDeployStatus } from '../ui/LiveDeployStatus'
 import { MagneticButton } from '../ui/MagneticButton'
 
 const toolIconMap: Record<string, typeof SiDocker> = {
@@ -131,18 +132,9 @@ function TerminalCard() {
               ))}
             </div>
 
-            <p className="mt-3 flex flex-wrap gap-x-2">
-              <Prompt />
-              <span className="text-slate-100">uptime</span>
-            </p>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.4 }}
-              className="text-slate-400"
-            >
-              3 clusters · 24 CI/CD pipelines · zero unplanned downtime
-            </motion.p>
+            <div className="mt-3">
+              <LiveDeployStatus />
+            </div>
 
             <p className="mt-3 flex gap-x-2">
               <Prompt />
