@@ -54,7 +54,7 @@ export function LiveDeployStatus() {
         </>
       )}
       <span className="text-[#6e7681]">·</span>
-      <span className={`inline-flex items-center gap-1 text-[#6e7681] ${online ? 'text-[#8b949e]' : 'text-[#f85149]'}`}>
+      <span className={`inline-flex items-center gap-1 ${online ? 'text-[#8b949e]' : 'text-[#f85149]'}`}>
         {online ? <Wifi className="h-3 w-3" /> : <WifiOff className="h-3 w-3" />}
         {online ? 'live' : 'offline · cached'}
       </span>
