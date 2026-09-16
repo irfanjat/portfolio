@@ -8,7 +8,6 @@ import kubernetesBrand from '../../assets/brands/kubernetes-original.svg'
 import terraformBrand from '../../assets/brands/terraform-original.svg'
 import awsBrand from '../../assets/brands/amazonwebservices-original.svg'
 import { personal, toolChips } from '../../data/portfolio'
-import { ClickableCommands } from '../ui/ClickableCommands'
 import { LiveDeployStatus } from '../ui/LiveDeployStatus'
 import { MagneticButton } from '../ui/MagneticButton'
 
@@ -136,8 +135,6 @@ function TerminalCard() {
             <div className="mt-3">
               <LiveDeployStatus />
             </div>
-
-            <ClickableCommands />
 
             <p className="mt-3 flex gap-x-2">
               <Prompt />
