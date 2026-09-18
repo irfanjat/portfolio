@@ -123,7 +123,9 @@ function TerminalCard() {
                   <span className="w-20 shrink-0 text-slate-500">{line.label}:</span>
                   <span
                     className={
-                      line.label === 'status' ? 'text-emerald-300' : 'text-slate-200'
+                      line.label === 'role'
+                        ? 'border border-[#39d353]/40 bg-[#161b22] px-1.5 py-0.5 text-[#39d353] shadow-[0_0_14px_-4px_#39d353]'
+                        : line.label === 'status' ? 'text-emerald-300' : 'text-slate-200'
                     }
                   >
                     {line.value}
