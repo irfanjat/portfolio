@@ -8,7 +8,6 @@ import kubernetesBrand from '../../assets/brands/kubernetes-original.svg'
 import terraformBrand from '../../assets/brands/terraform-original.svg'
 import awsBrand from '../../assets/brands/amazonwebservices-original.svg'
 import { personal, toolChips } from '../../data/portfolio'
-import { LiveDeployStatus } from '../ui/LiveDeployStatus'
 import { MagneticButton } from '../ui/MagneticButton'
 
 const toolIconMap: Record<string, typeof SiDocker> = {
@@ -135,7 +134,6 @@ function TerminalCard() {
             </div>
 
             <div className="mt-3">
-              <LiveDeployStatus />
             </div>
 
             <p className="mt-3 flex gap-x-2">

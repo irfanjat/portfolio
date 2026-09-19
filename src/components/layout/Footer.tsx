@@ -63,7 +63,7 @@ export function Footer() {
             © {year} {personal.name}. All rights reserved.
           </p>
           <p className="font-mono text-xs text-[var(--color-muted)]">
-            Built with <span className="text-[#39d353]">❤️</span> by {personal.name} · Hosted on Cloudflare
+            Built with <span className="text-[#39d353]">❤️</span> by {personal.name} 
           </p>
         </div>
       </div>
