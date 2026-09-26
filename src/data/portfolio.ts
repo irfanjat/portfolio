@@ -120,6 +120,17 @@ export const stats = [
 
 export const projects = [
   {
+    id: 'fizzshare',
+    tag: 'WebRTC · P2P Networking',
+    title: 'FizzShare',
+    subtitle: 'Peer-to-Peer File Sharing over WebRTC',
+    description:
+      'Browser-to-browser file transfer where the server only relays signaling and mints time-limited TURN credentials — the file bytes travel directly between devices over SCTP/DTLS/ICE with SHA-256 integrity verification, QR share links, and a live network inspector showing candidate pairs, RTT, and packet loss.',
+    tech: ['TypeScript', 'WebRTC', 'SCTP/DTLS', 'ICE', 'coturn', 'Node.js', 'Docker', 'Terraform'],
+    github: 'https://github.com/irfanjat/fizzshare',
+    live: 'https://52.4.112.224.sslip.io/',
+  },
+  {
     id: 'costguard',
     tag: 'Cost Optimization',
     title: 'CostGuard',

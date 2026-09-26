@@ -45,11 +45,8 @@ export function Projects() {
             const s = styles[i % styles.length]
             const Icon = s.icon
             return (
-              <motion.a
+              <motion.div
                 key={project.id}
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
@@ -85,11 +82,29 @@ export function Projects() {
                   ))}
                 </div>
 
-                <div className={`mt-6 inline-flex items-center gap-1.5 text-xs font-medium ${s.text}`}>
-                  View on GitHub
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <div className={`mt-6 flex flex-wrap items-center gap-x-4 gap-y-1`}>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-1.5 text-xs font-medium transition-opacity hover:opacity-80 ${s.text}`}
+                  >
+                    View on GitHub
+                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                  {('live' in project ? project.live : undefined) && (
+                    <a
+                      href={'live' in project ? project.live : undefined}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-md border border-[#30363d] bg-[#21262d] px-2.5 py-1 font-mono text-[11px] font-medium text-[var(--color-ink)] transition hover:border-[#39d353]/50 hover:text-[#3fb950]"
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#39d353]" />
+                      Live demo
+                    </a>
+                  )}
                 </div>
-              </motion.a>
+              </motion.div>
             )
           })}
         </div>
