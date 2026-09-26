@@ -20,7 +20,7 @@ export function Navbar() {
         <nav className="mx-auto flex h-[60px] w-full max-w-5xl items-center justify-between px-4 lg:px-8">
           <a href="#home" className="flex items-center gap-2 font-mono text-sm font-bold tracking-[0.05em]">
             <Zap className="h-4 w-4 shrink-0 text-[#f0883e]" aria-hidden="true" />
-            <span className="text-[#39d353]">~/{personal.firstName.toLowerCase()}</span>
+            <span className="text-[#22d3ee]">~/{personal.firstName.toLowerCase()}</span>
             <span className="rounded border border-[#30363d] bg-[#161b22] px-1.5 py-0.5 text-[11px] font-medium tracking-normal text-[#8b949e]">
               DevOps Cloud
             </span>
