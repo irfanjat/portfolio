@@ -56,12 +56,22 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="relative overflow-hidden rounded-lg border border-[#30363d] bg-[#161b22] p-6 text-center transition-colors hover:border-[#3fb950]/50"
+                className="group relative overflow-hidden rounded-lg border border-[#30363d] bg-[#161b22] p-6 text-center transition-colors hover:border-[#3fb950]/50"
               >
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-0 h-px opacity-70"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${stat.accent}, transparent)`,
+                  }}
+                />
                 <div className="relative">
-                  <div className="font-display text-4xl font-extrabold text-[var(--color-ink)]">
+                  <div
+                    className="font-display text-4xl font-extrabold"
+                    style={{ color: stat.accent, textShadow: `0 0 26px ${stat.glow}` }}
+                  >
                     {stat.value}
-                    <span className="gradient-text">{stat.suffix}</span>
+                    <span>{stat.suffix}</span>
                   </div>
                   <div className="mt-2 text-xs text-[var(--color-muted)]">{stat.label}</div>
                 </div>
