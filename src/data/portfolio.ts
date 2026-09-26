@@ -115,7 +115,7 @@ export const stats = [
   { label: 'Years Experience', value: 1, suffix: '+', accent: '#8b5cf6', glow: 'rgba(139,92,246,0.35)' },
   { label: 'Projects Shipped', value: 12, suffix: '+', accent: '#22d3ee', glow: 'rgba(34,211,238,0.35)' },
   { label: 'Cloud Platforms', value: 1, suffix: '', accent: '#e879f9', glow: 'rgba(232,121,249,0.35)' },
-  { label: 'Certifications', value: 4, suffix: '', accent: '#fbbf24', glow: 'rgba(251,191,36,0.35)' },
+  { label: 'Certifications', value: 4, suffix: '', accent: '#22d3ee', glow: 'rgba(34,211,238,0.35)' },
 ]
 
 export const projects = [
