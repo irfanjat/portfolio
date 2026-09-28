@@ -92,9 +92,9 @@ export function Projects() {
                     View on GitHub
                     <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
-                  {('live' in project ? project.live : undefined) && (
+                  {project.live && (
                     <a
-                      href={'live' in project ? project.live : undefined}
+                      href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 rounded-md border border-[#30363d] bg-[#21262d] px-2.5 py-1 font-mono text-[11px] font-medium text-[var(--color-ink)] transition hover:border-[#39d353]/50 hover:text-[#3fb950]"
