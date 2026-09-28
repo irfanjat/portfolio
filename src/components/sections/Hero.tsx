@@ -28,12 +28,45 @@ const brandLogos: Record<string, string> = {
   aws: awsBrand,
 }
 
-const identityLines = [
-  { label: 'name', value: 'Irfan Ali' },
-  { label: 'role', value: 'DevOps & Cloud Engineer' },
-  { label: 'location', value: 'Pakistan' },
-  { label: 'cloud', value: 'AWS · Kubernetes · Terraform' },
-  { label: 'status', value: '● open to DevOps / SRE roles' },
+type TermLine = { l: string; r: string; ok?: boolean }
+
+const SCENES: { command: string; lines: TermLine[] }[] = [
+  {
+    command: 'whoami --verbose',
+    lines: [
+      { l: 'name', r: 'Irfan Ali' },
+      { l: 'role', r: 'DevOps & Cloud Engineer' },
+      { l: 'stack', r: 'AWS · K8s · Terraform' },
+      { l: 'status', r: '● open to work', ok: true },
+    ],
+  },
+  {
+    command: 'kubectl get pods -A',
+    lines: [
+      { l: 'grafana', r: '1/1  Running', ok: true },
+      { l: 'prometheus', r: '1/1  Running', ok: true },
+      { l: 'argocd', r: '1/1  Synced', ok: true },
+      { l: 'postgres', r: '1/1  Running', ok: true },
+    ],
+  },
+  {
+    command: 'git push origin main',
+    lines: [
+      { l: '✓ build', r: '5.2s', ok: true },
+      { l: '✓ typecheck', r: '0 errors', ok: true },
+      { l: '✓ terraform plan', r: 'no drift', ok: true },
+      { l: '→ live', r: 'pages deployed', ok: true },
+    ],
+  },
+  {
+    command: 'helm list -A',
+    lines: [
+      { l: 'platform', r: 'deployed  rev 3', ok: true },
+      { l: 'observability', r: 'deployed  rev 5', ok: true },
+      { l: 'gitops', r: 'synced    rev 1', ok: true },
+      { l: 'postgres', r: 'deployed  rev 2', ok: true },
+    ],
+  },
 ]
 
 function useTypewriter(text: string, active: boolean, speed = 60) {
@@ -70,29 +103,41 @@ function Cursor() {
 function TerminalCard() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
-  const typed = useTypewriter('whoami', inView)
-  const done = typed.length >= 'whoami'.length
+  const [scene, setScene] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  const active = SCENES[scene]
+  const typed = useTypewriter(active.command, inView, 42)
+  const done = typed.length >= active.command.length
+
+  useEffect(() => {
+    if (!inView || paused) return
+    const id = setInterval(() => setScene((v) => (v + 1) % SCENES.length), 4200)
+    return () => clearInterval(id)
+  }, [inView, paused])
 
   return (
     <div
       ref={ref}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
       className="glass relative overflow-hidden rounded-lg shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)]"
     >
       <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#39d353]/5 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-[#58a6ff]/5 blur-3xl" />
 
-      <div className="relative flex items-center gap-2 border-b border-[#30363d] px-5 py-3.5">
-        <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-        <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-        <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-        <span className="ml-3 font-mono text-[11px] text-slate-400">irfan@aws — ~</span>
-        <span className="ml-auto rounded-md border border-[#30363d] bg-[#21262d] px-2 py-0.5 font-mono text-[10px] text-slate-500">
+      <div className="relative flex items-center gap-2 border-b border-[#30363d] px-4 py-2.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+        <span className="ml-2 truncate font-mono text-[10.5px] text-slate-400">irfan@aws — ~/infra</span>
+        <span className="ml-auto shrink-0 rounded border border-[#30363d] bg-[#21262d] px-1.5 py-px font-mono text-[9.5px] text-slate-500">
           zsh
         </span>
       </div>
 
-      <div className="relative p-5 font-mono text-[12.5px] leading-relaxed sm:p-6">
-        <div className="flex flex-wrap gap-x-2">
+      <div className="relative p-4 font-mono text-[11px] leading-relaxed sm:p-5 sm:text-[12px]">
+        <div className="flex flex-wrap items-center gap-x-2">
           <Prompt />
           <span className="text-slate-100">{typed}</span>
           {!done && <Cursor />}
@@ -100,46 +145,40 @@ function TerminalCard() {
 
         {done && (
           <motion.div
+            key={scene}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.35 }}
+            className="mt-2.5 space-y-0.5"
           >
-            <p className="text-slate-400">irfan</p>
-
-            <p className="mt-3 flex flex-wrap gap-x-2">
-              <Prompt />
-              <span className="text-slate-100">cat about.txt</span>
-            </p>
-            <div className="mt-2 space-y-1.5 rounded-md border border-[#30363d] bg-[#21262d] p-4">
-              {identityLines.map((line, i) => (
-                <motion.div
-                  key={line.label}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.25 + i * 0.18, duration: 0.4 }}
-                  className="flex flex-wrap gap-x-2"
-                >
-                  <span className="w-20 shrink-0 text-slate-500">{line.label}:</span>
-                  <span
-                    className={
-                      line.label === 'status' ? 'text-emerald-300' : 'text-slate-200'
-                    }
-                  >
-                    {line.value}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="mt-3">
-            </div>
-
-            <p className="mt-3 flex gap-x-2">
-              <Prompt />
-              <Cursor />
-            </p>
+            {active.lines.map((line, i) => (
+              <motion.div
+                key={line.l}
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.12 + i * 0.11, duration: 0.32 }}
+                className="flex flex-wrap items-baseline gap-x-2"
+              >
+                <span className="w-[6rem] shrink-0 truncate text-slate-500 sm:w-[7.5rem]">{line.l}</span>
+                <span className={line.ok ? 'text-emerald-300' : 'text-slate-200'}>{line.r}</span>
+              </motion.div>
+            ))}
           </motion.div>
         )}
+
+        <div className="mt-3 flex items-center gap-1.5">
+          {SCENES.map((s, i) => (
+            <button
+              key={s.command}
+              type="button"
+              aria-label={`Show ${s.command}`}
+              onClick={() => setScene(i)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === scene ? 'w-4 bg-[#22d3ee]' : 'w-1.5 bg-slate-600 hover:bg-slate-500'
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
