@@ -38,7 +38,7 @@ export function Projects() {
   return (
     <section id="projects" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-5xl">
-        <SectionHeading index="03" label="projects" title="Projects" />
+        <SectionHeading index="03" label="projects" title="Notable Projects" />
 
         <div className="grid gap-5 lg:grid-cols-2">
           {projects.map((project, i) => {
