@@ -14,7 +14,6 @@ export function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="glass rounded-lg p-7 sm:p-9"
           >
             <h3 className="font-display text-2xl font-bold text-white">
               I'm <span className="gradient-text">Irfan Ali</span> — DevOps Engineer & lifelong learner
