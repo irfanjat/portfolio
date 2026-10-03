@@ -49,17 +49,17 @@ export const skillCategories = [
   {
     title: 'CI/CD & GitOps',
     accent: 'violet',
-    skills: ['Jenkins', 'GitHub Actions', 'ArgoCD', 'GitLab CI'],
+    skills: ['Jenkins', 'GitHub Actions', 'ArgoCD'],
   },
   {
     title: 'Containers & Orchestration',
     accent: 'cyan',
-    skills: ['Docker', 'Kubernetes', 'Helm', 'Docker Compose'],
+    skills: ['Docker', 'Kubernetes', 'Docker Compose'],
   },
   {
     title: 'Infrastructure as Code',
     accent: 'fuchsia',
-    skills: ['Terraform', 'Ansible', 'CloudFormation'],
+    skills: ['Terraform', 'Ansible'],
   },
   {
     title: 'Cloud Platforms',
@@ -69,17 +69,12 @@ export const skillCategories = [
   {
     title: 'Monitoring & Observability',
     accent: 'emerald',
-    skills: ['Prometheus', 'Grafana', 'Loki', 'Alertmanager'],
+    skills: ['Prometheus', 'Grafana'],
   },
   {
     title: 'Systems & Networking',
     accent: 'indigo',
     skills: ['Linux', 'DNS', 'HTTPS/TLS', 'SSH', 'Bash', 'Python', 'Nginx', 'Apache'],
-  },
-  {
-    title: 'System Design',
-    accent: 'sky',
-    skills: ['Microservices', 'REST & gRPC', 'Caching', 'CDNs', 'Load Balancers', 'Databases', 'Servers'],
   },
   {
     title: 'Linux SysAdmin',
@@ -112,10 +107,10 @@ export const certifications = [
 ]
 
 export const stats = [
-  { label: 'Years Experience', value: 1, suffix: '+', accent: '#22d3ee', glow: 'rgba(34,211,238,0.35)' },
-  { label: 'Projects Shipped', value: 12, suffix: '+', accent: '#22d3ee', glow: 'rgba(34,211,238,0.35)' },
-  { label: 'Cloud Platforms', value: 1, suffix: '', accent: '#22d3ee', glow: 'rgba(34,211,238,0.35)' },
-  { label: 'Certifications', value: 4, suffix: '', accent: '#22d3ee', glow: 'rgba(34,211,238,0.35)' },
+  { label: 'Years Experience', value: 1, suffix: '+', accent: '#39d353', glow: 'rgba(57,211,83,0.35)' },
+  { label: 'Projects Shipped', value: 12, suffix: '+', accent: '#39d353', glow: 'rgba(57,211,83,0.35)' },
+  { label: 'Cloud Platforms', value: 1, suffix: '', accent: '#39d353', glow: 'rgba(57,211,83,0.35)' },
+  { label: 'Certifications', value: 4, suffix: '', accent: '#39d353', glow: 'rgba(57,211,83,0.35)' },
 ]
 
 export interface Project {
