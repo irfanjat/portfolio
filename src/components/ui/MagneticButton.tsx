@@ -6,11 +6,9 @@ interface MagneticButtonProps {
   children: ReactNode
   variant?: 'primary' | 'ghost'
   className?: string
-  target?: string
-  rel?: string
 }
 
-export function MagneticButton({ href, children, variant = 'primary', className = '', target, rel }: MagneticButtonProps) {
+export function MagneticButton({ href, children, variant = 'primary', className = '' }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement>(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -40,8 +38,6 @@ export function MagneticButton({ href, children, variant = 'primary', className 
     <motion.a
       ref={ref}
       href={href}
-      target={target}
-      rel={rel}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       whileTap={{ scale: 0.97 }}

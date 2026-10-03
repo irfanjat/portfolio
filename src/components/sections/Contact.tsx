@@ -1,13 +1,11 @@
 import { motion } from 'framer-motion'
 import { CheckCircle2, Github, Linkedin, Mail, Send } from 'lucide-react'
-import { FaWhatsapp } from 'react-icons/fa6'
 import { useEffect, useState } from 'react'
 import { contactForm, personal } from '../../data/portfolio'
 import { SectionHeading } from '../ui/SectionHeading'
 
 const links = [
   { label: 'Email', value: personal.email, href: `mailto:${personal.email}`, icon: Mail },
-  { label: 'WhatsApp', value: `+92 ${personal.phone.slice(2)}`, href: personal.whatsapp, icon: FaWhatsapp },
   { label: 'LinkedIn', value: 'linkedin.com/in/irfanjat', href: personal.linkedin, icon: Linkedin },
   { label: 'GitHub', value: 'github.com/irfanjat', href: personal.github, icon: Github },
 ]
