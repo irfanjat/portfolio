@@ -6,7 +6,7 @@ export const personal = {
   role: 'DevOps & Cloud Engineer',
   roles: ['DevOps Engineer', 'Cloud Engineer', 'Platform Engineer', 'SRE-Minded'],
   tagline:
-    'I design cloud-native infrastructure, automate delivery pipelines, and keep production platforms reliable, observable, and secure.',
+    'I build and automate cloud infrastructure with Kubernetes, Terraform, and GitOps, and I document the decisions behind it.',
   phone: '03153711489',
   email: 'irfanali.cloud@gmail.com',
   linkedin: 'https://linkedin.com/in/irfanjat',

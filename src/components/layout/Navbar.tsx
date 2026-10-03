@@ -1,6 +1,5 @@
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { Menu, X, Zap } from 'lucide-react'
-import { FaWhatsapp } from 'react-icons/fa6'
 import { useState } from 'react'
 import { navLinks, personal } from '../../data/portfolio'
 import { useActiveSection } from '../../hooks/useActiveSection'
@@ -19,11 +18,8 @@ export function Navbar() {
       >
         <nav className="mx-auto flex h-[60px] w-full max-w-5xl items-center justify-between px-4 lg:px-8">
           <a href="#home" className="flex items-center gap-2 font-mono text-sm font-bold tracking-[0.05em]">
-            <Zap className="h-4 w-4 shrink-0 text-[#f0883e]" aria-hidden="true" />
-            <span className="text-[#22d3ee]">~/{personal.firstName.toLowerCase()}</span>
-            <span className="hidden rounded border border-[#30363d] bg-[#161b22] px-1.5 py-0.5 text-[11px] font-medium tracking-normal text-[#8b949e] lg:inline">
-              DevOps Cloud
-            </span>
+            <Zap className="h-4 w-4 shrink-0 text-[#39d353]" aria-hidden="true" />
+            <span className="text-[#39d353]">~/{personal.firstName.toLowerCase()}</span>
           </a>
 
           <div className="hidden items-center gap-5 md:flex lg:gap-7">
@@ -35,7 +31,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={`font-mono text-[13px] transition-colors ${
-                    isActive ? 'text-[#39d353]' : 'text-[#8b949e] hover:text-[#c9d1d9]'
+                    isActive ? 'text-[#39d353]' : 'text-[#c9d1d9] hover:text-[#e6edf3]'
                   }`}
                 >
                   {link.label}
@@ -46,27 +42,12 @@ export function Navbar() {
 
           <div className="flex items-center gap-2">
             <a
-              href={personal.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="glass-soft flex h-8 w-8 items-center justify-center rounded-md text-[#3fb950] transition hover:border-[#3fb950]/50 hover:text-[#39d353]"
-            >
-              <FaWhatsapp className="h-4 w-4" />
-            </a>
-            <a
               href={personal.resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden rounded-md border border-[#30363d] px-4 py-2 font-mono text-[12.5px] font-medium text-[#8b949e] transition hover:border-[#58a6ff]/50 hover:text-[#c9d1d9] md:block"
+              className="hidden rounded-md border border-[#30363d] px-4 py-2 font-mono text-[12.5px] font-medium text-[#c9d1d9] transition hover:border-[#39d353]/60 hover:text-white md:block"
             >
               Resume
-            </a>
-            <a
-              href="#contact"
-              className="hidden rounded-md bg-[#39d353] px-4 py-2 font-mono text-[12.5px] font-semibold text-[#0d1117] transition hover:bg-[#46ef63] md:block"
-            >
-              Hire Me
             </a>
             <button
               onClick={() => setOpen(!open)}
@@ -103,25 +84,15 @@ export function Navbar() {
                     {link.label}
                   </motion.a>
                 ))}
-                <div className="mt-1 grid grid-cols-2 gap-2">
-                  <a
-                    href={personal.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setOpen(false)}
-                    className="flex items-center justify-center gap-2 rounded-md border border-[#3fb950]/40 bg-[#3fb950]/10 px-4 py-3 text-center text-sm font-semibold text-[#3fb950]"
-                  >
-                    <FaWhatsapp className="h-4 w-4" />
-                    WhatsApp
-                  </a>
-                  <a
-                    href="#contact"
-                    onClick={() => setOpen(false)}
-                    className="rounded-md bg-[#39d353] px-4 py-3 text-center text-sm font-semibold text-[#0d1117]"
-                  >
-                    Hire Me
-                  </a>
-                </div>
+                <a
+                  href={personal.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="mt-1 rounded-md border border-[#30363d] px-4 py-3 text-center font-mono text-sm text-[#c9d1d9]"
+                >
+                  Resume
+                </a>
               </div>
             </div>
           </motion.div>
