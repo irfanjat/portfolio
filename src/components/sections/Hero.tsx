@@ -147,7 +147,7 @@ export function Hero() {
             className="font-display text-[clamp(2.6rem,7vw,4.6rem)] font-extrabold leading-[1.04] tracking-tight text-white"
           >
             {personal.firstName}{' '}
-            {personal.lastName}
+            <span className="gradient-text-animated">{personal.lastName}</span>
           </motion.h1>
 
           <motion.p
