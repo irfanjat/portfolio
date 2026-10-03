@@ -16,7 +16,7 @@ export function About() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <h3 className="font-display text-2xl font-bold text-white">
-              I'm Irfan Ali — DevOps Engineer & lifelong learner
+              I'm <span className="gradient-text">Irfan Ali</span> — DevOps Engineer & lifelong learner
             </h3>
             <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-slate-400">
               <p>
