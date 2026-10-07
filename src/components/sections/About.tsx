@@ -1,82 +1,95 @@
 import { motion } from 'framer-motion'
-import { stats } from '../../data/portfolio'
+import { BookOpen, TerminalSquare } from 'lucide-react'
+import { aboutChips, education } from '../../data/portfolio'
 import { SectionHeading } from '../ui/SectionHeading'
+import { TechBadge } from '../ui/TechBadge'
 
 export function About() {
   return (
-    <section id="about" className="section-padding relative content-visibility-auto">
+    <section id="about" className="section-padding relative">
       <div className="mx-auto max-w-5xl">
-        <SectionHeading index="01" label="about" title="Who I Am" />
+        <SectionHeading
+          index="01"
+          label="about"
+          title="I put the Ops back into DevOps."
+          description="A short diagnostic on who's running this terminal."
+        />
 
-        <div className="grid items-start gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="grid gap-6 lg:grid-cols-5">
           <motion.div
-            initial={{ opacity: 0, y: 26 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-4 lg:col-span-3"
           >
-            <h3 className="font-display text-2xl font-bold text-white">
-              I'm <span className="gradient-text">Irfan Ali</span> — Junior DevOps &amp; Cloud Engineer
-            </h3>
-            <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-slate-400">
-              <p>
-                Based in Pakistan and pursuing my BSc in Computer Science, I've spent the past year
-                designing, automating, and operating cloud-native infrastructure that ships reliably.
-              </p>
-              <p>
-                My work spans the full infrastructure lifecycle: architecting AWS environments,
-                implementing CI/CD pipelines, hardening security postures, and managing Kubernetes
-                clusters. I believe in infrastructure as code, shift-left security, and delivery that
-                runs itself.
-              </p>
-              <p className="border-l-2 border-[#39d353]/50 pl-4 text-slate-300">
-                "I build systems that make teams irrelevant on release day — automation, observability,
-                and reproducibility at every layer."
-              </p>
+            <div className="rounded-lg border border-[#30363d] bg-[#161b22] p-6">
+              <div className="flex items-center gap-2 border-b border-[#30363d] pb-3">
+                <TerminalSquare className="h-4 w-4 text-[#39d353]" />
+                <span className="font-mono text-xs text-[#8b949e]">cat ~/about.txt</span>
+              </div>
+              <div className="mt-4 space-y-4 font-mono text-[13.5px] leading-relaxed text-[#c9d1d9]">
+                <p>
+                  <span className="text-[#8b949e]">$ who</span> — I design, build and operate cloud-native
+                  infrastructure with <span className="text-[#7ee787]">Terraform</span>,{' '}
+                  <span className="text-[#7ee787]">Kubernetes</span> and automated{' '}
+                  <span className="text-[#7ee787]">CI/CD</span> — with a bias toward boring, reproducible systems.
+                </p>
+                <p>
+                  <span className="text-[#8b949e]">$ now</span> — deepening AWS, Kubernetes and observability
+                  skills while shipping hands-on projects: a GitOps pipeline that deploys itself, and clusters that
+                  survive a node reboot without a page.
+                </p>
+                <p>
+                  <span className="text-[#8b949e]">$ edge</span> — I care about the unattended hour: drift
+                  detection, least-privilege IAM, alerting that people actually read.
+                </p>
+              </div>
             </div>
 
-            <div className="mt-7 flex flex-wrap gap-2">
-              {['IaC-Driven', 'Shift-Left Security', 'GitOps Mindset', 'Observability First'].map((m) => (
-                <span
-                  key={m}
-                  className="rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-[11px] font-medium text-violet-200"
-                >
-                  {m}
+            <div className="rounded-lg border border-[#30363d] bg-[#161b22] p-5">
+              <div className="flex items-start gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-[#30363d] bg-[#21262d] text-[#58a6ff]">
+                  <BookOpen className="h-4 w-4" />
                 </span>
-              ))}
+                <div>
+                  <p className="font-mono text-[13px] font-medium text-[#e6edf3]">{education.degree}</p>
+                  <p className="mt-1 text-[13px] text-[#8b949e]">
+                    {education.university} · <span className="text-[#6e7681]">{education.graduation}</span>
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 26 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative overflow-hidden rounded-lg border border-[#30363d] bg-[#161b22] p-6 text-center transition-colors hover:border-[#3fb950]/50"
-              >
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-x-0 top-0 h-px opacity-70"
-                  style={{
-                    background: `linear-gradient(90deg, transparent, ${stat.accent}, transparent)`,
-                  }}
-                />
-                <div className="relative">
-                  <div
-                    className="font-display text-4xl font-extrabold"
-                    style={{ color: stat.accent, textShadow: `0 0 26px ${stat.glow}` }}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-2"
+          >
+            <div className="rounded-lg border border-[#30363d] bg-[#161b22] p-6">
+              <h3 className="font-mono text-xs tracking-[0.15em] text-[#6e7681]">OPERATING SYNC</h3>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {aboutChips.map((chip, i) => (
+                  <motion.div
+                    key={chip}
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
                   >
-                    {stat.value}
-                    <span>{stat.suffix}</span>
-                  </div>
-                  <div className="mt-2 text-xs text-[var(--color-muted)]">{stat.label}</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                    <TechBadge>{chip}</TechBadge>
+                  </motion.div>
+                ))}
+              </div>
+              <p className="mt-6 border-t border-[#30363d] pt-4 font-mono text-[12px] leading-relaxed text-[#8b949e]">
+                <span className="text-[#39d353]">mode:</span> hands-on learner · shipping real repos, reading real
+                docs, breaking things in dev on purpose.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

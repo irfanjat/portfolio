@@ -140,6 +140,12 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  :focus-visible {
+    outline: 2px solid #39d353;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
   ::selection {
     background: rgba(57, 211, 83, 0.35);
     color: #ffffff;
@@ -260,5 +266,21 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  .skip-link {
+    @apply fixed top-2 left-2 z-[100] -translate-y-16 rounded-md bg-[#161b22] px-4 py-2 font-mono text-sm text-[#39d353] transition-transform focus:translate-y-0;
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(rgba(139, 148, 158, 0.16) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }

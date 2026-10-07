@@ -1,13 +1,14 @@
-import { AnimatePresence, motion, useInView } from 'framer-motion'
-import { Github, Linkedin, MapPin } from 'lucide-react'
+import { motion, useInView } from 'framer-motion'
+import { Github, MapPin } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { SiArgo, SiDocker, SiGithubactions, SiGrafana, SiKubernetes, SiPrometheus, SiTerraform } from 'react-icons/si'
-import { FaAws } from 'react-icons/fa6'
+import { FaAws, FaLinkedinIn } from 'react-icons/fa6'
 import dockerBrand from '../../assets/brands/docker-original.svg'
 import kubernetesBrand from '../../assets/brands/kubernetes-original.svg'
 import terraformBrand from '../../assets/brands/terraform-original.svg'
 import awsBrand from '../../assets/brands/amazonwebservices-original.svg'
-import { personal, toolChips } from '../../data/portfolio'
+import { hero, personal, stats, toolChips } from '../../data/portfolio'
+import { LiveDeployStatus } from '../ui/LiveDeployStatus'
 import { MagneticButton } from '../ui/MagneticButton'
 
 const toolIconMap: Record<string, typeof SiDocker> = {
@@ -41,35 +42,35 @@ const SCENES: { command: string; lines: TermLine[] }[] = [
     ],
   },
   {
+    command: 'cat ~/workflow.txt',
+    lines: [
+      { l: '$ code', r: '✓ python · bash', ok: true },
+      { l: '$ push', r: '✓ main → CI', ok: true },
+      { l: '$ deploy', r: '✓ argocd synced', ok: true },
+      { l: '$ observe', r: '✓ prometheus scraping', ok: true },
+    ],
+  },
+  {
     command: 'kubectl get pods -A',
     lines: [
-      { l: 'grafana', r: '1/1  Running', ok: true },
-      { l: 'prometheus', r: '1/1  Running', ok: true },
-      { l: 'argocd', r: '1/1  Synced', ok: true },
-      { l: 'postgres', r: '1/1  Running', ok: true },
+      { l: 'grafana', r: '1/1 Running', ok: true },
+      { l: 'prometheus', r: '1/1 Running', ok: true },
+      { l: 'argocd', r: '1/1 Synced', ok: true },
+      { l: 'workloads', r: '1/1 Running', ok: true },
     ],
   },
   {
-    command: 'git push origin main',
+    command: 'git log --oneline -4',
     lines: [
-      { l: '✓ build', r: '5.2s', ok: true },
-      { l: '✓ typecheck', r: '0 errors', ok: true },
-      { l: '✓ terraform plan', r: 'no drift', ok: true },
-      { l: '→ live', r: 'pages deployed', ok: true },
-    ],
-  },
-  {
-    command: 'helm list -A',
-    lines: [
-      { l: 'platform', r: 'deployed  rev 3', ok: true },
-      { l: 'observability', r: 'deployed  rev 5', ok: true },
-      { l: 'gitops', r: 'synced    rev 1', ok: true },
-      { l: 'postgres', r: 'deployed  rev 2', ok: true },
+      { l: 'HEAD', r: 'feat(gitops): reconcile cluster state', ok: true },
+      { l: '', r: 'fix(guardrails): block insecure plans', ok: true },
+      { l: '', r: 'perf(costguard): shrink cold start', ok: true },
+      { l: '', r: 'build(infra): tag multi-az snapshot', ok: true },
     ],
   },
 ]
 
-function useTypewriter(text: string, active: boolean, speed = 60) {
+function useTypewriter(text: string, active: boolean, speed = 42) {
   const [out, setOut] = useState('')
   useEffect(() => {
     if (!active) return
@@ -88,16 +89,16 @@ function useTypewriter(text: string, active: boolean, speed = 60) {
 function Prompt() {
   return (
     <span className="shrink-0">
-      <span className="text-emerald-400">irfan@aws</span>
-      <span className="text-slate-600">:</span>
-      <span className="text-cyan-400">~</span>
-      <span className="text-slate-600">$ </span>
+      <span className="text-[#39d353]">irfan@portfolio</span>
+      <span className="text-[#6e7681]">:</span>
+      <span className="text-[#58a6ff]">~</span>
+      <span className="text-[#6e7681]">$ </span>
     </span>
   )
 }
 
 function Cursor() {
-  return <span className="ml-0.5 inline-block h-[1em] w-[7px] animate-blink bg-slate-300 align-middle" />
+  return <span className="ml-0.5 inline-block h-[1em] w-[7px] animate-blink bg-[#39d353] align-middle" />
 }
 
 function TerminalCard() {
@@ -121,7 +122,7 @@ function TerminalCard() {
       ref={ref}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="glass relative overflow-hidden rounded-lg shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)]"
+      className="relative overflow-hidden rounded-lg border border-[#30363d] bg-[#161b22] shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)]"
     >
       <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#39d353]/5 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-[#58a6ff]/5 blur-3xl" />
@@ -130,8 +131,8 @@ function TerminalCard() {
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <span className="ml-2 truncate font-mono text-[10.5px] text-slate-400">irfan@aws — ~/infra</span>
-        <span className="ml-auto shrink-0 rounded border border-[#30363d] bg-[#21262d] px-1.5 py-px font-mono text-[9.5px] text-slate-500">
+        <span className="ml-2 truncate font-mono text-[10.5px] text-[#8b949e]">irfan@portfolio — ~/infra</span>
+        <span className="ml-auto shrink-0 rounded border border-[#30363d] bg-[#21262d] px-1.5 py-px font-mono text-[9.5px] text-[#6e7681]">
           zsh
         </span>
       </div>
@@ -139,7 +140,7 @@ function TerminalCard() {
       <div className="relative p-4 font-mono text-[11px] leading-relaxed sm:p-5 sm:text-[12px]">
         <div className="flex flex-wrap items-center gap-x-2">
           <Prompt />
-          <span className="text-slate-100">{typed}</span>
+          <span className="text-[#e6edf3]">{typed}</span>
           {!done && <Cursor />}
         </div>
 
@@ -159,8 +160,8 @@ function TerminalCard() {
                 transition={{ delay: 0.12 + i * 0.11, duration: 0.32 }}
                 className="flex flex-wrap items-baseline gap-x-2"
               >
-                <span className="w-[6rem] shrink-0 truncate text-slate-500 sm:w-[7.5rem]">{line.l}</span>
-                <span className={line.ok ? 'text-emerald-300' : 'text-slate-200'}>{line.r}</span>
+                <span className="w-[6rem] shrink-0 truncate text-[#8b949e] sm:w-[7.5rem]">{line.l}</span>
+                <span className={line.ok ? 'text-[#7ee787]' : 'text-[#e6edf3]'}>{line.r}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -174,7 +175,7 @@ function TerminalCard() {
               aria-label={`Show ${s.command}`}
               onClick={() => setScene(i)}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === scene ? 'w-4 bg-[#22d3ee]' : 'w-1.5 bg-slate-600 hover:bg-slate-500'
+                i === scene ? 'w-4 bg-[#39d353]' : 'w-1.5 bg-[#6e7681] hover:bg-[#8b949e]'
               }`}
             />
           ))}
@@ -184,111 +185,103 @@ function TerminalCard() {
   )
 }
 
-function RoleRotator() {
-  const [i, setI] = useState(0)
-  useEffect(() => {
-    const id = setInterval(() => setI((v) => (v + 1) % personal.roles.length), 2600)
-    return () => clearInterval(id)
-  }, [])
-  const role = personal.roles[i]
-
-  return (
-    <span className="inline-flex flex-col overflow-hidden align-bottom">
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={role}
-          initial={{ y: 22, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -22, opacity: 0 }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-flex h-[1.35em] items-center"
-        >
-          {role}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  )
-}
-
 export function Hero() {
   return (
     <section id="home" className="relative flex min-h-screen items-center pt-28 pb-24 section-padding">
-      <div className="mx-auto grid w-full max-w-5xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="dot-grid pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_35%,#000,transparent)]" />
+      <div className="mx-auto grid w-full max-w-5xl items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="relative">
           <motion.div
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05, duration: 0.5 }}
-            className="section-badge"
+            className="inline-flex items-center gap-2.5 rounded-sm border border-[#39d353]/40 bg-[#39d353]/10 px-3 py-1.5 font-mono text-[12px] text-[#7ee787]"
           >
-            irfan@portfolio:~$
+            <span className="font-medium text-[#39d353]">$ whoami</span>
+            <span className="text-[#6e7681]">→</span>
+            <span>{personal.role}</span>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.12, duration: 0.5 }}
+            className="mt-6 font-mono text-[12.5px] tracking-[0.2em] text-[#8b949e]"
+          >
+            {'// '}
+            {personal.name.toUpperCase()} — DEVOPS / CLOUD ENGINEER
+          </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 font-display text-[clamp(2.6rem,7vw,4.6rem)] font-extrabold leading-[1.04] tracking-tight text-white"
+            transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-3 font-display text-[clamp(2.5rem,7vw,4.4rem)] font-extrabold leading-[1.05] tracking-tight text-[#e6edf3]"
           >
-            {personal.firstName}{' '}
-            <span className="gradient-text-animated">{personal.lastName}</span>
+            I make deployments{' '}
+            <span className="text-[#39d353]">{hero.statementAccent}</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="mt-5 font-mono text-sm text-slate-400 sm:text-base"
+            transition={{ delay: 0.35, duration: 0.6 }}
+            className="mt-6 max-w-lg text-balance text-[15px] leading-relaxed text-[#8b949e]"
           >
-            <span className="text-ai-violet">&lt;</span>
-            <RoleRotator />
-            <span className="text-ai-violet"> /&gt;</span>
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mt-6 inline-flex items-center gap-2.5 rounded-md border border-[#3fb950]/40 bg-[#3fb950]/10 px-4 py-2 font-mono text-xs font-medium text-[#7ee787]"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#39d353] opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#39d353]" />
-            </span>
-            Open to DevOps, Cloud & Platform roles
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="mt-7 max-w-lg text-balance text-base leading-relaxed text-slate-400"
-          >
-            {personal.tagline}
+            {hero.statementSub}
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.5 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <MagneticButton href="#contact">Get in Touch</MagneticButton>
-            <MagneticButton href="#projects" variant="ghost">View Projects</MagneticButton>
+            <MagneticButton href="#projects">View Projects</MagneticButton>
+            <MagneticButton href={personal.github} variant="ghost">
+              <Github className="h-4 w-4" />
+              GitHub Repos
+            </MagneticButton>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.75 }}
-            className="mt-9 flex items-center gap-3"
+            transition={{ delay: 0.62 }}
+            className="mt-10 grid max-w-md grid-cols-2 gap-px overflow-hidden rounded-lg border border-[#30363d] bg-[#30363d] sm:grid-cols-4"
+          >
+            {stats.map((s) => (
+              <div key={s.label} className="bg-[#161b22] px-4 py-3.5">
+                <p className="font-mono text-xl font-bold" style={{ color: s.accent }}>
+                  {s.value}
+                  {s.suffix}
+                </p>
+                <p className="mt-0.5 font-mono text-[10px] tracking-wide text-[#8b949e]">{s.label.toUpperCase()}</p>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.72 }}
+            className="mt-6 flex flex-wrap items-center gap-3 text-[12.5px] text-[#6e7681]"
+          >
+            <LiveDeployStatus />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.82 }}
+            className="mt-6 flex items-center gap-4"
           >
             <a
               href={personal.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-slate-300 transition hover:text-white hover:border-[#39d353]/50"
+              className="glass-soft flex h-9 w-9 items-center justify-center rounded-md text-[#8b949e] transition hover:border-[#39d353]/50 hover:text-[#e6edf3]"
             >
               <Github className="h-4 w-4" />
             </a>
@@ -297,11 +290,11 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-slate-300 transition hover:text-white hover:border-[#58a6ff]/50"
+              className="glass-soft flex h-9 w-9 items-center justify-center rounded-md text-[#8b949e] transition hover:border-[#58a6ff]/50 hover:text-[#e6edf3]"
             >
-              <Linkedin className="h-4 w-4" />
+              <FaLinkedinIn className="h-[14px] w-[14px]" />
             </a>
-            <span className="ml-1 inline-flex items-center gap-1.5 font-mono text-xs text-slate-500">
+            <span className="ml-1 inline-flex items-center gap-1.5 font-mono text-xs text-[#6e7681]">
               <MapPin className="h-3.5 w-3.5 text-[#58a6ff]" /> {personal.location}
             </span>
           </motion.div>
@@ -326,10 +319,12 @@ export function Hero() {
                   transition={{ delay: 0.7 + i * 0.08 }}
                   className={`glass-soft flex flex-col items-center gap-1.5 rounded-md py-3 transition-colors ${chip.icon === 'aws' ? 'animate-float' : chip.icon === 'k8s' ? 'animate-float-delay' : ''} hover:border-[#39d353]/50`}
                 >
-                  {brand
-                    ? <img src={brand} alt={chip.label} className="h-5 w-5" />
-                    : <Icon className="h-5 w-5 text-slate-300" />}
-                  <span className="font-mono text-[9px] text-slate-400">{chip.label}</span>
+                  {brand ? (
+                    <img src={brand} alt={chip.label} className="h-5 w-5" />
+                  ) : (
+                    <Icon className="h-5 w-5 text-[#8b949e]" />
+                  )}
+                  <span className="font-mono text-[9px] text-[#8b949e]">{chip.label}</span>
                 </motion.div>
               )
             })}

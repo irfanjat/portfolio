@@ -3,12 +3,15 @@ import { SmoothScrollProvider } from './components/effects/SmoothScrollProvider'
 import { Footer } from './components/layout/Footer'
 import { Navbar } from './components/layout/Navbar'
 import { About } from './components/sections/About'
-import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
-import { Education } from './components/sections/Education'
+import { Credentials } from './components/sections/Credentials'
+import { GitHubSection } from './components/sections/GitHubSection'
 import { Hero } from './components/sections/Hero'
+import { Path } from './components/sections/Path'
 import { Projects } from './components/sections/Projects'
-import { Skills } from './components/sections/Skills'
+import { SystemStatus } from './components/sections/SystemStatus'
+import { Toolbox } from './components/sections/Toolbox'
+import { Workflow } from './components/sections/Workflow'
 import { ScrollToTop } from './components/ui/ScrollToTop'
 
 function App() {
@@ -17,13 +20,19 @@ function App() {
       <AuroraBackground />
       <CursorGlow />
       <Navbar />
+      <a href="#projects" className="skip-link">
+        Skip to content
+      </a>
       <main className="relative z-10">
         <Hero />
         <About />
-        <Skills />
+        <Workflow />
         <Projects />
-        <Certifications />
-        <Education />
+        <Path />
+        <Toolbox />
+        <GitHubSection />
+        <Credentials />
+        <SystemStatus />
         <Contact />
       </main>
       <Footer />
