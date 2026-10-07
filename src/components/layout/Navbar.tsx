@@ -1,27 +1,56 @@
-import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
+import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { navLinks, personal } from '../../data/portfolio'
 import { useActiveSection } from '../../hooks/useActiveSection'
 
 function Logo() {
   return (
-    <span className="logo-gold font-display text-[20px] font-black leading-none tracking-tight">
-      Irfan Ali
+    <span className="plaque">
+      <span className="wing wing-l" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+      </span>
+      <span className="wood-frame">
+        <span className="wood-gem" aria-hidden="true" />
+        <span className="logo-gold font-display text-[16px] font-black leading-none tracking-tight">
+          Irfan Ali
+        </span>
+      </span>
+      <span className="wing wing-r" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+      </span>
     </span>
   )
 }
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
+  const [hot, setHot] = useState(false)
   const active = useActiveSection()
   const { scrollY } = useScroll()
   const bg = useTransform(scrollY, [0, 40], ['rgba(18,22,32,0.5)', 'rgba(18,22,32,0.92)'])
+  const shadow = useTransform(
+    scrollY,
+    (v) => (v > 40 ? '0 12px 30px -16px rgba(0,0,0,0.9)' : '0 0px 0px rgba(0,0,0,0)'),
+  )
+  const timer = useRef<number | undefined>(undefined)
+
+  useMotionValueEvent(scrollY, 'change', () => {
+    setHot(true)
+    window.clearTimeout(timer.current)
+    timer.current = window.setTimeout(() => setHot(false), 450)
+  })
+
+  useEffect(() => () => window.clearTimeout(timer.current), [])
 
   return (
     <>
       <motion.header
-        style={{ backgroundColor: bg, backdropFilter: 'blur(12px)' }}
+        style={{ backgroundColor: bg, backdropFilter: 'blur(12px)', boxShadow: shadow }}
         className="fixed inset-x-0 top-0 z-50 border-b border-[#323845]"
       >
         <nav className="mx-auto flex h-[60px] w-full max-w-5xl items-center justify-between px-4 lg:px-8">
@@ -37,11 +66,17 @@ export function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`text-[13.5px] font-medium transition-colors ${
-                    isActive ? 'text-[#11e956]' : 'text-[#919dab] hover:text-white'
+                  className={`relative text-[13.5px] font-medium transition-colors ${
+                    isActive ? 'text-[#efbb03]' : 'text-[#919dab] hover:text-white'
                   }`}
                 >
                   {link.label}
+                  {isActive && (
+                    <span
+                      className={`nav-diamond${hot ? ' nav-diamond--hot' : ''}`}
+                      aria-hidden="true"
+                    />
+                  )}
                 </a>
               )
             })}
@@ -93,9 +128,17 @@ export function Navbar() {
                     initial={{ opacity: 0, x: -14 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className="rounded-md px-4 py-3 text-sm font-medium text-slate-200 hover:bg-white/5"
+                    className={`relative rounded-md px-4 py-3 text-sm font-medium hover:bg-white/5 ${
+                      active === link.href.replace('#', '') ? 'text-[#efbb03]' : 'text-slate-200'
+                    }`}
                   >
                     {link.label}
+                    {active === link.href.replace('#', '') && (
+                      <span
+                        className={`nav-diamond${hot ? ' nav-diamond--hot' : ''}`}
+                        aria-hidden="true"
+                      />
+                    )}
                   </motion.a>
                 ))}
                 <div className="mt-1">
