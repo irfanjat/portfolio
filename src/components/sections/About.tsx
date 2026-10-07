@@ -17,7 +17,7 @@ export function About() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <h3 className="font-display text-2xl font-bold text-white">
-              I'm <span className="text-[#39d353]">Irfan Ali</span> — Junior DevOps & Cloud Engineer
+              I'm <span className="text-[#11e956]">Irfan Ali</span> — Junior DevOps & Cloud Engineer
             </h3>
             <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-slate-400">
               <p>
@@ -36,21 +36,21 @@ export function About() {
               {aboutChips.map((chip) => (
                 <span
                   key={chip}
-                  className="rounded-full border border-[#58a6ff]/20 bg-[#58a6ff]/10 px-3 py-1 text-[11px] font-medium text-[#a5d6ff]"
+                  className="rounded-full border border-[#42a0ed]/20 bg-[#42a0ed]/10 px-3 py-1 text-[11px] font-medium text-[#8dc5f4]"
                 >
                   {chip}
                 </span>
               ))}
             </div>
 
-            <div className="mt-7 flex flex-col gap-3 rounded-lg border border-[#30363d] bg-[#161b22] p-5">
+            <div className="mt-7 flex flex-col gap-3 rounded-lg border border-[#323845] bg-[#181b26] p-5">
               <p className="text-[14px] text-slate-300">
                 <span className="font-semibold text-white">{education.degree}</span>
                 <br />
                 <span className="text-slate-400">{education.university}</span>
               </p>
               <p className="font-mono text-xs text-slate-500">{education.graduation}</p>
-              <div className="border-t border-[#30363d] pt-3">
+              <div className="border-t border-[#323845] pt-3">
                 <LiveDeployStatus />
               </div>
             </div>
@@ -64,7 +64,7 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative overflow-hidden rounded-lg border border-[#30363d] bg-[#161b22] p-6 text-center transition-colors hover:border-[#3fb950]/50"
+                className="group relative overflow-hidden rounded-lg border border-[#323845] bg-[#181b26] p-6 text-center transition-colors hover:border-[#41f179]/50"
               >
                 <span
                   aria-hidden="true"

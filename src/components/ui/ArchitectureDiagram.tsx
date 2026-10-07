@@ -7,10 +7,10 @@ interface ArchitectureDiagramProps {
 
 export function ArchitectureDiagram({ nodes }: ArchitectureDiagramProps) {
   return (
-    <div className="rounded-lg border border-[#30363d] bg-[#0d1117] p-4 sm:p-5">
-      <div className="mb-4 flex items-center gap-2 border-b border-[#30363d] pb-3">
-        <TerminalSquare className="h-4 w-4 text-[#39d353]" />
-        <span className="font-mono text-xs text-[#8b949e]">flow — {nodes.length} stages</span>
+    <div className="rounded-lg border border-[#323845] bg-[#121620] p-4 sm:p-5">
+      <div className="mb-4 flex items-center gap-2 border-b border-[#323845] pb-3">
+        <TerminalSquare className="h-4 w-4 text-[#11e956]" />
+        <span className="font-mono text-xs text-[#919dab]">flow — {nodes.length} stages</span>
       </div>
       <ol className="space-y-0">
         {nodes.map((n, i) => (
@@ -23,18 +23,18 @@ export function ArchitectureDiagram({ nodes }: ArchitectureDiagramProps) {
               className="group flex items-start gap-3"
             >
               <div className="flex flex-col items-center">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-[#30363d] bg-[#161b22] font-mono text-[10.5px] text-[#39d353] transition-colors group-hover:border-[#39d353]/60">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-[#323845] bg-[#181b26] font-mono text-[10.5px] text-[#11e956] transition-colors group-hover:border-[#11e956]/60">
                   {String(i + 1).padStart(2, '0')}
                 </div>
                 {i < nodes.length - 1 && (
                   <div className="my-1 flex h-5 w-px items-center justify-center">
-                    <ChevronDown className="h-3.5 w-3.5 text-[#30363d]" />
+                    <ChevronDown className="h-3.5 w-3.5 text-[#323845]" />
                   </div>
                 )}
               </div>
               <div className="min-w-0 flex-1 pb-2">
-                <p className="font-mono text-[13px] font-medium text-[#e6edf3]">{n.node}</p>
-                <p className="mt-0.5 text-[12.5px] leading-relaxed text-[#8b949e]">{n.detail}</p>
+                <p className="font-mono text-[13px] font-medium text-[#dde3eb]">{n.node}</p>
+                <p className="mt-0.5 text-[12.5px] leading-relaxed text-[#919dab]">{n.detail}</p>
               </div>
             </motion.div>
           </li>

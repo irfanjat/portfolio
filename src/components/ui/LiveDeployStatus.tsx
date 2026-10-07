@@ -6,10 +6,10 @@ import {
 } from '../../hooks/useGitHubDeployStatus'
 
 const toneMap = {
-  passing: { dot: 'bg-[#39d353]', text: 'text-[#39d353]' },
-  failing: { dot: 'bg-[#f85149]', text: 'text-[#f85149]' },
-  pending: { dot: 'bg-[#e3b341]', text: 'text-[#e3b341]' },
-  unknown: { dot: 'bg-[#8b949e]', text: 'text-[#8b949e]' },
+  passing: { dot: 'bg-[#11e956]', text: 'text-[#11e956]' },
+  failing: { dot: 'bg-[#f58f91]', text: 'text-[#f58f91]' },
+  pending: { dot: 'bg-[#efbb03]', text: 'text-[#efbb03]' },
+  unknown: { dot: 'bg-[#919dab]', text: 'text-[#919dab]' },
 }
 
 export function LiveDeployStatus() {
@@ -49,12 +49,12 @@ export function LiveDeployStatus() {
       <span className={tone.text}>{label}</span>
       {status.ok && (
         <>
-          <span className="text-[#6e7681]">·</span>
-          <span className="text-[#8b949e]">{when} ago</span>
+          <span className="text-[#6e7888]">·</span>
+          <span className="text-[#919dab]">{when} ago</span>
         </>
       )}
-      <span className="text-[#6e7681]">·</span>
-      <span className={`inline-flex items-center gap-1 ${online ? 'text-[#8b949e]' : 'text-[#f85149]'}`}>
+      <span className="text-[#6e7888]">·</span>
+      <span className={`inline-flex items-center gap-1 ${online ? 'text-[#919dab]' : 'text-[#f58f91]'}`}>
         {online ? <Wifi className="h-3 w-3" /> : <WifiOff className="h-3 w-3" />}
         {online ? 'live' : 'offline · cached'}
       </span>

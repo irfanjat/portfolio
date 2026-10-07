@@ -6,27 +6,27 @@ import { SectionHeading } from '../ui/SectionHeading'
 
 const stateStyles: Record<RoadmapState, { text: string; border: string; dot: string; label: string }> = {
   LEARNED: {
-    text: 'text-[#39d353]',
-    border: 'border-[#39d353]/50',
-    dot: 'bg-[#39d353] shadow-[0_0_10px_rgba(57,211,83,0.6)]',
+    text: 'text-[#11e956]',
+    border: 'border-[#11e956]/50',
+    dot: 'bg-[#11e956] shadow-[0_0_10px_rgba(17,233,86,0.6)]',
     label: 'LEARNED',
   },
   PRACTICING: {
-    text: 'text-[#58a6ff]',
-    border: 'border-[#58a6ff]/50',
-    dot: 'bg-[#58a6ff] shadow-[0_0_10px_rgba(88,166,255,0.6)]',
+    text: 'text-[#42a0ed]',
+    border: 'border-[#42a0ed]/50',
+    dot: 'bg-[#42a0ed] shadow-[0_0_10px_rgba(66,160,237,0.6)]',
     label: 'PRACTICING',
   },
   BUILDING: {
-    text: 'text-[#e3b341]',
-    border: 'border-[#e3b341]/50',
-    dot: 'bg-[#e3b341] shadow-[0_0_10px_rgba(227,179,65,0.6)]',
+    text: 'text-[#efbb03]',
+    border: 'border-[#efbb03]/50',
+    dot: 'bg-[#efbb03] shadow-[0_0_10px_rgba(239,187,3,0.6)]',
     label: 'BUILDING',
   },
   PROJECT: {
-    text: 'text-[#bc8cff]',
-    border: 'border-[#bc8cff]/50',
-    dot: 'bg-[#bc8cff] shadow-[0_0_10px_rgba(188,140,255,0.6)]',
+    text: 'text-[#8794c0]',
+    border: 'border-[#8794c0]/50',
+    dot: 'bg-[#8794c0] shadow-[0_0_10px_rgba(135,148,192,0.6)]',
     label: 'PROJECT',
   },
 }
@@ -43,12 +43,12 @@ export function Path() {
           title="Learning Path"
           description="How I'm moving from foundations to production — every step is a skill I've worked on, with a repo or course behind it."
         />
-        <p className="mb-8 inline-flex items-center gap-2 font-mono text-[11.5px] text-[#6e7681]">
-          <Map className="h-3.5 w-3.5 text-[#39d353]" />
+        <p className="mb-8 inline-flex items-center gap-2 font-mono text-[11.5px] text-[#6e7888]">
+          <Map className="h-3.5 w-3.5 text-[#11e956]" />
           Click a node to see details
         </p>
 
-        <ol className="relative ml-3 border-l border-[#30363d] pl-6 sm:ml-6">
+        <ol className="relative ml-3 border-l border-[#323845] pl-6 sm:ml-6">
           {roadmap.map((node, i) => {
             const s = stateStyles[node.state]
             const expanded = open === node.step
@@ -63,7 +63,7 @@ export function Path() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ delay: i * 0.04, duration: 0.4 }}
-                  className={`rounded-lg border bg-[#161b22] transition-colors ${expanded ? s.border : 'border-[#30363d] hover:border-[#8b949e]/60'}`}
+                  className={`rounded-lg border bg-[#181b26] transition-colors ${expanded ? s.border : 'border-[#323845] hover:border-[#919dab]/60'}`}
                 >
                   <button
                     type="button"
@@ -71,17 +71,17 @@ export function Path() {
                     aria-expanded={expanded}
                     className="flex w-full items-center gap-3 px-4 py-3 text-left"
                   >
-                    <span className="font-mono text-[11px] text-[#6e7681]">
+                    <span className="font-mono text-[11px] text-[#6e7888]">
                       {String(node.step).padStart(2, '0')}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block font-display text-[15px] font-bold text-[#e6edf3]">{node.title}</span>
-                      <span className="block truncate font-mono text-[11px] text-[#6e7681]">{node.domain}</span>
+                      <span className="block font-display text-[15px] font-bold text-[#dde3eb]">{node.title}</span>
+                      <span className="block truncate font-mono text-[11px] text-[#6e7888]">{node.domain}</span>
                     </span>
                     <span className={`hidden shrink-0 rounded-sm border px-2 py-0.5 font-mono text-[9.5px] tracking-[0.1em] sm:inline ${s.text} ${s.border}`}>
                       {s.label}
                     </span>
-                    <span className="shrink-0 text-[#8b949e]">
+                    <span className="shrink-0 text-[#919dab]">
                       <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`} />
                     </span>
                   </button>
@@ -94,19 +94,19 @@ export function Path() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                       >
-                        <div className="border-t border-[#30363d] px-4 py-4">
+                        <div className="border-t border-[#323845] px-4 py-4">
                           <div className="flex flex-wrap items-center gap-2 pb-3">
                             <span className={`font-mono text-[10px] tracking-[0.14em] ${s.text}`}>[{s.label}]</span>
                             {node.tech.map((t) => (
                               <span
                                 key={t}
-                                className="rounded-sm border border-[#30363d] bg-[#21262d] px-1.5 py-0.5 font-mono text-[10.5px] text-[#8b949e]"
+                                className="rounded-sm border border-[#323845] bg-[#202330] px-1.5 py-0.5 font-mono text-[10.5px] text-[#919dab]"
                               >
                                 {t}
                               </span>
                             ))}
                           </div>
-                          <p className="text-[13px] leading-relaxed text-[#c9d1d9]">{node.summary}</p>
+                          <p className="text-[13px] leading-relaxed text-[#c4d1db]">{node.summary}</p>
                           {node.links && node.links.length > 0 && (
                             <div className="mt-3 flex flex-wrap gap-3">
                               {node.links.map((link) => (
@@ -115,7 +115,7 @@ export function Path() {
                                   href={link.href}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1.5 font-mono text-[12px] text-[#58a6ff] transition hover:text-[#79c0ff]"
+                                  className="inline-flex items-center gap-1.5 font-mono text-[12px] text-[#42a0ed] transition hover:text-[#67b3f1]"
                                 >
                                   <Terminal className="h-3.5 w-3.5" />
                                   {link.label} ↗

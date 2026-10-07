@@ -17,12 +17,12 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative border-t border-[#30363d]">
+    <footer className="relative border-t border-[#323845]">
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#39d353] font-mono text-xs font-bold text-[#0d1117]">
+              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#11e956] font-mono text-xs font-bold text-[#121620]">
                 {personal.initials}
               </div>
               <span className="font-display text-sm font-semibold text-[var(--color-ink)]">{personal.name}</span>
@@ -35,7 +35,7 @@ export function Footer() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-[var(--color-muted)] transition hover:text-[#39d353]"
+                className="text-sm text-[var(--color-muted)] transition hover:text-[#11e956]"
               >
                 {link.label}
               </a>
@@ -50,7 +50,7 @@ export function Footer() {
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-[var(--color-muted)] transition hover:text-[#39d353] hover:border-[#39d353]/50"
+                className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-[var(--color-muted)] transition hover:text-[#11e956] hover:border-[#11e956]/50"
               >
                 <Icon className="h-4 w-4" />
               </a>
@@ -58,12 +58,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-[#30363d] pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-2 border-t border-[#323845] pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-[var(--color-muted)]">
             © {year} {personal.name}. All rights reserved.
           </p>
           <p className="font-mono text-xs text-[var(--color-muted)]">
-            Built with <span className="text-[#39d353]">❤️</span> by {personal.name}
+            Built with <span className="text-[#11e956]">❤️</span> by {personal.name}
           </p>
         </div>
       </div>

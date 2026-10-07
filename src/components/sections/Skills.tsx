@@ -17,15 +17,15 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ delay: (i % 3) * 0.06, duration: 0.45 }}
-              className="flex flex-col gap-3 rounded-lg border border-[#30363d] bg-[#161b22] p-5 transition-colors hover:border-[#39d353]/40"
+              className="flex flex-col gap-3 rounded-lg border border-[#323845] bg-[#181b26] p-5 transition-colors hover:border-[#11e956]/40"
             >
-              <div className="flex items-center gap-2 border-b border-[#30363d] pb-3">
+              <div className="flex items-center gap-2 border-b border-[#323845] pb-3">
                 <span
                   className="h-2.5 w-2.5 rounded-full"
                   style={{ backgroundColor: cat.accent, boxShadow: `0 0 8px ${cat.accent}` }}
                   aria-hidden="true"
                 />
-                <span className="font-mono text-[13px] font-semibold tracking-wide text-[#e6edf3]">
+                <span className="font-mono text-[13px] font-semibold tracking-wide text-[#dde3eb]">
                   {cat.title}
                 </span>
               </div>

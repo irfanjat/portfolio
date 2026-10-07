@@ -53,9 +53,9 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 + i * 0.08, duration: 0.5 }}
-              className="group flex items-center gap-4 rounded-lg border border-[#30363d] bg-[#161b22] p-4 transition-colors hover:border-[#3fb950]/50"
+              className="group flex items-center gap-4 rounded-lg border border-[#323845] bg-[#181b26] p-4 transition-colors hover:border-[#41f179]/50"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-[#30363d] bg-[#21262d] text-[#3fb950] transition group-hover:text-[#39d353]">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-[#323845] bg-[#202330] text-[#41f179] transition group-hover:text-[#11e956]">
                 <link.icon className="h-4 w-4" />
               </span>
               <div className="min-w-0">
@@ -65,11 +65,11 @@ export function Contact() {
             </motion.a>
             ))}
 
-            <div className="rounded-lg border border-[#30363d] bg-[#161b22] p-5">
+            <div className="rounded-lg border border-[#323845] bg-[#181b26] p-5">
               <div className="relative">
                 <p className="text-xs text-[var(--color-muted)]">Availability</p>
-                <p className="mt-1.5 text-sm font-medium text-[#7ee787]">
-                  <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-[#39d353] align-middle" />
+                <p className="mt-1.5 text-sm font-medium text-[#41f179]">
+                  <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-[#11e956] align-middle" />
                   {personal.availability}
                 </p>
                 <p className="mt-1 text-xs text-[var(--color-muted)]">{personal.availabilityDetail}</p>
@@ -116,7 +116,7 @@ export function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="flex w-full items-center justify-center gap-2 rounded-md bg-[#39d353] px-6 py-4 text-sm font-semibold text-[#0d1117] transition hover:bg-[#46ef63]"
+                  className="btn-yellow w-full px-6 py-4 text-sm transition"
                 >
                   <Send className="h-4 w-4" />
                   Send Message
@@ -127,7 +127,7 @@ export function Contact() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 flex items-center gap-2 rounded-md border border-[#3fb950]/40 bg-[#3fb950]/10 px-4 py-3 text-sm text-[#7ee787]"
+                  className="mt-4 flex items-center gap-2 rounded-md border border-[#41f179]/40 bg-[#41f179]/10 px-4 py-3 text-sm text-[#41f179]"
                 >
                   <CheckCircle2 className="h-4 w-4" />
                   Message sent successfully — I'll get back to you soon!

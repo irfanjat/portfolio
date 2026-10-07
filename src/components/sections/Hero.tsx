@@ -88,16 +88,16 @@ function useTypewriter(text: string, active: boolean, speed = 60) {
 function Prompt() {
   return (
     <span className="shrink-0">
-      <span className="text-[#39d353]">irfan@aws</span>
-      <span className="text-[#6e7681]">:</span>
-      <span className="text-[#58a6ff]">~</span>
-      <span className="text-[#6e7681]">$ </span>
+      <span className="text-[#11e956]">irfan@aws</span>
+      <span className="text-[#6e7888]">:</span>
+      <span className="text-[#42a0ed]">~</span>
+      <span className="text-[#6e7888]">$ </span>
     </span>
   )
 }
 
 function Cursor() {
-  return <span className="ml-0.5 inline-block h-[1em] w-[7px] animate-blink bg-[#39d353] align-middle" />
+  return <span className="ml-0.5 inline-block h-[1em] w-[7px] animate-blink bg-[#11e956] align-middle" />
 }
 
 function TerminalCard() {
@@ -123,15 +123,15 @@ function TerminalCard() {
       onMouseLeave={() => setPaused(false)}
       className="glass relative overflow-hidden rounded-lg shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)]"
     >
-      <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#39d353]/5 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-[#58a6ff]/5 blur-3xl" />
+      <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#11e956]/5 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-[#42a0ed]/5 blur-3xl" />
 
-      <div className="relative flex items-center gap-2 border-b border-[#30363d] px-4 py-2.5">
+      <div className="relative flex items-center gap-2 border-b border-[#323845] px-4 py-2.5">
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
         <span className="ml-2 truncate font-mono text-[10.5px] text-slate-400">irfan@aws — ~/infra</span>
-        <span className="ml-auto shrink-0 rounded border border-[#30363d] bg-[#21262d] px-1.5 py-px font-mono text-[9.5px] text-slate-500">
+        <span className="ml-auto shrink-0 rounded border border-[#323845] bg-[#202330] px-1.5 py-px font-mono text-[9.5px] text-slate-500">
           zsh
         </span>
       </div>
@@ -174,7 +174,7 @@ function TerminalCard() {
               aria-label={`Show ${s.command}`}
               onClick={() => setScene(i)}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === scene ? 'w-4 bg-[#22d3ee]' : 'w-1.5 bg-slate-600 hover:bg-slate-500'
+                i === scene ? 'w-4 bg-[#42a0ed]' : 'w-1.5 bg-slate-600 hover:bg-slate-500'
               }`}
             />
           ))}
@@ -232,7 +232,7 @@ export function Hero() {
             className="mt-6 font-display text-[clamp(2.6rem,7vw,4.6rem)] font-extrabold leading-[1.04] tracking-tight text-white"
           >
             {personal.firstName}{' '}
-            <span className="text-[#39d353]">{personal.lastName}</span>
+            <span className="text-[#11e956]">{personal.lastName}</span>
           </motion.h1>
 
           <motion.p
@@ -241,20 +241,20 @@ export function Hero() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="mt-5 font-mono text-sm text-slate-400 sm:text-base"
           >
-            <span className="text-[#bc8cff]">&lt;</span>
+            <span className="text-[#8794c0]">&lt;</span>
             <RoleRotator />
-            <span className="text-[#bc8cff]"> /&gt;</span>
+            <span className="text-[#8794c0]"> /&gt;</span>
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="mt-6 inline-flex items-center gap-2.5 rounded-md border border-[#3fb950]/40 bg-[#3fb950]/10 px-4 py-2 font-mono text-xs font-medium text-[#7ee787]"
+            className="mt-6 inline-flex items-center gap-2.5 rounded-md border border-[#41f179]/40 bg-[#41f179]/10 px-4 py-2 font-mono text-xs font-medium text-[#41f179]"
           >
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#39d353] opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#39d353]" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#11e956] opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#11e956]" />
             </span>
             {personal.availability}
           </motion.div>
@@ -291,7 +291,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-slate-300 transition hover:text-white hover:border-[#39d353]/50"
+              className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-slate-300 transition hover:text-white hover:border-[#11e956]/50"
             >
               <Github className="h-4 w-4" />
             </a>
@@ -300,12 +300,12 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-slate-300 transition hover:text-white hover:border-[#58a6ff]/50"
+              className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-slate-300 transition hover:text-white hover:border-[#42a0ed]/50"
             >
               <Linkedin className="h-4 w-4" />
             </a>
             <span className="ml-1 inline-flex items-center gap-1.5 font-mono text-xs text-slate-500">
-              <MapPin className="h-3.5 w-3.5 text-[#58a6ff]" /> {personal.location}
+              <MapPin className="h-3.5 w-3.5 text-[#42a0ed]" /> {personal.location}
             </span>
           </motion.div>
         </div>
@@ -327,7 +327,7 @@ export function Hero() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 + i * 0.08 }}
-                  className={`glass-soft flex flex-col items-center gap-1.5 rounded-md py-3 transition-colors ${chip.icon === 'aws' ? 'animate-float' : chip.icon === 'k8s' ? 'animate-float-delay' : ''} hover:border-[#39d353]/50`}
+                  className={`glass-soft flex flex-col items-center gap-1.5 rounded-md py-3 transition-colors ${chip.icon === 'aws' ? 'animate-float' : chip.icon === 'k8s' ? 'animate-float-delay' : ''} hover:border-[#11e956]/50`}
                 >
                   {brand ? (
                     <img src={brand} alt={chip.label} className="h-5 w-5" />

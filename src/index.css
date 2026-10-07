@@ -1,98 +1,98 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "DM Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-  /* GitHub-dark shell */
-  --color-ink-950: #0d1117;
-  --color-ink-900: #161b22;
-  --color-ink-800: #21262d;
+  /* boot.dev shell — gray scale */
+  --color-ink-950: #121620;
+  --color-ink-900: #181b26;
+  --color-ink-800: #202330;
 
-  --color-bg: #0d1117;
-  --color-bg2: #161b22;
-  --color-bg3: #21262d;
-  --color-border: #30363d;
-  --color-ink: #e6edf3;
-  --color-muted: #8b949e;
+  --color-bg: #252936;
+  --color-bg2: #202330;
+  --color-bg3: #181b26;
+  --color-border: #323845;
+  --color-ink: #dde3eb;
+  --color-muted: #919dab;
 
-  /* Terminal accent palette (naveedkumbhar.com) */
-  --color-green: #39d353;
-  --color-cyan: #58a6ff;
-  --color-orange: #f78166;
-  --color-yellow: #e3b341;
-  --color-purple: #bc8cff;
+  /* boot.dev accent palette */
+  --color-green: #11e956;
+  --color-cyan: #42a0ed;
+  --color-orange: #f37c7e;
+  --color-yellow: #efbb03;
+  --color-purple: #8794c0;
 
-  /* Remap legacy aura accents onto the GitHub palette */
-  --color-ai-violet: #39d353;
-  --color-ai-indigo: #bc8cff;
-  --color-ai-cyan: #58a6ff;
-  --color-ai-fuchsia: #bc8cff;
-  --color-ai-amber: #e3b341;
-  --color-ai-emerald: #39d353;
+  /* Remap legacy aura accents onto the boot.dev palette */
+  --color-ai-violet: #11e956;
+  --color-ai-indigo: #8794c0;
+  --color-ai-cyan: #42a0ed;
+  --color-ai-fuchsia: #8794c0;
+  --color-ai-amber: #efbb03;
+  --color-ai-emerald: #11e956;
 
-  /* GitHub-dark tinted scales */
-  --color-slate-50: #f6f8fa;
-  --color-slate-100: #f0f6fc;
-  --color-slate-200: #e6edf3;
-  --color-slate-300: #c9d1d9;
-  --color-slate-400: #8b949e;
-  --color-slate-500: #8b949e;
-  --color-slate-600: #6e7681;
-  --color-slate-700: #30363d;
-  --color-slate-800: #21262d;
-  --color-slate-900: #161b22;
-  --color-slate-950: #0d1117;
+  /* boot.dev tinted gray scale */
+  --color-slate-50: #f5f7f9;
+  --color-slate-100: #e8ecf1;
+  --color-slate-200: #dde3eb;
+  --color-slate-300: #c4d1db;
+  --color-slate-400: #919dab;
+  --color-slate-500: #919dab;
+  --color-slate-600: #6e7888;
+  --color-slate-700: #323845;
+  --color-slate-800: #202330;
+  --color-slate-900: #181b26;
+  --color-slate-950: #121620;
 
-  --color-green-100: #aff5b4;
-  --color-green-200: #7ee787;
-  --color-green-300: #7ee787;
-  --color-green-400: #3fb950;
-  --color-green-500: #2ea043;
-  --color-green-600: #238636;
-  --color-green-700: #1a7f26;
+  --color-green-100: #d7ffe4;
+  --color-green-200: #7dff9e;
+  --color-green-300: #41f179;
+  --color-green-400: #41f179;
+  --color-green-500: #11e956;
+  --color-green-600: #0db543;
+  --color-green-700: #09802f;
 
-  --color-emerald-200: #7ee787;
-  --color-emerald-300: #7ee787;
-  --color-emerald-400: #3fb950;
-  --color-emerald-500: #39d353;
-  --color-emerald-600: #238636;
-  --color-emerald-700: #1a7f26;
+  --color-emerald-200: #7dff9e;
+  --color-emerald-300: #41f179;
+  --color-emerald-400: #41f179;
+  --color-emerald-500: #11e956;
+  --color-emerald-600: #0db543;
+  --color-emerald-700: #09802f;
 
-  --color-cyan-200: #a5d6ff;
-  --color-cyan-300: #79c0ff;
-  --color-cyan-400: #58a6ff;
-  --color-cyan-500: #2f81f7;
-  --color-cyan-600: #2464b0;
-  --color-cyan-700: #1f4c91;
+  --color-cyan-200: #b2d8f8;
+  --color-cyan-300: #8dc5f4;
+  --color-cyan-400: #67b3f1;
+  --color-cyan-500: #42a0ed;
+  --color-cyan-600: #1586e1;
+  --color-cyan-700: #1167ae;
 
-  --color-violet-200: #d2a8ff;
-  --color-violet-300: #d2a8ff;
-  --color-violet-400: #bc8cff;
-  --color-violet-500: #a371f7;
-  --color-violet-600: #8957e5;
-  --color-violet-700: #6e40c9;
+  --color-violet-200: #b2c1d0;
+  --color-violet-300: #b2c1d0;
+  --color-violet-400: #8794c0;
+  --color-violet-500: #6c7cb2;
+  --color-violet-600: #5466a0;
+  --color-violet-700: #465586;
 
-  --color-fuchsia-200: #d2a8ff;
-  --color-fuchsia-300: #d2a8ff;
-  --color-fuchsia-400: #bc8cff;
-  --color-fuchsia-500: #a371f7;
-  --color-fuchsia-600: #8957e5;
+  --color-fuchsia-200: #b2c1d0;
+  --color-fuchsia-300: #b2c1d0;
+  --color-fuchsia-400: #8794c0;
+  --color-fuchsia-500: #6c7cb2;
+  --color-fuchsia-600: #5466a0;
 
-  --color-indigo-300: #d2a8ff;
-  --color-indigo-400: #bc8cff;
-  --color-indigo-500: #a371f7;
+  --color-indigo-300: #b2c1d0;
+  --color-indigo-400: #8794c0;
+  --color-indigo-500: #6c7cb2;
 
-  --color-amber-200: #eac55f;
-  --color-amber-300: #eac55f;
-  --color-amber-400: #d29922;
-  --color-amber-500: #bb8009;
-  --color-amber-600: #a37100;
+  --color-amber-200: #fddf8f;
+  --color-amber-300: #f6bd45;
+  --color-amber-400: #efbb03;
+  --color-amber-500: #d69e02;
+  --color-amber-600: #c18500;
 
-  --color-orange-300: #ffa198;
-  --color-orange-400: #f78166;
-  --color-orange-500: #f78166;
+  --color-orange-300: #f7a1a3;
+  --color-orange-400: #f37c7e;
+  --color-orange-500: #f37c7e;
 
   --animate-float: float 7s ease-in-out infinite;
   --animate-float-delay: float 8s ease-in-out 1.5s infinite;
@@ -114,11 +114,11 @@
 
 @layer base {
   * {
-    border-color: #30363d;
+    border-color: #323845;
   }
 
   html {
-    background: #0d1117;
+    background: #252936;
     scroll-behavior: smooth;
   }
 
@@ -127,27 +127,32 @@
     height: auto;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 800;
+  }
+
   section:not(#home) {
-    border-top: 1px solid #30363d;
+    border-top: 1px solid #323845;
   }
 
   body {
     margin: 0;
     font-family: var(--font-sans);
-    background: #0d1117;
-    color: #c9d1d9;
+    background: #252936;
+    color: #c4d1db;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
 
   :focus-visible {
-    outline: 2px solid #39d353;
+    outline: 2px solid #11e956;
     outline-offset: 2px;
     border-radius: 4px;
   }
 
   ::selection {
-    background: rgba(57, 211, 83, 0.35);
+    background: rgba(17, 233, 86, 0.35);
     color: #ffffff;
   }
 
@@ -155,14 +160,14 @@
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #0d1117;
+    background: #252936;
   }
   ::-webkit-scrollbar-thumb {
-    background: #21262d;
+    background: #323845;
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #30363d;
+    background: #4e5564;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -212,18 +217,64 @@
   }
   .glass-hover:hover {
     transform: translateY(-3px);
-    border-color: rgba(57, 211, 83, 0.45);
+    border-color: rgba(17, 233, 86, 0.45);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  }
+
+  .logo-gold {
+    color: #efbb03;
+    text-shadow:
+      1.5px 1.5px 0 #121620,
+      -1.5px 1.5px 0 #121620,
+      1.5px -1.5px 0 #121620,
+      -1.5px -1.5px 0 #121620,
+      0 3px 12px rgba(0, 0, 0, 0.45);
+    transition: color 0.2s ease;
+  }
+  a:hover .logo-gold {
+    color: #fddf8f;
+  }
+
+  .btn-yellow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #fddf8f;
+    color: #2a1c0c;
+    font-weight: 600;
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.45), transparent 65%),
+      linear-gradient(to bottom, #eeb23f, #efbb03);
+    box-shadow: 0 4px 14px -6px rgba(0, 0, 0, 0.55);
+    transition:
+      background-image 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .btn-yellow:hover {
+    border-color: #dca336;
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.3), transparent 65%),
+      linear-gradient(to bottom, #efbb03, #d69e02);
+    box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.6);
+  }
+  .btn-yellow:active {
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.2), transparent 65%),
+      linear-gradient(to bottom, #d69e02, #c18500);
   }
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(100deg, #39d353 0%, #58a6ff 100%);
+    background-image: linear-gradient(100deg, #11e956 0%, #42a0ed 100%);
   }
 
   .gradient-text-animated {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(100deg, #39d353, #58a6ff, #39d353);
+    background-image: linear-gradient(100deg, #11e956, #42a0ed, #11e956);
     background-size: 220% auto;
     -webkit-animation: var(--animate-gradient-x);
     animation: var(--animate-gradient-x);
@@ -246,7 +297,7 @@
   }
   .glass-input:focus {
     @apply border-[var(--color-green)] outline-none;
-    box-shadow: 0 0 0 1px rgba(57, 211, 83, 0.25);
+    box-shadow: 0 0 0 1px rgba(17, 233, 86, 0.25);
   }
 
   label {
@@ -269,11 +320,11 @@
   }
 
   .skip-link {
-    @apply fixed top-2 left-2 z-[100] -translate-y-16 rounded-md bg-[#161b22] px-4 py-2 font-mono text-sm text-[#39d353] transition-transform focus:translate-y-0;
+    @apply fixed top-2 left-2 z-[100] -translate-y-16 rounded-md bg-[#181b26] px-4 py-2 font-mono text-sm text-[#11e956] transition-transform focus:translate-y-0;
   }
 
   .dot-grid {
-    background-image: radial-gradient(rgba(139, 148, 158, 0.16) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(145, 157, 171, 0.16) 1px, transparent 1px);
     background-size: 22px 22px;
   }
 }
