@@ -238,7 +238,9 @@
       width 0.3s ease,
       height 0.3s ease;
   }
-  .nav-diamond--hot {
+  .nav-diamond--hot,
+  a:hover .nav-diamond,
+  a:focus-visible .nav-diamond {
     box-shadow:
       0 0 18px 5px rgba(239, 187, 3, 0.85),
       0 2px 10px rgba(0, 0, 0, 0.55);

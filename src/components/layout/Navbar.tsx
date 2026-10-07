@@ -67,7 +67,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={`relative text-[13.5px] font-medium transition-colors ${
-                    isActive ? 'text-[#efbb03]' : 'text-[#919dab] hover:text-white'
+                    isActive ? 'text-[#efbb03]' : 'text-[#919dab]'
                   }`}
                 >
                   {link.label}
