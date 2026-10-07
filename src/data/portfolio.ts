@@ -25,10 +25,11 @@ export const contactForm = {
 }
 
 export const navLinks = [
-  { label: 'Work', href: '#projects' },
-  { label: 'Stack', href: '#toolbox' },
-  { label: 'Path', href: '#path' },
   { label: 'About', href: '#about' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Path', href: '#path' },
+  { label: 'Certs', href: '#certifications' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -43,38 +44,103 @@ export const toolChips = [
   { label: 'Grafana', icon: 'grafana' },
 ]
 
-export const hero = {
-  statementHead: 'I make deployments',
-  statementAccent: 'boring.',
-  statementSub:
-    'Cloud-native infrastructure, Kubernetes platforms and self-healing pipelines — engineered to be automated, observable and reliably uneventful.',
-}
-
 export const stats = [
-  { label: 'Years Experience', value: 1, suffix: '+', accent: '#39d353' },
-  { label: 'Projects Shipped', value: 12, suffix: '+', accent: '#58a6ff' },
-  { label: 'Cloud Platforms', value: 1, suffix: '', accent: '#e3b341' },
-  { label: 'Certifications', value: 4, suffix: '', accent: '#bc8cff' },
+  { label: 'Years Experience', value: 1, suffix: '+', accent: '#39d353', glow: 'rgba(57,211,83,0.35)' },
+  { label: 'Projects Shipped', value: 12, suffix: '+', accent: '#58a6ff', glow: 'rgba(88,166,255,0.35)' },
+  { label: 'Cloud Platforms', value: 1, suffix: '', accent: '#e3b341', glow: 'rgba(227,179,65,0.35)' },
+  { label: 'Certifications', value: 4, suffix: '', accent: '#bc8cff', glow: 'rgba(188,140,255,0.35)' },
 ]
 
 export const aboutChips = [
-  'Terraform IaC',
+  'IaC-Driven',
+  'Shift-Left Security',
   'GitOps Mindset',
-  'Kubernetes',
   'Observability First',
-  'Automation Bias',
-  'AWS',
 ]
 
-export const workflowStages = [
-  { name: 'Code', tech: 'Python · Bash', accent: '#f78166' },
-  { name: 'Version Control', tech: 'Git · GitHub', accent: '#e3b341' },
-  { name: 'Build', tech: 'GitHub Actions · Docker', accent: '#39d353' },
-  { name: 'Test', tech: 'pytest · CI gates', accent: '#58a6ff' },
-  { name: 'Containerize', tech: 'Docker · Compose', accent: '#bc8cff' },
-  { name: 'Deploy', tech: 'ArgoCD · Helm · AWS', accent: '#39d353' },
-  { name: 'Observe', tech: 'Prometheus · Grafana', accent: '#f78166' },
-  { name: 'Improve', tech: 'GitOps feedback loop', accent: '#58a6ff' },
+export interface SkillCategory {
+  title: string
+  accent: string
+  items: { label: string; detail: string }[]
+}
+
+export const skills: SkillCategory[] = [
+  {
+    title: 'CI/CD & GitOps',
+    accent: '#bc8cff',
+    items: [
+      { label: 'GitHub Actions', detail: 'Automated build, test and deploy workflows' },
+      { label: 'Jenkins', detail: 'Multistage CI pipelines' },
+      { label: 'ArgoCD', detail: 'Git-based continuous delivery to Kubernetes' },
+    ],
+  },
+  {
+    title: 'Containers & Orchestration',
+    accent: '#58a6ff',
+    items: [
+      { label: 'Docker', detail: 'Image builds, registries and Compose environments' },
+      { label: 'Docker Compose', detail: 'Local multi-container setups' },
+      { label: 'Kubernetes', detail: 'Deployments, services, ingress and scaling' },
+    ],
+  },
+  {
+    title: 'Infrastructure as Code',
+    accent: '#e3b341',
+    items: [
+      { label: 'Terraform', detail: 'Modular infrastructure with remote state' },
+      { label: 'Ansible', detail: 'Server configuration and provisioning' },
+    ],
+  },
+  {
+    title: 'Cloud Platforms (AWS)',
+    accent: '#f78166',
+    items: [
+      { label: 'EC2', detail: 'Compute instances and launch templates' },
+      { label: 'VPC', detail: 'Networking, subnets, NAT and security groups' },
+      { label: 'ELB', detail: 'Application load balancers' },
+      { label: 'Auto Scaling', detail: 'Scaling groups and health-based replacement' },
+      { label: 'S3', detail: 'Object storage and static hosting' },
+      { label: 'RDS', detail: 'Managed databases' },
+      { label: 'CloudWatch', detail: 'Metrics, logs and alarms' },
+      { label: 'Route 53', detail: 'DNS management' },
+      { label: 'EKS', detail: 'Managed Kubernetes clusters' },
+      { label: 'Lambda', detail: 'Event-driven serverless functions' },
+    ],
+  },
+  {
+    title: 'Monitoring & Observability',
+    accent: '#39d353',
+    items: [
+      { label: 'Prometheus', detail: 'Metrics collection and alert rules' },
+      { label: 'Grafana', detail: 'Dashboards for metrics and logs' },
+    ],
+  },
+  {
+    title: 'Systems & Networking',
+    accent: '#58a6ff',
+    items: [
+      { label: 'Linux', detail: 'Day-to-day server administration' },
+      { label: 'DNS', detail: 'Name resolution and record management' },
+      { label: 'HTTPS/TLS', detail: 'Certificates and encrypted traffic' },
+      { label: 'SSH', detail: 'Secure remote access' },
+      { label: 'Bash', detail: 'Operations scripting' },
+      { label: 'Python', detail: 'Automation scripts and tooling' },
+      { label: 'Nginx', detail: 'Reverse proxy and static serving' },
+      { label: 'Apache', detail: 'Web server configuration' },
+    ],
+  },
+  {
+    title: 'Linux SysAdmin',
+    accent: '#bc8cff',
+    items: [
+      { label: 'Firewalls', detail: 'iptables / ufw rules' },
+      { label: 'Cron Jobs', detail: 'Scheduled tasks' },
+      { label: 'LVM', detail: 'Logical volume management' },
+      { label: 'Systemd', detail: 'Service and unit management' },
+      { label: 'rsync', detail: 'File backups and sync' },
+      { label: 'Process Management', detail: 'Monitoring and tuning running services' },
+    ],
+  },
 ]
 
 export type RoadmapState = 'LEARNED' | 'BUILDING' | 'PRACTICING' | 'PROJECT'
@@ -96,7 +162,7 @@ export const roadmap: RoadmapNode[] = [
     domain: 'Computer Science · Networking',
     state: 'LEARNED',
     summary:
-      'How the internet works, HTTP/DNS/TLS, Git workflows, data structures and the basics I build everything on.',
+      'How the internet works, HTTP/DNS/TLS, Git workflows and the computer science basics everything else builds on.',
     tech: ['Git', 'Networking', 'Linux basics'],
   },
   {
@@ -105,7 +171,7 @@ export const roadmap: RoadmapNode[] = [
     domain: 'Servers · Bash',
     state: 'PRACTICING',
     summary:
-      'Everyday server work: permissions, systemd, processes, cron, SSH, firewalls and shell scripting that gets things done.',
+      'Server work: permissions, systemd, processes, cron, SSH, firewalls and shell scripting for everyday tasks.',
     tech: ['Bash', 'systemd', 'SSH', 'LVM', 'UFW/iptables'],
   },
   {
@@ -114,8 +180,8 @@ export const roadmap: RoadmapNode[] = [
     domain: 'Docker · Image Lifecycle',
     state: 'LEARNED',
     summary:
-      'Building lean images, multi-stage builds, registries, Compose for local environments and container runtimes.',
-    tech: ['Docker', 'Docker Compose', 'Podman'],
+      'Building images, multi-stage builds, registries, Compose for local environments and container runtimes.',
+    tech: ['Docker', 'Docker Compose'],
   },
   {
     step: 4,
@@ -123,7 +189,7 @@ export const roadmap: RoadmapNode[] = [
     domain: 'AWS Core Services',
     state: 'LEARNED',
     summary:
-      'VPC design, EC2, S3, IAM, RDS — and the "least privilege + encryption by default" mindset that goes with them.',
+      'VPC, EC2, S3, IAM, RDS — and the habits that go with them: least privilege and encryption by default.',
     tech: ['EC2', 'VPC', 'S3', 'IAM', 'RDS'],
   },
   {
@@ -132,7 +198,7 @@ export const roadmap: RoadmapNode[] = [
     domain: 'Terraform · Ansible',
     state: 'PRACTICING',
     summary:
-      'Declarative infrastructure: modular Terraform with remote state, plan/apply workflows, and Ansible for config management.',
+      'Declarative infrastructure: modular Terraform with remote state, plan/apply workflows, and Ansible for configuration.',
     tech: ['Terraform', 'Ansible', 'DynamoDB locks'],
     links: [{ label: 'terraform-aws-infra', href: 'https://github.com/irfanjat/terraform-aws-infra' }],
   },
@@ -142,7 +208,7 @@ export const roadmap: RoadmapNode[] = [
     domain: 'Automation · Delivery',
     state: 'PRACTICING',
     summary:
-      'Automating build, test and deploy. GitHub Actions day-to-day, Jenkins pipelines, and quality gates that block bad code.',
+      'Automating build, test and deploy — GitHub Actions day to day, plus quality gates that catch bad code early.',
     tech: ['GitHub Actions', 'Jenkins', 'Quality gates'],
   },
   {
@@ -151,7 +217,7 @@ export const roadmap: RoadmapNode[] = [
     domain: 'Orchestration · EKS',
     state: 'BUILDING',
     summary:
-      'Moving workloads from Compose to a cluster: pods, services, ingress, controllers, rolling updates and cluster upgrades.',
+      'Moving workloads from Compose to a cluster: pods, services, ingress, controllers and rolling updates.',
     tech: ['Kubernetes', 'EKS', 'Ingress', 'HPA'],
   },
   {
@@ -160,8 +226,8 @@ export const roadmap: RoadmapNode[] = [
     domain: 'ArgoCD · Config-as-Code',
     state: 'BUILDING',
     summary:
-      "The repo is the source of truth. ArgoCD reconciles the cluster with git — drift gets healed, rollbacks get reverts.",
-    tech: ['ArgoCD', 'Manifest repos', 'Self-healing'],
+      'Git as the source of truth: ArgoCD keeps the cluster in sync with the repo, and rollbacks are just git reverts.',
+    tech: ['ArgoCD', 'Manifest repos'],
     links: [{ label: 'gitops repo', href: 'https://github.com/irfanjat/gitops-cicd-pipeline' }],
   },
   {
@@ -170,8 +236,8 @@ export const roadmap: RoadmapNode[] = [
     domain: 'Metrics · Logs · Dashboards',
     state: 'BUILDING',
     summary:
-      'Collecting metrics and logs, wiring alerts, and building dashboards that answer questions before anyone asks them.',
-    tech: ['Prometheus', 'Grafana', 'Loki'],
+      'Collecting metrics and logs, writing alert rules, and building dashboards that make issues visible early.',
+    tech: ['Prometheus', 'Grafana'],
   },
   {
     step: 10,
@@ -179,92 +245,16 @@ export const roadmap: RoadmapNode[] = [
     domain: 'SRE · Guardrails',
     state: 'PROJECT',
     summary:
-      'Capacity, recovery, least-privilege and policy-as-code — the discipline that keeps production boring.',
+      'Capacity planning, recovery, least-privilege and policy-as-code — the layer that keeps production stable.',
     tech: ['OPA/Rego', 'Kyverno', 'SLO thinking'],
     links: [{ label: 'guardrails repo', href: 'https://github.com/irfanjat/Guardrails' }],
   },
 ]
 
-export interface ToolboxCategory {
-  title: string
-  accent: string
-  items: { label: string; detail: string }[]
-}
-
-export const toolbox: ToolboxCategory[] = [
-  {
-    title: 'Cloud Platforms',
-    accent: '#f78166',
-    items: [
-      { label: 'AWS', detail: 'EC2, VPC, S3, RDS, IAM, Lambda, EKS, Route 53, CloudWatch' },
-      { label: 'Auto Scaling', detail: 'ASGs + ELB for resilient, elastic workloads' },
-      { label: 'CloudWatch', detail: 'Metrics, dashboards and alarm-driven operations' },
-    ],
-  },
-  {
-    title: 'Containers',
-    accent: '#58a6ff',
-    items: [
-      { label: 'Docker', detail: 'Multi-stage images, Compose, registries and caching' },
-      { label: 'Podman', detail: 'Rootless container workflows' },
-    ],
-  },
-  {
-    title: 'Orchestration',
-    accent: '#bc8cff',
-    items: [
-      { label: 'Kubernetes', detail: 'Pods, services, ingress, controllers, rolling updates' },
-      { label: 'EKS', detail: 'Managed control planes and node groups' },
-    ],
-  },
-  {
-    title: 'Infrastructure as Code',
-    accent: '#e3b341',
-    items: [
-      { label: 'Terraform', detail: 'Modular multi-provider IaC with remote state + locking' },
-      { label: 'Ansible', detail: 'Config management and provisioning' },
-    ],
-  },
-  {
-    title: 'CI/CD · GitOps',
-    accent: '#39d353',
-    items: [
-      { label: 'GitHub Actions', detail: 'Workflows for build, test, scan and deploy' },
-      { label: 'GitLab CI', detail: 'Branch pipelines and multi-stage builds' },
-      { label: 'ArgoCD', detail: 'Git-sync deployments with automatic drift healing' },
-    ],
-  },
-  {
-    title: 'Observability',
-    accent: '#f78166',
-    items: [
-      { label: 'Prometheus', detail: 'Metrics collection, queries and alerting rules' },
-      { label: 'Grafana', detail: 'Dashboards and unified metric views' },
-      { label: 'Loki', detail: 'Log aggregation with Promtail agents' },
-    ],
-  },
-  {
-    title: 'Languages & Scripting',
-    accent: '#58a6ff',
-    items: [
-      { label: 'Python', detail: 'Scripts, automation and Lambda functions' },
-      { label: 'Bash', detail: 'Ops scripting and shell automation' },
-    ],
-  },
-  {
-    title: 'Systems & Networking',
-    accent: '#bc8cff',
-    items: [
-      { label: 'Linux', detail: 'Administration, systemd, permissions, LVM, cron' },
-      { label: 'Networking', detail: 'DNS, HTTPS/TLS, SSH and reverse proxies (Nginx/Apache)' },
-    ],
-  },
-]
-
 export interface Project {
   id: string
+  tag: string
   category: 'CI/CD · GitOps' | 'Infrastructure as Code' | 'Observability' | 'Cloud Cost' | 'Security'
-  label: string
   title: string
   subtitle: string
   problem: string
@@ -279,68 +269,65 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 'gitops',
+    tag: 'CI/CD · GitOps',
     category: 'CI/CD · GitOps',
-    label: 'production-style',
     title: 'GitOps Delivery Pipeline',
-    subtitle:
-      'A codebase that deploys itself: every push to main builds, scans, tests, ships and syncs to the cluster automatically.',
+    subtitle: 'End-to-End GitOps CI/CD',
     problem:
-      'Manual deployments caused untested releases, unverified images and configuration drift between environments.',
+      'Manual deployments meant untested releases, unverified images and configuration drift between environments.',
     result:
-      'The repo became the source of truth. Push to main triggers the whole chain — the cluster converges itself and drift is healed automatically.',
+      'Push to main triggers the full chain — build, tests, container scan, image tagging and ArgoCD sync. The cluster always matches the repo, and rollbacks are a git revert.',
     tech: ['GitHub Actions', 'Docker', 'ArgoCD', 'Kubernetes', 'Helm', 'Python'],
     github: 'https://github.com/irfanjat/gitops-cicd-pipeline',
     extraLinks: [{ label: 'config repo', href: 'https://github.com/irfanjat/gitops-cicd-pipeline-config' }],
     architecture: [
-      { node: 'Git push → main', detail: 'The single deploy trigger. Everything else is automated.' },
-      { node: 'CI — GitHub Actions', detail: 'Build, unit tests, container scan and SHA-tagged image.' },
-      { node: 'Image registry', detail: 'Immutable, digest-pinned artifacts for every commit.' },
+      { node: 'Git push → main', detail: 'The single deploy trigger — everything after it is automated.' },
+      { node: 'CI — GitHub Actions', detail: 'Build, unit tests, container scan, SHA-tagged image.' },
+      { node: 'Image registry', detail: 'Immutable, digest-pinned artifacts per commit.' },
       { node: 'CD — ArgoCD sync', detail: 'Pulls updated manifests and reconciles the cluster with git.' },
-      { node: 'Kubernetes', detail: 'Rolling rollout, health checks, auto self-heal on drift.' },
+      { node: 'Kubernetes', detail: 'Rolling rollout with health checks; drift is corrected automatically.' },
     ],
     lessons: [
-      'GitOps turns rollbacks into git revert — the whole platform is version-controlled.',
-      'Pinning images by digest closes the "built vs deployed" verification gap.',
-      'Self-healing surfaces drift instantly instead of letting it sit in the shadows.',
+      'Git keeps history and rollback simple — the repo is the record of every deploy.',
+      'Pinning images by digest verifies what was built is what runs.',
+      'ArgoCD surfaces drift instead of letting it accumulate unnoticed.',
     ],
   },
   {
     id: 'terraform-aws',
+    tag: 'Infrastructure as Code',
     category: 'Infrastructure as Code',
-    label: 'modular · secure',
-    title: 'AWS Multi-Tier Platform',
-    subtitle:
-      'A production-shaped AWS stack described as code — networking, compute, storage and databases from a single apply.',
+    title: 'AWS Multi-Tier Infra',
+    subtitle: 'Production-Style Multi-Tier AWS Infrastructure',
     problem:
-      'Clicking through the AWS console creates infrastructure nobody can review, version or rebuild.',
+      'Console-built infrastructure cannot be reviewed, versioned or rebuilt — nobody knows the real state.',
     result:
-      'A repeatable, reviewable platform: one terraform apply provisions a multi-AZ environment with encryption and least-privilege IAM out of the box.',
+      'One terraform apply provisions a multi-AZ environment: networking, compute, load balancing and databases with encryption and least-privilege IAM enabled by default.',
     tech: ['Terraform', 'VPC', 'EC2', 'ALB', 'Auto Scaling', 'RDS', 'S3', 'DynamoDB'],
     github: 'https://github.com/irfanjat/terraform-aws-infra',
     architecture: [
-      { node: 'Terraform apply', detail: 'State lives in S3 with DynamoDB locking for safe team runs.' },
+      { node: 'Terraform apply', detail: 'State in S3 with DynamoDB locking for safe concurrent runs.' },
       { node: 'VPC · multi-AZ', detail: 'Public/private subnets, NAT gateways, security groups.' },
       { node: 'ALB → ASG', detail: 'Load-balanced, auto-scaling compute behind one endpoint.' },
-      { node: 'RDS · S3 · DynamoDB', detail: 'Encrypted data stores with minimal IAM surface.' },
-      { node: 'CloudWatch', detail: 'Alarms and dashboards covering the whole stack.' },
+      { node: 'RDS · S3 · DynamoDB', detail: 'Encrypted data stores with a minimal IAM surface.' },
+      { node: 'CloudWatch', detail: 'Alarms and dashboards covering the stack.' },
     ],
     lessons: [
-      'Remote state + locking makes infra a team sport without the merge conflicts.',
-      'Planning in modules keeps the stack writable as it grows.',
-      'Defaults matter: encryption and restricted IAM should never be opt-in.',
+      'Remote state with locking makes infrastructure workable as a team.',
+      'Modules keep the configuration readable as the stack grows.',
+      'Security defaults (encryption, restricted IAM) should not be opt-in.',
     ],
   },
   {
     id: 'observability',
+    tag: 'Observability',
     category: 'Observability',
-    label: 'instrumented',
     title: 'Kubernetes Observability Stack',
-    subtitle:
-      'Prometheus, Grafana, Loki and Promtail deployed to the cluster so workloads are measurable instead of mysterious.',
+    subtitle: 'Metrics, Logs & Dashboards on Kubernetes',
     problem:
-      'A Kubernetes cluster without telemetry is a black box — PVC fills, crashes and slow endpoints go unnoticed until users complain.',
+      'A cluster without telemetry is a black box — PVC fills, crashes and slow endpoints go unnoticed until users report them.',
     result:
-      'Cluster-wide metrics and logs in one place: resource dashboards, alert rules and a log query path that cuts troubleshooting time.',
+      'Cluster-wide metrics and logs in one place: resource dashboards, alert rules and log queries that make troubleshooting faster.',
     tech: ['Prometheus', 'Grafana', 'Loki', 'Promtail', 'Kubernetes', 'Helm'],
     github: 'https://github.com/irfanjat/k8s-observability',
     architecture: [
@@ -350,56 +337,54 @@ export const projects: Project[] = [
       { node: 'Loki + Promtail', detail: 'Cluster-wide log collection and querying.' },
     ],
     lessons: [
-      'Dashboards only earn trust when you measure something real against them.',
-      'Alerts that fire without a runbook create noise, not reliability.',
+      'Dashboards are useful only when measuring something real.',
+      'An alert without a next step creates noise, not reliability.',
     ],
   },
   {
     id: 'costguard',
+    tag: 'Cost Optimization',
     category: 'Cloud Cost',
-    label: 'serverless · automated',
     title: 'CostGuard',
-    subtitle:
-      'A serverless cost watchdog that hunts down orphaned and under-utilised AWS resources before they inflate the bill.',
+    subtitle: 'AWS Cost Optimization Platform',
     problem:
-      'Cloud spend quietly leaks through forgotten volumes, idle instances and unattached addresses — nobody notices until the invoice.',
+      'Cloud spend leaks through forgotten volumes, idle instances and unattached addresses — usually discovered on the invoice.',
     result:
-      'Scheduled Lambda scans flag waste, post findings to Slack and write them to DynamoDB, turning cost math into a conversation instead of a surprise.',
+      'Scheduled Lambda scans detect orphaned and under-utilised resources, store the findings in DynamoDB and post notifications to Slack.',
     tech: ['Python', 'AWS Lambda', 'Terraform', 'DynamoDB', 'Slack API', 'GitHub Actions'],
     github: 'https://github.com/irfanjat/costguard',
     architecture: [
-      { node: 'CloudWatch Events', detail: 'Schedule triggers for daily cost scans.' },
+      { node: 'CloudWatch Events', detail: 'Schedule triggers for regular cost scans.' },
       { node: 'Lambda (boto3)', detail: 'Scans for orphaned volumes, idle resources and neglect.' },
-      { node: 'DynamoDB', detail: 'Stores findings for history and trend analysis.' },
-      { node: 'Slack webhook', detail: 'Push notifications before money leaks.' },
+      { node: 'DynamoDB', detail: 'Stores findings for history and trend checks.' },
+      { node: 'Slack webhook', detail: 'Notifications when waste is detected.' },
     ],
     lessons: [
-      'Serverless is the right tool when a watchdog should run forever for pennies.',
-      'Automated nudges beat monthly spreadsheets every time.',
+      'Serverless fits well for a watchdog that should run on a schedule for very little cost.',
+      'Automated reports beat manual spreadsheets for catching waste early.',
     ],
   },
   {
     id: 'guardrails',
+    tag: 'Security · Policy-as-Code',
     category: 'Security',
-    label: 'policy-as-code',
     title: 'Policy Guardrails',
-    subtitle:
-      'A policy engine that reviews Terraform and Kubernetes definitions in CI and blocks the insecure ones before merge.',
+    subtitle: 'IaC Security Guardrails Engine',
     problem:
-      'Security rules written in a wiki do nothing — misconfigurations slip through code review and land in production manifests.',
+      'Security rules written in documentation are never enforced — misconfigurations pass review and reach production manifests.',
     result:
-      'OPA/Rego policies enforced as a merge gate: risky Terraform plans and Kubernetes manifests get rejected with a comment explaining why.',
+      'OPA/Rego policies run as a merge gate: risky Terraform plans and Kubernetes manifests are rejected with an automated comment explaining the violation.',
     tech: ['OPA/Rego', 'Kyverno', 'Conftest', 'Terraform', 'Kubernetes', 'GitHub Actions'],
     github: 'https://github.com/irfanjat/Guardrails',
     architecture: [
       { node: 'Pull request', detail: 'Every infra/k8s change enters the pipeline.' },
-      { node: 'Conftest · Terraform', detail: 'Rego policy checks against the HCL plan.' },
-      { node: 'Kyverno · K8s', detail: 'Validation against cluster admission policies.' },
-      { node: 'Merge gate', detail: 'Violations block the merge with an automated comment.' },
+      { node: 'Conftest · Terraform', detail: 'Rego policy checks against the planned changes.' },
+      { node: 'Kyverno · Kubernetes', detail: 'Validation against cluster admission policies.' },
+      { node: 'Merge gate', detail: 'Violations block the merge with an explanatory comment.' },
     ],
     lessons: [
-      'Policy-as-code makes security reviewable — the policies are part of the repo.',
-      'Automated comments beat a stern code review, consistently.',
+      'Policies stored as code are reviewable and versioned like everything else.',
+      'Automated checks are applied consistently on every change.',
     ],
   },
 ]
@@ -437,69 +422,6 @@ export const credentials: Credential[] = [
     link: 'https://coursera.org/verify/JHTNQ3MFH2D2',
   },
 ]
-
-export interface GithubRepo {
-  name: string
-  description: string
-  language: string
-  href: string
-}
-
-export const githubRepos: GithubRepo[] = [
-  {
-    name: 'gitops-cicd-pipeline',
-    description: 'End-to-end GitOps delivery: CI builds, SHA-tagged images, ArgoCD cluster sync.',
-    language: 'HCL',
-    href: 'https://github.com/irfanjat/gitops-cicd-pipeline',
-  },
-  {
-    name: 'terraform-aws-infra',
-    description: 'Modular, multi-AZ AWS platform with remote state, encryption and least-privilege IAM.',
-    language: 'HCL',
-    href: 'https://github.com/irfanjat/terraform-aws-infra',
-  },
-  {
-    name: 'k8s-observability',
-    description: 'Prometheus, Grafana, Loki and Promtail running on Kubernetes.',
-    language: 'YAML',
-    href: 'https://github.com/irfanjat/k8s-observability',
-  },
-  {
-    name: 'costguard',
-    description: 'Serverless AWS cost watchdog — scans, reports and alerts on waste.',
-    language: 'Python',
-    href: 'https://github.com/irfanjat/costguard',
-  },
-  {
-    name: 'Guardrails',
-    description: 'Policy-as-code engine: OPA/Rego + Kyverno gates for Terraform and K8s.',
-    language: 'Rego',
-    href: 'https://github.com/irfanjat/Guardrails',
-  },
-  {
-    name: 'gitops-cicd-pipeline-config',
-    description: 'The GitOps source-of-truth repo ArgoCD reconciles against.',
-    language: 'YAML',
-    href: 'https://github.com/irfanjat/gitops-cicd-pipeline-config',
-  },
-]
-
-export interface StatusRow {
-  label: string
-  state: 'operational' | 'building'
-  detail: string
-}
-
-export const systemStatus: StatusRow[] = [
-  { label: 'portfolio', state: 'operational', detail: 'auto-deployed on every push via GitHub Actions + Cloudflare Pages' },
-  { label: 'ci/cd pipeline', state: 'operational', detail: 'build, test and deploy automated end-to-end' },
-  { label: 'infrastructure', state: 'operational', detail: 'Terraform, multi-AZ, encryption and least privilege by default' },
-  { label: 'observability', state: 'operational', detail: 'Prometheus · Grafana · Loki on Kubernetes' },
-  { label: 'learning path', state: 'building', detail: 'next stop: production readiness & security hardening' },
-]
-
-export const statusDisclaimer =
-  'Visual dashboard for a learning portfolio — it represents the projects and workflow here, not a live production fleet.'
 
 export const education = {
   degree: 'Bachelor of Science in Computer Science',

@@ -3,15 +3,14 @@ import { BadgeCheck, BookOpenCheck, ExternalLink } from 'lucide-react'
 import { credentials } from '../../data/portfolio'
 import { SectionHeading } from '../ui/SectionHeading'
 
-export function Credentials() {
+export function Certifications() {
   return (
-    <section id="credentials" className="section-padding relative">
+    <section id="certifications" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
-          index="06"
-          label="credentials"
-          title="Credentials."
-          description="What I've earned, labelled honestly: industry certificates vs. coursework training."
+          index="05"
+          label="certifications"
+          title="Certifications"
         />
 
         <div className="grid gap-4 sm:grid-cols-2">

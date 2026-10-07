@@ -1,15 +1,15 @@
-import { ExternalLink } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 import { personal } from '../../data/portfolio'
 
-const col1 = [
-  { label: 'Work', href: '#projects' },
-  { label: 'Stack', href: '#toolbox' },
-  { label: 'Path', href: '#path' },
+const social = [
+  { icon: Github, href: personal.github, label: 'GitHub' },
+  { icon: Linkedin, href: personal.linkedin, label: 'LinkedIn' },
+  { icon: Mail, href: `mailto:${personal.email}`, label: 'Email' },
 ]
 
-const col2 = [
-  { label: 'About', href: '#about' },
-  { label: 'Credentials', href: '#credentials' },
+const quickLinks = [
+  { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -19,76 +19,51 @@ export function Footer() {
   return (
     <footer className="relative border-t border-[#30363d]">
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <div className="flex items-center gap-2.5 font-mono text-sm font-bold tracking-[0.18em] text-[#e6edf3]">
-              <span>IRFAN ALI</span>
-              <span className="inline-block h-[12px] w-[7px] animate-blink bg-[#39d353]" aria-hidden="true" />
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#39d353] font-mono text-xs font-bold text-[#0d1117]">
+                {personal.initials}
+              </div>
+              <span className="font-display text-sm font-semibold text-[var(--color-ink)]">{personal.name}</span>
             </div>
-            <p className="mt-3 max-w-xs text-[13px] leading-relaxed text-[#8b949e]">
-              DevOps & Cloud Engineer — automating cloud infrastructure and Kubernetes delivery so that deployments stay boring.
-            </p>
-            <p className="mt-4 inline-flex items-center gap-1.5 font-mono text-[11.5px] text-[#58a6ff]">
-              <ExternalLink className="h-3 w-3" />
-              deployed via GitOps · this site ships itself
-            </p>
+            <p className="mt-2 font-mono text-sm text-[var(--color-muted)]">{personal.role}</p>
           </div>
 
-          <div>
-            <p className="font-mono text-[11px] tracking-[0.15em] text-[#6e7681]">EXPLORE</p>
-            <ul className="mt-3 space-y-2">
-              {col1.map((l) => (
-                <li key={l.href}>
-                  <a href={l.href} className="text-[13px] text-[#8b949e] transition hover:text-[#39d353]">
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          <div className="flex gap-6">
+            {quickLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm text-[var(--color-muted)] transition hover:text-[#39d353]"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
 
-          <div>
-            <p className="font-mono text-[11px] tracking-[0.15em] text-[#6e7681]">INFO</p>
-            <ul className="mt-3 space-y-2">
-              {col2.map((l) => (
-                <li key={l.href}>
-                  <a href={l.href} className="text-[13px] text-[#8b949e] transition hover:text-[#39d353]">
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="font-mono text-[11px] tracking-[0.15em] text-[#6e7681]">CONTACT</p>
-            <ul className="mt-3 space-y-2 text-[13px] text-[#8b949e]">
-              <li>
-                <a href={`mailto:${personal.email}`} className="transition hover:text-[#39d353]">
-                  {personal.email}
-                </a>
-              </li>
-              <li>
-                <a href={personal.github} target="_blank" rel="noopener noreferrer" className="transition hover:text-[#39d353]">
-                  github.com/irfanjat
-                </a>
-              </li>
-              <li>
-                <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="transition hover:text-[#39d353]">
-                  linkedin.com/in/irfanjat
-                </a>
-              </li>
-              <li className="text-[#6e7681]">{personal.location}</li>
-            </ul>
+          <div className="flex gap-3">
+            {social.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-[var(--color-muted)] transition hover:text-[#39d353] hover:border-[#39d353]/50"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-[#30363d] pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-xs text-[#8b949e]">
-            © {year} {personal.name} — {personal.role}
+        <div className="mt-10 flex flex-col gap-2 border-t border-[#30363d] pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-[var(--color-muted)]">
+            © {year} {personal.name}. All rights reserved.
           </p>
-          <p className="font-mono text-xs text-[#6e7681]">
-            powered by <span className="text-[#39d353]">git push</span>
+          <p className="font-mono text-xs text-[var(--color-muted)]">
+            Built with <span className="text-[#39d353]">❤️</span> by {personal.name}
           </p>
         </div>
       </div>

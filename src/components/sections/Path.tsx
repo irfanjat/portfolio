@@ -38,14 +38,14 @@ export function Path() {
     <section id="path" className="section-padding relative">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
-          index="03"
+          index="04"
           label="path"
-          title="The learning path."
-          description="A foundation → production roadmap I'm walking right now. Every node is a real skill, backed by a repo or a class."
+          title="Learning Path"
+          description="How I'm moving from foundations to production — every step is a skill I've worked on, with a repo or course behind it."
         />
         <p className="mb-8 inline-flex items-center gap-2 font-mono text-[11.5px] text-[#6e7681]">
           <Map className="h-3.5 w-3.5 text-[#39d353]" />
-          click a node to see what's behind it · states are honest, not optimistic
+          Click a node to see details
         </p>
 
         <ol className="relative ml-3 border-l border-[#30363d] pl-6 sm:ml-6">

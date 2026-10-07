@@ -30,10 +30,9 @@ export function Contact() {
     <section id="contact" className="section-padding relative pb-36 content-visibility-auto">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
-          index="08"
+          index="06"
           label="contact"
-          title="Open a channel."
-          description="Real humans answer, usually within 24 hours."
+          title="Contact"
         />
 
         <div className="grid gap-6 lg:grid-cols-5">
