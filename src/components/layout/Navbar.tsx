@@ -3,29 +3,7 @@ import { Menu, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { navLinks, personal } from '../../data/portfolio'
 import { useActiveSection } from '../../hooks/useActiveSection'
-
-function Logo() {
-  return (
-    <span className="plaque">
-      <span className="wing wing-l" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-      </span>
-      <span className="wood-frame">
-        <span className="wood-gem" aria-hidden="true" />
-        <span className="logo-gold font-display text-[16px] font-black leading-none tracking-tight">
-          Irfan Ali
-        </span>
-      </span>
-      <span className="wing wing-r" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-      </span>
-    </span>
-  )
-}
+import { FantasyLogo } from '../ui/FantasyLogo'
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
@@ -55,7 +33,7 @@ export function Navbar() {
       >
         <nav className="mx-auto flex h-[60px] w-full max-w-5xl items-center justify-between px-4 lg:px-8">
           <a href="#home" aria-label="Irfan Ali — home">
-            <Logo />
+            <FantasyLogo className="h-[46px] w-auto" />
           </a>
 
           <div className="hidden items-center gap-6 md:flex lg:gap-7">
