@@ -6,7 +6,7 @@ import { useActiveSection } from '../../hooks/useActiveSection'
 
 function Logo() {
   return (
-    <span className="logo-gold font-display text-[20px] font-black leading-none tracking-tight">
+    <span className="logo-name text-[20px] font-black leading-none tracking-tight">
       Irfan Ali
     </span>
   )
