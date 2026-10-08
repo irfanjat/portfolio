@@ -31,7 +31,7 @@ export function MagneticButton({ href, children, variant = 'primary', className 
     'inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-semibold transition-all duration-300'
   const styles =
     variant === 'primary'
-      ? 'btn-yellow hover:-translate-y-0.5'
+      ? 'btn-green hover:-translate-y-0.5'
       : 'glass-soft text-[var(--color-ink)] hover:text-[var(--color-green)] hover:border-[var(--color-green)] hover:-translate-y-0.5'
 
   return (

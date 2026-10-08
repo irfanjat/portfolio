@@ -18,9 +18,9 @@ const stateStyles: Record<RoadmapState, { text: string; border: string; dot: str
     label: 'PRACTICING',
   },
   BUILDING: {
-    text: 'text-[#efbb03]',
-    border: 'border-[#efbb03]/50',
-    dot: 'bg-[#efbb03] shadow-[0_0_10px_rgba(239,187,3,0.6)]',
+    text: 'text-[#11e956]',
+    border: 'border-[#11e956]/50',
+    dot: 'bg-[#11e956] shadow-[0_0_10px_rgba(17,233,86,0.6)]',
     label: 'BUILDING',
   },
   PROJECT: {

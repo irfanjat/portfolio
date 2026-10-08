@@ -27,14 +27,14 @@ export function Certifications() {
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ delay: (i % 2) * 0.06, duration: 0.45 }}
                 className={`group flex flex-col rounded-lg border bg-[#181b26] p-5 transition-colors ${
-                  isCert ? 'border-[#efbb03]/40 hover:border-[#efbb03]' : 'border-[#323845] hover:border-[#42a0ed]/50'
+                  isCert ? 'border-[#11e956]/40 hover:border-[#11e956]' : 'border-[#323845] hover:border-[#42a0ed]/50'
                 }`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <span
                     className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-md border ${
                       isCert
-                        ? 'border-[#efbb03]/40 bg-[#efbb03]/10 text-[#efbb03]'
+                        ? 'border-[#11e956]/40 bg-[#11e956]/10 text-[#11e956]'
                         : 'border-[#323845] bg-[#202330] text-[#42a0ed]'
                     }`}
                   >
@@ -43,7 +43,7 @@ export function Certifications() {
                   <span
                     className={`rounded-sm border px-2 py-0.5 font-mono text-[9.5px] tracking-[0.12em] ${
                       isCert
-                        ? 'border-[#efbb03]/40 text-[#efbb03]'
+                        ? 'border-[#11e956]/40 text-[#11e956]'
                         : 'border-[#323845] text-[#919dab]'
                     }`}
                   >
@@ -54,7 +54,7 @@ export function Certifications() {
                 <p className="mt-1 font-mono text-[12px] text-[#919dab]">{cred.issuer}</p>
                 <span
                   className={`mt-auto pt-3 inline-flex items-center gap-1.5 font-mono text-[11.5px] ${
-                    isCert ? 'text-[#efbb03]' : 'text-[#42a0ed]'
+                    isCert ? 'text-[#11e956]' : 'text-[#42a0ed]'
                   } opacity-0 transition-opacity group-hover:opacity-100`}
                 >
                   verify <ExternalLink className="h-3 w-3" />

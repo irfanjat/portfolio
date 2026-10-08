@@ -229,9 +229,9 @@
     height: 8px;
     transform: translateX(-50%) rotate(45deg);
     border-radius: 1.5px;
-    background-image: linear-gradient(135deg, #fff3c4 0%, #efbb03 55%, #d69e02 100%);
+    background-image: linear-gradient(135deg, #d7ffe6 0%, #11e956 55%, #0db543 100%);
     box-shadow:
-      0 0 8px 1px rgba(239, 187, 3, 0.45),
+      0 0 8px 1px rgba(17, 233, 86, 0.45),
       0 2px 6px rgba(0, 0, 0, 0.45);
     transition:
       box-shadow 0.3s ease,
@@ -242,40 +242,36 @@
   a:hover .nav-diamond,
   a:focus-visible .nav-diamond {
     box-shadow:
-      0 0 18px 5px rgba(239, 187, 3, 0.85),
+      0 0 18px 5px rgba(17, 233, 86, 0.85),
       0 2px 10px rgba(0, 0, 0, 0.55);
   }
 
-  .logo-gem-glow {
-    animation: fl-gem-pulse 2.4s ease-in-out infinite alternate;
+  .logo-gold {
+    color: #efbb03;
+    text-shadow:
+      1.5px 1.5px 0 #121620,
+      -1.5px 1.5px 0 #121620,
+      1.5px -1.5px 0 #121620,
+      -1.5px -1.5px 0 #121620,
+      0 3px 12px rgba(0, 0, 0, 0.45);
+    transition: color 0.2s ease;
   }
-  @keyframes fl-gem-pulse {
-    from {
-      opacity: 0.5;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .logo-gem-glow {
-      animation: none;
-      opacity: 0.75;
-    }
+  a:hover .logo-gold {
+    color: #fddf8f;
   }
 
-  .btn-yellow {
+  .btn-green {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     border-radius: 0.5rem;
-    border: 1px solid #fddf8f;
-    color: #2a1c0c;
+    border: 1px solid #41f179;
+    color: #043212;
     font-weight: 600;
     background-image:
       radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.45), transparent 65%),
-      linear-gradient(to bottom, #eeb23f, #efbb03);
+      linear-gradient(to bottom, #11e956, #41f179);
     box-shadow: 0 4px 14px -6px rgba(0, 0, 0, 0.55);
     transition:
       background-image 0.2s ease,
@@ -283,17 +279,17 @@
       transform 0.2s ease,
       box-shadow 0.2s ease;
   }
-  .btn-yellow:hover {
-    border-color: #dca336;
+  .btn-green:hover {
+    border-color: #7ee787;
     background-image:
       radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.3), transparent 65%),
-      linear-gradient(to bottom, #efbb03, #d69e02);
+      linear-gradient(to bottom, #0db543, #11e956);
     box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.6);
   }
-  .btn-yellow:active {
+  .btn-green:active {
     background-image:
       radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.2), transparent 65%),
-      linear-gradient(to bottom, #d69e02, #c18500);
+      linear-gradient(to bottom, #0db543, #09802f);
   }
 
   .gradient-text {

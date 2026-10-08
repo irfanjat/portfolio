@@ -18,7 +18,7 @@ function ProjectDetail({ project }: { project: Project }) {
 
       <div className="mt-6 space-y-5">
         <div className="rounded-lg border border-[#323845] bg-[#121620] p-5">
-          <p className="font-mono text-[11px] tracking-[0.12em] text-[#efbb03]">PROBLEM</p>
+          <p className="font-mono text-[11px] tracking-[0.12em] text-[#11e956]">PROBLEM</p>
           <p className="mt-2.5 text-[13.5px] leading-relaxed text-[#c4d1db]">{project.problem}</p>
         </div>
 
@@ -60,7 +60,7 @@ function ProjectDetail({ project }: { project: Project }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-yellow px-5 py-2.5 text-[13px] transition"
+            className="btn-green px-5 py-2.5 text-[13px] transition"
           >
             <FolderGit2 className="h-4 w-4" />
             View source
@@ -85,7 +85,7 @@ function ProjectDetail({ project }: { project: Project }) {
 
 const borderAccents: Record<Project['category'], string> = {
   'CI/CD · GitOps': 'hover:border-[#11e956]/60',
-  'Infrastructure as Code': 'hover:border-[#efbb03]/60',
+  'Infrastructure as Code': 'hover:border-[#11e956]/60',
   Observability: 'hover:border-[#f78166]/60',
   'Cloud Cost': 'hover:border-[#42a0ed]/60',
   Security: 'hover:border-[#8794c0]/60',

@@ -3,7 +3,14 @@ import { Menu, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { navLinks, personal } from '../../data/portfolio'
 import { useActiveSection } from '../../hooks/useActiveSection'
-import { FantasyLogo } from '../ui/FantasyLogo'
+
+function Logo() {
+  return (
+    <span className="logo-gold font-display text-[20px] font-black leading-none tracking-tight">
+      Irfan Ali
+    </span>
+  )
+}
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
@@ -33,7 +40,7 @@ export function Navbar() {
       >
         <nav className="mx-auto flex h-[60px] w-full max-w-5xl items-center justify-between px-4 lg:px-8">
           <a href="#home" aria-label="Irfan Ali — home">
-            <FantasyLogo className="h-[46px] w-auto" />
+            <Logo />
           </a>
 
           <div className="hidden items-center gap-6 md:flex lg:gap-7">
@@ -45,7 +52,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={`relative text-[13.5px] font-medium transition-colors ${
-                    isActive ? 'text-[#efbb03]' : 'text-[#919dab]'
+                    isActive ? 'text-[#11e956]' : 'text-[#919dab]'
                   }`}
                 >
                   {link.label}
@@ -71,7 +78,7 @@ export function Navbar() {
             </a>
             <a
               href="#contact"
-              className="btn-yellow hidden px-4 py-2 text-[13px] transition md:block"
+              className="btn-green hidden px-4 py-2 text-[13px] transition md:block"
             >
               Hire Me
             </a>
@@ -107,7 +114,7 @@ export function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
                     className={`relative rounded-md px-4 py-3 text-sm font-medium hover:bg-white/5 ${
-                      active === link.href.replace('#', '') ? 'text-[#efbb03]' : 'text-slate-200'
+                      active === link.href.replace('#', '') ? 'text-[#11e956]' : 'text-slate-200'
                     }`}
                   >
                     {link.label}
@@ -123,7 +130,7 @@ export function Navbar() {
                   <a
                     href="#contact"
                     onClick={() => setOpen(false)}
-                    className="btn-yellow flex items-center justify-center px-4 py-3 text-center text-sm"
+                    className="btn-green flex items-center justify-center px-4 py-3 text-center text-sm"
                   >
                     Hire Me
                   </a>

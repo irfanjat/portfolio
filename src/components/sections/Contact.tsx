@@ -116,7 +116,7 @@ export function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="btn-yellow w-full px-6 py-4 text-sm transition"
+                  className="btn-green w-full px-6 py-4 text-sm transition"
                 >
                   <Send className="h-4 w-4" />
                   Send Message
