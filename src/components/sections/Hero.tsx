@@ -35,7 +35,7 @@ export function Hero() {
     <section id="home" className="relative flex min-h-screen items-center pt-28 pb-24 section-padding">
       <div className="dot-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_35%,#000,transparent)]" />
       <div className="mx-auto grid w-full max-w-5xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="relative">
+        <div className="relative order-2 lg:order-1">
           <motion.div
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -134,7 +134,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.94, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative lg:mt-8"
+          className="relative order-1 lg:order-2 lg:mt-8"
         >
           <div className="relative mx-auto w-full max-w-[19rem]">
             <div className="relative overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--color-green)_35%,transparent)] bg-[var(--color-bg2)] shadow-[0_0_0_1px_color-mix(in_srgb,var(--color-green)_8%,transparent),0_20px_60px_rgba(0,0,0,0.55),0_0_80px_color-mix(in_srgb,var(--color-green)_12%,transparent)]">
