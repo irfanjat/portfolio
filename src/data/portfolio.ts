@@ -86,11 +86,13 @@ export const skills: SkillCategory[] = [
     ],
   },
   {
-    title: 'Infrastructure as Code',
+    title: 'IaC & Monitoring',
     accent: 'var(--color-amber-300)',
     items: [
       { label: 'Terraform', detail: 'Modular infrastructure with remote state' },
       { label: 'Ansible', detail: 'Server configuration and provisioning' },
+      { label: 'Prometheus', detail: 'Metrics collection and alert rules' },
+      { label: 'Grafana', detail: 'Dashboards for metrics and logs' },
     ],
   },
   {
@@ -109,14 +111,7 @@ export const skills: SkillCategory[] = [
       { label: 'Lambda', detail: 'Event-driven serverless functions' },
     ],
   },
-  {
-    title: 'Monitoring & Observability',
-    accent: 'var(--color-green-400)',
-    items: [
-      { label: 'Prometheus', detail: 'Metrics collection and alert rules' },
-      { label: 'Grafana', detail: 'Dashboards for metrics and logs' },
-    ],
-  },
+
   {
     title: 'Systems & Networking',
     accent: 'var(--color-cyan-400)',
