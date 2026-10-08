@@ -25,10 +25,11 @@ export const contactForm = {
 }
 
 export const navLinks = [
+  { label: 'Build', href: '#build' },
   { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
+    { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Path', href: '#path' },
+  { label: 'Challenges', href: '#challenges' },
   { label: 'Certs', href: '#certifications' },
   { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
@@ -259,12 +260,17 @@ export interface Project {
   title: string
   subtitle: string
   problem: string
-  result: string
+  solution?: string
+  result?: string
+  outcomes?: string[]
   tech: string[]
   github: string
   extraLinks?: { label: string; href: string }[]
   architecture: { node: string; detail: string }[]
-  lessons: string[]
+  decisions?: string[]
+  lessons?: string[]
+  howItWorks?: string[]
+  overview?: string
 }
 
 export const projects: Project[] = [
@@ -287,6 +293,23 @@ export const projects: Project[] = [
       { node: 'Image registry', detail: 'Immutable, digest-pinned artifacts per commit.' },
       { node: 'CD — ArgoCD sync', detail: 'Pulls updated manifests and reconciles the cluster with git.' },
       { node: 'Kubernetes', detail: 'Rolling rollout with health checks; drift is corrected automatically.' },
+    ],
+    solution: 'Automate the path from commit to cluster: build and scan on CI, publish immutable SHA-tagged images, reconcile via ArgoCD from config repo.',
+    outcomes: [
+      'Drift-free deployments via GitOps reconciliation',
+      'Immutable, verifiable release artifacts',
+      'Fast, auditable rollbacks with git revert',
+    ],
+    howItWorks: [
+      'Git push to main triggers GitHub Actions',
+      'Build, test, scan, tag and publish image',
+      'ArgoCD syncs manifests from git to Kubernetes',
+      'Health checks gate rollout; drift auto-corrected',
+    ],
+    decisions: [
+      'Single source of truth in git (manifests)',
+      'SHA-pinned images for traceability',
+      'ArgoCD for declarative continuous delivery',
     ],
     lessons: [
       'Git keeps history and rollback simple — the repo is the record of every deploy.',
@@ -313,6 +336,23 @@ export const projects: Project[] = [
       { node: 'RDS · S3 · DynamoDB', detail: 'Encrypted data stores with a minimal IAM surface.' },
       { node: 'CloudWatch', detail: 'Alarms and dashboards covering the stack.' },
     ],
+    solution: 'Define modular Terraform for multi-AZ networking, compute, load balancing and databases with remote S3 state + DynamoDB locking and secure defaults.',
+    outcomes: [
+      'Reproducible, reviewable infra across environments',
+      'Safe state with locking to prevent concurrent drift',
+      'Least-privilege IAM and encryption by default',
+    ],
+    howItWorks: [
+      'terraform plan reviewed in PRs; apply provisions stack',
+      'VPC splits into public/private multi-AZ subnets',
+      'ALB fronts ASG; RDS isolated in private subnets',
+      'CloudWatch collects metrics and alarms',
+    ],
+    decisions: [
+      'Remote state (S3) with DynamoDB lock for concurrency control',
+      'Modular composition for reuse and clarity',
+      'Security-first defaults (encryption, no public DB access)',
+    ],
     lessons: [
       'Remote state with locking makes infrastructure workable as a team.',
       'Modules keep the configuration readable as the stack grows.',
@@ -337,6 +377,23 @@ export const projects: Project[] = [
       { node: 'Grafana', detail: 'Dashboards for nodes, pods and core services.' },
       { node: 'Loki + Promtail', detail: 'Cluster-wide log collection and querying.' },
     ],
+    solution: 'Deploy Prometheus/Grafana/Loki/Promtail via Helm/manifests to collect metrics and logs cluster-wide with actionable dashboards and alerts.',
+    outcomes: [
+      'Faster RCA with correlated metrics and logs',
+      'Visibility into nodes, pods and services',
+      'Proactive alerts with clear intent',
+    ],
+    howItWorks: [
+      'ServiceMonitors/targets scraped by Prometheus',
+      'Promtail ships container logs to Loki',
+      'Grafana queries both for unified views',
+      'Alert rules surface issues early',
+    ],
+    decisions: [
+      'Centralized observability stack per cluster',
+      'Label-based service discovery over static configs',
+      'Separation of metrics/logs with shared labels',
+    ],
     lessons: [
       'Dashboards are useful only when measuring something real.',
       'An alert without a next step creates noise, not reliability.',
@@ -360,6 +417,23 @@ export const projects: Project[] = [
       { node: 'DynamoDB', detail: 'Stores findings for history and trend checks.' },
       { node: 'Slack webhook', detail: 'Notifications when waste is detected.' },
     ],
+    solution: 'Event-driven watchdog: CloudWatch Events trigger Lambda (boto3) to scan for orphaned volumes, idle resources and unattached EIPs, log to DynamoDB and notify Slack.',
+    outcomes: [
+      'Early detection of cloud waste',
+      'Automated, low-cost recurring checks',
+      'Actionable alerts in team channel',
+    ],
+    howItWorks: [
+      'Scheduled trigger (CloudWatch Events)',
+      'Lambda scans AWS resources against rules',
+      'Findings stored in DynamoDB for history',
+      'Slack webhook notifies on waste detected',
+    ],
+    decisions: [
+      'Serverless to minimize cost and ops overhead',
+      'Idempotent, rule-based scanning',
+      'History in DynamoDB for trend analysis',
+    ],
     lessons: [
       'Serverless fits well for a watchdog that should run on a schedule for very little cost.',
       'Automated reports beat manual spreadsheets for catching waste early.',
@@ -382,6 +456,23 @@ export const projects: Project[] = [
       { node: 'Conftest · Terraform', detail: 'Rego policy checks against the planned changes.' },
       { node: 'Kyverno · Kubernetes', detail: 'Validation against cluster admission policies.' },
       { node: 'Merge gate', detail: 'Violations block the merge with an explanatory comment.' },
+    ],
+    solution: 'Shift-left enforcement: Conftest/OPA for Terraform plans and Kyverno/Rego policies for K8s manifests run on PRs, blocking merges with explanatory comments on violations.',
+    outcomes: [
+      'Consistent, automated policy enforcement on every change',
+      'Reduced misconfigurations reaching production',
+      'Reviewable, versioned policy definitions',
+    ],
+    howItWorks: [
+      'PR triggers policy checks in CI',
+      'Conftest validates Terraform plan against Rego policies',
+      'Kyverno/Conftest validate K8s manifests',
+      'Violations block merge with clear explanation',
+    ],
+    decisions: [
+      'Fail-closed: block unsafe changes by default',
+      'Policies as code (reviewable, testable)',
+      'Shift-left to catch issues before apply/deploy',
     ],
     lessons: [
       'Policies stored as code are reviewable and versioned like everything else.',

@@ -5,7 +5,7 @@ import { contactForm, personal } from '../../data/portfolio'
 import { SectionHeading } from '../ui/SectionHeading'
 
 const links = [
-  { label: 'Email', value: personal.email, href: `mailto:${personal.email}`, icon: Mail },
+  { label: 'Email me', value: personal.email, href: `mailto:${personal.email}`, icon: Mail },
   { label: 'LinkedIn', value: 'linkedin.com/in/irfanjat', href: personal.linkedin, icon: Linkedin },
   { label: 'GitHub', value: 'github.com/irfanjat', href: personal.github, icon: Github },
 ]
@@ -30,9 +30,9 @@ export function Contact() {
     <section id="contact" className="section-padding relative pb-36 content-visibility-auto">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
-          index="07"
+          index="11"
           label="contact"
-          title="Contact"
+          title="Get In Touch"
         />
 
         <div className="grid gap-6 lg:grid-cols-5">
@@ -44,11 +44,12 @@ export function Contact() {
             className="space-y-4 lg:col-span-2"
           >
             {links.map((link, i) => (
-<motion.a
+            <motion.a
               key={link.label}
               href={link.href}
               target={link.href.startsWith('http') ? '_blank' : undefined}
               rel="noopener noreferrer"
+              aria-label={link.label}
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

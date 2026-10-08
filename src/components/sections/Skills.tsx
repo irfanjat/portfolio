@@ -7,7 +7,7 @@ export function Skills() {
   return (
     <section id="skills" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-5xl">
-        <SectionHeading index="02" label="skills" title="Skills" />
+        <SectionHeading index="03" label="skills" title="Skills" />
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((cat, i) => (

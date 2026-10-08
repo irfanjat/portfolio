@@ -27,8 +27,36 @@ function ProjectDetail({ project }: { project: Project }) {
           <ArchitectureDiagram nodes={project.architecture} />
         </div>
 
+        {project.solution && (
+          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-5">
+            <p className="font-mono text-[11px] tracking-[0.12em] text-[var(--color-green)]">SOLUTION</p>
+            <p className="mt-2.5 text-[13.5px] leading-relaxed text-[var(--color-ink)]">{project.solution}</p>
+          </div>
+        )}
+
+        {project.overview && (
+          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-5">
+            <p className="font-mono text-[11px] tracking-[0.12em] text-[var(--color-slate-500)]">OVERVIEW</p>
+            <p className="mt-2.5 text-[13.5px] leading-relaxed text-[var(--color-ink)]">{project.overview}</p>
+          </div>
+        )}
+
+        {project.howItWorks && project.howItWorks.length > 0 && (
+          <div>
+            <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-[var(--color-slate-500)]">HOW IT WORKS</p>
+            <ul className="space-y-2">
+              {project.howItWorks.map((l) => (
+                <li key={l} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-[var(--color-muted)]">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-green)]" />
+                  {l}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <div>
-          <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-[var(--color-slate-500)]">STACK</p>
+          <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-[var(--color-slate-500)]">TECH STACK</p>
           <div className="flex flex-wrap gap-2">
             {project.tech.map((t) => (
               <TechBadge key={t}>{t}</TechBadge>
@@ -36,24 +64,56 @@ function ProjectDetail({ project }: { project: Project }) {
           </div>
         </div>
 
-        <div>
-          <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-[var(--color-slate-500)]">RESULT</p>
-          <p className="rounded-lg border border-[var(--color-green)]/30 bg-[var(--color-green)]/5 p-4 text-[13.5px] leading-relaxed text-[var(--color-ink)]">
-            {project.result}
-          </p>
-        </div>
+        {project.outcomes && project.outcomes.length > 0 && (
+          <div>
+            <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-[var(--color-slate-500)]">OUTCOMES</p>
+            <ul className="space-y-2">
+              {project.outcomes.map((l) => (
+                <li key={l} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-[var(--color-ink)]">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-green)]" />
+                  {l}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
-        <div>
-          <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-[var(--color-slate-500)]">LESSONS</p>
-          <ul className="space-y-2">
-            {project.lessons.map((l) => (
-              <li key={l} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-[var(--color-muted)]">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-green)]" />
-                {l}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {project.decisions && project.decisions.length > 0 && (
+          <div>
+            <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-[var(--color-slate-500)]">DECISIONS</p>
+            <ul className="space-y-2">
+              {project.decisions.map((l) => (
+                <li key={l} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-[var(--color-muted)]">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-green)]" />
+                  {l}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {project.result && (
+          <div>
+            <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-[var(--color-slate-500)]">RESULT</p>
+            <p className="rounded-lg border border-[var(--color-green)]/30 bg-[var(--color-green)]/5 p-4 text-[13.5px] leading-relaxed text-[var(--color-ink)]">
+              {project.result}
+            </p>
+          </div>
+        )}
+
+        {project.lessons && project.lessons.length > 0 && (
+          <div>
+            <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-[var(--color-slate-500)]">LESSONS</p>
+            <ul className="space-y-2">
+              {project.lessons.map((l) => (
+                <li key={l} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-[var(--color-muted)]">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-green)]" />
+                  {l}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="flex flex-wrap items-center gap-3 border-t border-[var(--color-border)] pt-5">
           <a
@@ -63,7 +123,7 @@ function ProjectDetail({ project }: { project: Project }) {
             className="btn-green px-5 py-2.5 text-[13px] transition"
           >
             <FolderGit2 className="h-4 w-4" />
-            View source
+            View Repository
           </a>
           {project.extraLinks?.map((link) => (
             <a
@@ -97,7 +157,7 @@ export function Projects() {
   return (
     <section id="projects" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-5xl">
-        <SectionHeading index="03" label="projects" title="Notable Projects" />
+        <SectionHeading index="04" label="projects" title="Notable Projects" />
 
         <div className="grid gap-5 md:grid-cols-2">
           {projects.map((project, i) => (

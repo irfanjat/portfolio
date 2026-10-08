@@ -6,7 +6,7 @@ export function About() {
   return (
     <section id="about" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-5xl">
-        <SectionHeading index="01" label="about" title="Who I Am" />
+        <SectionHeading index="02" label="about" title="Who I Am" />
 
         <div className="grid items-start gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           <motion.div
@@ -16,18 +16,14 @@ export function About() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <h3 className="font-display text-2xl font-bold text-[var(--color-ink)]">
-              I'm <span className="text-[var(--color-green)]">Irfan Ali</span> — Junior DevOps & Cloud Engineer
+              I'm <span className="text-[var(--color-green)]">Irfan Ali</span> — DevOps & Cloud Engineer
             </h3>
             <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-slate-400">
               <p>
-                Based in Pakistan and pursuing my BSc in Computer Science, I've spent the past year
-                designing, automating, and operating cloud-native infrastructure that ships reliably.
+                I design, automate, and operate cloud-native infrastructure with a focus on reliability, security, and repeatability.
               </p>
               <p>
-                My work spans the full infrastructure lifecycle: architecting AWS environments,
-                implementing CI/CD pipelines, hardening security postures, and managing Kubernetes
-                clusters. I believe in infrastructure as code, shift-left security, and delivery that
-                runs itself.
+                From AWS architecture and Terraform IaC to GitHub Actions, ArgoCD, Kubernetes, and Prometheus/Grafana observability, I focus on the full lifecycle: build → automate → deploy → monitor → troubleshoot → improve.
               </p>
             </div>
 

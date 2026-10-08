@@ -7,7 +7,7 @@ export function Education() {
   return (
     <section id="education" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-5xl">
-        <SectionHeading index="06" label="education" title="Education" />
+        <SectionHeading index="09" label="education" title="Education" />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

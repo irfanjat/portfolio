@@ -94,9 +94,14 @@ export function Hero() {
             transition={{ delay: 0.6 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <MagneticButton href="#contact">Get in Touch</MagneticButton>
-            <MagneticButton href="#projects" variant="ghost">
-              View Projects
+            <MagneticButton href="#projects">View Projects</MagneticButton>
+            <MagneticButton href={personal.github} variant="ghost" className="gap-2" target="_blank" rel="noopener noreferrer">
+              <Github className="h-4 w-4" />
+              GitHub
+            </MagneticButton>
+            <MagneticButton href={personal.linkedin} variant="ghost" className="gap-2" target="_blank" rel="noopener noreferrer">
+              <Linkedin className="h-4 w-4" />
+              LinkedIn
             </MagneticButton>
           </motion.div>
 
@@ -106,24 +111,6 @@ export function Hero() {
             transition={{ delay: 0.75 }}
             className="mt-9 flex items-center gap-3"
           >
-            <a
-              href={personal.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-slate-300 transition hover:text-[var(--color-ink)] hover:border-[var(--color-green)]/50"
-            >
-              <Github className="h-4 w-4" />
-            </a>
-            <a
-              href={personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-slate-300 transition hover:text-[var(--color-ink)] hover:border-[var(--color-cyan)]/50"
-            >
-              <Linkedin className="h-4 w-4" />
-            </a>
             <span className="ml-1 inline-flex items-center gap-1.5 font-mono text-xs text-slate-500">
               <MapPin className="h-3.5 w-3.5 text-[var(--color-cyan)]" /> {personal.location}
             </span>

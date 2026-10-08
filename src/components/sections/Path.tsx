@@ -38,7 +38,7 @@ export function Path() {
     <section id="path" className="section-padding relative">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
-          index="04"
+          index="07"
           label="path"
           title="Learning Path"
           description="How I'm moving from foundations to production — every step is a skill I've worked on, with a repo or course behind it."
