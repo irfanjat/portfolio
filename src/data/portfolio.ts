@@ -30,6 +30,7 @@ export const navLinks = [
   { label: 'Projects', href: '#projects' },
   { label: 'Path', href: '#path' },
   { label: 'Certs', href: '#certifications' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -46,9 +47,9 @@ export const toolChips = [
 
 export const stats = [
   { label: 'Years Experience', value: 1, suffix: '+', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
-  { label: 'Projects Shipped', value: 12, suffix: '+', accent: 'var(--color-cyan-400)', glow: 'rgba(88,166,255,0.35)' },
-  { label: 'Cloud Platforms', value: 1, suffix: '', accent: 'var(--color-amber-300)', glow: 'rgba(227,179,65,0.35)' },
-  { label: 'Certifications', value: 4, suffix: '', accent: 'var(--color-violet-400)', glow: 'rgba(188,140,255,0.35)' },
+  { label: 'Projects Shipped', value: 12, suffix: '+', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
+  { label: 'Cloud Platforms', value: 1, suffix: '', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
+  { label: 'Certifications', value: 4, suffix: '', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
 ]
 
 export const aboutChips = [

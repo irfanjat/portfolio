@@ -5,6 +5,7 @@ import { Navbar } from './components/layout/Navbar'
 import { About } from './components/sections/About'
 import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
+import { Education } from './components/sections/Education'
 import { Hero } from './components/sections/Hero'
 import { Path } from './components/sections/Path'
 import { Projects } from './components/sections/Projects'
@@ -27,6 +28,7 @@ function App() {
         <Projects />
         <Path />
         <Certifications />
+        <Education />
         <Contact />
       </main>
       <Footer />

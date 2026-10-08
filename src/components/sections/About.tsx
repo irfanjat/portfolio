@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
-import { stats, aboutChips, education } from '../../data/portfolio'
-import { LiveDeployStatus } from '../ui/LiveDeployStatus'
+import { stats, aboutChips } from '../../data/portfolio'
 import { SectionHeading } from '../ui/SectionHeading'
 
 export function About() {
@@ -41,18 +40,6 @@ export function About() {
                   {chip}
                 </span>
               ))}
-            </div>
-
-            <div className="mt-7 flex flex-col gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg2)] p-5">
-              <p className="text-[14px] text-slate-300">
-                <span className="font-semibold text-[var(--color-ink)]">{education.degree}</span>
-                <br />
-                <span className="text-slate-400">{education.university}</span>
-              </p>
-              <p className="font-mono text-xs text-slate-500">{education.graduation}</p>
-              <div className="border-t border-[var(--color-border)] pt-3">
-                <LiveDeployStatus />
-              </div>
             </div>
           </motion.div>
 
