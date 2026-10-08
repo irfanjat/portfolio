@@ -16,8 +16,8 @@ export function About() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h3 className="font-display text-2xl font-bold text-white">
-              I'm <span className="text-[#11e956]">Irfan Ali</span> — Junior DevOps & Cloud Engineer
+            <h3 className="font-display text-2xl font-bold text-[var(--color-ink)]">
+              I'm <span className="text-[var(--color-green)]">Irfan Ali</span> — Junior DevOps & Cloud Engineer
             </h3>
             <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-slate-400">
               <p>
@@ -36,21 +36,21 @@ export function About() {
               {aboutChips.map((chip) => (
                 <span
                   key={chip}
-                  className="rounded-full border border-[#42a0ed]/20 bg-[#42a0ed]/10 px-3 py-1 text-[11px] font-medium text-[#8dc5f4]"
+                  className="rounded-full border border-[var(--color-cyan)]/20 bg-[var(--color-cyan)]/10 px-3 py-1 text-[11px] font-medium text-[var(--color-cyan-300)]"
                 >
                   {chip}
                 </span>
               ))}
             </div>
 
-            <div className="mt-7 flex flex-col gap-3 rounded-lg border border-[#323845] bg-[#181b26] p-5">
+            <div className="mt-7 flex flex-col gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg2)] p-5">
               <p className="text-[14px] text-slate-300">
-                <span className="font-semibold text-white">{education.degree}</span>
+                <span className="font-semibold text-[var(--color-ink)]">{education.degree}</span>
                 <br />
                 <span className="text-slate-400">{education.university}</span>
               </p>
               <p className="font-mono text-xs text-slate-500">{education.graduation}</p>
-              <div className="border-t border-[#323845] pt-3">
+              <div className="border-t border-[var(--color-border)] pt-3">
                 <LiveDeployStatus />
               </div>
             </div>
@@ -64,7 +64,7 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative overflow-hidden rounded-lg border border-[#323845] bg-[#181b26] p-6 text-center transition-colors hover:border-[#41f179]/50"
+                className="group relative overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-bg2)] p-6 text-center transition-colors hover:border-[var(--color-green-300)]/50"
               >
                 <span
                   aria-hidden="true"

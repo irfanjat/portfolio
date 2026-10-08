@@ -26,16 +26,16 @@ export function Certifications() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ delay: (i % 2) * 0.06, duration: 0.45 }}
-                className={`group flex flex-col rounded-lg border bg-[#181b26] p-5 transition-colors ${
-                  isCert ? 'border-[#11e956]/40 hover:border-[#11e956]' : 'border-[#323845] hover:border-[#42a0ed]/50'
+                className={`group flex flex-col rounded-lg border bg-[var(--color-bg2)] p-5 transition-colors ${
+                  isCert ? 'border-[var(--color-green)]/40 hover:border-[var(--color-green)]' : 'border-[var(--color-border)] hover:border-[var(--color-cyan)]/50'
                 }`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <span
                     className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-md border ${
                       isCert
-                        ? 'border-[#11e956]/40 bg-[#11e956]/10 text-[#11e956]'
-                        : 'border-[#323845] bg-[#202330] text-[#42a0ed]'
+                        ? 'border-[var(--color-green)]/40 bg-[var(--color-green)]/10 text-[var(--color-green)]'
+                        : 'border-[var(--color-border)] bg-[var(--color-bg2)] text-[var(--color-cyan)]'
                     }`}
                   >
                     {isCert ? <BadgeCheck className="h-4.5 w-4.5" /> : <BookOpenCheck className="h-4.5 w-4.5" />}
@@ -43,18 +43,18 @@ export function Certifications() {
                   <span
                     className={`rounded-sm border px-2 py-0.5 font-mono text-[9.5px] tracking-[0.12em] ${
                       isCert
-                        ? 'border-[#11e956]/40 text-[#11e956]'
-                        : 'border-[#323845] text-[#919dab]'
+                        ? 'border-[var(--color-green)]/40 text-[var(--color-green)]'
+                        : 'border-[var(--color-border)] text-[var(--color-muted)]'
                     }`}
                   >
                     {cred.kind.toUpperCase()}
                   </span>
                 </div>
-                <h3 className="mt-4 font-display text-[15px] font-bold leading-snug text-[#dde3eb]">{cred.title}</h3>
-                <p className="mt-1 font-mono text-[12px] text-[#919dab]">{cred.issuer}</p>
+                <h3 className="mt-4 font-display text-[15px] font-bold leading-snug text-[var(--color-ink)]">{cred.title}</h3>
+                <p className="mt-1 font-mono text-[12px] text-[var(--color-muted)]">{cred.issuer}</p>
                 <span
                   className={`mt-auto pt-3 inline-flex items-center gap-1.5 font-mono text-[11.5px] ${
-                    isCert ? 'text-[#11e956]' : 'text-[#42a0ed]'
+                    isCert ? 'text-[var(--color-green)]' : 'text-[var(--color-cyan)]'
                   } opacity-0 transition-opacity group-hover:opacity-100`}
                 >
                   verify <ExternalLink className="h-3 w-3" />
@@ -64,7 +64,7 @@ export function Certifications() {
           })}
         </div>
 
-        <p className="mt-6 max-w-2xl font-mono text-[12px] leading-relaxed text-[#6e7888]">
+        <p className="mt-6 max-w-2xl font-mono text-[12px] leading-relaxed text-[var(--color-slate-500)]">
           Note: the AWS and IBM entries are completed training courses, not industry certifications. Happy to walk
           through what each one covered.
         </p>

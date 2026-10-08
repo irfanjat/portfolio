@@ -45,10 +45,10 @@ export const toolChips = [
 ]
 
 export const stats = [
-  { label: 'Years Experience', value: 1, suffix: '+', accent: '#39d353', glow: 'rgba(57,211,83,0.35)' },
-  { label: 'Projects Shipped', value: 12, suffix: '+', accent: '#58a6ff', glow: 'rgba(88,166,255,0.35)' },
-  { label: 'Cloud Platforms', value: 1, suffix: '', accent: '#e3b341', glow: 'rgba(227,179,65,0.35)' },
-  { label: 'Certifications', value: 4, suffix: '', accent: '#bc8cff', glow: 'rgba(188,140,255,0.35)' },
+  { label: 'Years Experience', value: 1, suffix: '+', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
+  { label: 'Projects Shipped', value: 12, suffix: '+', accent: 'var(--color-cyan-400)', glow: 'rgba(88,166,255,0.35)' },
+  { label: 'Cloud Platforms', value: 1, suffix: '', accent: 'var(--color-amber-300)', glow: 'rgba(227,179,65,0.35)' },
+  { label: 'Certifications', value: 4, suffix: '', accent: 'var(--color-violet-400)', glow: 'rgba(188,140,255,0.35)' },
 ]
 
 export const aboutChips = [
@@ -67,7 +67,7 @@ export interface SkillCategory {
 export const skills: SkillCategory[] = [
   {
     title: 'CI/CD & GitOps',
-    accent: '#bc8cff',
+    accent: 'var(--color-violet-400)',
     items: [
       { label: 'GitHub Actions', detail: 'Automated build, test and deploy workflows' },
       { label: 'Jenkins', detail: 'Multistage CI pipelines' },
@@ -76,7 +76,7 @@ export const skills: SkillCategory[] = [
   },
   {
     title: 'Containers & Orchestration',
-    accent: '#58a6ff',
+    accent: 'var(--color-cyan-400)',
     items: [
       { label: 'Docker', detail: 'Image builds, registries and Compose environments' },
       { label: 'Docker Compose', detail: 'Local multi-container setups' },
@@ -85,7 +85,7 @@ export const skills: SkillCategory[] = [
   },
   {
     title: 'Infrastructure as Code',
-    accent: '#e3b341',
+    accent: 'var(--color-amber-300)',
     items: [
       { label: 'Terraform', detail: 'Modular infrastructure with remote state' },
       { label: 'Ansible', detail: 'Server configuration and provisioning' },
@@ -93,7 +93,7 @@ export const skills: SkillCategory[] = [
   },
   {
     title: 'Cloud Platforms (AWS)',
-    accent: '#f78166',
+    accent: 'var(--color-orange-400)',
     items: [
       { label: 'EC2', detail: 'Compute instances and launch templates' },
       { label: 'VPC', detail: 'Networking, subnets, NAT and security groups' },
@@ -109,7 +109,7 @@ export const skills: SkillCategory[] = [
   },
   {
     title: 'Monitoring & Observability',
-    accent: '#39d353',
+    accent: 'var(--color-green-400)',
     items: [
       { label: 'Prometheus', detail: 'Metrics collection and alert rules' },
       { label: 'Grafana', detail: 'Dashboards for metrics and logs' },
@@ -117,7 +117,7 @@ export const skills: SkillCategory[] = [
   },
   {
     title: 'Systems & Networking',
-    accent: '#58a6ff',
+    accent: 'var(--color-cyan-400)',
     items: [
       { label: 'Linux', detail: 'Day-to-day server administration' },
       { label: 'DNS', detail: 'Name resolution and record management' },
@@ -131,7 +131,7 @@ export const skills: SkillCategory[] = [
   },
   {
     title: 'Linux SysAdmin',
-    accent: '#bc8cff',
+    accent: 'var(--color-violet-400)',
     items: [
       { label: 'Firewalls', detail: 'iptables / ufw rules' },
       { label: 'Cron Jobs', detail: 'Scheduled tasks' },

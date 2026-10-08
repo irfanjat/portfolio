@@ -41,20 +41,20 @@ export function Modal({ open, onClose, label, children }: ModalProps) {
           aria-modal="true"
           aria-label={label}
         >
-          <div className="absolute inset-0 bg-[#121620]/80 backdrop-blur-sm" onClick={onClose} />
+          <div className="absolute inset-0 bg-[var(--color-bg)]/80 backdrop-blur-sm" onClick={onClose} />
           <motion.div
             initial={{ opacity: 0, y: 24, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.98 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="relative max-h-[88vh] w-full overflow-y-auto rounded-t-xl border border-[#323845] bg-[#181b26] shadow-[0_24px_80px_rgba(0,0,0,0.6)] sm:max-w-3xl sm:rounded-xl"
+            className="relative max-h-[88vh] w-full overflow-y-auto rounded-t-xl border border-[var(--color-border)] bg-[var(--color-bg2)] shadow-[0_24px_80px_rgba(0,0,0,0.6)] sm:max-w-3xl sm:rounded-xl"
           >
             {children}
             <button
               ref={closeRef}
               onClick={onClose}
               aria-label="Close project details"
-              className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-md border border-[#323845] bg-[#202330] text-[#919dab] transition hover:border-[#11e956]/60 hover:text-[#dde3eb]"
+              className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-md border border-[var(--color-border)] bg-[var(--color-bg2)] text-[var(--color-muted)] transition hover:border-[var(--color-green)]/60 hover:text-[var(--color-ink)]"
             >
               <X className="h-4 w-4" />
             </button>

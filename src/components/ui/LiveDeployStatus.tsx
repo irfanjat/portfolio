@@ -6,10 +6,10 @@ import {
 } from '../../hooks/useGitHubDeployStatus'
 
 const toneMap = {
-  passing: { dot: 'bg-[#11e956]', text: 'text-[#11e956]' },
-  failing: { dot: 'bg-[#f58f91]', text: 'text-[#f58f91]' },
-  pending: { dot: 'bg-[#efbb03]', text: 'text-[#efbb03]' },
-  unknown: { dot: 'bg-[#919dab]', text: 'text-[#919dab]' },
+  passing: { dot: 'bg-[var(--color-green)]', text: 'text-[var(--color-green)]' },
+  failing: { dot: 'bg-[var(--color-orange-400)]', text: 'text-[var(--color-orange-400)]' },
+  pending: { dot: 'bg-[var(--color-yellow)]', text: 'text-[var(--color-yellow)]' },
+  unknown: { dot: 'bg-[var(--color-muted)]', text: 'text-[var(--color-muted)]' },
 }
 
 export function LiveDeployStatus() {
@@ -49,12 +49,12 @@ export function LiveDeployStatus() {
       <span className={tone.text}>{label}</span>
       {status.ok && (
         <>
-          <span className="text-[#6e7888]">·</span>
-          <span className="text-[#919dab]">{when} ago</span>
+          <span className="text-[var(--color-slate-500)]">·</span>
+          <span className="text-[var(--color-muted)]">{when} ago</span>
         </>
       )}
-      <span className="text-[#6e7888]">·</span>
-      <span className={`inline-flex items-center gap-1 ${online ? 'text-[#919dab]' : 'text-[#f58f91]'}`}>
+      <span className="text-[var(--color-slate-500)]">·</span>
+      <span className={`inline-flex items-center gap-1 ${online ? 'text-[var(--color-muted)]' : 'text-[var(--color-orange-400)]'}`}>
         {online ? <Wifi className="h-3 w-3" /> : <WifiOff className="h-3 w-3" />}
         {online ? 'live' : 'offline · cached'}
       </span>

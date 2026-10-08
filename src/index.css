@@ -1,124 +1,216 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "DM Sans Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
-  /* boot.dev shell — gray scale */
-  --color-ink-950: #121620;
-  --color-ink-900: #181b26;
-  --color-ink-800: #202330;
+  /* GitHub Primer — light (default) */
+  --color-bg: #ffffff;
+  --color-bg2: #f6f8fa;
+  --color-bg3: #f6f8fa;
+  --color-border: #d0d7de;
+  --color-ink: #1f2328;
+  --color-muted: #656d76;
 
-  --color-bg: #252936;
-  --color-bg2: #202330;
-  --color-bg3: #181b26;
-  --color-border: #323845;
-  --color-ink: #dde3eb;
-  --color-muted: #919dab;
+  /* GitHub greens (accent / primary buttons) */
+  --color-green: #1a7f37;
+  --color-green-btn: #1f883d;
+  --color-green-btn-hover: #1a7f37;
+  --color-btn-border: rgba(31, 35, 40, 0.15);
 
-  /* boot.dev accent palette */
-  --color-green: #11e956;
-  --color-cyan: #42a0ed;
-  --color-orange: #f37c7e;
-  --color-yellow: #efbb03;
-  --color-purple: #8794c0;
+  /* GitHub blues / purples / yellows / danger */
+  --color-cyan: #0969da;
+  --color-orange: #cf222e;
+  --color-yellow: #9a6700;
+  --color-purple: #8250df;
 
-  /* Remap legacy aura accents onto the boot.dev palette */
-  --color-ai-violet: #11e956;
-  --color-ai-indigo: #8794c0;
-  --color-ai-cyan: #42a0ed;
-  --color-ai-fuchsia: #8794c0;
-  --color-ai-amber: #efbb03;
-  --color-ai-emerald: #11e956;
+  /* Legacy aura accents */
+  --color-ai-violet: #1a7f37;
+  --color-ai-indigo: #8250df;
+  --color-ai-cyan: #0969da;
+  --color-ai-fuchsia: #8250df;
+  --color-ai-amber: #9a6700;
+  --color-ai-emerald: #1a7f37;
 
-  /* boot.dev tinted gray scale */
-  --color-slate-50: #f5f7f9;
-  --color-slate-100: #e8ecf1;
-  --color-slate-200: #dde3eb;
-  --color-slate-300: #c4d1db;
-  --color-slate-400: #919dab;
-  --color-slate-500: #919dab;
-  --color-slate-600: #6e7888;
-  --color-slate-700: #323845;
-  --color-slate-800: #202330;
-  --color-slate-900: #181b26;
-  --color-slate-950: #121620;
+  /* GitHub gray scale */
+  --color-slate-50: #f6f8fa;
+  --color-slate-100: #eaeef2;
+  --color-slate-200: #d0d7de;
+  --color-slate-300: #b1bac4;
+  --color-slate-400: #656d76;
+  --color-slate-500: #57606a;
+  --color-slate-600: #424a53;
+  --color-slate-700: #32363d;
+  --color-slate-800: #24292f;
+  --color-slate-900: #1f2328;
+  --color-slate-950: #0d1117;
 
-  --color-green-100: #d7ffe4;
-  --color-green-200: #7dff9e;
-  --color-green-300: #41f179;
-  --color-green-400: #41f179;
-  --color-green-500: #11e956;
-  --color-green-600: #0db543;
-  --color-green-700: #09802f;
+  /* GitHub success scale */
+  --color-green-100: #dafbe1;
+  --color-green-200: #aceebb;
+  --color-green-300: #4ac26b;
+  --color-green-400: #2da44e;
+  --color-green-500: #1f883d;
+  --color-green-600: #1a7f37;
+  --color-green-700: #116329;
 
-  --color-emerald-200: #7dff9e;
-  --color-emerald-300: #41f179;
-  --color-emerald-400: #41f179;
-  --color-emerald-500: #11e956;
-  --color-emerald-600: #0db543;
-  --color-emerald-700: #09802f;
+  --color-emerald-200: #aceebb;
+  --color-emerald-300: #4ac26b;
+  --color-emerald-400: #2da44e;
+  --color-emerald-500: #1f883d;
+  --color-emerald-600: #1a7f37;
+  --color-emerald-700: #116329;
 
-  --color-cyan-200: #b2d8f8;
-  --color-cyan-300: #8dc5f4;
-  --color-cyan-400: #67b3f1;
-  --color-cyan-500: #42a0ed;
-  --color-cyan-600: #1586e1;
-  --color-cyan-700: #1167ae;
+  /* GitHub blue scale */
+  --color-cyan-200: #b6e3ff;
+  --color-cyan-300: #79c0ff;
+  --color-cyan-400: #58a6ff;
+  --color-cyan-500: #0969da;
+  --color-cyan-600: #0550ae;
+  --color-cyan-700: #0a3069;
 
-  --color-violet-200: #b2c1d0;
-  --color-violet-300: #b2c1d0;
-  --color-violet-400: #8794c0;
-  --color-violet-500: #6c7cb2;
-  --color-violet-600: #5466a0;
-  --color-violet-700: #465586;
+  /* GitHub purple scale */
+  --color-violet-200: #e9d5ff;
+  --color-violet-300: #c4a7f7;
+  --color-violet-400: #8250df;
+  --color-violet-500: #8250df;
+  --color-violet-600: #6639ba;
+  --color-violet-700: #6639ba;
 
-  --color-fuchsia-200: #b2c1d0;
-  --color-fuchsia-300: #b2c1d0;
-  --color-fuchsia-400: #8794c0;
-  --color-fuchsia-500: #6c7cb2;
-  --color-fuchsia-600: #5466a0;
+  --color-fuchsia-200: #e9d5ff;
+  --color-fuchsia-300: #c4a7f7;
+  --color-fuchsia-400: #8250df;
+  --color-fuchsia-500: #8250df;
+  --color-fuchsia-600: #6639ba;
 
-  --color-indigo-300: #b2c1d0;
-  --color-indigo-400: #8794c0;
-  --color-indigo-500: #6c7cb2;
+  --color-indigo-300: #c4a7f7;
+  --color-indigo-400: #8250df;
+  --color-indigo-500: #8250df;
 
-  --color-amber-200: #fddf8f;
-  --color-amber-300: #f6bd45;
-  --color-amber-400: #efbb03;
-  --color-amber-500: #d69e02;
-  --color-amber-600: #c18500;
+  /* GitHub amber scale */
+  --color-amber-200: #fff1a5;
+  --color-amber-300: #d4a72c;
+  --color-amber-400: #9a6700;
+  --color-amber-500: #9a6700;
+  --color-amber-600: #7d4e00;
 
-  --color-orange-300: #f7a1a3;
-  --color-orange-400: #f37c7e;
-  --color-orange-500: #f37c7e;
+  /* GitHub danger scale */
+  --color-orange-300: #ff8182;
+  --color-orange-400: #cf222e;
+  --color-orange-500: #cf222e;
+  --color-orange-600: #a40e26;
 
-  --animate-float: float 7s ease-in-out infinite;
-  --animate-float-delay: float 8s ease-in-out 1.5s infinite;
   --animate-gradient-x: gradientX 6s ease infinite;
-  --animate-blink: blink 1s step-end infinite;
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-14px); }
-  }
   @keyframes gradientX {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
   }
-  @keyframes blink {
-    50% { opacity: 0; }
-  }
+}
+
+/* GitHub Primer — dark (toggle) */
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #0d1117;
+  --color-bg2: #161b22;
+  --color-bg3: #21262d;
+  --color-border: #30363d;
+  --color-ink: #e6edf3;
+  --color-muted: #7d8590;
+
+  --color-green: #3fb950;
+  --color-green-btn: #238636;
+  --color-green-btn-hover: #2ea043;
+  --color-btn-border: rgba(240, 246, 252, 0.1);
+
+  --color-cyan: #58a6ff;
+  --color-orange: #f85149;
+  --color-yellow: #d29922;
+  --color-purple: #a371f7;
+
+  --color-ai-violet: #3fb950;
+  --color-ai-indigo: #a371f7;
+  --color-ai-cyan: #58a6ff;
+  --color-ai-fuchsia: #a371f7;
+  --color-ai-amber: #d29922;
+  --color-ai-emerald: #3fb950;
+
+  --color-slate-50: #0d1117;
+  --color-slate-100: #21262d;
+  --color-slate-200: #30363d;
+  --color-slate-300: #8b949e;
+  --color-slate-400: #7d8590;
+  --color-slate-500: #6e7681;
+  --color-slate-600: #484f58;
+  --color-slate-700: #30363d;
+  --color-slate-800: #161b22;
+  --color-slate-900: #0d1117;
+  --color-slate-950: #010409;
+
+  --color-green-100: #0f5323;
+  --color-green-200: #196c2e;
+  --color-green-300: #2ea043;
+  --color-green-400: #3fb950;
+  --color-green-500: #238636;
+  --color-green-600: #196c2e;
+  --color-green-700: #0f5323;
+
+  --color-emerald-200: #196c2e;
+  --color-emerald-300: #2ea043;
+  --color-emerald-400: #3fb950;
+  --color-emerald-500: #238636;
+  --color-emerald-600: #196c2e;
+  --color-emerald-700: #0f5323;
+
+  --color-cyan-200: #1f6feb;
+  --color-cyan-300: #58a6ff;
+  --color-cyan-400: #58a6ff;
+  --color-cyan-500: #388bfd;
+  --color-cyan-600: #1f6feb;
+  --color-cyan-700: #0a3069;
+
+  --color-violet-200: #8957e5;
+  --color-violet-300: #8957e5;
+  --color-violet-400: #a371f7;
+  --color-violet-500: #8957e5;
+  --color-violet-600: #6e40c9;
+  --color-violet-700: #6639ba;
+
+  --color-fuchsia-200: #8957e5;
+  --color-fuchsia-300: #8957e5;
+  --color-fuchsia-400: #a371f7;
+  --color-fuchsia-500: #8957e5;
+  --color-fuchsia-600: #6e40c9;
+
+  --color-indigo-300: #8957e5;
+  --color-indigo-400: #a371f7;
+  --color-indigo-500: #8957e5;
+
+  --color-amber-200: #7d4e00;
+  --color-amber-300: #e3b341;
+  --color-amber-400: #d29922;
+  --color-amber-500: #bb8009;
+  --color-amber-600: #9e6a03;
+
+  --color-orange-300: #ff7b72;
+  --color-orange-400: #f85149;
+  --color-orange-500: #da3633;
+  --color-orange-600: #b62324;
+}
+
+html {
+  color-scheme: light;
 }
 
 @layer base {
   * {
-    border-color: #323845;
+    border-color: var(--color-border);
   }
 
   html {
-    background: #252936;
+    background: var(--color-bg);
     scroll-behavior: smooth;
   }
 
@@ -128,46 +220,47 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    font-weight: 800;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--color-ink);
   }
 
   section:not(#home) {
-    border-top: 1px solid #323845;
+    border-top: 1px solid var(--color-border);
   }
 
   body {
     margin: 0;
     font-family: var(--font-sans);
-    background: #252936;
-    color: #c4d1db;
+    background: var(--color-bg);
+    color: var(--color-ink);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
 
   :focus-visible {
-    outline: 2px solid #11e956;
+    outline: 2px solid var(--color-cyan);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
   ::selection {
-    background: rgba(17, 233, 86, 0.35);
-    color: #ffffff;
+    background: color-mix(in srgb, var(--color-cyan) 35%, transparent);
+    color: var(--color-ink);
   }
 
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #252936;
+    background: var(--color-bg);
   }
   ::-webkit-scrollbar-thumb {
-    background: #323845;
+    background: color-mix(in srgb, var(--color-muted) 55%, transparent);
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #4e5564;
+    background: var(--color-muted);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -200,6 +293,9 @@
   .glass {
     background: var(--color-bg2);
     border: 1px solid var(--color-border);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+  }
+  html[data-theme="dark"] .glass {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   }
 
@@ -217,7 +313,10 @@
   }
   .glass-hover:hover {
     transform: translateY(-3px);
-    border-color: rgba(17, 233, 86, 0.45);
+    border-color: color-mix(in srgb, var(--color-green) 45%, transparent);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+  }
+  html[data-theme="dark"] .glass-hover:hover {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
   }
 
@@ -229,10 +328,10 @@
     height: 8px;
     transform: translateX(-50%) rotate(45deg);
     border-radius: 1.5px;
-    background-image: linear-gradient(135deg, #d7ffe6 0%, #11e956 55%, #0db543 100%);
+    background-image: linear-gradient(135deg, var(--color-green-100) 0%, var(--color-green-400) 55%, var(--color-green-600) 100%);
     box-shadow:
-      0 0 8px 1px rgba(17, 233, 86, 0.45),
-      0 2px 6px rgba(0, 0, 0, 0.45);
+      0 0 8px 1px color-mix(in srgb, var(--color-green) 45%, transparent),
+      0 2px 6px rgba(0, 0, 0, 0.35);
     transition:
       box-shadow 0.3s ease,
       width 0.3s ease,
@@ -242,22 +341,18 @@
   a:hover .nav-diamond,
   a:focus-visible .nav-diamond {
     box-shadow:
-      0 0 18px 5px rgba(17, 233, 86, 0.85),
-      0 2px 10px rgba(0, 0, 0, 0.55);
+      0 0 18px 5px color-mix(in srgb, var(--color-green) 85%, transparent),
+      0 2px 10px rgba(0, 0, 0, 0.45);
   }
 
   .logo-name {
-    color: #efbb03;
-    text-shadow:
-      1.5px 1.5px 0 #121620,
-      -1.5px 1.5px 0 #121620,
-      1.5px -1.5px 0 #121620,
-      -1.5px -1.5px 0 #121620,
-      0 3px 12px rgba(0, 0, 0, 0.45);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 600;
     transition: color 0.2s ease;
   }
   a:hover .logo-name {
-    color: #fddf8f;
+    color: var(--color-ink);
   }
 
   .btn-green {
@@ -265,41 +360,33 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #41f179;
-    color: #043212;
+    border-radius: 6px;
+    border: 1px solid var(--color-btn-border);
+    color: #ffffff;
     font-weight: 600;
-    background-image:
-      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.45), transparent 65%),
-      linear-gradient(to bottom, #11e956, #41f179);
-    box-shadow: 0 4px 14px -6px rgba(0, 0, 0, 0.55);
+    background: var(--color-green-btn);
+    box-shadow: 0 1px 0 rgba(248, 249, 251, 0.06) inset;
     transition:
-      background-image 0.2s ease,
-      border-color 0.2s ease,
+      background 0.15s ease,
+      border-color 0.15s ease,
       transform 0.2s ease,
       box-shadow 0.2s ease;
   }
   .btn-green:hover {
-    border-color: #7ee787;
-    background-image:
-      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.3), transparent 65%),
-      linear-gradient(to bottom, #0db543, #11e956);
-    box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.6);
+    background: var(--color-green-btn-hover);
   }
   .btn-green:active {
-    background-image:
-      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.2), transparent 65%),
-      linear-gradient(to bottom, #0db543, #09802f);
+    background: var(--color-green-btn-hover);
   }
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(100deg, #11e956 0%, #42a0ed 100%);
+    background-image: linear-gradient(100deg, var(--color-green) 0%, var(--color-cyan) 100%);
   }
 
   .gradient-text-animated {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(100deg, #11e956, #42a0ed, #11e956);
+    background-image: linear-gradient(100deg, var(--color-green), var(--color-cyan), var(--color-green));
     background-size: 220% auto;
     -webkit-animation: var(--animate-gradient-x);
     animation: var(--animate-gradient-x);
@@ -313,20 +400,42 @@
     content: "";
     @apply h-2 w-2 rounded-full;
     background: var(--color-green);
-    box-shadow: 0 0 8px var(--color-green);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--color-green) 60%, transparent);
     animation: pulse 2s infinite;
   }
 
   .glass-input {
-    @apply w-full rounded-md border border-[var(--color-border)] bg-[var(--color-bg3)] px-3.5 py-2.5 text-sm text-[var(--color-ink)] placeholder:text-[var(--color-muted)] transition-colors duration-200;
+    @apply w-full rounded-md border border-[var(--color-border)] bg-[var(--color-bg)] px-3.5 py-2.5 text-sm text-[var(--color-ink)] placeholder:text-[var(--color-muted)] transition-colors duration-200;
   }
   .glass-input:focus {
-    @apply border-[var(--color-green)] outline-none;
-    box-shadow: 0 0 0 1px rgba(17, 233, 86, 0.25);
+    border-color: var(--color-cyan);
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-cyan) 30%, transparent);
   }
 
   label {
     @apply font-mono text-xs text-[var(--color-muted)];
+  }
+
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg3);
+    color: var(--color-muted);
+    transition:
+      color 0.15s ease,
+      background 0.15s ease,
+      border-color 0.15s ease;
+  }
+  .icon-btn:hover {
+    color: var(--color-ink);
+    background: var(--color-bg2);
+    border-color: color-mix(in srgb, var(--color-cyan) 60%, transparent);
   }
 
   @keyframes pulse {
@@ -344,12 +453,29 @@
     text-wrap: balance;
   }
 
+  .site-header {
+    background: color-mix(in srgb, var(--color-bg) 80%, transparent);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+    transition:
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .site-header.is-scrolled {
+    background: color-mix(in srgb, var(--color-bg) 95%, transparent);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+  }
+  html[data-theme="dark"] .site-header.is-scrolled {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  }
+
   .skip-link {
-    @apply fixed top-2 left-2 z-[100] -translate-y-16 rounded-md bg-[#181b26] px-4 py-2 font-mono text-sm text-[#11e956] transition-transform focus:translate-y-0;
+    @apply fixed top-2 left-2 z-[100] -translate-y-16 rounded-md bg-[var(--color-bg2)] px-4 py-2 font-mono text-sm text-[var(--color-green)] transition-transform focus:translate-y-0;
   }
 
   .dot-grid {
-    background-image: radial-gradient(rgba(145, 157, 171, 0.16) 1px, transparent 1px);
+    background-image: radial-gradient(color-mix(in srgb, var(--color-muted) 16%, transparent) 1px, transparent 1px);
     background-size: 22px 22px;
   }
 }
