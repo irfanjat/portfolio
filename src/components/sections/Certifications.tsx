@@ -63,11 +63,6 @@ export function Certifications() {
             )
           })}
         </div>
-
-        <p className="mt-6 max-w-2xl font-mono text-[12px] leading-relaxed text-[var(--color-slate-500)]">
-          Note: the AWS and IBM entries are completed training courses, not industry certifications. Happy to walk
-          through what each one covered.
-        </p>
       </div>
     </section>
   )
