@@ -7,7 +7,7 @@ import { useTheme } from '../../hooks/useTheme'
 
 function Logo() {
   return (
-    <span className="logo-name text-[20px] leading-none tracking-tight">Irfan Ali</span>
+    <span className="logo-name text-[20px] leading-none tracking-tight text-[var(--color-cyan-300)] text-[var(--color-cyan-300)]">Irfan Ali</span>
   )
 }
 

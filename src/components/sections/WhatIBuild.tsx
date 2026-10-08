@@ -22,19 +22,30 @@ const cards = [
     tech: ['Kubernetes', 'EKS', 'Ingress', 'Docker'],
   },
   {
-    title: 'Observability',
+    title: 'IaC & Monitoring',
     icon: ServerCog,
-    desc: 'Metrics, logs and dashboards with Prometheus, Grafana, Loki/Promtail for early detection and faster RCA.',
-    tech: ['Prometheus', 'Grafana', 'Loki', 'Promtail'],
+    desc: 'Terraform for repeatable infra, Prometheus/Grafana/Loki for metrics/logs, alerts and faster RCA.',
+    tech: ['Terraform', 'Prometheus', 'Grafana', 'Loki', 'Promtail'],
+  },
+  {
+    title: 'Automation & Scripting',
+    icon: Cloud,
+    desc: 'Bash/Python to automate checks, reports and routine ops to reduce toil.',
+    tech: ['Bash', 'Python', 'Git'],
+  },
+  {
+    title: 'Security & Policy-as-Code',
+    icon: GitBranch,
+    desc: 'OPA/Rego, Kyverno and Conftest to enforce guardrails early in PRs and IaC.',
+    tech: ['OPA/Rego', 'Kyverno', 'Conftest'],
   },
 ]
-
 export function WhatIBuild() {
   return (
     <section id="build" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-5xl">
         <SectionHeading index="01" label="what i build" title="What I Build" />
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((card, i) => {
             const Icon = card.icon
             return (
