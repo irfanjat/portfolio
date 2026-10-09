@@ -8,7 +8,6 @@ import { Contact } from './components/sections/Contact'
 import { Education } from './components/sections/Education'
 import { Hero } from './components/sections/Hero'
 import { WhatIBuild } from './components/sections/WhatIBuild'
-import { Challenges } from './components/sections/Challenges'
 import { WorkflowStrip } from './components/sections/WorkflowStrip'
 import { ResumeCTA } from './components/sections/ResumeCTA'
 import { Path } from './components/sections/Path'
@@ -31,7 +30,6 @@ function App() {
         <About />
         <Skills />
         <Projects />
-        <Challenges />
         <WorkflowStrip />
         <Path />
         <Certifications />
