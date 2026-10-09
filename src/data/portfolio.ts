@@ -25,8 +25,7 @@ export const contactForm = {
 }
 
 export const navLinks = [
-  { label: 'Build', href: '#build' },
-  { label: 'About', href: '#about' },
+    { label: 'About', href: '#about' },
     { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
     { label: 'Certs', href: '#certifications' },

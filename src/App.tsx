@@ -7,7 +7,6 @@ import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
 import { Education } from './components/sections/Education'
 import { Hero } from './components/sections/Hero'
-import { WhatIBuild } from './components/sections/WhatIBuild'
 import { WorkflowStrip } from './components/sections/WorkflowStrip'
 import { ResumeCTA } from './components/sections/ResumeCTA'
 import { Path } from './components/sections/Path'
@@ -26,7 +25,6 @@ function App() {
       </a>
       <main className="relative z-10">
         <Hero />
-        <WhatIBuild />
         <About />
         <Skills />
         <Projects />
