@@ -8,7 +8,7 @@ export function ResumeCTA() {
   return (
     <section id="resume-cta" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-5xl">
-        <SectionHeading index="10" label="resume" title="Want the full picture?" />
+        <SectionHeading index="09" label="resume" title="Want the full picture?" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

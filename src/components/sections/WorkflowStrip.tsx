@@ -7,7 +7,7 @@ export function WorkflowStrip() {
   return (
     <section id="workflow" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-5xl">
-        <SectionHeading index="06" label="workflow" title="How I Ship" />
+        <SectionHeading index="05" label="workflow" title="How I Ship" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

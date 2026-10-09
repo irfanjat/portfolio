@@ -30,7 +30,7 @@ export function Contact() {
     <section id="contact" className="section-padding relative pb-36 content-visibility-auto">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
-          index="11"
+          index="10"
           label="contact"
           title="Get In Touch"
         />

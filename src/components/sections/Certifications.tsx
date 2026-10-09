@@ -8,7 +8,7 @@ export function Certifications() {
     <section id="certifications" className="section-padding relative content-visibility-auto">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
-          index="08"
+          index="07"
           label="certifications"
           title="Certifications"
         />
