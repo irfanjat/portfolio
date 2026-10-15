@@ -7,9 +7,6 @@ import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
 import { Education } from './components/sections/Education'
 import { Hero } from './components/sections/Hero'
-import { WorkflowStrip } from './components/sections/WorkflowStrip'
-import { ResumeCTA } from './components/sections/ResumeCTA'
-import { Path } from './components/sections/Path'
 import { Projects } from './components/sections/Projects'
 import { Skills } from './components/sections/Skills'
 import { ScrollToTop } from './components/ui/ScrollToTop'
@@ -28,11 +25,8 @@ function App() {
         <About />
         <Skills />
         <Projects />
-        <WorkflowStrip />
-        <Path />
         <Certifications />
         <Education />
-        <ResumeCTA />
         <Contact />
       </main>
       <Footer />
