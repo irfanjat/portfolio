@@ -432,46 +432,7 @@ export const projects: Project[] = [
       'Automated reports beat manual spreadsheets for catching waste early.',
     ],
   },
-  {
-    id: 'guardrails',
-    tag: 'Security · Policy-as-Code',
-    category: 'Security',
-    title: 'Policy Guardrails',
-    subtitle: 'IaC Security Guardrails Engine',
-    problem:
-      'Security rules written in documentation are never enforced — misconfigurations pass review and reach production manifests.',
-    result:
-      'OPA/Rego policies run as a merge gate: risky Terraform plans and Kubernetes manifests are rejected with an automated comment explaining the violation.',
-    tech: ['OPA/Rego', 'Kyverno', 'Conftest', 'Terraform', 'Kubernetes', 'GitHub Actions'],
-    github: 'https://github.com/irfanjat/Guardrails',
-    architecture: [
-      { node: 'Pull request', detail: 'Every infra/k8s change enters the pipeline.' },
-      { node: 'Conftest · Terraform', detail: 'Rego policy checks against the planned changes.' },
-      { node: 'Kyverno · Kubernetes', detail: 'Validation against cluster admission policies.' },
-      { node: 'Merge gate', detail: 'Violations block the merge with an explanatory comment.' },
-    ],
-    solution: 'Shift-left enforcement: Conftest/OPA for Terraform plans and Kyverno/Rego policies for K8s manifests run on PRs, blocking merges with explanatory comments on violations.',
-    outcomes: [
-      'Consistent, automated policy enforcement on every change',
-      'Reduced misconfigurations reaching production',
-      'Reviewable, versioned policy definitions',
-    ],
-    howItWorks: [
-      'PR triggers policy checks in CI',
-      'Conftest validates Terraform plan against Rego policies',
-      'Kyverno/Conftest validate K8s manifests',
-      'Violations block merge with clear explanation',
-    ],
-    decisions: [
-      'Fail-closed: block unsafe changes by default',
-      'Policies as code (reviewable, testable)',
-      'Shift-left to catch issues before apply/deploy',
-    ],
-    lessons: [
-      'Policies stored as code are reviewable and versioned like everything else.',
-      'Automated checks are applied consistently on every change.',
-    ],
-  },
+
 ]
 
 export interface Credential {
