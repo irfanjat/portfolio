@@ -346,13 +346,13 @@ html {
   }
 
   .logo-name {
-    color: var(--color-ink);
+    color: var(--color-green-400);
     font-family: var(--font-sans);
     font-weight: 600;
     transition: color 0.2s ease;
   }
   a:hover .logo-name {
-    color: var(--color-ink);
+    color: var(--color-green-500);
   }
 
   .btn-green {
