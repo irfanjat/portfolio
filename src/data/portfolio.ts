@@ -4,16 +4,16 @@ export const personal = {
   lastName: 'Ali',
   initials: 'IA',
   role: 'DevOps & Cloud Engineer',
-  roles: ['DevOps Engineer', 'Cloud Engineer', 'Platform Engineer', 'SRE-Minded'],
+  roles: ['DevOps Engineer', 'Cloud Engineer', 'Platform Engineer', 'Infrastructure Engineer'],
   tagline:
-    'I design cloud-native infrastructure, automate delivery pipelines, and keep production platforms reliable, observable, and secure.',
+    'I build cloud-native infrastructure and automated delivery pipelines, with a focus on reliability, observability and security.',
   phone: '03153711489',
   email: 'irfanali.cloud@gmail.com',
   linkedin: 'https://linkedin.com/in/irfanjat',
   github: 'https://github.com/irfanjat',
   resume: '/IrfanAliResume.pdf',
   location: 'Pakistan',
-  availability: 'Open to DevOps, Cloud & Platform Engineering roles',
+  availability: 'Open to opportunities',
   availabilityDetail:
     'Full-time, hybrid, on-site & remote — flexible on location and work arrangement.',
 }
@@ -33,22 +33,11 @@ export const navLinks = [
   { label: 'Contact', href: '#contact' },
 ]
 
-export const toolChips = [
-  { label: 'Docker', icon: 'docker' },
-  { label: 'Kubernetes', icon: 'k8s' },
-  { label: 'Terraform', icon: 'terraform' },
-  { label: 'AWS', icon: 'aws' },
-  { label: 'ArgoCD', icon: 'argocd' },
-  { label: 'GitHub Actions', icon: 'actions' },
-  { label: 'Prometheus', icon: 'prometheus' },
-  { label: 'Grafana', icon: 'grafana' },
-]
 
 export const stats = [
   { label: 'Years Experience', value: 1, suffix: '+', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
-  { label: 'Projects Shipped', value: 12, suffix: '+', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
-  { label: 'Cloud Platforms', value: 1, suffix: '', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
-  { label: 'Certifications', value: 4, suffix: '', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
+  { label: 'Projects Shipped', value: 20, suffix: '+', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
+  { label: 'Cloud Services', value: 10, suffix: '+', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
 ]
 
 export const aboutChips = [
@@ -138,114 +127,6 @@ export const skills: SkillCategory[] = [
   },
 ]
 
-export type RoadmapState = 'LEARNED' | 'BUILDING' | 'PRACTICING' | 'PROJECT'
-
-export interface RoadmapNode {
-  step: number
-  title: string
-  domain: string
-  state: RoadmapState
-  summary: string
-  tech: string[]
-  links?: { label: string; href: string }[]
-}
-
-export const roadmap: RoadmapNode[] = [
-  {
-    step: 1,
-    title: 'Foundations',
-    domain: 'Computer Science · Networking',
-    state: 'LEARNED',
-    summary:
-      'How the internet works, HTTP/DNS/TLS, Git workflows and the computer science basics everything else builds on.',
-    tech: ['Git', 'Networking', 'Linux basics'],
-  },
-  {
-    step: 2,
-    title: 'Linux & Administration',
-    domain: 'Servers · Bash',
-    state: 'PRACTICING',
-    summary:
-      'Server work: permissions, systemd, processes, cron, SSH, firewalls and shell scripting for everyday tasks.',
-    tech: ['Bash', 'systemd', 'SSH', 'LVM', 'UFW/iptables'],
-  },
-  {
-    step: 3,
-    title: 'Containers',
-    domain: 'Docker · Image Lifecycle',
-    state: 'LEARNED',
-    summary:
-      'Building images, multi-stage builds, registries, Compose for local environments and container runtimes.',
-    tech: ['Docker', 'Docker Compose'],
-  },
-  {
-    step: 4,
-    title: 'Cloud Foundations',
-    domain: 'AWS Core Services',
-    state: 'LEARNED',
-    summary:
-      'VPC, EC2, S3, IAM, RDS — and the habits that go with them: least privilege and encryption by default.',
-    tech: ['EC2', 'VPC', 'S3', 'IAM', 'RDS'],
-  },
-  {
-    step: 5,
-    title: 'Infrastructure as Code',
-    domain: 'Terraform · Ansible',
-    state: 'PRACTICING',
-    summary:
-      'Declarative infrastructure: modular Terraform with remote state, plan/apply workflows, and Ansible for configuration.',
-    tech: ['Terraform', 'Ansible', 'DynamoDB locks'],
-    links: [{ label: 'terraform-aws-infra', href: 'https://github.com/irfanjat/terraform-aws-infra' }],
-  },
-  {
-    step: 6,
-    title: 'CI/CD Pipelines',
-    domain: 'Automation · Delivery',
-    state: 'PRACTICING',
-    summary:
-      'Automating build, test and deploy — GitHub Actions day to day, plus quality gates that catch bad code early.',
-    tech: ['GitHub Actions', 'Jenkins', 'Quality gates'],
-  },
-  {
-    step: 7,
-    title: 'Kubernetes',
-    domain: 'Orchestration · EKS',
-    state: 'BUILDING',
-    summary:
-      'Moving workloads from Compose to a cluster: pods, services, ingress, controllers and rolling updates.',
-    tech: ['Kubernetes', 'EKS', 'Ingress', 'HPA'],
-  },
-  {
-    step: 8,
-    title: 'GitOps',
-    domain: 'ArgoCD · Config-as-Code',
-    state: 'BUILDING',
-    summary:
-      'Git as the source of truth: ArgoCD keeps the cluster in sync with the repo, and rollbacks are just git reverts.',
-    tech: ['ArgoCD', 'Manifest repos'],
-    links: [{ label: 'gitops repo', href: 'https://github.com/irfanjat/gitops-cicd-pipeline' }],
-  },
-  {
-    step: 9,
-    title: 'Observability',
-    domain: 'Metrics · Logs · Dashboards',
-    state: 'BUILDING',
-    summary:
-      'Collecting metrics and logs, writing alert rules, and building dashboards that make issues visible early.',
-    tech: ['Prometheus', 'Grafana'],
-  },
-  {
-    step: 10,
-    title: 'Production & Security',
-    domain: 'SRE · Guardrails',
-    state: 'PROJECT',
-    summary:
-      'Capacity planning, recovery, least-privilege and policy-as-code — the layer that keeps production stable.',
-    tech: ['OPA/Rego', 'Kyverno', 'SLO thinking'],
-    links: [{ label: 'guardrails repo', href: 'https://github.com/irfanjat/Guardrails' }],
-  },
-]
-
 export interface Project {
   id: string
   tag: string
@@ -276,7 +157,7 @@ export const projects: Project[] = [
     problem:
       'Manual deployments meant untested releases, unverified images and configuration drift between environments.',
     result:
-      'Push to main triggers the full chain — build, tests, container scan, image tagging and ArgoCD sync. The cluster always matches the repo, and rollbacks are a git revert.',
+      'Push to main triggers the full chain — build, tests, container scan, image tagging and ArgoCD sync, so the cluster stays in sync with the repo and rollbacks are a git revert.',
     tech: ['GitHub Actions', 'Docker', 'ArgoCD', 'Kubernetes', 'Helm', 'Python'],
     github: 'https://github.com/irfanjat/gitops-cicd-pipeline',
     extraLinks: [{ label: 'config repo', href: 'https://github.com/irfanjat/gitops-cicd-pipeline-config' }],
@@ -315,7 +196,7 @@ export const projects: Project[] = [
     tag: 'Infrastructure as Code',
     category: 'Infrastructure as Code',
     title: 'AWS Multi-Tier Infra',
-    subtitle: 'Production-Style Multi-Tier AWS Infrastructure',
+    subtitle: 'Multi-Tier AWS Infrastructure',
     problem:
       'Console-built infrastructure cannot be reviewed, versioned or rebuilt — nobody knows the real state.',
     result:

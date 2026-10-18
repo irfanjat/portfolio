@@ -20,7 +20,7 @@ export function About() {
             </h3>
             <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-slate-400">
               <p>
-                I design, automate, and operate cloud-native infrastructure with a focus on reliability, security, and repeatability.
+                I build and automate cloud-native infrastructure, with a focus on reliability, security and repeatability.
               </p>
               <p>
                 From AWS architecture and Terraform IaC to GitHub Actions, ArgoCD, Kubernetes, and Prometheus/Grafana observability, I focus on the full lifecycle: build → automate → deploy → monitor → troubleshoot → improve.
@@ -39,7 +39,7 @@ export function About() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-3 gap-3 sm:gap-4">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -47,7 +47,7 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-bg2)] p-6 text-center transition-colors hover:border-[var(--color-green-300)]/50"
+                className="group relative overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-bg2)] p-4 text-center transition-colors hover:border-[var(--color-green-300)]/50 sm:p-5"
               >
                 <span
                   aria-hidden="true"
@@ -58,13 +58,13 @@ export function About() {
                 />
                 <div className="relative">
                   <div
-                    className="font-display text-4xl font-extrabold"
+                    className="font-display text-3xl font-extrabold sm:text-4xl"
                     style={{ color: stat.accent, textShadow: `0 0 26px ${stat.glow}` }}
                   >
                     {stat.value}
                     <span>{stat.suffix}</span>
                   </div>
-                  <div className="mt-2 text-xs text-[var(--color-muted)]">{stat.label}</div>
+                  <div className="mt-2 text-[11px] leading-tight text-[var(--color-muted)] sm:text-xs">{stat.label}</div>
                 </div>
               </motion.div>
             ))}

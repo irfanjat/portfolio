@@ -1,7 +1,7 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion'
 import { Menu, Moon, Sun, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-import { navLinks, personal } from '../../data/portfolio'
+import { navLinks } from '../../data/portfolio'
 import { useActiveSection } from '../../hooks/useActiveSection'
 import { useTheme } from '../../hooks/useTheme'
 
@@ -73,14 +73,6 @@ export function Navbar() {
             >
               {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
-            <a
-              href={personal.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden rounded-md border border-[var(--color-border)] px-4 py-2 text-[13px] font-medium text-[var(--color-muted)] transition hover:border-[color-mix(in_srgb,var(--color-cyan)_60%,transparent)] hover:text-[var(--color-ink)] md:block"
-            >
-              Resume
-            </a>
             <a
               href="#contact"
               className="btn-green hidden px-4 py-2 text-[13px] transition md:block"
