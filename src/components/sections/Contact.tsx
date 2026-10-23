@@ -61,7 +61,7 @@ export function Contact() {
     const data = new FormData(form)
 
     data.append('subject', `Portfolio contact — ${String(data.get('name') ?? 'new message')}`)
-    data.append('from_name', 'irfanali.pages.dev')
+    data.append('from_name', 'irfanjat.online')
 
     setStatus('sending')
 

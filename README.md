@@ -1,6 +1,6 @@
 # Irfan Ali — DevOps & Cloud Engineer Portfolio
 
-> 🌐 Live: <https://irfanali.pages.dev>
+> 🌐 Live: <https://irfanjat.online>
 
 Modern **glassmorphism** portfolio built with **React 19**, **TypeScript**, **Vite**, **Tailwind CSS v4**, and **Framer Motion** — featuring an animated **CI/CD pipeline monitor** hero, aurora gradient background, magnetic buttons, rotating role titles, and frosted-glass surfaces throughout.
 
@@ -64,7 +64,7 @@ docker run -p 8080:80 irfan-devops-portfolio
 
 ## Deploy — Cloudflare Pages (GitHub Actions)
 
-Auto-deploys on every push to `main` via `.github/workflows/deploy-cloudflare-pages.yml` → **<https://irfanali.pages.dev>**.
+Auto-deploys on every push to `main` via `.github/workflows/deploy-cloudflare-pages.yml` → **<https://irfanjat.online>**.
 
 Set up once (both secrets already set for this repo):
 
