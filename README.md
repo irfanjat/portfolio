@@ -1,44 +1,87 @@
 # Irfan Ali — DevOps & Cloud Engineer Portfolio
 
-> 🌐 Live: <https://irfanjat.online>
+Live site: **<https://irfanjat.online>**
 
-Modern **glassmorphism** portfolio built with **React 19**, **TypeScript**, **Vite**, **Tailwind CSS v4**, and **Framer Motion** — featuring an animated **CI/CD pipeline monitor** hero, aurora gradient background, magnetic buttons, rotating role titles, and frosted-glass surfaces throughout.
+A dark, terminal-inspired single-page portfolio focused on DevOps, cloud infrastructure and platform engineering. Built with React 19, TypeScript and Vite, with a hand-written CSS design system.
 
-## Features
+## Highlights
 
-- 🌌 Animated aurora background with film grain + cursor spotlight (touch-device aware)
-- 🚀 Hero with a live CI/CD pipeline monitor, floating tool chips & rotating roles
-- 🧊 True glassmorphism: frosted panels, gradient borders, holographic hover
-- ♿ `content-visibility` + reduced-blur on mobile for fast scrolling
-- ⚡ Self-hosted variable fonts, immutable asset caching, brotli compression
+- Responsive single-page layout with a fixed navigation, scroll spy and mobile menu
+- Terminal-style hero with rotating role titles, portrait and availability status
+- Content-driven sections for about, skills, experience, certifications, projects, notes, FAQ and contact
+- Scroll-reveal animations with `prefers-reduced-motion` support
+- Accessible landmarks, keyboard navigation, visible focus states and skip link
+- SEO metadata, JSON-LD, Open Graph image, custom 404 page and security headers
+- Web3Forms contact form with mailto fallback
+- Automatic deployment to Cloudflare Pages through GitHub Actions
+
+## Sections
+
+1. Hero
+2. About and statistics
+3. Technical skills
+4. Experience and education
+5. Certifications and courses
+6. Projects
+7. Engineering notes
+8. FAQ
+9. Contact
 
 ## Stack
 
-- **React 19** + **TypeScript** (strict mode)
+- **React 19** and **TypeScript**
 - **Vite 6**
-- **Tailwind CSS v4** (CSS-first config via `@theme` + `@tailwindcss/postcss`)
-- **Framer Motion** — animations, scroll effects, spring cursor glow
-- **@fontsource-variable** — self-hosted Inter, Sora, JetBrains Mono
-- **Lucide React** + **React Icons** — icons & tool brands
-- **Lenis** — smooth scrolling
+- **Tailwind CSS v4** reset plus a custom CSS design system
+- **Lucide React** icons
+- **Web3Forms** for the contact form
+- **GitHub Actions** and **Cloudflare Pages** for deployment
 
 ## Getting Started
 
 ```bash
 npm ci
+cp .env.example .env
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173).
+Open <http://localhost:5173>.
 
-## Build & preview
+The contact form works with the configured public Web3Forms key. To use your own form, set `VITE_WEB3FORMS_ACCESS_KEY` in `.env` and restrict the key to your domain in the Web3Forms dashboard.
+
+## Build
 
 ```bash
 npm run build
 npm run preview
 ```
 
-Output goes to `dist/`.
+The production output is written to `dist/`.
+
+## Project Structure
+
+```text
+src/
+  components/
+    layout/          Navbar and footer
+    sections/        Page sections
+  data/
+    portfolio.ts     All site content and links
+  hooks/             Active section, reveal and typewriter hooks
+  index.css          Design tokens, layout and responsive styles
+public/
+  404.html           Custom not-found page
+  og-image.png       Social preview image
+  pic.jpg            Portrait image
+  IrfanAliResume.pdf Resume download
+```
+
+## Customization
+
+- **Content:** edit `src/data/portfolio.ts` for personal details, roles, stats, skills, projects, credentials, experience, notes and FAQ entries.
+- **Design:** edit `src/index.css` for colors, typography, spacing, layout and responsive behavior.
+- **Assets:** replace files in `public/` for the portrait, resume, social image and favicon.
+- **Metadata:** update canonical, Open Graph, Twitter and JSON-LD URLs in `index.html` if the domain changes.
+- **Contact form:** set `VITE_WEB3FORMS_ACCESS_KEY` in `.env` or update the form key in `src/data/portfolio.ts`.
 
 ## Docker
 
@@ -46,7 +89,7 @@ Output goes to `dist/`.
 docker compose up --build
 ```
 
-Open [http://localhost:8080](http://localhost:8080)
+Open <http://localhost:8080>.
 
 Or manually:
 
@@ -55,56 +98,23 @@ docker build -t irfan-devops-portfolio .
 docker run -p 8080:80 irfan-devops-portfolio
 ```
 
-## Customize
+## Deployment
 
-- **Content** — edit `src/data/portfolio.ts`: personal info, roles, skills, stats, certifications, projects, and the hero pipeline/tool-chip data.
-- **Design system** — `src/index.css`: theme tokens, glass utilities, gradient text, aurora keyframes.
-- **Resume** — replace `public/IrfanAliResume.pdf`.
-- **Contact form** — uses [Web3Forms](https://web3forms.com). Set your own key via `VITE_WEB3FORMS_ACCESS_KEY` (see `.env.example`) — **never commit your real key**.
+Pushes to `main` trigger `.github/workflows/deploy-cloudflare-pages.yml`, which builds the site and deploys `dist/` to the `irfanali` Cloudflare Pages project.
 
-## Deploy — Cloudflare Pages (GitHub Actions)
+Required repository secrets:
 
-Auto-deploys on every push to `main` via `.github/workflows/deploy-cloudflare-pages.yml` → **<https://irfanjat.online>**.
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
 
-Set up once (both secrets already set for this repo):
+The custom domain is managed through Cloudflare:
 
-1. **API token** — Cloudflare → **My Profile → API Tokens → Create Custom Token** with one permission: `Account → Cloudflare Pages → Edit`.
-2. **Repo secrets** — GitHub → repo → **Settings → Secrets and variables → Actions**:
-   - `CLOUDFLARE_API_TOKEN`
-   - `CLOUDFLARE_ACCOUNT_ID` (the hex ID from `dash.cloudflare.com/<id>`)
-3. Push to `main` — the workflow builds `dist` and deploys it.
+- `https://irfanjat.online`
+- `https://www.irfanjat.online`
 
-### Caching & security headers
-
-`public/_headers` is bundled into the build and makes Cloudflare serve hash-named assets with:
-
-```
-/assets/*         → Cache-Control: public, max-age=31536000, immutable
-all responses     → X-Content-Type-Options: nosniff, Referrer-Policy
-```
-
-### Custom domain (optional)
-
-Workers & Pages → **irfanali** → **Custom domains** → add your domain. Cloudflare handles DNS + HTTPS automatically. Then update `canonical`/`og:url`/`og:image` in `index.html`.
-
-### Other static hosts
-
-Deploy `dist/` to Vercel, Netlify, S3 + CloudFront, or any static host:
-
-```bash
-npm run build
-```
-
-## Sections
-
-- **Hero** — CI/CD pipeline monitor + rotating roles + tool chips
-- **About** — glass bio + animated stat cards
-- **Skills** — glass tool-category cards
-- **Projects** — glass cards with gradient edges
-- **Certifications** / **Education**
-- **Contact** — Web3Forms form + social links
+`public/_headers` configures long-term caching for hashed assets and adds security headers at the edge.
 
 ## Acknowledgements
 
-- Icons: [Simple Icons](https://simpleicons.org/) / [Font Awesome](https://fontawesome.com/)
-- Fonts: [Inter](https://rsms.me/inter/), [Sora](https://fonts.google.com/specimen/Sora), [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+- Fonts: [Inter](https://rsms.me/inter/) and [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+- Icons: [Lucide](https://lucide.dev/)
