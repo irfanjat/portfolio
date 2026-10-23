@@ -1,144 +1,124 @@
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion'
-import { Menu, Moon, Sun, X } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
-import { navLinks } from '../../data/portfolio'
+import { useEffect, useState } from 'react'
+import { Download, Menu, X } from 'lucide-react'
+import { navLinks, personal } from '../../data/portfolio'
 import { useActiveSection } from '../../hooks/useActiveSection'
-import { useTheme } from '../../hooks/useTheme'
-
-function Logo() {
-  return (
-    <span className="logo-name text-[20px] leading-none tracking-tight">Irfan Ali</span>
-  )
-}
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
-  const [hot, setHot] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const active = useActiveSection()
-  const { scrollY } = useScroll()
-  const { theme, toggle } = useTheme()
-  const timer = useRef<number | undefined>(undefined)
 
-  useMotionValueEvent(scrollY, 'change', (v) => {
-    setScrolled(v > 40)
-    setHot(true)
-    window.clearTimeout(timer.current)
-    timer.current = window.setTimeout(() => setHot(false), 450)
-  })
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
-  useEffect(() => () => window.clearTimeout(timer.current), [])
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false)
+    }
+    const onResize = () => {
+      if (window.innerWidth > 860) setOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    window.addEventListener('resize', onResize)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      window.removeEventListener('resize', onResize)
+    }
+  }, [])
 
   return (
     <>
-      <motion.header className={`site-header fixed inset-x-0 top-0 z-50${scrolled ? ' is-scrolled' : ''}`}>
-        <nav className="mx-auto flex h-[60px] w-full max-w-5xl items-center justify-between px-4 lg:px-8">
-          <a href="#home" aria-label="Irfan Ali — home">
-            <Logo />
+      <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
+        <div className="nav-inner">
+          <a href="#hero" className="brand" aria-label="Irfan Ali — back to top">
+            <span className="prompt">~/</span>
+            <span className="brand-name">
+              irfan<span className="brand-path">.ali</span>
+            </span>
           </a>
 
-          <div className="hidden items-center gap-6 md:flex lg:gap-7">
+          <nav aria-label="Primary">
+            <ul className="nav-links">
+              {navLinks.map((link) => {
+                const id = link.href.replace('#', '')
+                return (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className={active === id ? 'active' : undefined}
+                      aria-current={active === id ? 'true' : undefined}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                )
+              })}
+              <li>
+                <a
+                  className="nav-cv"
+                  href={personal.resume}
+                  download="Irfan-Ali-Resume.pdf"
+                >
+                  cv <Download size={11} aria-hidden="true" />
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          </button>
+        </div>
+      </header>
+
+      <div
+        id="mobile-menu"
+        className={`mobile-menu${open ? ' open' : ''}`}
+        aria-hidden={!open}
+      >
+        <nav aria-label="Mobile">
+          <ul>
             {navLinks.map((link) => {
               const id = link.href.replace('#', '')
-              const isActive = active === id
               return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`relative text-[13.5px] transition-colors ${
-                    isActive
-                      ? 'font-semibold text-[var(--color-ink)]'
-                      : 'text-[var(--color-muted)] hover:text-[var(--color-ink)]'
-                  }`}
-                >
-                  {link.label}
-                  {isActive && (
-                    <span
-                      className={`nav-diamond${hot ? ' nav-diamond--hot' : ''}`}
-                      aria-hidden="true"
-                    />
-                  )}
-                </a>
-              )
-            })}
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={toggle}
-              className="icon-btn"
-              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-              title="Toggle light / dark theme"
-            >
-              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
-            <a
-              href="#contact"
-              className="btn-green hidden px-4 py-2 text-[13px] transition md:block"
-            >
-              Hire Me
-            </a>
-            <button
-              onClick={() => setOpen(!open)}
-              className="icon-btn md:hidden"
-              aria-label="Toggle menu"
-              aria-expanded={open}
-            >
-              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-            </button>
-          </div>
-        </nav>
-      </motion.header>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -12, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -12, scale: 0.98 }}
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-0 top-[60px] z-40 md:hidden"
-          >
-            <div className="border-b border-[var(--color-border)] bg-[var(--color-bg2)] px-4 py-3">
-              <div className="flex flex-col gap-1">
-                {navLinks.map((link, i) => (
-                  <motion.a
-                    key={link.href}
+                <li key={link.href}>
+                  <a
                     href={link.href}
+                    className={active === id ? 'active' : undefined}
                     onClick={() => setOpen(false)}
-                    initial={{ opacity: 0, x: -14 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    className={`relative rounded-md px-4 py-3 text-sm transition-colors hover:bg-[var(--color-slate-100)] ${
-                      active === link.href.replace('#', '')
-                        ? 'font-semibold text-[var(--color-ink)]'
-                        : 'text-[var(--color-muted)]'
-                    }`}
+                    tabIndex={open ? 0 : -1}
                   >
                     {link.label}
-                    {active === link.href.replace('#', '') && (
-                      <span
-                        className={`nav-diamond${hot ? ' nav-diamond--hot' : ''}`}
-                        aria-hidden="true"
-                      />
-                    )}
-                  </motion.a>
-                ))}
-                <div className="mt-1">
-                  <a
-                    href="#contact"
-                    onClick={() => setOpen(false)}
-                    className="btn-green flex items-center justify-center px-4 py-3 text-center text-sm"
-                  >
-                    Hire Me
+                    <span aria-hidden="true">↗</span>
                   </a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                </li>
+              )
+            })}
+            <li>
+              <a
+                className="mobile-cv"
+                href={personal.resume}
+                download="Irfan-Ali-Resume.pdf"
+                onClick={() => setOpen(false)}
+                tabIndex={open ? 0 : -1}
+              >
+                Download CV <Download size={12} aria-hidden="true" />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </>
   )
 }

@@ -6,346 +6,198 @@ export const personal = {
   role: 'DevOps & Cloud Engineer',
   roles: ['DevOps Engineer', 'Cloud Engineer', 'Platform Engineer', 'Infrastructure Engineer'],
   tagline:
-    'I build cloud-native infrastructure and automated delivery pipelines, with a focus on reliability, observability and security.',
+    'I build reproducible cloud infrastructure and automated delivery pipelines, with a focus on reliability, observability and security.',
   phone: '03153711489',
+  phoneIntl: '+923153711489',
   email: 'irfanali.cloud@gmail.com',
   linkedin: 'https://linkedin.com/in/irfanjat',
   github: 'https://github.com/irfanjat',
   resume: '/IrfanAliResume.pdf',
-  location: 'Pakistan',
+  location: 'Karachi, Pakistan',
   availability: 'Open to opportunities',
-  availabilityDetail:
-    'Full-time, hybrid, on-site & remote — flexible on location and work arrangement.',
+  availabilityDetail: 'Full-time · Remote, hybrid or on-site',
 }
 
 export const contactForm = {
   web3formsAccessKey:
     import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '0aa0ba6b-9d3d-4054-b870-caa6263644fb',
-  successRedirect: 'https://irfanali.pages.dev/?sent=1#contact',
 }
 
 export const navLinks = [
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-    { label: 'Certs', href: '#certifications' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'about', href: '#about' },
+  { label: 'skills', href: '#skills' },
+  { label: 'experience', href: '#experience' },
+  { label: 'certs', href: '#certifications' },
+  { label: 'projects', href: '#projects' },
+  { label: 'notes', href: '#notes' },
+  { label: 'contact', href: '#contact' },
 ]
-
 
 export const stats = [
-  { label: 'Years Experience', value: 1, suffix: '+', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
-  { label: 'Projects Shipped', value: 20, suffix: '+', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
-  { label: 'Cloud Services', value: 10, suffix: '+', accent: 'var(--color-green-400)', glow: 'rgba(57,211,83,0.35)' },
-]
-
-export const aboutChips = [
-  'IaC-Driven',
-  'Shift-Left Security',
-  'GitOps Mindset',
-  'Observability First',
+  { value: 1, suffix: '+', label: 'Years Experience' },
+  { value: 20, suffix: '+', label: 'Projects Shipped' },
+  { value: 10, suffix: '+', label: 'AWS Services' },
+  { value: '∞', suffix: '', label: 'Commands Run' },
 ]
 
 export interface SkillCategory {
   title: string
-  accent: string
-  items: { label: string; detail: string }[]
+  icon: string
+  tags: string[]
 }
 
 export const skills: SkillCategory[] = [
   {
-    title: 'CI/CD & GitOps',
-    accent: 'var(--color-violet-400)',
-    items: [
-      { label: 'GitHub Actions', detail: 'Automated build, test and deploy workflows' },
-      { label: 'Jenkins', detail: 'Multistage CI pipelines' },
-      { label: 'ArgoCD', detail: 'Git-based continuous delivery to Kubernetes' },
+    title: 'Cloud Platforms',
+    icon: '☁️',
+    tags: [
+      'AWS',
+      'EC2',
+      'VPC',
+      'ALB',
+      'Auto Scaling',
+      'S3',
+      'IAM',
+      'RDS',
+      'Lambda',
+      'DynamoDB',
+      'Route 53',
+      'CloudWatch',
     ],
+  },
+  {
+    title: 'IaC & Automation',
+    icon: '🧱',
+    tags: ['Terraform', 'HCL', 'CloudFormation basics', 'Bash', 'Python', 'Go'],
   },
   {
     title: 'Containers & Orchestration',
-    accent: 'var(--color-cyan-400)',
-    items: [
-      { label: 'Docker', detail: 'Image builds, registries and Compose environments' },
-      { label: 'Docker Compose', detail: 'Local multi-container setups' },
-      { label: 'Kubernetes', detail: 'Deployments, services, ingress and scaling' },
-    ],
+    icon: '📦',
+    tags: ['Docker', 'Docker Compose', 'Kubernetes', 'Helm', 'kind', 'kubectl'],
   },
   {
-    title: 'IaC & Monitoring',
-    accent: 'var(--color-amber-300)',
-    items: [
-      { label: 'Terraform', detail: 'Modular infrastructure with remote state' },
-      { label: 'Ansible', detail: 'Server configuration and provisioning' },
-      { label: 'Prometheus', detail: 'Metrics collection and alert rules' },
-      { label: 'Grafana', detail: 'Dashboards for metrics and logs' },
-    ],
+    title: 'CI/CD & GitOps',
+    icon: '🚀',
+    tags: ['GitHub Actions', 'Argo CD', 'Git', 'GHCR', 'Rolling updates', 'Trunk-based flow'],
   },
   {
-    title: 'Cloud Platforms (AWS)',
-    accent: 'var(--color-orange-400)',
-    items: [
-      { label: 'EC2', detail: 'Compute instances and launch templates' },
-      { label: 'VPC', detail: 'Networking, subnets, NAT and security groups' },
-      { label: 'ELB', detail: 'Application load balancers' },
-      { label: 'Auto Scaling', detail: 'Scaling groups and health-based replacement' },
-      { label: 'S3', detail: 'Object storage and static hosting' },
-      { label: 'RDS', detail: 'Managed databases' },
-      { label: 'CloudWatch', detail: 'Metrics, logs and alarms' },
-      { label: 'Route 53', detail: 'DNS management' },
-      { label: 'EKS', detail: 'Managed Kubernetes clusters' },
-      { label: 'Lambda', detail: 'Event-driven serverless functions' },
-    ],
+    title: 'Observability',
+    icon: '📊',
+    tags: ['Prometheus', 'Grafana', 'Loki', 'Promtail', 'Alertmanager', 'Node Exporter'],
   },
-
   {
     title: 'Systems & Networking',
-    accent: 'var(--color-cyan-400)',
-    items: [
-      { label: 'Linux', detail: 'Day-to-day server administration' },
-      { label: 'DNS', detail: 'Name resolution and record management' },
-      { label: 'HTTPS/TLS', detail: 'Certificates and encrypted traffic' },
-      { label: 'SSH', detail: 'Secure remote access' },
-      { label: 'Bash', detail: 'Operations scripting' },
-      { label: 'Python', detail: 'Automation scripts and tooling' },
-      { label: 'Nginx', detail: 'Reverse proxy and static serving' },
-      { label: 'Apache', detail: 'Web server configuration' },
-    ],
-  },
-  {
-    title: 'Linux SysAdmin',
-    accent: 'var(--color-violet-400)',
-    items: [
-      { label: 'Firewalls', detail: 'iptables / ufw rules' },
-      { label: 'Cron Jobs', detail: 'Scheduled tasks' },
-      { label: 'LVM', detail: 'Logical volume management' },
-      { label: 'Systemd', detail: 'Service and unit management' },
-      { label: 'rsync', detail: 'File backups and sync' },
-      { label: 'Process Management', detail: 'Monitoring and tuning running services' },
-    ],
+    icon: '🖥️',
+    tags: ['Linux', 'Nginx', 'Caddy', 'DNS', 'HTTPS/TLS', 'SSH', 'TCP/IP', 'coturn', 'WebRTC'],
   },
 ]
 
 export interface Project {
   id: string
-  tag: string
-  category: 'CI/CD · GitOps' | 'Infrastructure as Code' | 'Observability' | 'Cloud Cost' | 'Security'
-  title: string
-  subtitle: string
-  problem: string
-  solution?: string
-  result?: string
-  outcomes?: string[]
-  tech: string[]
-  github: string
-  extraLinks?: { label: string; href: string }[]
-  architecture: { node: string; detail: string }[]
-  decisions?: string[]
-  lessons?: string[]
-  howItWorks?: string[]
-  overview?: string
+  icon: string
+  name: string
+  description: string
+  tags: string[]
+  repo: string
+  extra?: { label: string; href: string }[]
+  live?: string
 }
 
 export const projects: Project[] = [
   {
+    id: 'fizzshare',
+    icon: '🔐',
+    name: 'FizzShare — WebRTC File Sharing',
+    description:
+      'Browser-to-browser encrypted file transfer over WebRTC data channels, so file bytes never touch the server. Shipped on AWS with Docker Compose, coturn, Caddy and Terraform, plus an ICE inspector and Prometheus metrics.',
+    tags: ['TypeScript', 'WebRTC', 'Docker', 'Terraform', 'Prometheus'],
+    repo: 'https://github.com/irfanjat/fizzshare',
+  },
+  {
     id: 'gitops',
-    tag: 'CI/CD · GitOps',
-    category: 'CI/CD · GitOps',
-    title: 'GitOps Delivery Pipeline',
-    subtitle: 'End-to-End GitOps CI/CD',
-    problem:
-      'Manual deployments meant untested releases, unverified images and configuration drift between environments.',
-    result:
-      'Push to main triggers the full chain — build, tests, container scan, image tagging and ArgoCD sync, so the cluster stays in sync with the repo and rollbacks are a git revert.',
-    tech: ['GitHub Actions', 'Docker', 'ArgoCD', 'Kubernetes', 'Helm', 'Python'],
-    github: 'https://github.com/irfanjat/gitops-cicd-pipeline',
-    extraLinks: [{ label: 'config repo', href: 'https://github.com/irfanjat/gitops-cicd-pipeline-config' }],
-    architecture: [
-      { node: 'Git push → main', detail: 'The single deploy trigger — everything after it is automated.' },
-      { node: 'CI — GitHub Actions', detail: 'Build, unit tests, container scan, SHA-tagged image.' },
-      { node: 'Image registry', detail: 'Immutable, digest-pinned artifacts per commit.' },
-      { node: 'CD — ArgoCD sync', detail: 'Pulls updated manifests and reconciles the cluster with git.' },
-      { node: 'Kubernetes', detail: 'Rolling rollout with health checks; drift is corrected automatically.' },
+    icon: '🚀',
+    name: 'End-to-End GitOps CI/CD Pipeline',
+    description:
+      'Push-to-deploy releases with GitHub Actions and Argo CD. Every commit produces an immutable, SHA-tagged image; Argo CD reconciles the cluster from git with drift detection, pruning and self-healing.',
+    tags: ['GitHub Actions', 'Argo CD', 'Kubernetes', 'Helm', 'Docker'],
+    repo: 'https://github.com/irfanjat/gitops-cicd-pipeline',
+    extra: [
+      { label: 'config repo', href: 'https://github.com/irfanjat/gitops-cicd-pipeline-config' },
     ],
-    solution: 'Automate the path from commit to cluster: build and scan on CI, publish immutable SHA-tagged images, reconcile via ArgoCD from config repo.',
-    outcomes: [
-      'Drift-free deployments via GitOps reconciliation',
-      'Immutable, verifiable release artifacts',
-      'Fast, auditable rollbacks with git revert',
-    ],
-    howItWorks: [
-      'Git push to main triggers GitHub Actions',
-      'Build, test, scan, tag and publish image',
-      'ArgoCD syncs manifests from git to Kubernetes',
-      'Health checks gate rollout; drift auto-corrected',
-    ],
-    decisions: [
-      'Single source of truth in git (manifests)',
-      'SHA-pinned images for traceability',
-      'ArgoCD for declarative continuous delivery',
-    ],
-    lessons: [
-      'Git keeps history and rollback simple — the repo is the record of every deploy.',
-      'Pinning images by digest verifies what was built is what runs.',
-      'ArgoCD surfaces drift instead of letting it accumulate unnoticed.',
-    ],
+  },
+  {
+    id: 'db-operator',
+    icon: '🧩',
+    name: 'DB Operator — PostgreSQL on Kubernetes',
+    description:
+      'A Kubernetes operator written in Go with controller-runtime. It manages PostgreSQL clusters through custom resources, extending the Kubernetes API and adding automated S3 backups, monitoring and Helm packaging.',
+    tags: ['Go', 'CRDs', 'controller-runtime', 'Helm', 'Argo CD'],
+    repo: 'https://github.com/irfanjat/db-operator',
   },
   {
     id: 'terraform-aws',
-    tag: 'Infrastructure as Code',
-    category: 'Infrastructure as Code',
-    title: 'AWS Multi-Tier Infra',
-    subtitle: 'Multi-Tier AWS Infrastructure',
-    problem:
-      'Console-built infrastructure cannot be reviewed, versioned or rebuilt — nobody knows the real state.',
-    result:
-      'One terraform apply provisions a multi-AZ environment: networking, compute, load balancing and databases with encryption and least-privilege IAM enabled by default.',
-    tech: ['Terraform', 'VPC', 'EC2', 'ALB', 'Auto Scaling', 'RDS', 'S3', 'DynamoDB'],
-    github: 'https://github.com/irfanjat/terraform-aws-infra',
-    architecture: [
-      { node: 'Terraform apply', detail: 'State in S3 with DynamoDB locking for safe concurrent runs.' },
-      { node: 'VPC · multi-AZ', detail: 'Public/private subnets, NAT gateways, security groups.' },
-      { node: 'ALB → ASG', detail: 'Load-balanced, auto-scaling compute behind one endpoint.' },
-      { node: 'RDS · S3 · DynamoDB', detail: 'Encrypted data stores with a minimal IAM surface.' },
-      { node: 'CloudWatch', detail: 'Alarms and dashboards covering the stack.' },
-    ],
-    solution: 'Define modular Terraform for multi-AZ networking, compute, load balancing and databases with remote S3 state + DynamoDB locking and secure defaults.',
-    outcomes: [
-      'Reproducible, reviewable infra across environments',
-      'Safe state with locking to prevent concurrent drift',
-      'Least-privilege IAM and encryption by default',
-    ],
-    howItWorks: [
-      'terraform plan reviewed in PRs; apply provisions stack',
-      'VPC splits into public/private multi-AZ subnets',
-      'ALB fronts ASG; RDS isolated in private subnets',
-      'CloudWatch collects metrics and alarms',
-    ],
-    decisions: [
-      'Remote state (S3) with DynamoDB lock for concurrency control',
-      'Modular composition for reuse and clarity',
-      'Security-first defaults (encryption, no public DB access)',
-    ],
-    lessons: [
-      'Remote state with locking makes infrastructure workable as a team.',
-      'Modules keep the configuration readable as the stack grows.',
-      'Security defaults (encryption, restricted IAM) should not be opt-in.',
-    ],
+    icon: '🏗️',
+    name: 'Multi-Tier AWS Infrastructure',
+    description:
+      'A 24-resource Terraform environment across two availability zones: VPC, public and private subnets, ALB, Auto Scaling, and RDS with automated failover. State lives in S3 with DynamoDB locking.',
+    tags: ['Terraform', 'VPC', 'ALB', 'Auto Scaling', 'RDS', 'IAM'],
+    repo: 'https://github.com/irfanjat/terraform-aws-infra',
   },
   {
     id: 'observability',
-    tag: 'Observability',
-    category: 'Observability',
-    title: 'Kubernetes Observability Stack',
-    subtitle: 'Metrics, Logs & Dashboards on Kubernetes',
-    problem:
-      'A cluster without telemetry is a black box — PVC fills, crashes and slow endpoints go unnoticed until users report them.',
-    result:
-      'Cluster-wide metrics and logs in one place: resource dashboards, alert rules and log queries that make troubleshooting faster.',
-    tech: ['Prometheus', 'Grafana', 'Loki', 'Promtail', 'Kubernetes', 'Helm'],
-    github: 'https://github.com/irfanjat/k8s-observability',
-    architecture: [
-      { node: 'Kubernetes cluster', detail: 'Every workload reports metrics and emits logs.' },
-      { node: 'Prometheus', detail: 'ServiceMonitor scraping with alerting rules.' },
-      { node: 'Grafana', detail: 'Dashboards for nodes, pods and core services.' },
-      { node: 'Loki + Promtail', detail: 'Cluster-wide log collection and querying.' },
-    ],
-    solution: 'Deploy Prometheus/Grafana/Loki/Promtail via Helm/manifests to collect metrics and logs cluster-wide with actionable dashboards and alerts.',
-    outcomes: [
-      'Faster RCA with correlated metrics and logs',
-      'Visibility into nodes, pods and services',
-      'Proactive alerts with clear intent',
-    ],
-    howItWorks: [
-      'ServiceMonitors/targets scraped by Prometheus',
-      'Promtail ships container logs to Loki',
-      'Grafana queries both for unified views',
-      'Alert rules surface issues early',
-    ],
-    decisions: [
-      'Centralized observability stack per cluster',
-      'Label-based service discovery over static configs',
-      'Separation of metrics/logs with shared labels',
-    ],
-    lessons: [
-      'Dashboards are useful only when measuring something real.',
-      'An alert without a next step creates noise, not reliability.',
-    ],
+    icon: '📈',
+    name: 'Kubernetes Observability Stack',
+    description:
+      'Cluster-wide metrics and logs with Prometheus, Grafana, Loki and Promtail. ServiceMonitor-based discovery, a six-panel resource dashboard and alert rules that point to a clear next step.',
+    tags: ['Prometheus', 'Grafana', 'Loki', 'Promtail', 'Kubernetes'],
+    repo: 'https://github.com/irfanjat/k8s-observability',
   },
   {
     id: 'costguard',
-    tag: 'Cost Optimization',
-    category: 'Cloud Cost',
-    title: 'CostGuard',
-    subtitle: 'AWS Cost Optimization Platform',
-    problem:
-      'Cloud spend leaks through forgotten volumes, idle instances and unattached addresses — usually discovered on the invoice.',
-    result:
-      'Scheduled Lambda scans detect orphaned and under-utilised resources, store the findings in DynamoDB and post notifications to Slack.',
-    tech: ['Python', 'AWS Lambda', 'Terraform', 'DynamoDB', 'Slack API', 'GitHub Actions'],
-    github: 'https://github.com/irfanjat/costguard',
-    architecture: [
-      { node: 'CloudWatch Events', detail: 'Schedule triggers for regular cost scans.' },
-      { node: 'Lambda (boto3)', detail: 'Scans for orphaned volumes, idle resources and neglect.' },
-      { node: 'DynamoDB', detail: 'Stores findings for history and trend checks.' },
-      { node: 'Slack webhook', detail: 'Notifications when waste is detected.' },
-    ],
-    solution: 'Event-driven watchdog: CloudWatch Events trigger Lambda (boto3) to scan for orphaned volumes, idle resources and unattached EIPs, log to DynamoDB and notify Slack.',
-    outcomes: [
-      'Early detection of cloud waste',
-      'Automated, low-cost recurring checks',
-      'Actionable alerts in team channel',
-    ],
-    howItWorks: [
-      'Scheduled trigger (CloudWatch Events)',
-      'Lambda scans AWS resources against rules',
-      'Findings stored in DynamoDB for history',
-      'Slack webhook notifies on waste detected',
-    ],
-    decisions: [
-      'Serverless to minimize cost and ops overhead',
-      'Idempotent, rule-based scanning',
-      'History in DynamoDB for trend analysis',
-    ],
-    lessons: [
-      'Serverless fits well for a watchdog that should run on a schedule for very little cost.',
-      'Automated reports beat manual spreadsheets for catching waste early.',
-    ],
+    icon: '💸',
+    name: 'CostGuard — AWS Cost Watchdog',
+    description:
+      'A scheduled serverless scanner that finds orphaned volumes, idle instances and unattached addresses. Findings are stored in DynamoDB for history and pushed to Slack so waste is fixed early.',
+    tags: ['Python', 'Lambda', 'DynamoDB', 'Terraform', 'Slack API'],
+    repo: 'https://github.com/irfanjat/costguard',
   },
-
 ]
 
 export interface Credential {
   title: string
   issuer: string
-  kind: 'Credential' | 'Training'
+  kind: 'Certification' | 'Course'
+  icon: string
   link: string
 }
 
 export const credentials: Credential[] = [
   {
-    title: 'Oracle Cloud Infrastructure 2025 Certified Foundations Associate',
+    title: 'OCI 2025 Certified Foundations Associate',
     issuer: 'Oracle Cloud Infrastructure',
-    kind: 'Credential',
+    kind: 'Certification',
+    icon: '🏅',
     link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=1BEEF1CBBEAE05D6DD59D53B668355A20ADBC563F691C84B03315E27A745FD49',
   },
   {
-    title: 'IBM Introduction to DevOps',
+    title: 'Introduction to DevOps',
     issuer: 'IBM · Coursera',
-    kind: 'Training',
+    kind: 'Course',
+    icon: '⚙️',
     link: 'https://coursera.org/verify/PANSLSFPOV59',
   },
   {
     title: 'AWS Cloud Practitioner Essentials',
     issuer: 'Amazon Web Services · Coursera',
-    kind: 'Training',
+    kind: 'Course',
+    icon: '☁️',
     link: 'https://coursera.org/verify/VJOL7N4FHGNV',
   },
   {
     title: 'AWS Cloud Technical Essentials',
     issuer: 'Amazon Web Services · Coursera',
-    kind: 'Training',
+    kind: 'Course',
+    icon: '🛠️',
     link: 'https://coursera.org/verify/JHTNQ3MFH2D2',
   },
 ]
@@ -355,3 +207,156 @@ export const education = {
   university: 'University of Sindh (SULC), Jamshoro, Pakistan',
   graduation: 'Expected graduation 2027',
 }
+
+export interface ExperienceItem {
+  role: string
+  org: string
+  period: string
+  points: string[]
+}
+
+export const experience: ExperienceItem[] = [
+  {
+    role: 'Independent DevOps & Cloud Projects',
+    org: 'Self-directed · Remote',
+    period: '2025 — Present',
+    points: [
+      'Design and ship end-to-end projects across AWS, Kubernetes and CI/CD, documenting architecture, trade-offs and evidence for each one.',
+      'Built a two-repository GitOps pipeline with GitHub Actions and Argo CD, including immutable SHA-tagged images and automated reconciliation.',
+      'Provisioned a multi-AZ AWS environment in Terraform with remote state, least-privilege IAM, load balancing and a private database tier.',
+      'Deployed Prometheus, Grafana, Loki and Promtail on Kubernetes with dashboards and alert rules, and automated AWS cost reporting with Lambda.',
+    ],
+  },
+  {
+    role: 'BSc Computer Science',
+    org: 'University of Sindh (SULC), Jamshoro',
+    period: 'Expected 2027',
+    points: [
+      'Studying operating systems, computer networks, databases and data structures alongside cloud and platform engineering practice.',
+      'Applying coursework in hands-on labs: Linux administration, networking fundamentals and containerised deployments.',
+    ],
+  },
+  {
+    role: 'Certifications & Technical Training',
+    org: 'Oracle · IBM · AWS',
+    period: '2025 — 2026',
+    points: [
+      'Earned the OCI 2025 Certified Foundations Associate credential.',
+      'Completed IBM Introduction to DevOps and two AWS cloud essentials courses on Coursera.',
+      'Continuing self-directed study toward Kubernetes and platform engineering depth.',
+    ],
+  },
+]
+
+export interface Note {
+  title: string
+  date: string
+  readTime: string
+  summary: string
+  tags: string[]
+  body: { heading?: string; paragraphs?: string[]; bullets?: string[]; code?: string }[]
+}
+
+export const notes: Note[] = [
+  {
+    title: 'Terraform state belongs in a bucket, not in your repository',
+    date: '2026',
+    readTime: '4 min read',
+    summary:
+      'Local state works until a second person runs apply. A versioned S3 backend with DynamoDB locking turns infrastructure changes into something a team can review safely.',
+    tags: ['Terraform', 'AWS', 'State'],
+    body: [
+      {
+        paragraphs: [
+          'Local state is the default and the fastest way to lose track of what Terraform owns. Two engineers running apply at the same time can corrupt the file, and a laptop refresh can erase the only record of a live environment.',
+          'The fix is small: a versioned S3 bucket, a DynamoDB table for locks, and a backend block every configuration points at.',
+        ],
+      },
+      {
+        code: `terraform {
+  backend "s3" {
+    bucket         = "acme-tf-state"
+    key            = "prod/network/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "acme-tf-locks"
+    encrypt        = true
+  }
+}`,
+      },
+      {
+        heading: 'What actually matters',
+        bullets: [
+          'Bucket versioning on, so a bad apply can be rolled back to the previous state object.',
+          'A lock table, so concurrent applies fail fast instead of interleaving writes.',
+          'Blocked public access and encryption at rest — state often contains sensitive values.',
+          'One key per environment and layer, not one giant shared state.',
+        ],
+      },
+      {
+        paragraphs: [
+          'The trade-off is bootstrapping: the bucket and lock table must exist before Terraform can use them. Create them once, with a small separate configuration or the console, and keep that setup documented.',
+          'State is shared infrastructure. Treat it with the same care as the environment it describes.',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'What Argo CD self-heal actually does',
+    date: '2026',
+    readTime: '3 min read',
+    summary:
+      'Self-heal is not a deployment trick — it is a reconciliation loop. Knowing when it helps and when it hides a problem matters more than turning it on.',
+    tags: ['Argo CD', 'GitOps', 'Kubernetes'],
+    body: [
+      {
+        paragraphs: [
+          'Argo CD continuously compares live cluster resources with the desired manifests in git. With self-heal enabled, a difference is not just reported — it is corrected. Delete a deployment by hand and it comes back on the next sync.',
+          'That behaviour is valuable for drift caused by accident. It is less valuable when the drift is caused by something you do not understand yet.',
+        ],
+      },
+      {
+        heading: 'The practical rules',
+        bullets: [
+          'Enable automated sync with pruning only after the manifests are the real source of truth.',
+          'Keep health checks meaningful — a synced resource is not necessarily a healthy one.',
+          'Watch for hot loops: if a controller keeps changing a field, reconciliation will keep reverting it.',
+          'Use sync waves for ordering, not for hiding dependencies that should be explicit.',
+        ],
+      },
+      {
+        paragraphs: [
+          'Self-heal rewards teams that deploy through git. If urgent fixes still happen with kubectl, the cluster and the repository will fight each other, and the resulting alerts are noise rather than safety.',
+          'The feature is a guardrail. The workflow around it is what makes the platform reliable.',
+        ],
+      },
+    ],
+  },
+]
+
+export const faq = [
+  {
+    question: 'What kind of roles are you looking for?',
+    answer:
+      'Entry-level DevOps, cloud and platform engineering roles where I can own infrastructure as code, CI/CD and observability. I am open to full-time roles in Pakistan or remote teams, and comfortable with hybrid or on-site arrangements.',
+  },
+  {
+    question: 'Are your projects professional or personal?',
+    answer:
+      'They are self-directed projects built to production-shaped standards, not enterprise employment. I designed, provisioned and documented each one end to end, and the repositories include the actual Terraform, workflows and manifests I wrote.',
+  },
+  {
+    question: 'What is your strongest area?',
+    answer:
+      'AWS infrastructure with Terraform, followed by GitOps delivery on Kubernetes. I am most comfortable when a change can be reviewed in a pull request, applied repeatably and observed after rollout.',
+  },
+  {
+    question: 'Do you hold a certification?',
+    answer:
+      'Yes — OCI 2025 Certified Foundations Associate. I have also completed IBM Introduction to DevOps and two AWS cloud essentials courses, and I am continuing toward deeper Kubernetes and platform engineering work.',
+  },
+  {
+    question: 'How quickly can you start, and how do I reach you?',
+    answer:
+      'I am available immediately and reply to messages within 24 hours. Email irfanali.cloud@gmail.com or connect on LinkedIn — both are linked below.',
+  },
+]

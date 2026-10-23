@@ -1,70 +1,86 @@
-import { Github, Linkedin, Mail } from 'lucide-react'
-import { personal } from '../../data/portfolio'
-
-const social = [
-  { icon: Github, href: personal.github, label: 'GitHub' },
-  { icon: Linkedin, href: personal.linkedin, label: 'LinkedIn' },
-  { icon: Mail, href: `mailto:${personal.email}`, label: 'Email' },
-]
-
-const quickLinks = [
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
-]
+import { ArrowUp, Download, Github, Linkedin, Mail } from 'lucide-react'
+import { navLinks, personal } from '../../data/portfolio'
 
 export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative border-t border-[var(--color-border)]">
-      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--color-green)] font-mono text-xs font-bold text-[var(--color-bg)]">
-                {personal.initials}
-              </div>
-              <span className="font-display text-sm font-semibold text-[var(--color-ink)]">{personal.name}</span>
-            </div>
-            <p className="mt-2 font-mono text-sm text-[var(--color-muted)]">{personal.role}</p>
+    <footer className="site-footer">
+      <div className="footer-inner">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <a href="#hero" className="brand" aria-label="Back to top">
+              <span className="prompt">~/</span>
+              <span className="brand-name">
+                irfan<span className="brand-path">.ali</span>
+              </span>
+            </a>
+            <p className="footer-desc">
+              DevOps and cloud engineer focused on reproducible infrastructure,
+              GitOps delivery and observability.
+            </p>
+            <span className="footer-status">
+              <span className="dot" aria-hidden="true" /> {personal.availability}
+            </span>
           </div>
 
-          <div className="flex gap-6">
-            {quickLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-[var(--color-muted)] transition hover:text-[var(--color-green)]"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div className="footer-col">
+            <h4>Explore</h4>
+            <ul>
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
+              <li>
+                <a href="#faq">faq</a>
+              </li>
+            </ul>
           </div>
 
-          <div className="flex gap-3">
-            {social.map(({ icon: Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith('http') ? '_blank' : undefined}
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="glass-soft flex h-10 w-10 items-center justify-center rounded-md text-[var(--color-muted)] transition hover:text-[var(--color-green)] hover:border-[var(--color-green)]/50"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
+          <div className="footer-col">
+            <h4>Connect</h4>
+            <ul>
+              <li>
+                <a
+                  href={personal.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github size={11} aria-hidden="true" /> GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href={personal.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin size={11} aria-hidden="true" /> LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${personal.email}`}>
+                  <Mail size={11} aria-hidden="true" /> Email
+                </a>
+              </li>
+              <li>
+                <a href={personal.resume} download="Irfan-Ali-Resume.pdf">
+                  <Download size={11} aria-hidden="true" /> Résumé
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-[var(--color-border)] pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-[var(--color-muted)]">
-            © {year} {personal.name}. All rights reserved.
-          </p>
-          <p className="font-mono text-xs text-[var(--color-muted)]">
-            Built with <span className="text-[var(--color-green)]">❤️</span> by {personal.name}
-          </p>
+        <div className="footer-bottom">
+          <span>© {year} {personal.name}. Built with React &amp; Vite.</span>
+          <span>
+            Deployed on Cloudflare Pages ·{' '}
+            <a href="#hero">
+              Back to top <ArrowUp size={10} aria-hidden="true" />
+            </a>
+          </span>
         </div>
       </div>
     </footer>

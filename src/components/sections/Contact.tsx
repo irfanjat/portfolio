@@ -1,141 +1,222 @@
-import { motion } from 'framer-motion'
-import { CheckCircle2, Github, Linkedin, Mail, Send } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import type { FormEvent } from 'react'
+import { ArrowRight, ArrowUpRight, FileText, Github, Linkedin, Mail, Phone } from 'lucide-react'
 import { contactForm, personal } from '../../data/portfolio'
-import { SectionHeading } from '../ui/SectionHeading'
 
-const links = [
-  { label: 'Email me', value: personal.email, href: `mailto:${personal.email}`, icon: Mail },
-  { label: 'LinkedIn', value: 'linkedin.com/in/irfanjat', href: personal.linkedin, icon: Linkedin },
-  { label: 'GitHub', value: 'github.com/irfanjat', href: personal.github, icon: Github },
+type Status = 'idle' | 'sending' | 'success' | 'error'
+
+const channels = [
+  {
+    label: personal.email,
+    href: `mailto:${personal.email}`,
+    icon: Mail,
+    external: false,
+  },
+  {
+    label: 'linkedin.com/in/irfanjat',
+    href: personal.linkedin,
+    icon: Linkedin,
+    external: true,
+  },
+  {
+    label: 'github.com/irfanjat',
+    href: personal.github,
+    icon: Github,
+    external: true,
+  },
+  {
+    label: personal.phone,
+    href: `tel:${personal.phoneIntl}`,
+    icon: Phone,
+    external: false,
+  },
+  {
+    label: 'Download résumé (PDF)',
+    href: personal.resume,
+    icon: FileText,
+    external: false,
+  },
 ]
 
 export function Contact() {
-  const [showSuccess, setShowSuccess] = useState(false)
+  const [status, setStatus] = useState<Status>('idle')
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     if (params.get('sent') === '1') {
-      setShowSuccess(true)
-      window.history.replaceState({}, '', `${window.location.pathname}#contact`)
+      setStatus('success')
+      params.delete('sent')
+      const query = params.toString()
+      window.history.replaceState(
+        {},
+        '',
+        `${window.location.pathname}${query ? `?${query}` : ''}#contact`,
+      )
     }
   }, [])
 
-  const redirectUrl =
-    typeof window !== 'undefined'
-      ? `${window.location.origin}${import.meta.env.BASE_URL}?sent=1#contact`
-      : contactForm.successRedirect
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const form = event.currentTarget
+    const data = new FormData(form)
+
+    data.append('subject', `Portfolio contact — ${String(data.get('name') ?? 'new message')}`)
+    data.append('from_name', 'irfanali.pages.dev')
+
+    setStatus('sending')
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      })
+      const result = (await response.json()) as { success?: boolean }
+
+      if (response.ok && result.success) {
+        form.reset()
+        setStatus('success')
+        return
+      }
+      setStatus('error')
+    } catch {
+      setStatus('error')
+    }
+  }
 
   return (
-    <section id="contact" className="section-padding relative pb-36 content-visibility-auto">
-      <div className="mx-auto max-w-5xl">
-        <SectionHeading
-          index="07"
-          label="contact"
-          title="Get In Touch"
-        />
+    <section id="contact" className="section" aria-labelledby="contact-title">
+      <div className="section-label">// 08. contact</div>
+      <h2 id="contact-title" className="section-title">
+        Get In Touch
+      </h2>
+      <div className="section-divider" />
 
-        <div className="grid gap-6 lg:grid-cols-5">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="space-y-4 lg:col-span-2"
-          >
-            {links.map((link, i) => (
-            <motion.a
-              key={link.label}
-              href={link.href}
-              target={link.href.startsWith('http') ? '_blank' : undefined}
-              rel="noopener noreferrer"
-              aria-label={link.label}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 + i * 0.08, duration: 0.5 }}
-              className="group flex items-center gap-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg2)] p-4 transition-colors hover:border-[var(--color-green-300)]/50"
-            >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-[var(--color-border)] bg-[var(--color-bg2)] text-[var(--color-green-300)] transition group-hover:text-[var(--color-green)]">
-                <link.icon className="h-4 w-4" />
-              </span>
-              <div className="min-w-0">
-                <p className="text-xs text-[var(--color-muted)]">{link.label}</p>
-                <p className="truncate text-sm font-medium text-[var(--color-ink)]">{link.value}</p>
-              </div>
-            </motion.a>
-            ))}
+      <div className="contact-grid">
+        <div className="contact-copy reveal">
+          <p>
+            Whether you have a role to discuss, a platform problem to untangle, or
+            just want to compare notes on <strong>Terraform</strong> — my inbox is
+            open. I reply within 24 hours.
+          </p>
+          <p>
+            I&apos;m currently based in {personal.location} and open to full-time
+            roles — remote, hybrid or on-site.
+          </p>
 
-            <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg2)] p-5">
-              <div className="relative">
-                <p className="text-xs text-[var(--color-muted)]">Availability</p>
-                <p className="mt-1.5 text-sm font-medium text-[var(--color-green-300)]">
-                  <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-[var(--color-green)] align-middle" />
-                  {personal.availability}
-                </p>
-                <p className="mt-1 text-xs text-[var(--color-muted)]">{personal.availabilityDetail}</p>
+          <div className="contact-links">
+            {channels.map((channel) => {
+              const Icon = channel.icon
+              return (
+                <a
+                  className="contact-link"
+                  href={channel.href}
+                  key={channel.label}
+                  {...(channel.external
+                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                    : {})}
+                  {...(channel.href === personal.resume
+                    ? { download: 'Irfan-Ali-Resume.pdf' }
+                    : {})}
+                >
+                  <span className="ico" aria-hidden="true">
+                    <Icon size={15} />
+                  </span>
+                  {channel.label}
+                </a>
+              )
+            })}
+          </div>
+        </div>
+
+        <div className="reveal">
+          {status === 'success' ? (
+            <div className="contact-form">
+              <div className="form-success" role="status" aria-live="polite">
+                Message received — thank you. I&apos;ll get back to you within 24
+                hours.
               </div>
+              <button
+                type="button"
+                className="form-submit"
+                onClick={() => setStatus('idle')}
+              >
+                Send another message <ArrowRight size={13} aria-hidden="true" />
+              </button>
             </div>
-          </motion.div>
+          ) : (
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <input
+                type="hidden"
+                name="access_key"
+                value={contactForm.web3formsAccessKey}
+              />
+              <input
+                type="checkbox"
+                name="botcheck"
+                style={{ display: 'none' }}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+              />
 
-          <motion.form
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            action="https://api.web3forms.com/submit"
-            method="POST"
-            className="lg:col-span-3"
-          >
-            <div className="glass rounded-lg p-6 sm:p-8">
-              <input type="hidden" name="access_key" value={contactForm.web3formsAccessKey} />
-              <input type="hidden" name="subject" value="New message from Irfan Ali Portfolio" />
-              <input type="hidden" name="from_name" value="Portfolio Contact Form" />
-              <input type="hidden" name="redirect" value={redirectUrl} />
-
-              <div className="space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <label htmlFor="contact-name" className="mb-1.5 block font-mono text-xs text-[var(--color-muted)]">Name</label>
-                    <input id="contact-name" type="text" name="name" required placeholder="Your name" className="glass-input" />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-email" className="mb-1.5 block font-mono text-xs text-[var(--color-muted)]">Email</label>
-                    <input id="contact-email" type="email" name="email" required placeholder="your@email.com" className="glass-input" />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="contact-message" className="mb-1.5 block font-mono text-xs text-[var(--color-muted)]">Message</label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    required
-                    rows={5}
-                    placeholder="Tell me about your project or opportunity..."
-                    className="glass-input resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="btn-green w-full px-6 py-4 text-sm transition"
-                >
-                  <Send className="h-4 w-4" />
-                  Send Message
-                </button>
+              <div className="form-group">
+                <label htmlFor="name">// name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  autoComplete="name"
+                  required
+                />
               </div>
 
-              {showSuccess && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 flex items-center gap-2 rounded-md border border-[var(--color-green-300)]/40 bg-[var(--color-green-300)]/10 px-4 py-3 text-sm text-[var(--color-green-300)]"
-                >
-                  <CheckCircle2 className="h-4 w-4" />
-                  Message sent successfully — I'll get back to you soon!
-                </motion.div>
+              <div className="form-group">
+                <label htmlFor="email">// email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@company.com"
+                  autoComplete="email"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="message">// message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="What are you working on?"
+                  required
+                />
+              </div>
+
+              {status === 'error' && (
+                <div className="form-error" role="alert">
+                  Something went wrong. Email{' '}
+                  <a href={`mailto:${personal.email}`}>{personal.email}</a> instead.
+                </div>
               )}
-            </div>
-          </motion.form>
+
+              <button
+                type="submit"
+                className="form-submit"
+                disabled={status === 'sending'}
+              >
+                {status === 'sending' ? 'Sending…' : 'Send message'}
+                {status !== 'sending' && (
+                  <ArrowUpRight size={13} aria-hidden="true" />
+                )}
+              </button>
+
+              <p className="form-note">
+                Delivered by Web3Forms · no account required
+              </p>
+            </form>
+          )}
         </div>
       </div>
     </section>

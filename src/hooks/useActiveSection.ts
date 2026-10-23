@@ -1,41 +1,44 @@
 import { useEffect, useState } from 'react'
+import { navLinks } from '../data/portfolio'
 
-const sectionIds = ['home', 'about', 'skills', 'projects', 'workflow', 'path', 'certifications', 'education', 'resume-cta', 'contact']
-
-export function useActiveSection(): string {
-  const [active, setActive] = useState('home')
+export function useActiveSection() {
+  const [active, setActive] = useState('')
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = []
-    const ratios = new Map<string, number>()
+    const ids = navLinks.map((link) => link.href.replace('#', ''))
 
-    for (const id of sectionIds) {
-      const el = document.getElementById(id)
-      if (!el) continue
+    const update = () => {
+      let current = ''
+      let closest = Number.POSITIVE_INFINITY
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          ratios.set(id, entry.intersectionRatio)
-          let best = 'home'
-          let bestRatio = 0
-          for (const [k, v] of ratios) {
-            if (v > bestRatio) {
-              bestRatio = v
-              best = k
-            }
-          }
-          setActive(best)
-        },
-        { threshold: [0, 0.15, 0.3, 0.5, 0.75] },
-      )
-      observer.observe(el)
-      observers.push(observer)
+      ids.forEach((id) => {
+        const element = document.getElementById(id)
+        if (!element) return
+        const top = element.getBoundingClientRect().top
+        if (top <= 150 && Math.abs(top - 150) < closest) {
+          current = id
+          closest = Math.abs(top - 150)
+        }
+      })
+
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 12
+
+      if (atBottom) current = ids[ids.length - 1]
+
+      setActive(current)
     }
 
-    return () => observers.forEach((o) => o.disconnect())
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+
+    return () => {
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
   }, [])
 
   return active
 }
-
-export { sectionIds }

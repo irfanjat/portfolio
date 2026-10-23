@@ -1,37 +1,50 @@
-import { AuroraBackground, CursorGlow } from './components/effects/AuroraBackground'
-import { SmoothScrollProvider } from './components/effects/SmoothScrollProvider'
+import { useEffect } from 'react'
 import { Footer } from './components/layout/Footer'
 import { Navbar } from './components/layout/Navbar'
 import { About } from './components/sections/About'
 import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
-import { Education } from './components/sections/Education'
+import { Experience } from './components/sections/Experience'
+import { FAQ } from './components/sections/FAQ'
 import { Hero } from './components/sections/Hero'
+import { Notes } from './components/sections/Notes'
 import { Projects } from './components/sections/Projects'
 import { Skills } from './components/sections/Skills'
-import { ScrollToTop } from './components/ui/ScrollToTop'
+import { useReveal } from './hooks/useReveal'
 
 function App() {
+  useReveal()
+
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.replace('#', ''))
+    if (!id) return
+
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({ block: 'start' })
+    })
+
+    return () => cancelAnimationFrame(frame)
+  }, [])
+
   return (
-    <SmoothScrollProvider>
-      <AuroraBackground />
-      <CursorGlow />
-      <Navbar />
-      <a href="#home" className="skip-link">
+    <>
+      <a href="#main" className="skip-link">
         Skip to content
       </a>
-      <main className="relative z-10">
+      <Navbar />
+      <main id="main" tabIndex={-1}>
         <Hero />
         <About />
         <Skills />
-        <Projects />
+        <Experience />
         <Certifications />
-        <Education />
+        <Projects />
+        <Notes />
+        <FAQ />
         <Contact />
       </main>
       <Footer />
-      <ScrollToTop />
-    </SmoothScrollProvider>
+    </>
   )
 }
 
