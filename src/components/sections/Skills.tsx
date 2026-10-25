@@ -3,7 +3,7 @@ import { skills } from '../../data/portfolio'
 export function Skills() {
   return (
     <section id="skills" className="section" aria-labelledby="skills-title">
-      <div className="section-label">// 02. skills</div>
+      <div className="section-label" aria-hidden="true">// 02. skills</div>
       <h2 id="skills-title" className="section-title">
         Technical Toolbox
       </h2>

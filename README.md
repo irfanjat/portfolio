@@ -11,7 +11,7 @@ A dark, terminal-inspired single-page portfolio focused on DevOps, cloud infrast
 - Content-driven sections for about, skills, experience, certifications, projects, notes, FAQ and contact
 - Scroll-reveal animations with `prefers-reduced-motion` support
 - Accessible landmarks, keyboard navigation, visible focus states and skip link
-- SEO metadata, JSON-LD, Open Graph image, custom 404 page and security headers
+- SEO metadata, JSON-LD, sitemap, Open Graph image, custom 404 page and CSP/HSTS security headers
 - Web3Forms contact form with mailto fallback
 - Automatic deployment to Cloudflare Pages through GitHub Actions
 
@@ -70,9 +70,15 @@ src/
   index.css          Design tokens, layout and responsive styles
 public/
   404.html           Custom not-found page
+  404.css            Not-found page styles
+  favicon.svg        Site icon
   og-image.png       Social preview image
-  pic.jpg            Portrait image
+  pic.jpg            Portrait fallback
+  pic-*.avif         Responsive AVIF portrait variants
+  pic-*.webp         Responsive WebP portrait variants
   IrfanAliResume.pdf Resume download
+  robots.txt         Crawler rules
+  sitemap.xml        Sitemap
 ```
 
 ## Customization
@@ -112,7 +118,7 @@ The custom domain is managed through Cloudflare:
 - `https://irfanjat.online`
 - `https://www.irfanjat.online`
 
-`public/_headers` configures long-term caching for hashed assets and adds security headers at the edge.
+`public/_headers` configures security headers at the edge, including a CSP with a SHA-256 allowance for the inline JSON-LD block. If the JSON-LD or inline script changes, recompute that hash.
 
 ## Acknowledgements
 

@@ -1,6 +1,7 @@
 import { ArrowDown, ArrowRight, Download, Github, Linkedin } from 'lucide-react'
 import { personal, stats } from '../../data/portfolio'
 import { useTypewriter } from '../../hooks/useTypewriter'
+import { trackEvent } from '../../lib/analytics'
 
 export function Hero() {
   const typed = useTypewriter(personal.roles)
@@ -14,21 +15,21 @@ export function Hero() {
               <span className="dot" aria-hidden="true" />
               <strong>Open to work</strong>
               <span className="pill-sep">·</span>
-              Remote / hybrid
+              Remote (PKT, UTC+5) / on-site in Karachi
             </span>
             <span className="pill">
-              <strong>OCI certified</strong>
+              <strong>OCI Certified</strong>
               <span className="pill-sep">·</span>
               Foundations Associate
             </span>
             <span className="pill">
-              <strong>{stats[1].value}+ projects</strong>
+              <strong>{stats[1].value}+ public repos</strong>
               <span className="pill-sep">·</span>
               AWS · K8s · IaC
             </span>
           </div>
 
-          <p className="hero-tag">// devops &amp; cloud engineer</p>
+          <p className="hero-tag" aria-hidden="true">// devops &amp; cloud engineer</p>
           <h1 id="hero-title" className="hero-title">
             {personal.name}
           </h1>
@@ -39,10 +40,10 @@ export function Hero() {
           </p>
 
           <p className="hero-desc">
-            I design <strong>reproducible AWS infrastructure</strong>, ship{' '}
-            <strong>GitOps delivery pipelines</strong> and instrument clusters so
-            failures are visible before users notice. Based in Karachi, building in
-            public one project at a time.
+            I build <strong>AWS infrastructure with Terraform</strong>, deploy to{' '}
+            <strong>Kubernetes with GitHub Actions and Argo CD</strong>, and monitor it
+            with <strong>Prometheus and Grafana</strong>. Entry-level DevOps/cloud
+            engineer based in Karachi (PKT, UTC+5), open to remote, hybrid and on-site roles.
           </p>
 
           <div className="hero-actions">
@@ -61,8 +62,9 @@ export function Hero() {
               href={personal.resume}
               className="btn btn-ghost"
               download="Irfan-Ali-Resume.pdf"
+              onClick={() => trackEvent('Résumé Download', { source: 'hero' })}
             >
-              <Download size={14} aria-hidden="true" /> Resume
+              <Download size={14} aria-hidden="true" /> Résumé
             </a>
             <a
               href={personal.github}
@@ -77,17 +79,26 @@ export function Hero() {
 
         <div className="hero-visual">
           <div className="portrait">
-            <img
-              src="/pic.jpg"
-              alt="Portrait of Irfan Ali"
-              width={322}
-              height={402}
-              fetchPriority="high"
-              decoding="async"
-            />
-            <span className="portrait-badge">
-              <span className="dot" aria-hidden="true" /> open to opportunities
-            </span>
+            <picture>
+              <source
+                type="image/avif"
+                srcSet="/pic-480.avif 480w, /pic-700.avif 700w, /pic-892.avif 892w"
+                sizes="(max-width: 900px) 68vw, 340px"
+              />
+              <source
+                type="image/webp"
+                srcSet="/pic-480.webp 480w, /pic-700.webp 700w, /pic-892.webp 892w"
+                sizes="(max-width: 900px) 68vw, 340px"
+              />
+              <img
+                src="/pic.jpg"
+                alt="Portrait of Irfan Ali"
+                width={892}
+                height={890}
+                fetchPriority="high"
+                decoding="async"
+              />
+            </picture>
           </div>
 
           <div className="hero-chips" aria-label="Quick facts">
@@ -120,7 +131,7 @@ export function Hero() {
                 <span className="t-dim">$</span>{' '}
                 <span className="t-cmd">cat status.txt</span>
               </div>
-              <div className="t-ok">● available for opportunities</div>
+              <div className="t-ok">focus: aws · k8s · gitops</div>
               <div>
                 <span className="t-prompt">irfan@cloud</span>
                 <span className="t-dim">:</span>

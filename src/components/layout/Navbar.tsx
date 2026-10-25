@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Download, Menu, X } from 'lucide-react'
+import { ArrowUpRight, Download, Menu, X } from 'lucide-react'
 import { navLinks, personal } from '../../data/portfolio'
 import { useActiveSection } from '../../hooks/useActiveSection'
+import { trackEvent } from '../../lib/analytics'
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
@@ -62,8 +63,9 @@ export function Navbar() {
                   className="nav-cv"
                   href={personal.resume}
                   download="Irfan-Ali-Resume.pdf"
+                  onClick={() => trackEvent('Résumé Download', { source: 'nav' })}
                 >
-                  cv <Download size={11} aria-hidden="true" />
+                  résumé <Download size={11} aria-hidden="true" />
                 </a>
               </li>
             </ul>
@@ -100,7 +102,7 @@ export function Navbar() {
                     tabIndex={open ? 0 : -1}
                   >
                     {link.label}
-                    <span aria-hidden="true">↗</span>
+                    <ArrowUpRight size={13} aria-hidden="true" />
                   </a>
                 </li>
               )
@@ -110,10 +112,13 @@ export function Navbar() {
                 className="mobile-cv"
                 href={personal.resume}
                 download="Irfan-Ali-Resume.pdf"
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  setOpen(false)
+                  trackEvent('Résumé Download', { source: 'mobile-nav' })
+                }}
                 tabIndex={open ? 0 : -1}
               >
-                Download CV <Download size={12} aria-hidden="true" />
+                Résumé <Download size={12} aria-hidden="true" />
               </a>
             </li>
           </ul>

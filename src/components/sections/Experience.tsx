@@ -7,7 +7,7 @@ export function Experience() {
       className="section"
       aria-labelledby="experience-title"
     >
-      <div className="section-label">// 03. experience</div>
+      <div className="section-label" aria-hidden="true">// 03. experience</div>
       <h2 id="experience-title" className="section-title">
         Experience &amp; Education
       </h2>

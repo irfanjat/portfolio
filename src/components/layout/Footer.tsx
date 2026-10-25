@@ -1,5 +1,6 @@
 import { ArrowUp, Download, Github, Linkedin, Mail } from 'lucide-react'
 import { navLinks, personal } from '../../data/portfolio'
+import { trackEvent } from '../../lib/analytics'
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -9,7 +10,7 @@ export function Footer() {
       <div className="footer-inner">
         <div className="footer-grid">
           <div className="footer-brand">
-            <a href="#hero" className="brand" aria-label="Back to top">
+            <a href="#hero" className="brand" aria-label="Irfan Ali — back to top">
               <span className="prompt">~/</span>
               <span className="brand-name">
                 irfan<span className="brand-path">.ali</span>
@@ -19,13 +20,10 @@ export function Footer() {
               DevOps and cloud engineer focused on reproducible infrastructure,
               GitOps delivery and observability.
             </p>
-            <span className="footer-status">
-              <span className="dot" aria-hidden="true" /> {personal.availability}
-            </span>
           </div>
 
           <div className="footer-col">
-            <h4>Explore</h4>
+            <h3>Explore</h3>
             <ul>
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -39,7 +37,7 @@ export function Footer() {
           </div>
 
           <div className="footer-col">
-            <h4>Connect</h4>
+            <h3>Connect</h3>
             <ul>
               <li>
                 <a
@@ -65,7 +63,11 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href={personal.resume} download="Irfan-Ali-Resume.pdf">
+                <a
+                  href={personal.resume}
+                  download="Irfan-Ali-Resume.pdf"
+                  onClick={() => trackEvent('Résumé Download', { source: 'footer' })}
+                >
                   <Download size={11} aria-hidden="true" /> Résumé
                 </a>
               </li>
@@ -74,9 +76,10 @@ export function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© {year} {personal.name}. Built with React &amp; Vite.</span>
           <span>
-            Deployed on Cloudflare Pages ·{' '}
+            © {year} {personal.name}.
+          </span>
+          <span>
             <a href="#hero">
               Back to top <ArrowUp size={10} aria-hidden="true" />
             </a>

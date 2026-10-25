@@ -3,9 +3,9 @@ import { faq } from '../../data/portfolio'
 export function FAQ() {
   return (
     <section id="faq" className="section" aria-labelledby="faq-title">
-      <div className="section-label">// 07. faq</div>
+      <div className="section-label" aria-hidden="true">// 07. faq</div>
       <h2 id="faq-title" className="section-title">
-        Questions, Answered
+        FAQ
       </h2>
       <div className="section-divider" />
       <div className="faq-list reveal">

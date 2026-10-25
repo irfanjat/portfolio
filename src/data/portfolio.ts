@@ -1,3 +1,5 @@
+export const availability = 'Open to work · Remote, hybrid or on-site (PKT, UTC+5)'
+
 export const personal = {
   name: 'Irfan Ali',
   firstName: 'Irfan',
@@ -7,15 +9,13 @@ export const personal = {
   roles: ['DevOps Engineer', 'Cloud Engineer', 'Platform Engineer', 'Infrastructure Engineer'],
   tagline:
     'I build reproducible cloud infrastructure and automated delivery pipelines, with a focus on reliability, observability and security.',
-  phone: '03153711489',
-  phoneIntl: '+923153711489',
   email: 'irfanali.cloud@gmail.com',
   linkedin: 'https://linkedin.com/in/irfanjat',
   github: 'https://github.com/irfanjat',
+  portfolioRepo: 'https://github.com/irfanjat/portfolio',
   resume: '/IrfanAliResume.pdf',
   location: 'Karachi, Pakistan',
-  availability: 'Open to opportunities',
-  availabilityDetail: 'Full-time · Remote, hybrid or on-site',
+  availability,
 }
 
 export const contactForm = {
@@ -34,22 +34,24 @@ export const navLinks = [
 ]
 
 export const stats = [
-  { value: 1, suffix: '+', label: 'Years Experience' },
-  { value: 20, suffix: '+', label: 'Projects Shipped' },
-  { value: 10, suffix: '+', label: 'AWS Services' },
-  { value: '∞', suffix: '', label: 'Commands Run' },
+  { value: 1, suffix: '+', label: 'years building' },
+  {
+    value: 20,
+    suffix: '+',
+    label: 'public repos',
+    href: 'https://github.com/irfanjat',
+  },
+  { value: 10, suffix: '+', label: 'AWS services' },
 ]
 
 export interface SkillCategory {
   title: string
-  icon: string
   tags: string[]
 }
 
 export const skills: SkillCategory[] = [
   {
     title: 'Cloud Platforms',
-    icon: '☁️',
     tags: [
       'AWS',
       'EC2',
@@ -67,99 +69,106 @@ export const skills: SkillCategory[] = [
   },
   {
     title: 'IaC & Automation',
-    icon: '🧱',
     tags: ['Terraform', 'HCL', 'CloudFormation basics', 'Bash', 'Python', 'Go'],
   },
   {
     title: 'Containers & Orchestration',
-    icon: '📦',
     tags: ['Docker', 'Docker Compose', 'Kubernetes', 'Helm', 'kind', 'kubectl'],
   },
   {
     title: 'CI/CD & GitOps',
-    icon: '🚀',
     tags: ['GitHub Actions', 'Argo CD', 'Git', 'GHCR', 'Rolling updates', 'Trunk-based flow'],
   },
   {
     title: 'Observability',
-    icon: '📊',
     tags: ['Prometheus', 'Grafana', 'Loki', 'Promtail', 'Alertmanager', 'Node Exporter'],
   },
   {
     title: 'Systems & Networking',
-    icon: '🖥️',
     tags: ['Linux', 'Nginx', 'Caddy', 'DNS', 'HTTPS/TLS', 'SSH', 'TCP/IP', 'coturn', 'WebRTC'],
   },
 ]
 
 export interface Project {
   id: string
-  icon: string
   name: string
   description: string
   tags: string[]
   repo: string
+  evidence: string[]
   extra?: { label: string; href: string }[]
   live?: string
 }
 
 export const projects: Project[] = [
   {
-    id: 'fizzshare',
-    icon: '🔐',
-    name: 'FizzShare — WebRTC File Sharing',
-    description:
-      'Browser-to-browser encrypted file transfer over WebRTC data channels, so file bytes never touch the server. Shipped on AWS with Docker Compose, coturn, Caddy and Terraform, plus an ICE inspector and Prometheus metrics.',
-    tags: ['TypeScript', 'WebRTC', 'Docker', 'Terraform', 'Prometheus'],
-    repo: 'https://github.com/irfanjat/fizzshare',
-  },
-  {
-    id: 'gitops',
-    icon: '🚀',
-    name: 'End-to-End GitOps CI/CD Pipeline',
-    description:
-      'Push-to-deploy releases with GitHub Actions and Argo CD. Every commit produces an immutable, SHA-tagged image; Argo CD reconciles the cluster from git with drift detection, pruning and self-healing.',
-    tags: ['GitHub Actions', 'Argo CD', 'Kubernetes', 'Helm', 'Docker'],
-    repo: 'https://github.com/irfanjat/gitops-cicd-pipeline',
-    extra: [
-      { label: 'config repo', href: 'https://github.com/irfanjat/gitops-cicd-pipeline-config' },
-    ],
-  },
-  {
     id: 'db-operator',
-    icon: '🧩',
     name: 'DB Operator — PostgreSQL on Kubernetes',
     description:
       'A Kubernetes operator written in Go with controller-runtime. It manages PostgreSQL clusters through custom resources, extending the Kubernetes API and adding automated S3 backups, monitoring and Helm packaging.',
     tags: ['Go', 'CRDs', 'controller-runtime', 'Helm', 'Argo CD'],
     repo: 'https://github.com/irfanjat/db-operator',
+    evidence: ['CRD + controller · S3 backups · Helm + Argo CD'],
+  },
+  {
+    id: 'fizzshare',
+    name: 'FizzShare — WebRTC File Sharing',
+    description:
+      'Browser-to-browser encrypted file transfer over WebRTC. File bytes are never stored on the server; transfers go peer-to-peer, with an encrypted TURN relay when NAT traversal fails. Deployed on AWS with Docker Compose, coturn, Caddy and Terraform, plus ICE diagnostics and Prometheus metrics.',
+    tags: ['TypeScript', 'WebRTC', 'Docker', 'Terraform', 'Prometheus'],
+    repo: 'https://github.com/irfanjat/fizzshare',
+    evidence: [
+      '16/16 client tests · 28/28 server tests',
+      'Headless Chrome E2E · SHA-256 integrity check',
+    ],
+  },
+  {
+    id: 'gitops',
+    name: 'End-to-End GitOps CI/CD Pipeline',
+    description:
+      'Push-to-deploy releases with GitHub Actions and Argo CD. Each successful build is tagged with the commit SHA and deployed by digest; Argo CD reconciles the cluster from git with drift detection, pruning and self-healing.',
+    tags: ['GitHub Actions', 'Argo CD', 'Kubernetes', 'Helm', 'Docker'],
+    repo: 'https://github.com/irfanjat/gitops-cicd-pipeline',
+    evidence: ['0 manual deploy steps · ~2 min push-to-live · commit SHA in every manifest'],
+    extra: [
+      { label: 'config repo', href: 'https://github.com/irfanjat/gitops-cicd-pipeline-config' },
+    ],
   },
   {
     id: 'terraform-aws',
-    icon: '🏗️',
     name: 'Multi-Tier AWS Infrastructure',
     description:
       'A 24-resource Terraform environment across two availability zones: VPC, public and private subnets, ALB, Auto Scaling, and RDS with automated failover. State lives in S3 with DynamoDB locking.',
     tags: ['Terraform', 'VPC', 'ALB', 'Auto Scaling', 'RDS', 'IAM'],
     repo: 'https://github.com/irfanjat/terraform-aws-infra',
+    evidence: ['24 resources across 2 AZs'],
   },
   {
     id: 'observability',
-    icon: '📈',
     name: 'Kubernetes Observability Stack',
     description:
-      'Cluster-wide metrics and logs with Prometheus, Grafana, Loki and Promtail. ServiceMonitor-based discovery, a six-panel resource dashboard and alert rules that point to a clear next step.',
+      'Cluster-wide metrics and logs with Prometheus, Grafana, Loki and Promtail. ServiceMonitor-based discovery and 3 PrometheusRule alerts for restarts, availability and memory, plus a 6-panel Grafana dashboard.',
     tags: ['Prometheus', 'Grafana', 'Loki', 'Promtail', 'Kubernetes'],
     repo: 'https://github.com/irfanjat/k8s-observability',
+    evidence: ['3 PrometheusRule alerts · 6-panel Grafana dashboard · 14 scrape targets'],
+  },
+  {
+    id: 'guardrails',
+    name: 'Policy Guardrails Engine',
+    description:
+      'Policy-as-code guardrails for Terraform and Kubernetes, using OPA/Conftest and Kyverno in GitHub Actions. Non-compliant pull requests fail CI and receive an automatic review comment.',
+    tags: ['OPA', 'Conftest', 'Kyverno', 'GitHub Actions', 'Policy as Code'],
+    repo: 'https://github.com/irfanjat/Guardrails',
+    evidence: ['8 policies · Terraform and Kubernetes · CI pull-request enforcement'],
   },
   {
     id: 'costguard',
-    icon: '💸',
     name: 'CostGuard — AWS Cost Watchdog',
     description:
-      'A scheduled serverless scanner that finds orphaned volumes, idle instances and unattached addresses. Findings are stored in DynamoDB for history and pushed to Slack so waste is fixed early.',
+      'A scheduled serverless scanner that tracks daily AWS spend, flags anomalies and finds orphaned resources. Findings are stored in DynamoDB and delivered to Slack with suggested fixes.',
     tags: ['Python', 'Lambda', 'DynamoDB', 'Terraform', 'Slack API'],
     repo: 'https://github.com/irfanjat/costguard',
+    evidence: ['6-hour schedule · Slack reports · DynamoDB history'],
   },
 ]
 
@@ -167,7 +176,6 @@ export interface Credential {
   title: string
   issuer: string
   kind: 'Certification' | 'Course'
-  icon: string
   link: string
 }
 
@@ -176,34 +184,30 @@ export const credentials: Credential[] = [
     title: 'OCI 2025 Certified Foundations Associate',
     issuer: 'Oracle Cloud Infrastructure',
     kind: 'Certification',
-    icon: '🏅',
     link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=1BEEF1CBBEAE05D6DD59D53B668355A20ADBC563F691C84B03315E27A745FD49',
   },
   {
     title: 'Introduction to DevOps',
     issuer: 'IBM · Coursera',
     kind: 'Course',
-    icon: '⚙️',
     link: 'https://coursera.org/verify/PANSLSFPOV59',
   },
   {
     title: 'AWS Cloud Practitioner Essentials',
     issuer: 'Amazon Web Services · Coursera',
     kind: 'Course',
-    icon: '☁️',
     link: 'https://coursera.org/verify/VJOL7N4FHGNV',
   },
   {
     title: 'AWS Cloud Technical Essentials',
     issuer: 'Amazon Web Services · Coursera',
     kind: 'Course',
-    icon: '🛠️',
     link: 'https://coursera.org/verify/JHTNQ3MFH2D2',
   },
 ]
 
 export const education = {
-  degree: 'Bachelor of Science in Computer Science',
+  degree: 'BSc in Computer Science',
   university: 'University of Sindh (SULC), Jamshoro, Pakistan',
   graduation: 'Expected graduation 2027',
 }
@@ -222,18 +226,19 @@ export const experience: ExperienceItem[] = [
     period: '2025 — Present',
     points: [
       'Design and ship end-to-end projects across AWS, Kubernetes and CI/CD, documenting architecture, trade-offs and evidence for each one.',
-      'Built a two-repository GitOps pipeline with GitHub Actions and Argo CD, including immutable SHA-tagged images and automated reconciliation.',
+      'Built a two-repository GitOps pipeline with GitHub Actions and Argo CD, using commit-SHA image tags and digest-based deployment with automated reconciliation.',
       'Provisioned a multi-AZ AWS environment in Terraform with remote state, least-privilege IAM, load balancing and a private database tier.',
-      'Deployed Prometheus, Grafana, Loki and Promtail on Kubernetes with dashboards and alert rules, and automated AWS cost reporting with Lambda.',
+      'Deployed Prometheus, Grafana, Loki and Promtail on Kubernetes with 3 PrometheusRule alerts and a 6-panel dashboard.',
+      'Automated AWS cost and orphaned-resource reporting with a scheduled Lambda, DynamoDB history and Slack alerts.',
     ],
   },
   {
-    role: 'BSc Computer Science',
+    role: 'BSc in Computer Science',
     org: 'University of Sindh (SULC), Jamshoro',
     period: 'Expected 2027',
     points: [
       'Studying operating systems, computer networks, databases and data structures alongside cloud and platform engineering practice.',
-      'Applying coursework in hands-on labs: Linux administration, networking fundamentals and containerised deployments.',
+      'Applying coursework in hands-on labs: Linux administration, networking fundamentals and containerized deployments.',
     ],
   },
   {
@@ -243,28 +248,32 @@ export const experience: ExperienceItem[] = [
     points: [
       'Earned the OCI 2025 Certified Foundations Associate credential.',
       'Completed IBM Introduction to DevOps and two AWS cloud essentials courses on Coursera.',
-      'Continuing self-directed study toward Kubernetes and platform engineering depth.',
+      'Current focus: Kubernetes platform engineering through the DB Operator and observability projects.',
     ],
   },
 ]
 
 export interface Note {
+  slug: string
   title: string
   date: string
   readTime: string
   summary: string
   tags: string[]
+  relatedProject: string
   body: { heading?: string; paragraphs?: string[]; bullets?: string[]; code?: string }[]
 }
 
 export const notes: Note[] = [
   {
+    slug: 'terraform-state-remote-backend',
     title: 'Terraform state belongs in a bucket, not in your repository',
-    date: '2026',
+    date: 'Oct 2026',
     readTime: '4 min read',
     summary:
       'Local state works until a second person runs apply. A versioned S3 backend with DynamoDB locking turns infrastructure changes into something a team can review safely.',
     tags: ['Terraform', 'AWS', 'State'],
+    relatedProject: 'terraform-aws',
     body: [
       {
         paragraphs: [
@@ -301,17 +310,19 @@ export const notes: Note[] = [
     ],
   },
   {
+    slug: 'argo-cd-self-heal',
     title: 'What Argo CD self-heal actually does',
-    date: '2026',
+    date: 'Oct 2026',
     readTime: '3 min read',
     summary:
       'Self-heal is not a deployment trick — it is a reconciliation loop. Knowing when it helps and when it hides a problem matters more than turning it on.',
     tags: ['Argo CD', 'GitOps', 'Kubernetes'],
+    relatedProject: 'gitops',
     body: [
       {
         paragraphs: [
           'Argo CD continuously compares live cluster resources with the desired manifests in git. With self-heal enabled, a difference is not just reported — it is corrected. Delete a deployment by hand and it comes back on the next sync.',
-          'That behaviour is valuable for drift caused by accident. It is less valuable when the drift is caused by something you do not understand yet.',
+          'That behavior is valuable for drift caused by accident. It is less valuable when the drift is caused by something you do not understand yet.',
         ],
       },
       {
@@ -337,12 +348,12 @@ export const faq = [
   {
     question: 'What kind of roles are you looking for?',
     answer:
-      'Entry-level DevOps, cloud and platform engineering roles where I can own infrastructure as code, CI/CD and observability. I am open to full-time roles in Pakistan or remote teams, and comfortable with hybrid or on-site arrangements.',
+      'Entry-level DevOps, cloud and platform engineering roles where I can own infrastructure as code, CI/CD and observability. I am also open to internships and collaborative project work.',
   },
   {
-    question: 'Are your projects professional or personal?',
+    question: 'How were these projects built?',
     answer:
-      'They are self-directed projects built to production-shaped standards, not enterprise employment. I designed, provisioned and documented each one end to end, and the repositories include the actual Terraform, workflows and manifests I wrote.',
+      'They are self-directed projects built with production-style practices: remote state, least privilege, CI/CD and monitoring. Each repository includes the architecture, setup steps and verification, not just screenshots.',
   },
   {
     question: 'What is your strongest area?',
@@ -352,11 +363,11 @@ export const faq = [
   {
     question: 'Do you hold a certification?',
     answer:
-      'Yes — OCI 2025 Certified Foundations Associate. I have also completed IBM Introduction to DevOps and two AWS cloud essentials courses, and I am continuing toward deeper Kubernetes and platform engineering work.',
+      'Yes — OCI 2025 Certified Foundations Associate. I have also completed IBM Introduction to DevOps and two AWS cloud essentials courses.',
   },
   {
     question: 'How quickly can you start, and how do I reach you?',
     answer:
-      'I am available immediately and reply to messages within 24 hours. Email irfanali.cloud@gmail.com or connect on LinkedIn — both are linked below.',
+      'Available for full-time roles and internships — happy to discuss start dates. Email irfanali.cloud@gmail.com or connect on LinkedIn; both are linked in the Contact section.',
   },
 ]
