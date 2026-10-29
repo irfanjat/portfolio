@@ -33,17 +33,6 @@ export const navLinks = [
   { label: 'contact', href: '#contact' },
 ]
 
-export const stats = [
-  { value: 1, suffix: '+', label: 'years building' },
-  {
-    value: 20,
-    suffix: '+',
-    label: 'public repos',
-    href: 'https://github.com/irfanjat',
-  },
-  { value: 10, suffix: '+', label: 'AWS services' },
-]
-
 export interface SkillCategory {
   title: string
   tags: string[]
@@ -65,27 +54,30 @@ export const skills: SkillCategory[] = [
       'DynamoDB',
       'Route 53',
       'CloudWatch',
+      'EventBridge',
+      'Secrets Manager',
+      'Cost Explorer',
     ],
   },
   {
     title: 'IaC & Automation',
-    tags: ['Terraform', 'HCL', 'CloudFormation basics', 'Bash', 'Python', 'Go'],
+    tags: ['Terraform', 'CloudFormation basics', 'Bash', 'Python', 'Go'],
   },
   {
     title: 'Containers & Orchestration',
-    tags: ['Docker', 'Docker Compose', 'Kubernetes', 'Helm', 'kind', 'kubectl'],
+    tags: ['Docker', 'Kubernetes', 'Helm', 'kind'],
   },
   {
     title: 'CI/CD & GitOps',
-    tags: ['GitHub Actions', 'Argo CD', 'Git', 'GHCR', 'Rolling updates', 'Trunk-based flow'],
+    tags: ['GitHub Actions', 'Argo CD', 'Git', 'GHCR'],
   },
   {
     title: 'Observability',
-    tags: ['Prometheus', 'Grafana', 'Loki', 'Promtail', 'Alertmanager', 'Node Exporter'],
+    tags: ['Prometheus', 'Grafana', 'Loki', 'Alertmanager'],
   },
   {
     title: 'Systems & Networking',
-    tags: ['Linux', 'Nginx', 'Caddy', 'DNS', 'HTTPS/TLS', 'SSH', 'TCP/IP', 'coturn', 'WebRTC'],
+    tags: ['Linux', 'Nginx', 'DNS', 'TLS', 'SSH'],
   },
 ]
 
@@ -239,16 +231,6 @@ export const experience: ExperienceItem[] = [
     points: [
       'Studying operating systems, computer networks, databases and data structures alongside cloud and platform engineering practice.',
       'Applying coursework in hands-on labs: Linux administration, networking fundamentals and containerized deployments.',
-    ],
-  },
-  {
-    role: 'Certifications & Technical Training',
-    org: 'Oracle · IBM · AWS',
-    period: '2025 — 2026',
-    points: [
-      'Earned the OCI 2025 Certified Foundations Associate credential.',
-      'Completed IBM Introduction to DevOps and two AWS cloud essentials courses on Coursera.',
-      'Current focus: Kubernetes platform engineering through the DB Operator and observability projects.',
     ],
   },
 ]

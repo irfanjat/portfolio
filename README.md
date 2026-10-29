@@ -83,7 +83,7 @@ public/
 
 ## Customization
 
-- **Content:** edit `src/data/portfolio.ts` for personal details, roles, stats, skills, projects, credentials, experience, notes and FAQ entries.
+- **Content:** edit `src/data/portfolio.ts` for personal details, roles, skills, projects, credentials, experience, notes and FAQ entries.
 - **Design:** edit `src/index.css` for colors, typography, spacing, layout and responsive behavior.
 - **Assets:** replace files in `public/` for the portrait, resume, social image and favicon.
 - **Metadata:** update canonical, Open Graph, Twitter and JSON-LD URLs in `index.html` if the domain changes.

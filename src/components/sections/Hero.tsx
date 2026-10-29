@@ -1,5 +1,5 @@
-import { ArrowDown, ArrowRight, Download, Github, Linkedin } from 'lucide-react'
-import { personal, stats } from '../../data/portfolio'
+import { ArrowDown, ArrowRight, Download } from 'lucide-react'
+import { personal } from '../../data/portfolio'
 import { useTypewriter } from '../../hooks/useTypewriter'
 import { trackEvent } from '../../lib/analytics'
 
@@ -17,16 +17,6 @@ export function Hero() {
               <span className="pill-sep">·</span>
               Remote (PKT, UTC+5) / on-site in Karachi
             </span>
-            <span className="pill">
-              <strong>OCI Certified</strong>
-              <span className="pill-sep">·</span>
-              Foundations Associate
-            </span>
-            <span className="pill">
-              <strong>{stats[1].value}+ public repos</strong>
-              <span className="pill-sep">·</span>
-              AWS · K8s · IaC
-            </span>
           </div>
 
           <p className="hero-tag" aria-hidden="true">// devops &amp; cloud engineer</p>
@@ -42,21 +32,13 @@ export function Hero() {
           <p className="hero-desc">
             I build <strong>AWS infrastructure with Terraform</strong>, deploy to{' '}
             <strong>Kubernetes with GitHub Actions and Argo CD</strong>, and monitor it
-            with <strong>Prometheus and Grafana</strong>. Entry-level DevOps/cloud
-            engineer based in Karachi (PKT, UTC+5), open to remote, hybrid and on-site roles.
+            with <strong>Prometheus and Grafana</strong>. DevOps/cloud engineer based in
+            Karachi (PKT, UTC+5), open to remote, hybrid and on-site roles.
           </p>
 
           <div className="hero-actions">
-            <a href="#contact" className="btn btn-primary">
-              Get in touch <ArrowRight size={14} aria-hidden="true" />
-            </a>
-            <a
-              href={personal.linkedin}
-              className="btn btn-ghost"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Linkedin size={14} aria-hidden="true" /> LinkedIn
+            <a href="#projects" className="btn btn-primary">
+              View selected work <ArrowRight size={14} aria-hidden="true" />
             </a>
             <a
               href={personal.resume}
@@ -65,14 +47,6 @@ export function Hero() {
               onClick={() => trackEvent('Résumé Download', { source: 'hero' })}
             >
               <Download size={14} aria-hidden="true" /> Résumé
-            </a>
-            <a
-              href={personal.github}
-              className="btn btn-ghost"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github size={14} aria-hidden="true" /> GitHub
             </a>
           </div>
         </div>
@@ -99,13 +73,6 @@ export function Hero() {
                 decoding="async"
               />
             </picture>
-          </div>
-
-          <div className="hero-chips" aria-label="Quick facts">
-            <span className="chip">OCI Certified</span>
-            <span className="chip">AWS · Terraform</span>
-            <span className="chip">Kubernetes</span>
-            <span className="chip">GitOps</span>
           </div>
 
           <div className="terminal">

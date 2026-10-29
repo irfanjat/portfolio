@@ -1,5 +1,5 @@
 import { ArrowUpRight, FileText, Github, Linkedin } from 'lucide-react'
-import { personal, stats } from '../../data/portfolio'
+import { personal } from '../../data/portfolio'
 import { trackEvent } from '../../lib/analytics'
 
 export function About() {
@@ -47,8 +47,8 @@ export function About() {
             <code>Terraform</code>, <code>Kubernetes</code> and <code>GitOps</code>.
           </p>
           <p>
-            Each repo includes the architecture, setup steps, and verification. Every
-            claim here links to code or evidence.
+            I document the architecture, setup steps and test evidence for each
+            project, including the trade-offs behind the implementation.
           </p>
 
           <p className="about-now">
@@ -86,36 +86,6 @@ export function About() {
               <ArrowUpRight size={11} aria-hidden="true" />
             </a>
           </div>
-        </div>
-
-        <div className="about-stats reveal">
-          {stats.map((stat) => {
-            const content = (
-              <>
-                <div className="stat-value">
-                  {stat.value}
-                  {stat.suffix}
-                </div>
-                <div className="stat-label">{stat.label}</div>
-              </>
-            )
-
-            return stat.href ? (
-              <a
-                className="stat-card stat-card-link"
-                href={stat.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={stat.label}
-              >
-                {content}
-              </a>
-            ) : (
-              <div className="stat-card" key={stat.label}>
-                {content}
-              </div>
-            )
-          })}
         </div>
       </div>
     </section>
