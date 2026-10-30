@@ -62,9 +62,9 @@ export function About() {
               className="about-link"
               href={personal.resume}
               download="Irfan-Ali-Resume.pdf"
-              onClick={() => trackEvent('Résumé Download', { source: 'about' })}
+              onClick={() => trackEvent('Resume Download', { source: 'about' })}
             >
-              <FileText size={12} aria-hidden="true" /> résumé
+              <FileText size={12} aria-hidden="true" /> resume
               <ArrowUpRight size={11} aria-hidden="true" />
             </a>
             <a

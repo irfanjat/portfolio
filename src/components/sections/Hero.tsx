@@ -44,9 +44,9 @@ export function Hero() {
               href={personal.resume}
               className="btn btn-ghost"
               download="Irfan-Ali-Resume.pdf"
-              onClick={() => trackEvent('Résumé Download', { source: 'hero' })}
+              onClick={() => trackEvent('Resume Download', { source: 'hero' })}
             >
-              <Download size={14} aria-hidden="true" /> Résumé
+              <Download size={14} aria-hidden="true" /> Resume
             </a>
           </div>
         </div>
@@ -57,12 +57,12 @@ export function Hero() {
               <source
                 type="image/avif"
                 srcSet="/pic-480.avif 480w, /pic-700.avif 700w, /pic-892.avif 892w"
-                sizes="(max-width: 900px) 68vw, 340px"
+                sizes="(max-width: 900px) 68vw, 310px"
               />
               <source
                 type="image/webp"
                 srcSet="/pic-480.webp 480w, /pic-700.webp 700w, /pic-892.webp 892w"
-                sizes="(max-width: 900px) 68vw, 340px"
+                sizes="(max-width: 900px) 68vw, 310px"
               />
               <img
                 src="/pic.jpg"

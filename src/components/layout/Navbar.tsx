@@ -63,9 +63,9 @@ export function Navbar() {
                   className="nav-cv"
                   href={personal.resume}
                   download="Irfan-Ali-Resume.pdf"
-                  onClick={() => trackEvent('Résumé Download', { source: 'nav' })}
+                  onClick={() => trackEvent('Resume Download', { source: 'nav' })}
                 >
-                  résumé <Download size={11} aria-hidden="true" />
+                  resume <Download size={11} aria-hidden="true" />
                 </a>
               </li>
             </ul>
@@ -114,11 +114,11 @@ export function Navbar() {
                 download="Irfan-Ali-Resume.pdf"
                 onClick={() => {
                   setOpen(false)
-                  trackEvent('Résumé Download', { source: 'mobile-nav' })
+                  trackEvent('Resume Download', { source: 'mobile-nav' })
                 }}
                 tabIndex={open ? 0 : -1}
               >
-                Résumé <Download size={12} aria-hidden="true" />
+                Resume <Download size={12} aria-hidden="true" />
               </a>
             </li>
           </ul>

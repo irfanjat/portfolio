@@ -66,9 +66,9 @@ export function Footer() {
                 <a
                   href={personal.resume}
                   download="Irfan-Ali-Resume.pdf"
-                  onClick={() => trackEvent('Résumé Download', { source: 'footer' })}
+                  onClick={() => trackEvent('Resume Download', { source: 'footer' })}
                 >
-                  <Download size={11} aria-hidden="true" /> Résumé
+                  <Download size={11} aria-hidden="true" /> Resume
                 </a>
               </li>
             </ul>

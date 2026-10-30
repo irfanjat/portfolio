@@ -26,7 +26,7 @@ const channels = [
     external: true,
   },
   {
-    label: 'Download résumé (PDF)',
+    label: 'Download resume (PDF)',
     href: personal.resume,
     icon: FileText,
     external: false,
@@ -113,7 +113,7 @@ export function Contact() {
                     ? {
                         download: 'Irfan-Ali-Resume.pdf',
                         onClick: () =>
-                          trackEvent('Résumé Download', { source: 'contact' }),
+                          trackEvent('Resume Download', { source: 'contact' }),
                       }
                     : {})}
                 >
