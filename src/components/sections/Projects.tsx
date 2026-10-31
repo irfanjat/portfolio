@@ -23,6 +23,8 @@ const projectIcons: Record<string, LucideIcon> = {
   costguard: DollarSign,
 }
 
+const mainProjects = projects.slice(0, 4)
+
 export function Projects() {
   return (
     <section id="projects" className="section" aria-labelledby="projects-title">
@@ -32,7 +34,7 @@ export function Projects() {
       </h2>
       <div className="section-divider" />
       <div className="projects-grid">
-        {projects.map((project) => {
+        {mainProjects.map((project) => {
           const Icon = projectIcons[project.id] ?? Cloud
 
           return (

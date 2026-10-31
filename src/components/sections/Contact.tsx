@@ -84,7 +84,7 @@ export function Contact() {
     <section id="contact" className="section" aria-labelledby="contact-title">
       <div className="section-label" aria-hidden="true">// 08. contact</div>
       <h2 id="contact-title" className="section-title">
-        Get in touch
+        Ping me
       </h2>
       <div className="section-divider" />
 
